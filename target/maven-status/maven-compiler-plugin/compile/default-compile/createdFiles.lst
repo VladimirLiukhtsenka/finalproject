@@ -9,7 +9,6 @@ com\liukhtenko\ticket\pool\ProxyConnection.class
 com\liukhtenko\ticket\exception\DaoException.class
 Test.class
 com\liukhtenko\ticket\entity\TypeSeatEdit.class
-com\liukhtenko\ticket\controller\controller.class
 com\liukhtenko\ticket\pool\PropertyLoader.class
 com\liukhtenko\ticket\exception\PoolException.class
 com\liukhtenko\ticket\entity\Role.class
@@ -17,3 +16,4 @@ com\liukhtenko\ticket\entity\User.class
 com\liukhtenko\ticket\service\SomeService.class
 com\liukhtenko\ticket\entity\TypeEvent.class
 com\liukhtenko\ticket\dao\impl\TypeOfSeatDao.class
+com\liukhtenko\ticket\frontcontroller\FrontController.class

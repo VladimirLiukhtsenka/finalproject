@@ -6,6 +6,6 @@
         </h2>
 
 
-        <a href="controller">Click here to see servlet</a>
+        <a href="do">Click here to see servlet</a>
     </body>
 </html>

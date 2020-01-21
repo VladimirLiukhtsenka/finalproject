@@ -14,6 +14,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\AbstractDa
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TypeOfSeatDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\CustomConnectionPool.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeSeatEdit.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\controller\controller.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\frontcontroller\FrontController.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\DaoException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\EntityTransaction.java
