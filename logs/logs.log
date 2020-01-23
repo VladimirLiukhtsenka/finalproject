@@ -1,2 +1,0 @@
-2020-01-20 13:26:22.299 [main] 3897 DEBUG com.liukhtenko.ticket.dao.EntityTransaction - com.liukhtenko.ticket.dao.impl.TypeOfSeatDao@359f7cdf have a connection: com.liukhtenko.ticket.pool.ProxyConnection@1fa268de
-2020-01-20 13:26:53.964 [main] 3524 DEBUG com.liukhtenko.ticket.dao.EntityTransaction - com.liukhtenko.ticket.dao.impl.TypeOfSeatDao@359f7cdf have a connection: com.liukhtenko.ticket.pool.ProxyConnection@1fa268de

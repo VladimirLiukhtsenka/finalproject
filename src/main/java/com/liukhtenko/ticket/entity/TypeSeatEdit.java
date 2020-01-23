@@ -9,9 +9,9 @@ public enum TypeSeatEdit { // FIXME: 18.01.2020 change name
     SECTOR_B("Сектор B"), // FIXME: латиница
     SECTOR_C("Сектор C"),
     SECTOR_D("Сектор D"),
-    TRIBUNE_A("Трибуна D"),
-    TRIBUNE_B("Трибуна D"),
-    TRIBUNE_C("Трибуна D"),
+    TRIBUNE_A("Трибуна A"),
+    TRIBUNE_B("Трибуна B"),
+    TRIBUNE_C("Трибуна C"),
     TRIBUNE_D("Трибуна D"),
     FAN_ZONE("Фанзона"),
     DANCE_FLOOR("Танцпол"),
@@ -26,7 +26,6 @@ public enum TypeSeatEdit { // FIXME: 18.01.2020 change name
     ROW_9("Ряд 9"),
     ROW_10("Ряд 10");
     private String value;
-    // FIXME: 18.01.2020 добавить описание или в БД оставить
     TypeSeatEdit() {
     }
 

@@ -10,14 +10,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+
 import com.liukhtenko.ticket.exception.DaoException;
-//import org.apache.logging.log4j.Level;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
-//    static Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
 
     public abstract List<T> findAll() throws DaoException;
 
@@ -37,7 +38,7 @@ public abstract class AbstractDao<K, T extends Entity> {
                 st.close();
             }
         } catch (SQLException e) {
-//            logger.log(Level.WARN, "Impossible to close statement", e);
+            logger.log(Level.WARN, "Impossible to close statement", e);
         }
     }
 

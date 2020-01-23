@@ -9,7 +9,7 @@ public enum TypeEvent {
     MOVIE("Кино");
     private String value;
 
-    // FIXME: 18.01.2020 добавить описание или в БД оставить
+
     TypeEvent() {
     }
 
