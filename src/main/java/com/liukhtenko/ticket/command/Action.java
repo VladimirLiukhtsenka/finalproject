@@ -1,23 +1,20 @@
 package com.liukhtenko.ticket.command;
 
-public enum Action {
-    LOGIN {{
-        this.command = new CommandLogin();
-    }},
-    LOGOUT {{
-        this.command = new CommandLogOut();
-    }},
-    SIGN_UP {{
-        this.command = new CommandSignUp();
-    }},
-    ERROR {{
-        this.command = new CommandError();
-    }};
+import javax.servlet.http.HttpServletRequest;
 
-    public String jsp = "/error.jsp";
-    public ActionCommand command;
+public abstract class Action {
+   public abstract Action execute(HttpServletRequest request);
+    public String getJsp(){
+        return "/"+this.toString()+".jsp";
+    }
 
-    public ActionCommand getActionCommand() {
-        return command;
+    @Override
+    public String toString() {
+        String nameCommand = this
+                .getClass()
+                .getSimpleName()
+                .replace("Cmd", "")
+                .toLowerCase();
+        return nameCommand;
     }
 }

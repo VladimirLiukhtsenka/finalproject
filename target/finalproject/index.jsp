@@ -1,11 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <body>
-        <h2>
-            Hello World! With Controller Привет!
-        </h2>
-
-
-        <a href="do">Click here to see servlet</a>
-    </body>
+<%@ include file="include/head.htm" %>
+<body>
+<%@ include file="include/menu.htm" %>
+<p>INDEX: ${message}</p>
+</body>
 </html>

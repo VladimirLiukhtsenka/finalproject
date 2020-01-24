@@ -21,8 +21,7 @@ public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_DELETE_USER_BY_ID =
             "DELETE from users WHERE id=?;";
     private static final String SQL_CREATE_USER =
-            "insert into users phone, name, surname, father_name, gender, password, mail, role_id \n" +
-                    "  values (?,?,?,?,?,?,?,?);";
+            "insert into users (phone, name, surname, father_name, gender, password, mail, role_id) values (?,?,?,?,?,?,?,?);";
     private static final String SQL_UPDATE_USER =
             "UPDATE users SET phone=?, name=?, surname=?, father_name=?, gender=?, password=?, mail=?," +
                     " role_id=? WHERE id=?";
@@ -117,7 +116,6 @@ public class UserDao extends AbstractDao<Long, User> {
         ResultSet resultSet = null;
         try {
             statement = connection.prepareStatement(SQL_CREATE_USER,Statement.RETURN_GENERATED_KEYS);
-            resultSet = statement.getGeneratedKeys();
             statement.setString(1, user.getPhone());
             statement.setString(2, user.getName());
             statement.setString(3, user.getSurName());
@@ -127,10 +125,10 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setString(7, user.getMail());
             statement.setInt(8, (int) user.getRoleID());
             resultSet = statement.getGeneratedKeys();
-            if(resultSet.next()) {
-                long key = resultSet.getLong(1);
-                user.setId(key);
-            }
+//            if(resultSet.next()) {
+//                long key = resultSet.getLong(1); // FIXME: 24.01.2020 
+//                user.setId(key);
+//            }
             flag = (1 == statement.executeUpdate()); // FIXME: 12.01.2020
         } catch (SQLException e) {
             throw new DaoException(e);
