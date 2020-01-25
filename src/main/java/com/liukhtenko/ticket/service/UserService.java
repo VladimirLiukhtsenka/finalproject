@@ -12,18 +12,18 @@ import java.util.List;
 
 public class UserService {
 
-    public List<User> findAllUsers(){
+    public List<User> findAllUsers() {
         List<User> users = new ArrayList<>();
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-            users =  userDao.findAll();
+            users = userDao.findAll();
             transaction.commit();
-        }catch (DaoException e){
+        } catch (DaoException e) {
             transaction.rollback();
             e.printStackTrace();// FIXME: 12.01.2020 log
-        }finally {
+        } finally {
             transaction.end();
         }
         return users;
@@ -35,15 +35,15 @@ public class UserService {
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-            user =  userDao.find(id);
+            user = userDao.find(id);
             transaction.commit();
-        }catch (DaoException e){
+        } catch (DaoException e) {
             transaction.rollback();
             e.printStackTrace();// FIXME: 12.01.2020 log
-        }finally {
+        } finally {
             transaction.end();
         }
-        if(user == null){
+        if (user == null) {
             throw new DaoException(); // FIXME: 23.01.2020 
         }
         return user;
@@ -54,30 +54,33 @@ public class UserService {
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-           boolean flag = userDao.delete(id);
+            boolean flag = userDao.delete(id);
             // FIXME: 23.01.2020 log+flag
             transaction.commit();
-        }catch (DaoException e){
+        } catch (DaoException e) {
             transaction.rollback();
             e.printStackTrace();// FIXME: 12.01.2020 log
-        }finally {
+        } finally {
             transaction.end();
         }
     }
-    public void createUser(User user) throws DaoException {
+
+    public boolean createUser(User user) throws DaoException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
+        boolean flag = false;
         try {
             transaction.begin(userDao);
-            boolean flag = userDao.create(user);
+            flag = userDao.create(user);
             // FIXME: 23.01.2020 log+flag
             transaction.commit();
-        }catch (DaoException e){
+        } catch (DaoException e) {
             transaction.rollback();
             e.printStackTrace();// FIXME: 12.01.2020 log
-        }finally {
+        } finally {
             transaction.end();
         }
+        return flag;
     }
 
     public void updateUser(User user) throws DaoException {
@@ -88,10 +91,10 @@ public class UserService {
             boolean flag = userDao.update(user);
             // FIXME: 23.01.2020 log+flag
             transaction.commit();
-        }catch (DaoException e){
+        } catch (DaoException e) {
             transaction.rollback();
             e.printStackTrace();// FIXME: 12.01.2020 log
-        }finally {
+        } finally {
             transaction.end();
         }
     }

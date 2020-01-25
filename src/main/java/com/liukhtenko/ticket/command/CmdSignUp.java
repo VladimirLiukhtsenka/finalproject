@@ -15,15 +15,21 @@ public class CmdSignUp extends Action {
         UserService userService = new UserService();
         User user = new User();
         try {
-            user.setName(Form.getString(request,"name", CustomPattern.Login));
-        } catch (SiteException e) {
+            user.setId(1);
+            user.setRoleID(2);
+            user.setPhone(Form.getString(request, "phone", CustomPattern.Phone));
+            user.setName(Form.getString(request, "name", CustomPattern.Login));
+            user.setSurName(Form.getString(request, "surname", CustomPattern.Login));
+            user.setFatherName(Form.getString(request, "father name", CustomPattern.Login));
+            user.setGender(Form.getByte(request, "selectbasicGender"));
+            user.setPassword(Form.getString(request, "passwordinput", CustomPattern.Password));
+            user.setMail(Form.getString(request, "textinputMail", CustomPattern.Email));
+          if(userService.createUser(user)){
+              return Actions.LOGIN.command;
+          }
+            else {return null;}
+        } catch (SiteException |DaoException e ) {
             return Actions.ERROR.command;
         }
-        try {
-            userService.createUser(user);
-        } catch (DaoException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 }

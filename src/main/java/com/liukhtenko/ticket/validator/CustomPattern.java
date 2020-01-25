@@ -1,7 +1,8 @@
 package com.liukhtenko.ticket.validator;
 
 public interface CustomPattern {
-    String Login = "(a-zA-Z0-9)(8,)"; // FIXME: 24.01.2020
-    String Email = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,6}$"; // FIXME: 24.01.2020
-    String Password = "(a-zA-Z0-9)(8,)"; // FIXME: 24.01.2020
+    String Login = "^[\\wа-яА-ЯёЁ]{3,20}$";
+    String Email = "^[\\w-\\+]+(\\.[\\w-]+)*@[\\w-]+(\\.[\\w]+)*(\\.[a-zA-Z]{2,})$";
+    String Password = "^[\\wа-яА-ЯёЁ]{8,40}$";
+    String Phone = "^([+])*[\\d]{12,13}$";
 }

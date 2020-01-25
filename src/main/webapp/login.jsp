@@ -1,7 +1,8 @@
 <html>
-<%@ include file="include/head.htm" %>
+
 <%@ include file="include/menu.htm" %>
-<form class="form-horizontal">
+
+<form class="form-horizontal"action = "do?command=login" method="POST">
 <fieldset>
 
 <!-- Form Name -->
@@ -37,7 +38,7 @@
 </form>
 
 
-<p>Cmd Login: ${message}</p>
-
+<!-- <p>Cmd Sign-up: ${message}</p>-->
+<%@ include file="include/head.htm" %>
 </html>
 
