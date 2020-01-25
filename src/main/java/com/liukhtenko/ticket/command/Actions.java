@@ -2,7 +2,7 @@ package com.liukhtenko.ticket.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public enum Actions { // FIXME: 24.01.2020 rename и можно организовать Фабрикой
+public enum Actions { // FIXME: 24.01.2020 rename 
     LOGIN {{
         this.command = new CmdLogin();
     }},
@@ -19,7 +19,7 @@ public enum Actions { // FIXME: 24.01.2020 rename и можно организо
 
     public Action command;
 
-   public static Action defineFrom(HttpServletRequest request){
+   public static Action defineFrom(HttpServletRequest request){  // FIXME: 26.01.2020 можно фабрикой
         String nameCommand = request.getParameter("command").toUpperCase();
         try {
             return Actions.valueOf(nameCommand).command;

@@ -7,17 +7,15 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
+@WebServlet(name = "FrontController", urlPatterns = {"/do"})
 public class FrontController extends HttpServlet {
     static Logger logger = LogManager.getLogger(FrontController.class);
 
-    //        ServletContext servletContext = getServletContext();
-//        RequestDispatcher disp = servletContext.getRequestDispatcher("/index.jsp");
-//        disp.forward(req,resp);
     private RequestDispatcher dispatcher (Action action){
        return getServletContext().getRequestDispatcher(action.getJsp());
     }
@@ -25,7 +23,7 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Action action = Actions.defineFrom(req);
-        action.execute(req);
+       // action.execute(req);// FIXME: 25.01.2020 
         dispatcher(action).forward(req,resp);
     }
 
