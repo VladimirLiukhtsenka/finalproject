@@ -12,19 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
 @WebServlet(name = "FrontController", urlPatterns = {"/do"})
 public class FrontController extends HttpServlet {
     static Logger logger = LogManager.getLogger(FrontController.class);
 
-    private RequestDispatcher dispatcher (Action action){
-       return getServletContext().getRequestDispatcher(action.getJsp());
+    private RequestDispatcher dispatcher(Action action) {
+        return getServletContext().getRequestDispatcher(action.getJsp());
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Action action = Actions.defineFrom(req);
-       // action.execute(req);// FIXME: 25.01.2020 
-        dispatcher(action).forward(req,resp);
+        // action.execute(req);// FIXME: 25.01.2020
+        dispatcher(action).forward(req, resp);
     }
 
     @Override
@@ -33,9 +34,8 @@ public class FrontController extends HttpServlet {
         Action nextAction = action.execute(req);
         if (nextAction != null) {
             resp.sendRedirect("do?command=" + nextAction);
-        }
-        else {
-            dispatcher(action).forward(req,resp);
+        } else {
+            dispatcher(action).forward(req, resp);
         }
     }
 

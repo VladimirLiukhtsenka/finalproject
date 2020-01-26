@@ -25,11 +25,11 @@ public class CmdSignUp extends Action {
             user.setPassword(Form.getString(request, "passwordinput", CustomPattern.Password));
             user.setMail(Form.getString(request, "textinputMail", CustomPattern.Email));
           if(userService.createUser(user)){
-              return Actions.LOGIN.command;
+              return new CmdLogin();
           }
             else {return null;}
         } catch (SiteException |DaoException e ) {
-            return Actions.ERROR.command;
+            return new CmdError();
         }
     }
 }

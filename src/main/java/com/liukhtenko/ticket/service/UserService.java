@@ -1,9 +1,7 @@
 package com.liukhtenko.ticket.service;
 
 import com.liukhtenko.ticket.dao.EntityTransaction;
-import com.liukhtenko.ticket.dao.impl.TypeOfSeatDao;
 import com.liukhtenko.ticket.dao.impl.UserDao;
-import com.liukhtenko.ticket.entity.TypeSeat;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 

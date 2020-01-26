@@ -2,30 +2,31 @@ package com.liukhtenko.ticket.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public enum Actions { // FIXME: 24.01.2020 rename 
-    LOGIN {{
-        this.command = new CmdLogin();
-    }},
-    LOGOUT {{
-        this.command = new CmdLogOut();
-    }},
-    SIGNUP {{
-        this.command = new CmdSignUp();
-    }},
-    ERROR {{
-        this.command = new CmdError();
-    }};
-
-
-    public Action command;
-
-   public static Action defineFrom(HttpServletRequest request){  // FIXME: 26.01.2020 можно фабрикой
-        String nameCommand = request.getParameter("command").toUpperCase();
-        try {
-            return Actions.valueOf(nameCommand).command;
-        } catch (IllegalArgumentException e) {
-            return Actions.ERROR.command;
-        }
+public class Actions {
+    private enum Command {
+        LOGIN,
+        LOGOUT,
+        SIGNUP,
+        ERROR
     }
 
+    public static Action defineFrom(HttpServletRequest request) {
+        String nameCommand = request.getParameter("command").toUpperCase();
+        Command command;
+        try {
+            command = Command.valueOf(nameCommand);
+        } catch (IllegalArgumentException e) {
+            return new CmdError();
+        }
+        switch (command) {
+            case LOGIN:
+                return new CmdLogin();
+            case LOGOUT:
+                return new CmdLogOut();
+            case SIGNUP:
+                return new CmdSignUp();
+            default:
+                return new CmdError();
+        }
+    }
 }

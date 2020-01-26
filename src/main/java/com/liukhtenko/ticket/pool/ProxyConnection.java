@@ -3,9 +3,9 @@ package com.liukhtenko.ticket.pool;
 
 import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.exception.PoolException;
-//import org.apache.logging.log4j.Level;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.Map;
@@ -13,7 +13,7 @@ import java.util.Properties;
 import java.util.concurrent.Executor;
 
 public class ProxyConnection implements Connection {
-//    static Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
     private Connection connection;
 
     ProxyConnection(Connection connection) {
@@ -65,7 +65,7 @@ public class ProxyConnection implements Connection {
         try {
             CustomConnectionPool.INSTANCE.releaseConnection(this);
         } catch ( PoolException e) {
-//            logger.log(Level.ERROR, "Unable to return connection", e);
+            logger.log(Level.ERROR, "Unable to return connection", e);
         }
     }
 

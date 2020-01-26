@@ -3,9 +3,10 @@ package com.liukhtenko.ticket.command;
 import javax.servlet.http.HttpServletRequest;
 
 public abstract class Action {
-   public abstract Action execute(HttpServletRequest request);
-    public String getJsp(){
-        return "/"+this.toString()+".jsp";
+    public abstract Action execute(HttpServletRequest request);
+
+    public String getJsp() {
+        return "/" + this.toString() + ".jsp";
     }
 
     @Override

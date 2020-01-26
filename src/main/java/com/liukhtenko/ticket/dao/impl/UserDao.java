@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.dao.impl;
 
 import com.liukhtenko.ticket.dao.AbstractDao;
 import com.liukhtenko.ticket.entity.ColumnName;
-import com.liukhtenko.ticket.entity.TypeSeat;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 
@@ -115,7 +114,7 @@ public class UserDao extends AbstractDao<Long, User> {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
-            statement = connection.prepareStatement(SQL_CREATE_USER,Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(SQL_CREATE_USER, Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, user.getPhone());
             statement.setString(2, user.getName());
             statement.setString(3, user.getSurName());

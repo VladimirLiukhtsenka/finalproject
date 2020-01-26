@@ -3,9 +3,9 @@ package com.liukhtenko.ticket.pool;
 
 import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.exception.PoolException;
-//import org.apache.logging.log4j.Level;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -21,7 +21,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 public enum CustomConnectionPool {
     INSTANCE;
 
-//    static Logger logger = LogManager.getLogger();
+    static Logger logger = LogManager.getLogger();
     public BlockingQueue<ProxyConnection> freeConnections; // FIXME: 13.01.2020 private
     private Queue<ProxyConnection> givenAwayConnections; //контроль целостности пула
     private static final String URL = "url";
@@ -35,7 +35,7 @@ public enum CustomConnectionPool {
         try {
             property = propertyLoader.loadProperties();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();  // FIXME: 21.01.2020 
+            // logger.log(Level.WARN,   " not transferred", e); // FIXME: 26.01.2020
         }
         String url = property.getProperty(URL);
         String regDriver = property.getProperty(DRIVER_REGISTRATION);
@@ -55,7 +55,8 @@ public enum CustomConnectionPool {
                 freeConnections.offer(proxyConnection);
 
             } catch (SQLException e) {
-                // FIXME: 18.01.2020 can not write log
+                Logger logger = LogManager.getLogger();// FIXME: 18.01.2020 can not write log
+                logger.log(Level.WARN, " not transferred", e);
             }
         }
     }
@@ -66,13 +67,13 @@ public enum CustomConnectionPool {
             connection = freeConnections.take();
             givenAwayConnections.offer((ProxyConnection) connection);
         } catch (InterruptedException e) {
-//            logger.log(Level.WARN, connection + " not transferred", e);
+            logger.log(Level.WARN, connection + " not transferred", e);
             Thread.currentThread().interrupt();
         }
         return connection;
     }
 
-    public void releaseConnection(Connection connection) throws  PoolException {
+    public void releaseConnection(Connection connection) throws PoolException {
         if (connection.getClass() == ProxyConnection.class) {
             givenAwayConnections.remove(connection);
             freeConnections.offer((ProxyConnection) connection);
@@ -86,7 +87,7 @@ public enum CustomConnectionPool {
             try {
                 freeConnections.take().reallyClose();
             } catch (SQLException | InterruptedException e) {
-//                logger.log(Level.ERROR, "Unable to close connection in " + freeConnections, e);
+                logger.log(Level.ERROR, "Unable to close connection in " + freeConnections, e);
             }
         }
         deregisterDrivers();
@@ -97,7 +98,7 @@ public enum CustomConnectionPool {
             try {
                 DriverManager.deregisterDriver(driver);
             } catch (SQLException e) {
-//                logger.log(Level.ERROR, "Unable to deregister driver", e);
+                logger.log(Level.ERROR, "Unable to deregister driver", e);
             }
         });
     }

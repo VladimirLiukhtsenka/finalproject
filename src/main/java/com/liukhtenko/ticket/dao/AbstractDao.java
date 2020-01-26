@@ -48,7 +48,7 @@ public abstract class AbstractDao<K, T extends Entity> {
                 rs.close();
             }
         } catch (SQLException e) {
-//            logger.log(Level.WARN, "Impossible to close resultSet", e); // FIXME: 18.01.2020
+            logger.log(Level.WARN, "Impossible to close resultSet", e);
         }
     }
     void setConnection(Connection connection) {
