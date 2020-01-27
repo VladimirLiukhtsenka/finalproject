@@ -7,6 +7,7 @@ public class Actions {
         LOGIN,
         LOGOUT,
         SIGNUP,
+        PROFILE,
         ERROR
     }
 
@@ -25,6 +26,8 @@ public class Actions {
                 return new CmdLogOut();
             case SIGNUP:
                 return new CmdSignUp();
+            case PROFILE:
+                return new CmdProfile();
             default:
                 return new CmdError();
         }

@@ -3,6 +3,7 @@ com\liukhtenko\ticket\validator\CustomPattern.class
 com\liukhtenko\ticket\exception\SiteException.class
 com\liukhtenko\ticket\entity\Entity.class
 com\liukhtenko\ticket\exception\DaoException.class
+com\liukhtenko\ticket\command\CmdProfile.class
 com\liukhtenko\ticket\command\Actions$1.class
 com\liukhtenko\ticket\entity\Role.class
 com\liukhtenko\ticket\service\UserService.class
@@ -33,4 +34,5 @@ TestUserService.class
 com\liukhtenko\ticket\command\CmdLogOut.class
 com\liukhtenko\ticket\entity\User.class
 com\liukhtenko\ticket\service\SomeService.class
+com\liukhtenko\ticket\filter\FilterEncoding.class
 com\liukhtenko\ticket\frontcontroller\FrontController.class

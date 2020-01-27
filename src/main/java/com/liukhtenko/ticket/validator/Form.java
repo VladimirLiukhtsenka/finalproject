@@ -1,8 +1,8 @@
 package com.liukhtenko.ticket.validator;
 
-        import com.liukhtenko.ticket.exception.SiteException;
+import com.liukhtenko.ticket.exception.SiteException;
 
-        import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 // FIXME: 24.01.2020 для всех типов проверки
 public class Form {
@@ -33,5 +33,9 @@ public class Form {
         } catch (Exception e) {
             throw new SiteException("Incorrect value of " + name, e);
         }
+    }
+
+    public static boolean isPost(HttpServletRequest req) {
+        return req.getMethod().toUpperCase().equals("POST");
     }
 }

@@ -17,6 +17,9 @@ public class UserDao extends AbstractDao<Long, User> {
             " SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users;"; // FIXME: 23.01.2020
     private static final String SQL_SELECT_USER_BY_ID =
             "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id from users WHERE id=?;";
+    private static final String SQL_SELECT_USER_BY_MAIL_AND_Password =
+            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id from users " +
+                    "WHERE mail=? and password=?;";
     private static final String SQL_DELETE_USER_BY_ID =
             "DELETE from users WHERE id=?;";
     private static final String SQL_CREATE_USER =
@@ -85,6 +88,35 @@ public class UserDao extends AbstractDao<Long, User> {
         return user;
     }
 
+    public User find(String mail,String password) throws DaoException {
+        User user = null; // FIXME: 23.01.2020 что лучше вернуть
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SQL_SELECT_USER_BY_MAIL_AND_Password);
+            statement.setString(1, mail);
+            statement.setString(2, password);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                user = new User();
+                user.setId(resultSet.getLong(ColumnName.ID));
+                user.setPhone(resultSet.getString(ColumnName.PHONE));
+                user.setName(resultSet.getString(ColumnName.NAME));
+                user.setSurName(resultSet.getString(ColumnName.SURNAME));
+                user.setFatherName(resultSet.getString(ColumnName.FATHER_NAME));
+                user.setGender(resultSet.getByte(ColumnName.GENDER));
+                user.setPassword(resultSet.getString(ColumnName.PASSWORD));
+                user.setMail(resultSet.getString(ColumnName.MAIL));
+                user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+            }
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(resultSet); // FIXME: 18.01.2020
+            close(statement);
+        }
+        return user;
+    }
     @Override
     public boolean delete(Long id) throws DaoException {
         boolean flag;

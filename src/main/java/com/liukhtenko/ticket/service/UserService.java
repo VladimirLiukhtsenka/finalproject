@@ -47,6 +47,25 @@ public class UserService {
         return user;
     }
 
+    public User findUserByMailAndPassword(String mail,String password) throws DaoException {
+        User user = new User();
+        UserDao userDao = new UserDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(userDao);
+            user = userDao.find( mail, password);
+            transaction.commit();
+        } catch (DaoException e) {
+            transaction.rollback();
+            e.printStackTrace();// FIXME: 12.01.2020 log
+        } finally {
+            transaction.end();
+        }
+        if (user == null) {
+            throw new DaoException(); // FIXME: 23.01.2020
+        }
+        return user;
+    }
     public void deleteUserById(long id) throws DaoException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();

@@ -1,6 +1,7 @@
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CmdLogOut.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Role.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\SomeService.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CmdProfile.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Event.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeSeat.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\PoolException.java
@@ -19,6 +20,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\PropertyL
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CmdSignUp.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Entity.java
 D:\Java\Projects\finalproject\src\main\java\TestUserService.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\filter\FilterEncoding.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\User.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CmdError.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TicketOffice.java
