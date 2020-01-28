@@ -19,7 +19,7 @@ public class PropertyLoader {
         properties = new Properties();
 
 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTY_PATH);
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTY_PATH); //close strem ()
 
         try {
             properties.load(inputStream);

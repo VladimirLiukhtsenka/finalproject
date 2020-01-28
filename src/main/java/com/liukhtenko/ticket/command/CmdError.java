@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public class CmdError extends Action {
     @Override
-    public Action execute(HttpServletRequest request) {
+    public String execute(HttpServletRequest request) {
         return null;
     }
 }

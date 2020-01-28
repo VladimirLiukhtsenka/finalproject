@@ -14,15 +14,15 @@ public class TestUserService {
     static Logger logger = LogManager.getLogger();
 
     public static void main(String[] args) throws DaoException {
-        logger.log(Level.DEBUG, "Impossible to establish AutoCommit to value false!!!!!!!!!");
+//        logger.log(Level.DEBUG, "Impossible to establish AutoCommit to value false!!!!!!!!!");
 
-        UserService userService = new UserService();
+//        UserService userService = new UserService();
 //        List<User> list = userService.findAllUsers();
 //        System.out.println(list);
 //        User user = userService.findUserById( 2L);
 //        System.out.println(user);
-        User user = userService.findUserByMailAndPassword("vl@gmail.com","cvbdf");
-        System.out.println(user.getMail()==null);
+//        User user = userService.findUserByMailAndPassword("vl@gmail.com","cvbdf");
+//        System.out.println(user.getMail()==null);
 
 
 //        int i = 1;
@@ -37,6 +37,6 @@ public class TestUserService {
 //        userService.createUser(user1);
 //        System.out.println(user1.getId());
 //        userService.updateUser(user);
-
+        System.out.println(Byte.parseByte("na"));
     }
 }

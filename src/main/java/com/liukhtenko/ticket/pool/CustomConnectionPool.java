@@ -35,7 +35,7 @@ public enum CustomConnectionPool {
         try {
             property = propertyLoader.loadProperties();
         } catch (FileNotFoundException e) {
-            // logger.log(Level.WARN,   " not transferred", e); // FIXME: 26.01.2020
+          throw new RuntimeException("nhubmtgtvrnfrnr",e);
         }
         String url = property.getProperty(URL);
         String regDriver = property.getProperty(DRIVER_REGISTRATION);
@@ -43,7 +43,7 @@ public enum CustomConnectionPool {
             Class.forName(regDriver);
         } catch (ClassNotFoundException e) {
             // FIXME: 18.01.2020 can not write log
-            throw new RuntimeException("Unable to register driver");
+            throw new RuntimeException("Unable to register driver", e);
         }
 
         freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
@@ -55,8 +55,7 @@ public enum CustomConnectionPool {
                 freeConnections.offer(proxyConnection);
 
             } catch (SQLException e) {
-                Logger logger = LogManager.getLogger();// FIXME: 18.01.2020 can not write log
-                logger.log(Level.WARN, " not transferred", e);
+                throw new RuntimeException("7tn5nfr856fn5d457",e);
             }
         }
     }

@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserService {
 
-    public List<User> findAllUsers() {
+    public List<User> findAllUsers() throws DaoException {
         List<User> users = new ArrayList<>();
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -20,7 +20,7 @@ public class UserService {
             transaction.commit();
         } catch (DaoException e) {
             transaction.rollback();
-            e.printStackTrace();// FIXME: 12.01.2020 log
+            throw new  DaoException(e);
         } finally {
             transaction.end();
         }
@@ -37,7 +37,7 @@ public class UserService {
             transaction.commit();
         } catch (DaoException e) {
             transaction.rollback();
-            e.printStackTrace();// FIXME: 12.01.2020 log
+            throw new  DaoException(e);
         } finally {
             transaction.end();
         }
