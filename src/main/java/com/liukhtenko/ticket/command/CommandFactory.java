@@ -1,5 +1,5 @@
 package com.liukhtenko.ticket.command;
-
+import com.liukhtenko.ticket.command.impl.*;
 
 public class CommandFactory {
 
@@ -39,31 +39,31 @@ public class CommandFactory {
                 this.command = new ErrorCommand();
             }
         };
-        Action command;
+        com.liukhtenko.ticket.command.Command command;
     }
 
-    public static Action defineFrom(String cmd) {
+    public static com.liukhtenko.ticket.command.Command defineFrom(String cmd) {
         Command command;
         try {
-            command = Command.valueOf(cmd);
+            command = CommandFactory.Command.valueOf(cmd);
         } catch (IllegalArgumentException e) {
-            return Command.ERROR.command; // FIXME: 29.01.2020
+            return CommandFactory.Command.ERROR.command; // FIXME: 29.01.2020
         }
         switch (command) {
             case LOGIN:
                 return Command.LOGIN.command;
             case LOGOUT:
-                return Command.LOGOUT.command;
+                return CommandFactory.Command.LOGOUT.command;
             case SIGNUP:
-                return Command.SIGNUP.command;
+                return CommandFactory.Command.SIGNUP.command;
             case PROFILE:
-                return Command.PROFILE.command;
+                return CommandFactory.Command.PROFILE.command;
             case VIEWEVENT:
-                return Command.VIEWEVENT.command;
+                return CommandFactory.Command.VIEWEVENT.command;
             case CREATEEVENT:
-                return Command.CREATEEVENT.command;
+                return CommandFactory.Command.CREATEEVENT.command;
             default:
-                return Command.ERROR.command;
+                return CommandFactory.Command.ERROR.command;
         }
     }
 }

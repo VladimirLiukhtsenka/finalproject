@@ -14,12 +14,8 @@ public class FormValidator {
         return getString(req, name, ".*");
     }
 
-    public static boolean isValidString(String value, String pattern) throws SiteException {
-        if (value != null && value.matches(pattern)) {
-            return true;
-        } else {
-            throw new SiteException("Wrong data");
-        }
+    public static boolean isValidString(String value, String pattern) {
+        return value != null && value.matches(pattern);
     }
 
     public static boolean isValidNumber(String value) throws SiteException {

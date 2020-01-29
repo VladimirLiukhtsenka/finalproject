@@ -1,7 +1,7 @@
 package com.liukhtenko.ticket.dao.impl;
 
 import com.liukhtenko.ticket.dao.AbstractDao;
-import com.liukhtenko.ticket.entity.ColumnName;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 
