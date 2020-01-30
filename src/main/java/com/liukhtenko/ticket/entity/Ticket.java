@@ -1,18 +1,16 @@
 package com.liukhtenko.ticket.entity;
 
-import java.util.Objects;
-
 public class Ticket extends Entity {
     private long id;
     private long eventId;
-    private TypeSeat typeSeat; // FIXME: 18.01.2020 
+    private TypeSeat typeSeat;
     private int numberOfTickets;
     private double price;
 
     public Ticket() {
     }
 
-    public Ticket(long id, long eventID, TypeSeat typeOfSeat, int numberOfTickets, double price) {
+    public Ticket(long id, long eventID, TypeSeat typeSeat, int numberOfTickets, double price) {
         this.id = id;
         this.eventId = eventID;
         this.typeSeat = typeSeat;
@@ -28,19 +26,19 @@ public class Ticket extends Entity {
         this.id = id;
     }
 
-    public long getEventID() {
+    public long getEventId() {
         return eventId;
     }
 
-    public void setEventID(long eventID) {
-        this.eventId = eventID;
+    public void setEventId(long eventId) {
+        this.eventId = eventId;
     }
 
-    public TypeSeat getTypeOfSeat() {
+    public TypeSeat getTypeSeat() {
         return typeSeat;
     }
 
-    public void setTypeOfSeat(TypeSeat typeOfSeat) {
+    public void setTypeSeat(TypeSeat typeSeat) {
         this.typeSeat = typeSeat;
     }
 
@@ -61,30 +59,50 @@ public class Ticket extends Entity {
     }
 
     @Override
-    public boolean equals(Object o) { // FIXME: 10.01.2020
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Ticket ticket = (Ticket) o;
-        return id == ticket.id &&
-                eventId == ticket.eventId &&
-                numberOfTickets == ticket.numberOfTickets &&
-                Double.compare(ticket.price, price) == 0 &&
-                Objects.equals(typeSeat, ticket.typeSeat);
+        if (id != ticket.id) {
+            return false;
+        }
+        if (eventId != ticket.eventId) {
+            return false;
+        }
+        if (numberOfTickets != ticket.numberOfTickets) {
+            return false;
+        }
+        if (price != ticket.price) {
+            return false;
+        }
+        return typeSeat != null ? typeSeat.ordinal() == ticket.typeSeat.ordinal() :
+                ticket.typeSeat == null;
     }
 
     @Override
-    public int hashCode() { // FIXME: 10.01.2020 
-        return Objects.hash(id, eventId, typeSeat, numberOfTickets, price);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (int) (prime * result + id);
+        result = (int) (prime * result + eventId);
+        result = prime * result + ((typeSeat == null) ? 0 : typeSeat.hashCode());
+        result = (prime * result + numberOfTickets);
+        result = (int) (prime * result + price);
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                "id=" + id +
-                ", eventID=" + eventId +
-                ", typeSeat=" + typeSeat +
-                ", numberOfTickets=" + numberOfTickets +
-                ", price=" + price +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Ticket{").append("id=").append(id);
+        sb.append(", eventId=").append(eventId);
+        sb.append(", typeSeat=").append(typeSeat);
+        sb.append(", numberOfTickets=").append(numberOfTickets);
+        sb.append(", price=").append(price).append('}');
+        return sb.toString();
     }
 }

@@ -3,9 +3,9 @@ package com.liukhtenko.ticket.entity;
 import java.util.Objects;
 
 public class TicketOffice extends Entity {
-private String address;
-private String operatingMode;
-private String phone;
+    private String address;
+    private String operatingMode;
+    private String phone;
 
     public TicketOffice() {
     }
@@ -41,26 +41,34 @@ private String phone;
     }
 
     @Override
-    public boolean equals(Object o) { // FIXME: 23.01.2020
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TicketOffice that = (TicketOffice) o;
-        return Objects.equals(address, that.address) &&
-                Objects.equals(operatingMode, that.operatingMode) &&
-                Objects.equals(phone, that.phone);
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        TicketOffice office = (TicketOffice) o;
+        if ((address != null && office.address == null) || (!address.equals(office.address))) {
+            return false;
+        }
+        if ((operatingMode != null && office.operatingMode == null) || (!operatingMode.equals(office.operatingMode))) {
+            return false;
+        }
+        return phone != null ? phone.equals(office.phone) : office.phone == null;
     }
 
     @Override
-    public int hashCode() { // FIXME: 23.01.2020
+    public int hashCode() {
         return Objects.hash(address, operatingMode, phone);
     }
 
     @Override
-    public String toString() { // FIXME: 23.01.2020
-        return "TicketOffice{" +
-                "address='" + address + '\'' +
-                ", operatingMode='" + operatingMode + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("TicketOffice{").append("address='").append(address).append('\'');
+        sb.append(", operatingMode='").append(operatingMode).append('\'');
+        sb.append(", phone='").append(phone).append('\'').append('}');
+        return sb.toString();
     }
 }

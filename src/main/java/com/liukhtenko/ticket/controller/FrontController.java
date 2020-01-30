@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @WebServlet(name = "FrontController", urlPatterns = {"/do"})
 public class FrontController extends HttpServlet {
-    static Logger logger = LogManager.getLogger(FrontController.class);
+    static Logger logger = LogManager.getLogger();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

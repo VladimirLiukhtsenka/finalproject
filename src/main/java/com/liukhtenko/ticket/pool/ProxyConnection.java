@@ -1,7 +1,6 @@
 package com.liukhtenko.ticket.pool;
 
 
-import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.exception.PoolException;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -61,10 +60,10 @@ public class ProxyConnection implements Connection {
     }
 
     @Override
-    public void close() throws SQLException {
+    public void close() {
         try {
             CustomConnectionPool.INSTANCE.releaseConnection(this);
-        } catch ( PoolException e) {
+        } catch (PoolException e) {
             logger.log(Level.ERROR, "Unable to return connection", e);
         }
     }

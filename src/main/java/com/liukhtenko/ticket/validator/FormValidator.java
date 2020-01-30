@@ -8,7 +8,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-// FIXME: 24.01.2020 для всех типов проверки
+// FIXME: 24.01.2020 для всех типов проверки пофиксить
 public class FormValidator {
     public static String getString(HttpServletRequest req, String name) throws SiteException {
         return getString(req, name, ".*");

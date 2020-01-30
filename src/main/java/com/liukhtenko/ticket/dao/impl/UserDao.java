@@ -14,7 +14,7 @@ import java.util.List;
 
 public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_SELECT_ALL_USERS =
-            " SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users;"; // FIXME: 23.01.2020
+            " SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users;";
     private static final String SQL_SELECT_USER_BY_ID =
             "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id from users WHERE id=?;";
     private static final String SQL_SELECT_USER_BY_MAIL_AND_Password =
@@ -50,7 +50,7 @@ public class UserDao extends AbstractDao<Long, User> {
                 users.add(user);
             }
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException("Unable to find users", e);
         } finally {
             close(resultSet);
             close(statement);
@@ -60,7 +60,7 @@ public class UserDao extends AbstractDao<Long, User> {
 
     @Override
     public User find(Long id) throws DaoException {
-        User user = null; // FIXME: 23.01.2020 что лучше вернуть
+        User user = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -80,16 +80,16 @@ public class UserDao extends AbstractDao<Long, User> {
                 user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
             }
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException("Unable to find user", e);
         } finally {
-            close(resultSet); // FIXME: 18.01.2020
+            close(resultSet);
             close(statement);
         }
         return user;
     }
 
-    public User find(String mail,String password) throws DaoException {
-        User user = null; // FIXME: 23.01.2020 что лучше вернуть
+    public User find(String mail, String password) throws DaoException {
+        User user = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -110,13 +110,14 @@ public class UserDao extends AbstractDao<Long, User> {
                 user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
             }
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException("Unable to find user", e);
         } finally {
-            close(resultSet); // FIXME: 18.01.2020
+            close(resultSet);
             close(statement);
         }
         return user;
     }
+
     @Override
     public boolean delete(Long id) throws DaoException {
         boolean flag;
@@ -125,9 +126,8 @@ public class UserDao extends AbstractDao<Long, User> {
             statement = connection.prepareStatement(SQL_DELETE_USER_BY_ID);
             statement.setLong(1, id);
             flag = (1 == statement.executeUpdate());
-            // FIXME: 23.01.2020 log
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException("Unable to delete user", e);
         } finally {
             close(statement);
         }
@@ -137,16 +137,15 @@ public class UserDao extends AbstractDao<Long, User> {
 
     @Override
     public boolean delete(User entity) throws DaoException {
-        return false; // FIXME: 23.01.2020
+        return false; // FIXME: 23.01.2020 удалить метод из AbstractDAO
     }
 
     @Override
     public boolean create(User user) throws DaoException {
         boolean flag;
         PreparedStatement statement = null;
-        ResultSet resultSet = null;
         try {
-            statement = connection.prepareStatement(SQL_CREATE_USER, Statement.RETURN_GENERATED_KEYS);
+            statement = connection.prepareStatement(SQL_CREATE_USER);
             statement.setString(1, user.getPhone());
             statement.setString(2, user.getName());
             statement.setString(3, user.getSurName());
@@ -155,14 +154,9 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setString(6, user.getPassword());
             statement.setString(7, user.getMail());
             statement.setInt(8, (int) user.getRoleID());
-            resultSet = statement.getGeneratedKeys();
-//            if(resultSet.next()) {
-//                long key = resultSet.getLong(1); // FIXME: 24.01.2020 
-//                user.setId(key);
-//            }
-            flag = (1 == statement.executeUpdate()); // FIXME: 12.01.2020
+            flag = (1 == statement.executeUpdate());
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException("Unable to create user", e);
         } finally {
             close(statement);
         }
@@ -185,9 +179,9 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setString(7, user.getMail());
             statement.setInt(8, (int) user.getRoleID());
             statement.setInt(9, (int) user.getId());
-            flag = (1 == statement.executeUpdate()); // FIXME: 12.01.2020
+            flag = (1 == statement.executeUpdate());
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException("Unable to update user", e);
         } finally {
             close(statement);
         }

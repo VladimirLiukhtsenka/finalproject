@@ -1,7 +1,5 @@
 package com.liukhtenko.ticket.entity;
 
-import java.util.Objects;
-
 public class Role extends Entity {
     private long id;
     private String description;
@@ -31,24 +29,34 @@ public class Role extends Entity {
     }
 
     @Override
-    public boolean equals(Object o) { // FIXME: 10.01.2020
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Role role = (Role) o;
-        return id == role.id &&
-                Objects.equals(description, role.description);
+        if (id != role.id) {
+            return false;
+        }
+        return description != null ? description.equals(role.description) : role.description == null;
     }
 
     @Override
-    public int hashCode() { // FIXME: 10.01.2020
-        return Objects.hash(id, description);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (int) (prime * result + id);
+        result = prime * result + ((description == null) ? 0 : description.hashCode());
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Role{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("Role{").append("id=").append(id).append(", description='");
+        sb.append(description).append('\'').append('}');
+        return sb.toString();
     }
 }

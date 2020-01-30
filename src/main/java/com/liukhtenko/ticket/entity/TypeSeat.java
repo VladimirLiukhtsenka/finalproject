@@ -1,55 +1,44 @@
 package com.liukhtenko.ticket.entity;
 
-import java.util.Objects;
+public enum TypeSeat {
+    PARTERRE("Партер"),
+    LODGE("Ложа"),
+    MEZZANINE("Бельэтаж"),
+    BALCONY("Балкон "),
+    SECTOR_A("Сектор A"),
+    SECTOR_B("Сектор B"),
+    SECTOR_C("Сектор C"),
+    SECTOR_D("Сектор D"),
+    TRIBUNE_A("Трибуна A"),
+    TRIBUNE_B("Трибуна B"),
+    TRIBUNE_C("Трибуна C"),
+    TRIBUNE_D("Трибуна D"),
+    FAN_ZONE("Фанзона"),
+    DANCE_FLOOR("Танцпол"),
+    ROW_1("Ряд 1"),
+    ROW_2("Ряд 2"),
+    ROW_3("Ряд 3"),
+    ROW_4("Ряд 4"),
+    ROW_5("Ряд 5"),
+    ROW_6("Ряд 6"),
+    ROW_7("Ряд 7"),
+    ROW_8("Ряд 8"),
+    ROW_9("Ряд 9"),
+    ROW_10("Ряд 10");
+    private String value;
 
-@Deprecated
-public class TypeSeat extends Entity {
-    private String type;
-    private String description;
-
-    public TypeSeat() {
+    TypeSeat() {
     }
 
-    public TypeSeat(String type, String description) {
-        this.type = type;
-        this.description = description;
+    TypeSeat(String value) {
+        this.value = value;
     }
 
-    public String getType() {
-        return type;
+    public String getValue() {
+        return value;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    @Override
-    public boolean equals(Object o) { // FIXME: 10.01.2020
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TypeSeat that = (TypeSeat) o;
-        return Objects.equals(type, that.type) &&
-                Objects.equals(description, that.description);
-    }
-
-    @Override
-    public int hashCode() { // FIXME: 10.01.2020
-        return Objects.hash(type, description);
-    }
-
-    @Override
-    public String toString() {
-        return "TypeOfSeat{" +
-                "type='" + type + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+    public void setValue(String value) {
+        this.value = value;
     }
 }

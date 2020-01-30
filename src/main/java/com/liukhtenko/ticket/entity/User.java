@@ -1,14 +1,12 @@
 package com.liukhtenko.ticket.entity;
 
-import java.util.Objects;
-
 public class User extends Entity {
     private long id;
-    private String phone; // FIXME: 10.01.2020 String?
+    private String phone;
     private String name;
     private String surName;
     private String fatherName;
-    private byte gender; // FIXME: 10.01.2020 byte?
+    private byte gender;
     private String password;
     private String mail;
     private long roleId;
@@ -102,38 +100,71 @@ public class User extends Entity {
     }
 
     @Override
-    public boolean equals(Object o) { // FIXME: 10.01.2020
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         User user = (User) o;
-        return id == user.id &&
-                gender == user.gender &&
-                roleId == user.roleId &&
-                Objects.equals(phone, user.phone) &&
-                Objects.equals(name, user.name) &&
-                Objects.equals(surName, user.surName) &&
-                Objects.equals(fatherName, user.fatherName) &&
-                Objects.equals(password, user.password) &&
-                Objects.equals(mail, user.mail);
+        if (id != user.id) {
+            return false;
+        }
+        if (gender != user.gender) {
+            return false;
+        }
+        if (roleId != user.roleId) {
+            return false;
+        }
+        if ((phone != null && user.phone == null) || (!phone.equals(user.phone))) {
+            return false;
+        }
+
+        if ((name != null && user.name == null) || (!name.equals(user.name))) {
+            return false;
+        }
+        if ((surName != null && user.surName == null) || (!surName.equals(user.surName))) {
+            return false;
+        }
+        if ((fatherName != null && user.fatherName == null) || (!fatherName.equals(user.fatherName))) {
+            return false;
+        }
+
+        if ((password != null && user.password == null) || (!password.equals(user.password))) {
+            return false;
+        }
+        return mail != null ? mail.equals(user.mail) : user.mail == null;
     }
 
     @Override
-    public int hashCode() { // FIXME: 10.01.2020
-        return Objects.hash(id, phone, name, surName, fatherName, gender, password, mail, roleId);
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = (int) (prime * result + id);
+        result = (prime * result + gender);
+        result = (int) (prime * result + roleId);
+        result = prime * result + ((phone == null) ? 0 : phone.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((surName == null) ? 0 : surName.hashCode());
+        result = prime * result + ((fatherName == null) ? 0 : fatherName.hashCode());
+        result = prime * result + ((password == null) ? 0 : password.hashCode());
+        result = prime * result + ((mail == null) ? 0 : mail.hashCode());
+        return result;
     }
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", phone='" + phone + '\'' +
-                ", name='" + name + '\'' +
-                ", surName='" + surName + '\'' +
-                ", fatherName='" + fatherName + '\'' +
-                ", gender=" + gender +
-                ", password='" + password + '\'' +
-                ", mail='" + mail + '\'' +
-                ", roleID=" + roleId +
-                '}';
+        StringBuilder sb = new StringBuilder();
+        sb.append("User{").append("id=").append(id);
+        sb.append(", phone='").append(phone).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", surName='").append(surName).append('\'');
+        sb.append(", fatherName='").append(fatherName).append('\'');
+        sb.append(", gender=").append(gender);
+        sb.append(", password='").append(password).append('\'');
+        sb.append(", mail='").append(mail).append('\'');
+        sb.append(", roleID=").append(roleId).append('}');
+        return sb.toString();
     }
 }

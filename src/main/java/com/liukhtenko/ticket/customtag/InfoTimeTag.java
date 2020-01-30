@@ -5,7 +5,7 @@ import java.util.Locale;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
-public class InfoTimeTag extends TagSupport {
+public class InfoTimeTag extends TagSupport { // FIXME: 30.01.2020 upgrade
     @Override
     public int doStartTag() throws JspException {
         GregorianCalendar gc = new GregorianCalendar();

@@ -1,5 +1,4 @@
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Role.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\SomeService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Event.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\controller\SessionRequestContent.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\EventDao.java
@@ -13,6 +12,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Ticket.
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\ProxyConnection.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\AbstractDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\CustomConnectionPool.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\ServiceException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\customtag\InfoTimeTag.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\DaoException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\EntityTransaction.java
@@ -24,6 +24,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\ColumnName
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\SiteException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\PropertyLoader.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\SignUpCommand.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\TableName.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Entity.java
 D:\Java\Projects\finalproject\src\main\java\TestUserService.java
@@ -34,8 +35,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeEve
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\UserDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\UserService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\PageMessage.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TypeOfSeatDao.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeSeatEdit.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ErrorCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\validator\FormValidator.java

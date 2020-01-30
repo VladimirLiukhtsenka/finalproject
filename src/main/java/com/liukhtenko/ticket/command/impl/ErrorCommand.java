@@ -11,7 +11,6 @@ public class ErrorCommand extends Command {
     public String execute(HttpServletRequest request) {
         String page = null;
         if (!FormValidator.isPost(request)) {
-//            return null;
             page = PagePath.PAGE_ERROR;
         }
         return page;

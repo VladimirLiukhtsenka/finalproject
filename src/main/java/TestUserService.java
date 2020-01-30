@@ -1,3 +1,5 @@
+import com.liukhtenko.ticket.entity.Event;
+import com.liukhtenko.ticket.entity.TypeSeat;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.pool.CustomConnectionPool;
@@ -37,6 +39,7 @@ public class TestUserService {
 //        userService.createUser(user1);
 //        System.out.println(user1.getId());
 //        userService.updateUser(user);
-        System.out.println(Byte.parseByte("na"));
+        TypeSeat typeSeat = TypeSeat.FAN_ZONE;
+        System.out.println(typeSeat.getValue());
     }
 }

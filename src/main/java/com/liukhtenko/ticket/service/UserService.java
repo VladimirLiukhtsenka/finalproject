@@ -4,113 +4,115 @@ import com.liukhtenko.ticket.dao.EntityTransaction;
 import com.liukhtenko.ticket.dao.impl.UserDao;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
+import com.liukhtenko.ticket.exception.ServiceException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserService {
+    static Logger logger = LogManager.getLogger();
 
-    public List<User> findAllUsers() throws DaoException {
-        List<User> users = new ArrayList<>();
+    public List<User> findAllUsers() throws ServiceException {
+        List<User> users;
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
             users = userDao.findAll();
             transaction.commit();
+            logger.log(Level.DEBUG, "findAllUsers completed successfully");
         } catch (DaoException e) {
             transaction.rollback();
-            throw new  DaoException(e);
+            throw new ServiceException(e);
         } finally {
             transaction.end();
         }
         return users;
     }
 
-    public User findUserById(long id) throws DaoException {
-        User user = new User();
+    public User findUserById(long id) throws ServiceException {
+        User user;
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
             user = userDao.find(id);
             transaction.commit();
+            logger.log(Level.DEBUG, "findUserById completed successfully");
         } catch (DaoException e) {
             transaction.rollback();
-            throw new  DaoException(e);
+            throw new ServiceException(e);
         } finally {
             transaction.end();
-        }
-        if (user == null) {
-            throw new DaoException(); // FIXME: 23.01.2020 
         }
         return user;
     }
 
-    public User findUserByMailAndPassword(String mail,String password) throws DaoException {
-        User user = new User();
+    public User findUserByMailAndPassword(String mail, String password) throws ServiceException {
+        User user;
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-            user = userDao.find( mail, password);
+            user = userDao.find(mail, password);
             transaction.commit();
+            logger.log(Level.DEBUG, "findUserByMailAndPassword completed successfully");
         } catch (DaoException e) {
             transaction.rollback();
-            e.printStackTrace();// FIXME: 12.01.2020 log
+            throw new ServiceException(e);
         } finally {
             transaction.end();
         }
-        if (user == null) {
-            throw new DaoException(); // FIXME: 23.01.2020
-        }
         return user;
     }
-    public void deleteUserById(long id) throws DaoException {
+
+    public void deleteUserById(long id) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-            boolean flag = userDao.delete(id);
-            // FIXME: 23.01.2020 log+flag
+            userDao.delete(id);
             transaction.commit();
+            logger.log(Level.DEBUG, "deleteUserById completed successfully");
         } catch (DaoException e) {
             transaction.rollback();
-            e.printStackTrace();// FIXME: 12.01.2020 log
+            throw new ServiceException(e);
         } finally {
             transaction.end();
         }
     }
 
-    public boolean createUser(User user) throws DaoException {
+    public boolean createUser(User user) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         boolean flag = false;
         try {
             transaction.begin(userDao);
             flag = userDao.create(user);
-            // FIXME: 23.01.2020 log+flag
             transaction.commit();
+            logger.log(Level.DEBUG, "createUser completed successfully");
         } catch (DaoException e) {
             transaction.rollback();
-            e.printStackTrace();// FIXME: 12.01.2020 log
+            throw new ServiceException(e);
         } finally {
             transaction.end();
         }
         return flag;
     }
 
-    public void updateUser(User user) throws DaoException {
+    public void updateUser(User user) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-            boolean flag = userDao.update(user);
-            // FIXME: 23.01.2020 log+flag
+            userDao.update(user);
+            logger.log(Level.DEBUG, "updateUser completed successfully");
             transaction.commit();
         } catch (DaoException e) {
             transaction.rollback();
-            e.printStackTrace();// FIXME: 12.01.2020 log
+            throw new ServiceException(e);
         } finally {
             transaction.end();
         }

@@ -4,6 +4,7 @@ import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
+import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.exception.SiteException;
 import com.liukhtenko.ticket.service.UserService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
@@ -67,7 +68,7 @@ public class SignUpCommand extends Command {
                 } else {
                     return page;
                 }
-            } catch (SiteException | DaoException e) {
+            } catch (SiteException | ServiceException e) {
 //                return new ErrorCommand().execute(request); // FIXME: 28.01.2020 и форму поправить
                 return PagePath.PAGE_ERROR;
             }
