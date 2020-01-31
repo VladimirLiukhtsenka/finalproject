@@ -87,7 +87,7 @@ public class UserService {
     public boolean createUser(User user) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
-        boolean flag = false;
+        boolean flag;
         try {
             transaction.begin(userDao);
             flag = userDao.create(user);

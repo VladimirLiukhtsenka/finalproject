@@ -3,9 +3,7 @@ package com.liukhtenko.ticket.command.impl;
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
-import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.exception.SiteException;
 import com.liukhtenko.ticket.service.UserService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
@@ -20,6 +18,8 @@ public class SignUpCommand extends Command {
     private static final String FORM_PARAM_GENDER = "gender name";
     private static final String FORM_PARAM_PASSWORD = "password";
     private static final String FORM_PARAM_MAIL = "mail";
+    private static final int ID = 1;
+    private static final int ROLE_ID = 2;
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -31,8 +31,8 @@ public class SignUpCommand extends Command {
             UserService userService = new UserService();
             User user = new User();
             try {
-                user.setId(1);
-                user.setRoleID(2); // FIXME: 27.01.2020
+                user.setId(ID);
+                user.setRoleID(ROLE_ID);
                 String phone = request.getParameter(FORM_PARAM_PHONE);
                 if (FormValidator.isValidString(phone, FormRegexValidator.PHONE)) {
                     user.setPhone(phone);
@@ -68,7 +68,7 @@ public class SignUpCommand extends Command {
                 } else {
                     return page;
                 }
-            } catch (SiteException | ServiceException e) {
+            } catch (ServiceException e) {
 //                return new ErrorCommand().execute(request); // FIXME: 28.01.2020 и форму поправить
                 return PagePath.PAGE_ERROR;
             }

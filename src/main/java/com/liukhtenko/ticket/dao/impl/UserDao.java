@@ -16,14 +16,14 @@ public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_SELECT_ALL_USERS =
             " SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users;";
     private static final String SQL_SELECT_USER_BY_ID =
-            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id from users WHERE id=?;";
+            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users WHERE id=?;";
     private static final String SQL_SELECT_USER_BY_MAIL_AND_Password =
             "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id from users " +
                     "WHERE mail=? and password=?;";
     private static final String SQL_DELETE_USER_BY_ID =
-            "DELETE from users WHERE id=?;";
+            "DELETE FROM users WHERE id=?;";
     private static final String SQL_CREATE_USER =
-            "insert into users (phone, name, surname, father_name, gender, password, mail, role_id) values (?,?,?,?,?,?,?,?);";
+            "INSERT INTO users (phone, name, surname, father_name, gender, password, mail, role_id) values (?,?,?,?,?,?,?,?);";
     private static final String SQL_UPDATE_USER =
             "UPDATE users SET phone=?, name=?, surname=?, father_name=?, gender=?, password=?, mail=?," +
                     " role_id=? WHERE id=?";
@@ -101,7 +101,7 @@ public class UserDao extends AbstractDao<Long, User> {
                 user = new User();
                 user.setId(resultSet.getLong(ColumnName.ID));
                 user.setPhone(resultSet.getString(ColumnName.PHONE));
-                user.setName(resultSet.getString(ColumnName.NAME));
+                user.setName(resultSet.getString(ColumnName.NAME)); // FIXME: 31.01.2020 В ОДИН МЕТОД
                 user.setSurName(resultSet.getString(ColumnName.SURNAME));
                 user.setFatherName(resultSet.getString(ColumnName.FATHER_NAME));
                 user.setGender(resultSet.getByte(ColumnName.GENDER));
@@ -177,8 +177,8 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setInt(5, user.getGender());
             statement.setString(6, user.getPassword());
             statement.setString(7, user.getMail());
-            statement.setInt(8, (int) user.getRoleID());
-            statement.setInt(9, (int) user.getId());
+            statement.setLong(8, user.getRoleID());
+            statement.setLong(9, user.getId());
             flag = (1 == statement.executeUpdate());
         } catch (SQLException e) {
             throw new DaoException("Unable to update user", e);

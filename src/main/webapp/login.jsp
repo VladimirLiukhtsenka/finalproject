@@ -11,18 +11,18 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="textinputMail">Mail*</label>
+  <label class="col-md-4 control-label" for="mail">Mail*</label>
   <div class="col-md-4">
-  <input id="textinputMail" name="textinputMail" type="text" placeholder="" class="form-control input-md" required="">
+  <input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="">
 
   </div>
 </div>
 
 <!-- Password input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="passwordinput">Password*</label>
+  <label class="col-md-4 control-label" for="password">Password*</label>
   <div class="col-md-4">
-    <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md" required="">
+    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
     <span class="help-block">no less than 8 characters</span>
   </div>
 </div>
