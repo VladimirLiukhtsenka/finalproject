@@ -24,7 +24,7 @@ public abstract class AbstractDao<K, T extends Entity> {
 
     public abstract T find(K k) throws DaoException;
 
-    public abstract boolean delete(K k) throws DaoException;
+    public abstract boolean delete(K k) throws DaoException; // FIXME: 01.02.2020 delete methods
 
     public abstract boolean delete(T entity) throws DaoException;
 

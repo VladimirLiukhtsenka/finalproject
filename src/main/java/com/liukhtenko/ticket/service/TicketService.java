@@ -17,6 +17,25 @@ import java.util.List;
 public class TicketService {
     static Logger logger = LogManager.getLogger();
 
+    public int buyTicket(long userId, long ticketId) throws ServiceException {
+        int numberTicket;
+        TicketDao ticketDao = new TicketDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(ticketDao);
+            numberTicket = ticketDao.buyTicket(userId, ticketId);
+            transaction.commit();
+            logger.log(Level.DEBUG, "buyTicket completed successfully");
+        } catch (DaoException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+        return numberTicket;
+    }
+
+
     public List<Ticket> findTicketsByEventId(long id) throws ServiceException {
         List<Ticket> tickets;
         TicketDao ticketDao = new TicketDao();
@@ -35,13 +54,13 @@ public class TicketService {
         return tickets;
     }
 
-    public List<Ticket> findTicketsByEventIdAndTypeSeat(long id,String type) throws ServiceException {
+    public List<Ticket> findTicketsByEventIdAndTypeSeat(long id, String type) throws ServiceException {
         List<Ticket> tickets;
         TicketDao ticketDao = new TicketDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(ticketDao);
-            tickets = ticketDao.findTicketsByEventIdAndTypeSeat(id,type);
+            tickets = ticketDao.findTicketsByEventIdAndTypeSeat(id, type);
             transaction.commit();
             logger.log(Level.DEBUG, "findTicketsByEventIdAndTypeSeat completed successfully");
         } catch (DaoException e) {

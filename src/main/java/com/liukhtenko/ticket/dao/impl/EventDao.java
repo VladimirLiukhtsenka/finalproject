@@ -26,6 +26,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             "DELETE FROM events WHERE id=?;";
     private static final String SQL_UPDATE_EVENT =
             "UPDATE events SET name=?, address=?, description=?, type_event=?, date=? WHERE id=?";
+
     @Override
     public List<Event> findAll() throws DaoException {
         return null;
@@ -92,7 +93,7 @@ public class EventDao extends AbstractDao<Long, Event> {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(SQL_CREATE_EVENT);
-            statement.setString(1, event.getName());
+            statement.setString(1, event.getName()); // FIXME: 01.02.2020 In 1 method
             statement.setString(2, event.getAddress());
             statement.setString(3, event.getDescription());
             statement.setString(4, event.getTypeOfEvent().getValue());
@@ -119,7 +120,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             statement.setString(4, event.getTypeOfEvent().getValue());
             String date = transformDate(event.getDate());
             statement.setString(5, date);
-            statement.setLong(6,event.getId());
+            statement.setLong(6, event.getId());
             flag = (1 == statement.executeUpdate());
         } catch (SQLException | ParseException e) {
             throw new DaoException("Unable to update user", e);

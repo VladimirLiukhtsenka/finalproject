@@ -12,7 +12,8 @@ public class TestTicketOfficeService {
         TicketOfficeService ticketOfficeService = new TicketOfficeService();
         //ticketOfficeService.createTicketOffice(ticketOffice);
 //        ticketOfficeService.deleteTicketOfficeByPhone("test");
-        List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
-        System.out.println(ticketOffices);
+//        List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
+//        System.out.println(ticketOffices);
+
     }
 }

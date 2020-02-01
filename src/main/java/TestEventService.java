@@ -24,7 +24,7 @@ public class TestEventService {
         dateFormat.setLenient(false);
         dateFormat.setTimeZone(tz);
         Date moment = dateFormat.parse("2020-05-05 19:00:00");// in Bean
-        Event event = new Event(1, "Музыка композиторов Ludovico ", "Дворец культуры профсоюзов Брест", "Концерт Рояль",
+        Event event = new Event(1, "ывапыва вавып выв", "ваыпвап ывавыа  ыаывы", "Концерт Рояль",
                 TypeEvent.CONCERTS, moment);
         eventService.createEvent(event);
 //        Event event1 = new Event(3, "Музыка композиторов Ludovico ", "Дворец культуры профсоюзов Брест", "Концерт Рояль",

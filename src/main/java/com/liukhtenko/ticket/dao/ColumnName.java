@@ -23,4 +23,5 @@ public class ColumnName {
     public static final String USER_ID = "user_id";
     public static final String TICKET_ID = "ticket_id";
     public static final String SEAT_NUMBER = "seat_number";
+    public static final String ROW_COUNT = "rowCount";
 }
