@@ -108,6 +108,8 @@ public class UserDao extends AbstractDao<Long, User> {
                 user.setPassword(resultSet.getString(ColumnName.PASSWORD));
                 user.setMail(resultSet.getString(ColumnName.MAIL));
                 user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+            }else{
+                throw new DaoException("Unable to find user");  // FIXME: 02.02.2020
             }
         } catch (SQLException e) {
             throw new DaoException("Unable to find user", e);

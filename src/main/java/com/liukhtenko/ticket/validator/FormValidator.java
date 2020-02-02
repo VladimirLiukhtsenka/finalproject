@@ -26,7 +26,7 @@ public class FormValidator {
     }
     public static boolean isValidDate(String value) throws ServiceException {
         try {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// FIXME: 02.02.2020 in CONST
             Date moment = dateFormat.parse(value);
         } catch (ParseException e) {
             throw new ServiceException("Wrong data");

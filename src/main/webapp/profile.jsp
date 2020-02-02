@@ -3,7 +3,7 @@
 <%@ include file="include/menu.htm" %>
 <body>
 
-<p>Cmd Profile: Добро пожаловать! ${user}</p>
+<p>Cmd Profile: Добро пожаловать! ${user.name}</p>
 <form class="form-horizontal" action = "do?command=profile" method="POST">
 <fieldset>
 

@@ -1,15 +1,7 @@
-import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeSeat;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
-import com.liukhtenko.ticket.pool.CustomConnectionPool;
-import com.liukhtenko.ticket.service.UserService;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.sql.Connection;
-import java.util.List;
 
 // FIXME: 24.01.2020 Delete
 public class TestUserService {

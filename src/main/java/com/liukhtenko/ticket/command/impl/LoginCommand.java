@@ -5,7 +5,7 @@ import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.UserService;
+import com.liukhtenko.ticket.service.impl.UserService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
 import org.apache.logging.log4j.Level;
@@ -20,6 +20,7 @@ public class LoginCommand extends Command {
 
     private static final String FORM_PARAM_PASSWORD = "password";  // FIXME: 29.01.2020 одинаклвые поля объединить
     private static final String FORM_PARAM_MAIL = "mail";
+    private static final String DEFAULT_VALUE = "\"\"";
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
@@ -28,12 +29,11 @@ public class LoginCommand extends Command {
             return page;
         } else {
             try {
-
-                String mail = "";
+                String mail = DEFAULT_VALUE;
                 if (FormValidator.isValidString(request.getParameter(FORM_PARAM_MAIL), FormRegexValidator.EMAIL)) {
                     mail = request.getParameter(FORM_PARAM_MAIL);
                 }
-                String password ="";
+                String password =DEFAULT_VALUE;
                 if (FormValidator.isValidString(request.getParameter(FORM_PARAM_PASSWORD), FormRegexValidator.PASSWORD)) {
                      password = request.getParameter(FORM_PARAM_PASSWORD);
                 }
@@ -41,7 +41,7 @@ public class LoginCommand extends Command {
                 User user = userService.findUserByMailAndPassword(mail, password);
                 if (user.getMail() != null) { // FIXME: 31.01.2020 delete if
                     HttpSession session = request.getSession();
-                    session.setAttribute("user", user.getName());
+                    session.setAttribute("user", user);
                     page = PagePath.PAGE_PROFILE;
                     return page;
                 } else {
@@ -50,8 +50,8 @@ public class LoginCommand extends Command {
                 }
             } catch ( ServiceException e) {
                 logger.log(Level.INFO, "incorrect data", e);
-                request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 27.01.2020
-                page = null;
+                request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 27.01.2020 dont work
+                page = PagePath.PAGE_LOGIN;
             }
         }
         return page;

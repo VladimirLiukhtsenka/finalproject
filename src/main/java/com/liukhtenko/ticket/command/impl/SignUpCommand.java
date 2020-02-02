@@ -4,7 +4,7 @@ import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.UserService;
+import com.liukhtenko.ticket.service.impl.UserService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
 
@@ -34,7 +34,7 @@ public class SignUpCommand extends Command {
                 user.setId(ID);
                 user.setRoleID(ROLE_ID);
                 String phone = request.getParameter(FORM_PARAM_PHONE);
-                if (FormValidator.isValidString(phone, FormRegexValidator.PHONE)) {
+                if (FormValidator.isValidString(phone, FormRegexValidator.PHONE)) { // FIXME: 02.02.2020 upgrade validate
                     user.setPhone(phone);
                 }
                 String name = request.getParameter(FORM_PARAM_NAME);
@@ -62,15 +62,13 @@ public class SignUpCommand extends Command {
                     user.setMail(mail);
                 }
                 if (userService.createUser(user)) {
-//                    String result = "Login";
                     page = PagePath.PAGE_LOGIN;
                     return page;
                 } else {
                     return page;
                 }
             } catch (ServiceException e) {
-//                return new ErrorCommand().execute(request); // FIXME: 28.01.2020 и форму поправить
-                return PagePath.PAGE_ERROR;
+                 return PagePath.PAGE_ERROR; // FIXME: 28.01.2020 и форму поправить
             }
         }
     }

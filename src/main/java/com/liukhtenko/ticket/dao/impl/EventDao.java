@@ -26,6 +26,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             "DELETE FROM events WHERE id=?;";
     private static final String SQL_UPDATE_EVENT =
             "UPDATE events SET name=?, address=?, description=?, type_event=?, date=? WHERE id=?";
+    private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     @Override
     public List<Event> findAll() throws DaoException {
@@ -93,7 +94,7 @@ public class EventDao extends AbstractDao<Long, Event> {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(SQL_CREATE_EVENT);
-            statement.setString(1, event.getName()); // FIXME: 01.02.2020 In 1 method
+            statement.setString(1, event.getName());
             statement.setString(2, event.getAddress());
             statement.setString(3, event.getDescription());
             statement.setString(4, event.getTypeOfEvent().getValue());
@@ -130,17 +131,17 @@ public class EventDao extends AbstractDao<Long, Event> {
         return flag;
     }
 
-    public Date transformDate(String date) throws ParseException {
+    public static Date transformDate(String date) throws ParseException { // FIXME: 02.02.2020 перенести метод
         TimeZone tz = TimeZone.getTimeZone("Europe/Minsk");
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // FIXME: 31.01.2020 вынести
+        DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setLenient(false);
         dateFormat.setTimeZone(tz);
         Date moment = dateFormat.parse(date);
         return moment;
     }
 
-    public String transformDate(Date date) throws ParseException {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // FIXME: 31.01.2020 вынести
+    private String transformDate(Date date) throws ParseException {
+        DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         String time = dateFormat.format(date);
         return time;
     }

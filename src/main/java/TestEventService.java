@@ -1,16 +1,13 @@
 import com.liukhtenko.ticket.entity.Event;
-        import com.liukhtenko.ticket.entity.TypeEvent;
-        import com.liukhtenko.ticket.exception.ServiceException;
-        import com.liukhtenko.ticket.service.EventService;
-        import com.liukhtenko.ticket.service.impl.TicketOfficeService;
+import com.liukhtenko.ticket.entity.TypeEvent;
+import com.liukhtenko.ticket.exception.ServiceException;
+import com.liukhtenko.ticket.service.impl.EventService;
 
-        import java.text.DateFormat;
-        import java.text.ParseException;
-        import java.text.SimpleDateFormat;
-        import java.time.Year;
-        import java.util.Date;
-        import java.util.List;
-        import java.util.TimeZone;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 public class TestEventService {
 

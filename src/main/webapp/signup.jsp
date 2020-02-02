@@ -29,7 +29,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="father name">Father name</label>
+  <label class="col-md-4 control-label" for="father name">Father name*</label>
   <div class="col-md-4">
   <input id="father name" name="father name" type="text" placeholder="" class="form-control input-md">
 
@@ -38,7 +38,7 @@
 
 <!-- Select Basic -->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="gender">Gender</label>
+  <label class="col-md-4 control-label" for="gender">Gender*</label>
   <div class="col-md-4">
     <select id="gender" name="gender" class="form-control">
       <option value="1">male</option>
@@ -58,7 +58,7 @@
 
 <!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="phone">Phone</label>
+  <label class="col-md-4 control-label" for="phone">Phone*</label>
   <div class="col-md-4">
   <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md">
   <span class="help-block">for example +375251234567</span>
@@ -84,7 +84,6 @@
 
 </fieldset>
 </form>
-
 
 <!-- <p>Cmd Sign-up: ${message}</p>-->
 <%@ include file="include/head.htm" %>

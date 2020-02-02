@@ -33,9 +33,9 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
             resultSet = statement.executeQuery(SQL_SELECT_ALL_TICKET_OFFICE);
             while (resultSet.next()) {
                 TicketOffice ticketOffice = new TicketOffice();
-                ticketOffice.setAddress(ColumnName.ADDRESS);
-                ticketOffice.setOperatingMode(ColumnName.OPERATING_MODE);
-                ticketOffice.setPhone(ColumnName.PHONE);
+                ticketOffice.setAddress(resultSet.getString(ColumnName.ADDRESS));
+                ticketOffice.setOperatingMode(resultSet.getString(ColumnName.OPERATING_MODE));
+                ticketOffice.setPhone(resultSet.getString(ColumnName.PHONE));
                 ticketOffices.add(ticketOffice);
             }
         } catch (SQLException e) {

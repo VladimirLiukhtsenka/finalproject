@@ -1,8 +1,5 @@
-import com.liukhtenko.ticket.entity.Ticket;
 import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.TicketService;
-
-import java.util.List;
+import com.liukhtenko.ticket.service.impl.TicketService;
 
 public class TestTicketService {
     public static void main(String[] args) throws ServiceException {

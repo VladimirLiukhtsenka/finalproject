@@ -37,10 +37,9 @@ public class FrontController extends HttpServlet {
             if (FormValidator.isPost(req)) {
                 resp.sendRedirect(req.getContextPath() + page);
             } else {
-
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+                dispatcher.forward(req, resp);
             }
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-            dispatcher.forward(req, resp);
         } else {
             page = PagePath.PAGE_ERROR;
             resp.sendRedirect(req.getContextPath() + page);

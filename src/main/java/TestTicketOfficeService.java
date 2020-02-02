@@ -8,12 +8,12 @@ import java.util.List;
 
 public class TestTicketOfficeService {
     public static void main(String[] args) throws ServiceException {
-        TicketOffice ticketOffice = new TicketOffice("test","test","test");
+   //     TicketOffice ticketOffice = new TicketOffice("test","test","test");
         TicketOfficeService ticketOfficeService = new TicketOfficeService();
         //ticketOfficeService.createTicketOffice(ticketOffice);
 //        ticketOfficeService.deleteTicketOfficeByPhone("test");
-//        List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
-//        System.out.println(ticketOffices);
+        List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
+        System.out.println(ticketOffices);
 
     }
 }

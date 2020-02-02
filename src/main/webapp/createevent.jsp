@@ -40,7 +40,7 @@
   <label class="col-md-4 control-label" for="date">Date</label>
   <div class="col-md-4">
   <input id="date" name="date" type="text" placeholder="" class="form-control input-md" required="">
-
+ <span class="help-block">date format yyyy-MM-dd HH:mm:ss</span>
   </div>
 </div>
 
