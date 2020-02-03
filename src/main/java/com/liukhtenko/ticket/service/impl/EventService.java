@@ -15,6 +15,24 @@ import java.util.List;
 public class EventService implements EventServiceInterface {
     static Logger logger = LogManager.getLogger();
 
+    public List<Event> findAllEvents() throws ServiceException {
+        List<Event> events;
+        EventDao eventDao = new EventDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(eventDao);
+            events = eventDao.findAll();
+            transaction.commit();
+            logger.log(Level.DEBUG, "findAllEvents completed successfully");
+        } catch (DaoException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+        return events;
+    }
+
     public List<Event> findEventByType(String type) throws ServiceException {
         List<Event> events;
         EventDao eventDao = new EventDao();

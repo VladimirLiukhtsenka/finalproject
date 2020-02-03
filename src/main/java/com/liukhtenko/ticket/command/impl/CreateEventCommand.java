@@ -20,15 +20,17 @@ public class CreateEventCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user == null) {
-            return PagePath.PAGE_LOGIN;
-        } else if (user.getRoleID() != 1) {
-            return PagePath.PAGE_ERROR;
-        }
+//        if (user == null) {
+//            return PagePath.PAGE_LOGIN;
+//        } else if (user.getRoleID() != 1) {
+//            return PagePath.PAGE_ERROR;
+//        }
         String page = null;
-        if (!FormValidator.isPost(request)) {
+        if (!FormValidator.isPost(request)
+         || (FormValidator.isPost(request) && request.getParameter("addEvent") != null))
+        {
             page = PagePath.PAGE_CREATE_EVENT;
-        }else {
+        } else {
             EventService eventService = new EventService();
             Event event = new Event();
             try {
@@ -42,11 +44,11 @@ public class CreateEventCommand extends Command {
                 TypeEvent typeEvent = TypeEvent.findByType(request.getParameter("type of event"));
                 event.setTypeOfEvent(typeEvent);
                 String date = request.getParameter("date");
-                if(FormValidator.isValidDate(date)){
+                if (FormValidator.isValidDate(date)) {
                     Date moment = EventDao.transformDate(date);  // FIXME: 02.02.2020 method replace
                     event.setDate(moment);
                 }
-                if(eventService.createEvent(event)){
+                if (eventService.createEvent(event)) {
                     page = PagePath.PAGE_VIEW_EVENT; // FIXME: 02.02.2020 page administrator
                     return page;
                 }

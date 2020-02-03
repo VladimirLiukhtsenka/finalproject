@@ -21,6 +21,6 @@
          </div>
     </c:forEach>
 
-       <%@ include file="include/head.htm" %>
-       </body>
-       </html>
+<%@ include file="include/head.htm" %>
+</body>
+</html>

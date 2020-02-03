@@ -17,6 +17,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\PagePa
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\ColumnName.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\SignUpCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\impl\TicketOfficeService.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\DeleteEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\TableName.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Entity.java
 D:\Java\Projects\finalproject\src\main\java\TestTypeEvent.java
@@ -54,6 +55,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\User.ja
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTicketOfficeCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TicketOffice.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewMovieEventCommand.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\EditEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketOfficeInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketServiceInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewSportEventCommand.java

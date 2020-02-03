@@ -69,6 +69,16 @@ public class CommandFactory {
                 this.command = new ViewMovieEventCommand();
             }
         },
+        DELETE_EVENT{
+            {
+                this.command = new DeleteEventCommand();
+            }
+        },
+        EDIT_EVENT{
+            {
+                this.command = new EditEventCommand();
+            }
+        },
         ERROR{
             {
                 this.command = new ErrorCommand();
@@ -111,6 +121,10 @@ public class CommandFactory {
                 return CommandFactory.Command. VIEW_FOR_MOVIE_EVENT.command;
             case  VIEW_TICKET_OFFICE:
                 return CommandFactory.Command. VIEW_TICKET_OFFICE.command;
+            case  DELETE_EVENT:
+                return CommandFactory.Command. DELETE_EVENT.command;
+            case  EDIT_EVENT:
+                return CommandFactory.Command. EDIT_EVENT.command;
             default:
                 return CommandFactory.Command.ERROR.command;
         }

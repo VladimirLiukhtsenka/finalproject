@@ -30,7 +30,8 @@ public class FrontController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String nameCommand = req.getParameter("command").toUpperCase();
+        String s = req.getParameter("command");
+        String nameCommand = s.toUpperCase();
         Command command = CommandFactory.defineFrom(nameCommand);
         String page = command.execute(req);
         if (page != null) {

@@ -4,11 +4,13 @@ import com.liukhtenko.ticket.dao.AbstractDao;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
+import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,6 +24,8 @@ public class EventDao extends AbstractDao<Long, Event> {
             "INSERT INTO events (name, address, description, type_event, date) values (?,?,?,?,?);";
     private static final String SQL_FIND_EVENT_BY_TYPE =
             "SELECT id, name, address, description, type_event, date FROM events WHERE type_event = ?;";
+    private static final String SQL_FIND_EVENT_ALL =
+            "SELECT id, name, address, description, type_event, date FROM events;";
     private static final String SQL_DELETE_EVENT_BY_ID =
             "DELETE FROM events WHERE id=?;";
     private static final String SQL_UPDATE_EVENT =
@@ -30,7 +34,31 @@ public class EventDao extends AbstractDao<Long, Event> {
 
     @Override
     public List<Event> findAll() throws DaoException {
-        return null;
+        List<Event> events = new ArrayList<>();
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(SQL_FIND_EVENT_ALL);
+            while (resultSet.next()) {
+                Event event = new Event();
+                event.setId(resultSet.getLong(ColumnName.ID));
+                event.setName(resultSet.getString(ColumnName.NAME));
+                event.setAddress(resultSet.getString(ColumnName.ADDRESS));
+                event.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
+                TypeEvent typeEventInsert = TypeEvent.findByType(resultSet.getString(ColumnName.TYPE_EVENT));
+                event.setTypeOfEvent(typeEventInsert);
+                Date dateInsert = transformDate(resultSet.getString(ColumnName.DATE));
+                event.setDate(dateInsert);
+                events.add(event);
+            }
+        } catch (SQLException | ParseException e) {
+            throw new DaoException("Unable to find events", e);
+        } finally {
+            close(resultSet);
+            close(statement);
+        }
+        return events;
     }
 
     public List<Event> findByType(String typeEvent) throws DaoException {
