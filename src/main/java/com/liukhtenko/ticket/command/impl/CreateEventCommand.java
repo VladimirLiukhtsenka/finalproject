@@ -20,11 +20,11 @@ public class CreateEventCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-//        if (user == null) {
-//            return PagePath.PAGE_LOGIN;
-//        } else if (user.getRoleID() != 1) {
-//            return PagePath.PAGE_ERROR;
-//        }
+        if (user == null) {
+            return PagePath.PAGE_LOGIN;
+        } else if (user.getRoleID() != 1) {
+            return PagePath.PAGE_ERROR;
+        }
         String page = null;
         if (!FormValidator.isPost(request)
          || (FormValidator.isPost(request) && request.getParameter("addEvent") != null))

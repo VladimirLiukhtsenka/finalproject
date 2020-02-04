@@ -25,6 +25,8 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\V
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\filter\FilterEncoding.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeEvent.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\UserDao.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\AdminProfileCommand.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\customtimetag\InfoTimeTag.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CommandHelper.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\PageMessage.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewEventCommand.java
@@ -41,7 +43,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\ProxyConn
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\AbstractDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\EventServiceInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTheaterEventCommand.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\customtag\InfoTimeTag.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\DaoException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\EntityTransaction.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\LogOutCommand.java
@@ -58,5 +59,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\V
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\EditEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketOfficeInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketServiceInterface.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\HomeCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewSportEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\impl\EventService.java

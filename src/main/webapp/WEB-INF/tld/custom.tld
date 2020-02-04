@@ -8,7 +8,7 @@
     <uri>customtags</uri>
     <tag>
         <name>info-time</name>
-        <tag-class>com.liukhtenko.ticket.customtag.InfoTimeTag</tag-class>
+        <tag-class>com.liukhtenko.ticket.customtimetag.InfoTimeTag</tag-class>
         <body-content>empty</body-content>
     </tag>
 </taglib>

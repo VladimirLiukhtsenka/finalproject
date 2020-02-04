@@ -37,7 +37,6 @@ public class DeleteEventCommand extends Command {
                 return page;
             }
             page = PagePath.PAGE_EDIT_EVENTS; // FIXME: 03.02.2020
-
         }
         return page;
     }

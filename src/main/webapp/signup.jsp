@@ -1,92 +1,81 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
+<%@ include file="include/head.jsp" %>
+<body>
+    <%@ include file="include/menu.jsp" %>
+    <form class="form-horizontal"action = "do?command=sign_up" method="POST">
 
-<%@ include file="include/menu.htm" %>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Name*</label>
+            <div class="col-md-4">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+            </div>
+        </div>
 
-<form class="form-horizontal"action = "do?command=signup" method="POST">
-<fieldset>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="surname">Surname*</label>
+            <div class="col-md-4">
+                <input id="surname" name="surname" type="text" placeholder="" class="form-control input-md" required="">
+            </div>
+        </div>
 
-<!-- Form Name -->
-<legend>Form SignUp</legend>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="father name">Father name*</label>
+            <div class="col-md-4">
+                <input id="father name" name="father name" type="text" placeholder="" class="form-control input-md">
+            </div>
+        </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="name">Name*</label>
-  <div class="col-md-4">
-  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="gender">Gender*</label>
+            <div class="col-md-4">
+                <select id="gender" name="gender" class="form-control">
+                    <option value="1">male</option>
+                    <option value="2">female</option>
+                </select>
+            </div>
+        </div>
 
-  </div>
-</div>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="mail">Mail*</label>
+            <div class="col-md-4">
+                <input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="">
+            </div>
+        </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="surname">Surname*</label>
-  <div class="col-md-4">
-  <input id="surname" name="surname" type="text" placeholder="" class="form-control input-md" required="">
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="phone">Phone*</label>
+            <div class="col-md-4">
+                <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md">
+                <span class="help-block">for example +375251234567</span>
+            </div>
+        </div>
 
-  </div>
-</div>
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Password*</label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
+                <span class="help-block">no less than 8 characters</span>
+            </div>
+        </div>
 
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="father name">Father name*</label>
-  <div class="col-md-4">
-  <input id="father name" name="father name" type="text" placeholder="" class="form-control input-md">
-
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="gender">Gender*</label>
-  <div class="col-md-4">
-    <select id="gender" name="gender" class="form-control">
-      <option value="1">male</option>
-      <option value="2">female</option>
-    </select>
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="mail">Mail*</label>
-  <div class="col-md-4">
-  <input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="">
-
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="phone">Phone*</label>
-  <div class="col-md-4">
-  <input id="phone" name="phone" type="text" placeholder="" class="form-control input-md">
-  <span class="help-block">for example +375251234567</span>
-  </div>
-</div>
-
-<!-- Password input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="password">Password*</label>
-  <div class="col-md-4">
-    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
-    <span class="help-block">no less than 8 characters</span>
-  </div>
-</div>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submitButton"></label>
-  <div class="col-md-4">
-    <button id="submitButton" name="submitButton" class="btn btn-success">Signup</button>
-  </div>
-</div>
-
-</fieldset>
-</form>
-
-<!-- <p>Cmd Sign-up: ${message}</p>-->
-<%@ include file="include/head.htm" %>
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="submitButton"></label>
+            <div class="col-md-4">
+                <button id="submitButton" name="submitButton" class="btn btn-success">Signup</button>
+            </div>
+        </div>
+    </form>
+    <%@ include file="include/footer.jsp" %>
+</body>
 </html>
 
 

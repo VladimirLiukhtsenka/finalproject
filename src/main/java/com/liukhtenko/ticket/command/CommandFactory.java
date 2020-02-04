@@ -14,7 +14,7 @@ public class CommandFactory {
                 this.command = new LogOutCommand();
             }
         },
-        SIGNUP{
+        SIGN_UP{
             {
                 this.command = new SignUpCommand();
             }
@@ -24,12 +24,12 @@ public class CommandFactory {
                 this.command = new ProfileCommand();
             }
         },
-        CREATEEVENT{
+        CREATE_EVENT{
             {
                 this.command = new CreateEventCommand();
             }
         },
-        VIEWEVENT{    // FIXME: 02.02.2020 DELETE!!! or in INDEX page
+        VIEW_EVENT{    // FIXME: 02.02.2020 DELETE!!! or in INDEX page
             {
                 this.command = new ViewEventCommand();
             }
@@ -79,6 +79,16 @@ public class CommandFactory {
                 this.command = new EditEventCommand();
             }
         },
+        HOME{
+            {
+                this.command = new HomeCommand();
+            }
+        },
+        ADMIN_PROFILE{
+            {
+                this.command = new AdminProfileCommand();
+            }
+        },
         ERROR{
             {
                 this.command = new ErrorCommand();
@@ -98,15 +108,15 @@ public class CommandFactory {
             case LOGIN:
                 return Command.LOGIN.command;
             case LOGOUT:
-                return CommandFactory.Command.LOGOUT.command;
-            case SIGNUP:
-                return CommandFactory.Command.SIGNUP.command;
+                return CommandFactory.Command.LOGOUT.command;  // FIXME: 04.02.2020 delete and jsp
+            case SIGN_UP:
+                return CommandFactory.Command.SIGN_UP.command;
             case PROFILE:
                 return CommandFactory.Command.PROFILE.command;
-            case VIEWEVENT:
-                return CommandFactory.Command.VIEWEVENT.command;
-            case CREATEEVENT:
-                return CommandFactory.Command.CREATEEVENT.command;
+            case VIEW_EVENT:
+                return CommandFactory.Command.VIEW_EVENT.command; // FIXME: 04.02.2020 delete and jsp
+            case CREATE_EVENT:
+                return CommandFactory.Command.CREATE_EVENT.command;
             case  VIEW_CONCERTS_EVENT:
                 return CommandFactory.Command. VIEW_CONCERTS_EVENT.command;
             case  VIEW_FESTIVALS_EVENT:
@@ -125,6 +135,10 @@ public class CommandFactory {
                 return CommandFactory.Command. DELETE_EVENT.command;
             case  EDIT_EVENT:
                 return CommandFactory.Command. EDIT_EVENT.command;
+            case  HOME:
+                return CommandFactory.Command. HOME.command;
+            case  ADMIN_PROFILE:
+                return CommandFactory.Command. ADMIN_PROFILE.command;
             default:
                 return CommandFactory.Command.ERROR.command;
         }

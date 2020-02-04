@@ -6,7 +6,7 @@ import com.liukhtenko.ticket.validator.FormValidator;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class ViewEventCommand extends Command {
+public class ViewEventCommand extends Command {  // FIXME: 04.02.2020 delete
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

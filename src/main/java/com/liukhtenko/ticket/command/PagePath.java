@@ -19,4 +19,6 @@ public class PagePath {
     public final static String PAGE_MOVIE_EVENTS = "/allmovieevents.jsp";
     public final static String PAGE_THEATER_EVENTS = "/alltheaterevents.jsp";
     public final static String PAGE_EDIT_EVENTS = "/editeventspage.jsp";
+    public final static String PAGE_INDEX = "/index.jsp";
+    public final static String PAGE_ADMIN_PROFILE = "/adminprofile.jsp";
 }

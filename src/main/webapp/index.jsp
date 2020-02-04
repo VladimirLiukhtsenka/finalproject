@@ -1,10 +1,11 @@
 <%@ taglib prefix="ctg" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/menu.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
-<ctg:info-time/>
-<%@ include file="include/head.htm" %>
-<p>INDEX: ${message} </p>
+    <%@ include file="include/menu.jsp" %>
+    <b><hr/><h2 align="center">Welcome</h2><hr/></b>
+    <ctg:info-time/>
+    <%@ include file="include/footer.jsp" %>
 </body>
 </html>

@@ -1,10 +1,14 @@
 com\liukhtenko\ticket\entity\Ticket.class
 com\liukhtenko\ticket\service\impl\UserService.class
 com\liukhtenko\ticket\command\CommandFactory$Command$13.class
+com\liukhtenko\ticket\customtimetag\InfoTimeTag.class
 com\liukhtenko\ticket\entity\Entity.class
 com\liukhtenko\ticket\command\CommandFactory$Command$5.class
+com\liukhtenko\ticket\command\impl\HomeCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command.class
+com\liukhtenko\ticket\command\CommandFactory$Command$17.class
 com\liukhtenko\ticket\controller\SessionRequestContent.class
+com\liukhtenko\ticket\command\impl\AdminProfileCommand.class
 com\liukhtenko\ticket\command\impl\LogOutCommand.class
 com\liukhtenko\ticket\service\UserServiceInterface.class
 com\liukhtenko\ticket\command\impl\CreateEventCommand.class
@@ -76,5 +80,5 @@ com\liukhtenko\ticket\service\impl\EventService.class
 com\liukhtenko\ticket\command\CommandFactory$Command$1.class
 com\liukhtenko\ticket\command\CommandFactory$1.class
 com\liukhtenko\ticket\dao\impl\TicketOfficeDao.class
-com\liukhtenko\ticket\customtag\InfoTimeTag.class
+com\liukhtenko\ticket\command\CommandFactory$Command$18.class
 com\liukhtenko\ticket\command\impl\ViewTheaterEventCommand.class

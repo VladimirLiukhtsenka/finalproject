@@ -1,5 +1,6 @@
 package com.liukhtenko.ticket.controller;
 
+import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.CommandFactory;
@@ -35,14 +36,14 @@ public class FrontController extends HttpServlet {
         Command command = CommandFactory.defineFrom(nameCommand);
         String page = command.execute(req);
         if (page != null) {
-            if (FormValidator.isPost(req)) {
+            if (FormValidator.isPost(req) && req.getParameter(PageMessage.MESSAGE_ERROR) != null) { // FIXME: 04.02.2020 
                 resp.sendRedirect(req.getContextPath() + page);
             } else {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
                 dispatcher.forward(req, resp);
             }
         } else {
-            page = PagePath.PAGE_ERROR;
+            page = PagePath.PAGE_ERROR;  // FIXME: 04.02.2020 
             resp.sendRedirect(req.getContextPath() + page);
         }
     }

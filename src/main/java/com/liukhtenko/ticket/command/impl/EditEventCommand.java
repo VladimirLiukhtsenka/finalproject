@@ -9,6 +9,7 @@ import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -21,11 +22,11 @@ public class EditEventCommand extends Command {
             List<Event> events = eventService.findAllEvents();
             request.setAttribute("events",events);
         } catch (ServiceException e) {
-            request.setAttribute(PageMessage.MESSAGE_ERROR,e.toString()); // FIXME: 02.02.2020
+            HttpSession session = request.getSession();
+            session.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 27.01.2020 нормальную вальдац
             page = PagePath.PAGE_ERROR;
             return page;
         }
-
         return PagePath.PAGE_EDIT_EVENTS; // FIXME: 02.02.2020
     }
 }

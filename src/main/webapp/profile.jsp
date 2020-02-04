@@ -1,24 +1,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/menu.htm" %>
+<%@ include file="include/head.jsp" %>
 <body>
-
-<p>Cmd Profile: Добро пожаловать! ${user.name}</p>
-<form class="form-horizontal" action = "do?command=profile" method="POST">
-<fieldset>
-
-<!-- Form Name -->
-<legend>Exit</legend>
-
-<!-- Button -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="logout">Single Button</label>
-  <div class="col-md-4">
-    <button id="logout" name="logout" class="btn btn-danger">Logout</button>
-  </div>
-</div>
-</fieldset>
-</form>
-<%@ include file="include/head.htm" %>
+    <%@ include file="include/menu.jsp" %>
+    <p>Hello! ${user.name}</p>
+    <form class="form-horizontal" action = "do?command=profile" method="POST">
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-2 control-label" for="logout">Single Button</label>
+            <div class="col-md-2">
+                <button id="logout" name="logout" class="btn btn-danger">Logout</button>
+            </div>
+        </div>
+    </form>
+    <%@ include file="include/footer.jsp" %>
 </body>
 </html>

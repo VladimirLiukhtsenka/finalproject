@@ -9,10 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 public class ErrorCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
-        String page = null;
-        if (!FormValidator.isPost(request)) {
-            page = PagePath.PAGE_ERROR;
-        }
+        String page = PagePath.PAGE_ERROR;
+//        if (!FormValidator.isPost(request)) {// FIXME: 04.02.2020 
+//            page = PagePath.PAGE_ERROR;
+//        }
         return page;
     }
 }

@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.command.impl;
 
 import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
@@ -9,13 +10,14 @@ import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 public class SignUpCommand extends Command {
     private static final String FORM_PARAM_PHONE = "phone";
     private static final String FORM_PARAM_NAME = "name";
     private static final String FORM_PARAM_SURNAME = "surname";
     private static final String FORM_PARAM_FATHER_NAME = "father name";
-    private static final String FORM_PARAM_GENDER = "gender name";
+    private static final String FORM_PARAM_GENDER = "gender";
     private static final String FORM_PARAM_PASSWORD = "password";
     private static final String FORM_PARAM_MAIL = "mail";
     private static final int ID = 1;
@@ -61,15 +63,17 @@ public class SignUpCommand extends Command {
                 if (FormValidator.isValidString(mail, FormRegexValidator.EMAIL)) {
                     user.setMail(mail);
                 }
-                if (userService.createUser(user)) {
+                if (userService.createUser(user)) { // FIXME: 04.02.2020 
                     page = PagePath.PAGE_LOGIN;
-                    return page;
-                } else {
                     return page;
                 }
             } catch (ServiceException e) {
-                 return PagePath.PAGE_ERROR; // FIXME: 28.01.2020 и форму поправить
+                HttpSession session = request.getSession();
+                session.setAttribute(PageMessage.MESSAGE_ERROR, e.toString());
+                page = PagePath.PAGE_SIGN_UP;
+                return page; // FIXME: 28.01.2020
             }
         }
+        return page;
     }
 }
