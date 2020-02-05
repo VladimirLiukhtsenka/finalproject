@@ -36,17 +36,16 @@
                         <form class="form-horizontal-${event.id}" action = "do?command=Edit_ticket" method="POST">
                             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                                                 required="" value="${event.id}">
-
-                                <div class="col-md-5">
-                                    <button id="Edit_ticket" name="Edit_ticket" class="btn btn-primary">Edit ticket</button>
-                                </div>
+                            <div class="col-md-5">
+                                <button id="Edit_ticket" name="Edit_ticket" class="btn btn-primary">Edit ticket</button>
+                            </div>
                         </form>
                         <form class="form-horizontal-${event.id}" action="do?command=delete_event" method="POST">
                             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                             required="" value="${event.id}">
-                                <div class="col-md-5">
-                                    <button id="delete event" name="delete event" class="btn btn-danger">Delete event</button>
-                                </div>
+                            <div class="col-md-5">
+                                <button id="delete event" name="delete event" class="btn btn-danger">Delete event</button>
+                            </div>
                         </form>
                     </div>
                 </div>
