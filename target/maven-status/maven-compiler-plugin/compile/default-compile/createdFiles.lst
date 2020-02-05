@@ -6,6 +6,7 @@ com\liukhtenko\ticket\entity\Entity.class
 com\liukhtenko\ticket\command\CommandFactory$Command$5.class
 com\liukhtenko\ticket\command\impl\HomeCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command.class
+com\liukhtenko\ticket\command\impl\CreateTicketCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command$17.class
 com\liukhtenko\ticket\controller\SessionRequestContent.class
 com\liukhtenko\ticket\command\impl\AdminProfileCommand.class
@@ -35,6 +36,7 @@ com\liukhtenko\ticket\command\impl\ViewFestivalsEventCommand.class
 com\liukhtenko\ticket\command\CommandHelper.class
 TestUserService.class
 com\liukhtenko\ticket\command\CommandFactory$Command$9.class
+com\liukhtenko\ticket\command\impl\EditTicketCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command$3.class
 com\liukhtenko\ticket\entity\User.class
 com\liukhtenko\ticket\service\EventServiceInterface.class
@@ -56,6 +58,7 @@ com\liukhtenko\ticket\command\CommandFactory$Command$7.class
 com\liukhtenko\ticket\controller\FrontController.class
 com\liukhtenko\ticket\command\impl\ViewForChildrenEventCommand.class
 com\liukhtenko\ticket\dao\impl\EventDao.class
+com\liukhtenko\ticket\command\CommandFactory$Command$19.class
 com\liukhtenko\ticket\entity\TicketOffice.class
 com\liukhtenko\ticket\validator\FormRegexValidator.class
 com\liukhtenko\ticket\command\CommandFactory$Command$14.class
@@ -75,6 +78,7 @@ com\liukhtenko\ticket\pool\PropertyLoader.class
 com\liukhtenko\ticket\exception\PoolException.class
 com\liukhtenko\ticket\dao\impl\UserDao.class
 com\liukhtenko\ticket\service\TicketServiceInterface.class
+com\liukhtenko\ticket\command\CommandFactory$Command$20.class
 com\liukhtenko\ticket\command\impl\LoginCommand.class
 com\liukhtenko\ticket\service\impl\EventService.class
 com\liukhtenko\ticket\command\CommandFactory$Command$1.class

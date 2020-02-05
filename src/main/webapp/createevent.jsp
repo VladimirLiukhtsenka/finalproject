@@ -4,7 +4,7 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal"action = "do?command=createevent" method="POST" >
+    <form class="form-horizontal"action = "do?command=create_event" method="POST" >
 
         <!-- Text input-->
         <div class="form-group">
@@ -71,7 +71,7 @@
         </div>
 
         <!-- Button -->
-        <div class="form-group">
+        <div class="form-group" >
             <label class="col-md-4 control-label" for="create"></label>
             <div class="col-md-4">
                 <button id="create" name="create" class="btn btn-success">Create event</button>

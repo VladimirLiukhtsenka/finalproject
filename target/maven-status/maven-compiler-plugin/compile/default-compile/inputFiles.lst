@@ -5,11 +5,13 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\UserSe
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\controller\SessionRequestContent.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeSeat.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\PoolException.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\CreateTicketCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\impl\TicketService.java
 D:\Java\Projects\finalproject\src\main\java\TestTicketService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\CreateEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\controller\FrontController.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Ticket.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\EditTicketCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\CustomConnectionPool.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\ServiceException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ProfileCommand.java

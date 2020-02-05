@@ -89,6 +89,16 @@ public class CommandFactory {
                 this.command = new AdminProfileCommand();
             }
         },
+        CREATE_TICKET{
+            {
+                this.command = new CreateTicketCommand();
+            }
+        },
+        EDIT_TICKET{
+            {
+                this.command = new EditTicketCommand();
+            }
+        },
         ERROR{
             {
                 this.command = new ErrorCommand();
@@ -139,6 +149,10 @@ public class CommandFactory {
                 return CommandFactory.Command. HOME.command;
             case  ADMIN_PROFILE:
                 return CommandFactory.Command. ADMIN_PROFILE.command;
+            case  CREATE_TICKET:
+                return CommandFactory.Command. CREATE_TICKET.command;
+            case  EDIT_TICKET:
+                return CommandFactory.Command. EDIT_TICKET.command;
             default:
                 return CommandFactory.Command.ERROR.command;
         }

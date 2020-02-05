@@ -24,12 +24,21 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href=do?command=View_ticket_office>ticket office</a></li>
-                <li><a href=do?command=Login>login</a></li>
-                <li><a href=do?command=Sign_Up>sign-up</a></li>
+                <c:set var = "guest" scope = "session" value = "${user}"/>
+                    <c:if test = "${guest == null}">
+                        <li><a href=do?command=Login>login</a></li>
+                        <li><a href=do?command=Sign_Up>sign-up</a></li>
+                    </c:if>
                 <!--<li><a href=do?command=Logout>logout</a></li>-->
-                <li><a href=do?command=Profile>profile</a></li>
-                <li><a href=do?command=Admin_profile>admin profile</a></li>
-            </ul>
+                <c:set var = "isUser" scope = "session" value = "${isUser}"/>
+                <c:if test = "${isUser == true}">
+                    <li><a href=do?command=Profile>profile</a></li>
+                </c:if>
+                <c:set var = "isAdmin" scope = "session" value = "${isAdmin}"/>
+                <c:if test = "${isAdmin == true}">
+                    <li><a href=do?command=Admin_profile>admin profile</a></li>
+                </c:if>
+                </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

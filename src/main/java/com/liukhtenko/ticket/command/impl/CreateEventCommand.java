@@ -49,7 +49,7 @@ public class CreateEventCommand extends Command {
                     event.setDate(moment);
                 }
                 if (eventService.createEvent(event)) {
-                    page = PagePath.PAGE_VIEW_EVENT; // FIXME: 02.02.2020 page administrator
+                    page = PagePath.PAGE_EDIT_EVENTS; // FIXME: 02.02.2020 page administrator
                     return page;
                 }
             } catch (ServiceException | ParseException e) {

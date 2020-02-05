@@ -21,4 +21,5 @@ public class PagePath {
     public final static String PAGE_EDIT_EVENTS = "/editeventspage.jsp";
     public final static String PAGE_INDEX = "/index.jsp";
     public final static String PAGE_ADMIN_PROFILE = "/adminprofile.jsp";
+    public final static String PAGE_EDIT_TICKET = "/editeticket.jsp";
 }

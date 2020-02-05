@@ -23,7 +23,8 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
             "SELECT number_of_tickets FROM tickets where id =?;";
     private static final String SQL_BUY_TICKETS_BY_TICKETS_ID_AND_USER_ID =
             "INSERT INTO user_tickets (user_id,ticket_id,seat_number) VALUES(?,?,?);";
-
+    private static final String SQL_CREATE_TICKETS =
+            "INSERT INTO tickets (event_id,type_seat,number_of_tickets,price) VALUES(?,?,?,?);";
     public int buyTicket(long userId, long ticketId) throws DaoException {
         if (isTicketsAvailable(ticketId)) {  // FIXME: 01.02.2020 in service or not
             int seatNumber;
@@ -160,8 +161,22 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
     }
 
     @Override
-    public boolean create(Ticket entity) throws DaoException {
-        return false;
+    public boolean create(Ticket ticket) throws DaoException {
+        boolean flag;
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(SQL_CREATE_TICKETS);
+            statement.setLong(1, ticket.getEventId());
+            statement.setString(2, ticket.getTypeSeat().getValue());
+            statement.setInt(3, ticket.getNumberOfTickets());
+            statement.setDouble(4, ticket.getPrice());
+            flag = (1 == statement.executeUpdate());
+        } catch (SQLException e) {
+            throw new DaoException("Unable to create ticket", e);
+        } finally {
+            close(statement);
+        }
+        return flag;
     }
 
     @Override

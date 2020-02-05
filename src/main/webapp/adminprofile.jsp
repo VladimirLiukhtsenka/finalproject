@@ -3,9 +3,7 @@
 <html>
 <%@ include file="include/head.jsp" %>
 <body>
-    <h1 align="center">Admin page</h1>
-    <p>Hello! ${user.name}</p>
-    <nav class="navbar navbar-default">
+     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -24,11 +22,12 @@
                     <li><a href=do?command=Edit_event>edit-events</a></li>
                 </ul>
                     <ul class="nav navbar-nav navbar-right">
-                    <!-- here command -->
                 </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
+            </div>
+        </div>
     </nav>
+    <h1 align="center">Admin page</h1>
+    <p>Hello! ${user.name}</p>
     <form class="form-horizontal" action = "do?command=admin_profile" method="POST">
         <!-- Button -->
         <div class="form-group">

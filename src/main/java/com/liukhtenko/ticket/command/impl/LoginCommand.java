@@ -8,7 +8,6 @@ import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.UserService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
-import com.sun.xml.internal.ws.client.RequestContext;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -44,9 +43,14 @@ public class LoginCommand extends Command {
                 User user = userService.findUserByMailAndPassword(mail, password);
                 HttpSession session = request.getSession();
                 session.setAttribute("user", user);
+
+                session.setAttribute("isAdmin", false); // FIXME: 05.02.2020
+
                 if (user.getRoleID() == 1) {
+                    session.setAttribute("isAdmin", true);
                     page = PagePath.PAGE_ADMIN_PROFILE;
                 } else {
+                    session.setAttribute("isUser", true);
                     page = PagePath.PAGE_PROFILE;
                 }
             } catch (ServiceException e) {
