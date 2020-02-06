@@ -17,6 +17,9 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
             "SELECT id,event_id, type_seat, number_of_tickets, price FROM tickets WHERE event_id = ?;";
     private static final String SQL_FIND_TICKETS_BY_EVENT_ID_AND_TYPE_SEAT =
             "SELECT id,event_id, type_seat, number_of_tickets, price FROM tickets WHERE event_id = ? AND type_seat = ?;";
+    private static final String SQL_DELETE_TICKETS_BY_EVENT_ID_AND_TYPE_SEAT =
+            "DELETE FROM tickets  WHERE event_id = ? AND type_seat = ?;";
+    private static final String SQL_DELETE_TICKETS_BY_ID = "DELETE FROM tickets  WHERE id = ?;";
     private static final String SQL_COUNT_USER_TICKETS_BY_TICKET_ID =
             "SELECT COUNT(ticket_id) AS rowCount FROM user_tickets where ticket_id =?;";
     private static final String SQL_FIND_NUMBER_OF_TICKETS_BY_TICKETS_ID =
@@ -25,6 +28,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
             "INSERT INTO user_tickets (user_id,ticket_id,seat_number) VALUES(?,?,?);";
     private static final String SQL_CREATE_TICKETS =
             "INSERT INTO tickets (event_id,type_seat,number_of_tickets,price) VALUES(?,?,?,?);";
+
     public int buyTicket(long userId, long ticketId) throws DaoException {
         if (isTicketsAvailable(ticketId)) {  // FIXME: 01.02.2020 in service or not
             int seatNumber;
@@ -52,6 +56,9 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return findAllTicketsByTicketsId(ticketsId) > countUserTicketByTicketId(ticketsId);
     }
 
+    public int numberTicketsRemaining(long ticketsId) throws DaoException {
+        return findAllTicketsByTicketsId(ticketsId) - countUserTicketByTicketId(ticketsId);
+    }
     private int findAllTicketsByTicketsId(long id) throws DaoException {
         int count = 0;
         PreparedStatement statement = null;
@@ -151,13 +158,40 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
     }
 
     @Override
-    public boolean delete(Long aLong) throws DaoException {
-        return false;
+    public boolean delete(Long id) throws DaoException {
+        boolean flag;
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(SQL_DELETE_TICKETS_BY_ID);
+            statement.setLong(1, id);
+            flag = (1 == statement.executeUpdate());
+        } catch (SQLException e) {
+            throw new DaoException("Unable to delete tickets", e);
+        } finally {
+            close(statement);
+        }
+        return flag;
     }
 
     @Override
     public boolean delete(Ticket entity) throws DaoException {
         return false;
+    }
+
+    public boolean delete(long id, String type) throws DaoException {
+        boolean flag;
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(SQL_DELETE_TICKETS_BY_EVENT_ID_AND_TYPE_SEAT);
+            statement.setLong(1, id);
+            statement.setString(2, type);
+            flag = (1 == statement.executeUpdate());
+        } catch (SQLException e) {
+            throw new DaoException("Unable to delete tickets", e);
+        } finally {
+            close(statement);
+        }
+        return flag;
     }
 
     @Override

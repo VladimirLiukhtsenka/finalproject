@@ -29,9 +29,9 @@ public class CommandFactory {
                 this.command = new CreateEventCommand();
             }
         },
-        VIEW_EVENT{    // FIXME: 02.02.2020 DELETE!!! or in INDEX page
+        VIEW_TICKET{
             {
-                this.command = new ViewEventCommand();
+                this.command = new ViewTicketCommand();
             }
         },
         VIEW_TICKET_OFFICE{
@@ -99,6 +99,11 @@ public class CommandFactory {
                 this.command = new EditTicketCommand();
             }
         },
+        DELETE_TICKET{
+            {
+                this.command = new DeleteTicketCommand();
+            }
+        },
         ERROR{
             {
                 this.command = new ErrorCommand();
@@ -107,7 +112,7 @@ public class CommandFactory {
         com.liukhtenko.ticket.command.Command command;
     }
 
-    public static com.liukhtenko.ticket.command.Command defineFrom(String cmd) {
+    public static com.liukhtenko.ticket.command.Command defineFrom(String cmd) { // FIXME: 06.02.2020 
         Command command;
         try {
             command = CommandFactory.Command.valueOf(cmd);
@@ -123,8 +128,8 @@ public class CommandFactory {
                 return CommandFactory.Command.SIGN_UP.command;
             case PROFILE:
                 return CommandFactory.Command.PROFILE.command;
-            case VIEW_EVENT:
-                return CommandFactory.Command.VIEW_EVENT.command; // FIXME: 04.02.2020 delete and jsp
+            case VIEW_TICKET:
+                return CommandFactory.Command.VIEW_TICKET.command; // FIXME: 04.02.2020 delete and jsp
             case CREATE_EVENT:
                 return CommandFactory.Command.CREATE_EVENT.command;
             case  VIEW_CONCERTS_EVENT:
@@ -153,6 +158,8 @@ public class CommandFactory {
                 return CommandFactory.Command. CREATE_TICKET.command;
             case  EDIT_TICKET:
                 return CommandFactory.Command. EDIT_TICKET.command;
+            case  DELETE_TICKET:
+                return CommandFactory.Command. DELETE_TICKET.command;
             default:
                 return CommandFactory.Command.ERROR.command;
         }

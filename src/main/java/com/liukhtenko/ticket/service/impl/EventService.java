@@ -51,6 +51,23 @@ public class EventService implements EventServiceInterface {
         return events;
     }
 
+    public Event findEventById(Long id) throws ServiceException {
+        Event event;
+        EventDao eventDao = new EventDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(eventDao);
+            event = eventDao.findById(id);
+            transaction.commit();
+            logger.log(Level.DEBUG, "findEventById completed successfully");
+        } catch (DaoException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+        return event;
+    }
     public boolean createEvent(Event event) throws ServiceException {
         EventDao eventDao = new EventDao();
         EntityTransaction transaction = new EntityTransaction();

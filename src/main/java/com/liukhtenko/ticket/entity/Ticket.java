@@ -1,5 +1,7 @@
 package com.liukhtenko.ticket.entity;
 
+import com.liukhtenko.ticket.service.impl.TicketService;
+
 public class Ticket extends Entity {
     private long id;
     private long eventId;

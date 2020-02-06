@@ -34,6 +34,7 @@ com\liukhtenko\ticket\dao\ColumnName.class
 com\liukhtenko\ticket\command\impl\ViewSportEventCommand.class
 com\liukhtenko\ticket\command\impl\ViewFestivalsEventCommand.class
 com\liukhtenko\ticket\command\CommandHelper.class
+com\liukhtenko\ticket\command\impl\ViewTicketCommand.class
 TestUserService.class
 com\liukhtenko\ticket\command\CommandFactory$Command$9.class
 com\liukhtenko\ticket\command\impl\EditTicketCommand.class
@@ -53,6 +54,7 @@ com\liukhtenko\ticket\service\TicketOfficeInterface.class
 com\liukhtenko\ticket\command\CommandFactory$Command$11.class
 com\liukhtenko\ticket\entity\Role.class
 com\liukhtenko\ticket\command\Command.class
+com\liukhtenko\ticket\command\CommandFactory$Command$21.class
 com\liukhtenko\ticket\command\impl\ErrorCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command$7.class
 com\liukhtenko\ticket\controller\FrontController.class
@@ -64,7 +66,6 @@ com\liukhtenko\ticket\validator\FormRegexValidator.class
 com\liukhtenko\ticket\command\CommandFactory$Command$14.class
 com\liukhtenko\ticket\entity\Event.class
 com\liukhtenko\ticket\exception\ServiceException.class
-com\liukhtenko\ticket\command\impl\ViewEventCommand.class
 com\liukhtenko\ticket\dao\impl\TicketDao.class
 com\liukhtenko\ticket\service\impl\TicketOfficeService.class
 com\liukhtenko\ticket\command\impl\ProfileCommand.class
@@ -72,6 +73,7 @@ com\liukhtenko\ticket\pool\CustomConnectionPool.class
 com\liukhtenko\ticket\command\CommandFactory$Command$4.class
 com\liukhtenko\ticket\pool\ProxyConnection.class
 com\liukhtenko\ticket\command\CommandFactory$Command$12.class
+com\liukhtenko\ticket\command\impl\DeleteTicketCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command$8.class
 com\liukhtenko\ticket\command\impl\DeleteEventCommand.class
 com\liukhtenko\ticket\pool\PropertyLoader.class

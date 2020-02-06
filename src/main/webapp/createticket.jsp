@@ -4,77 +4,46 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal"action = "do?command=create_event" method="POST" >
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="name">Name</label>
-            <div class="col-md-4">
-                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
-            </div>
+<h1 align="center">Create ticket</h1>
+  <form class="form-horizontal"action = "do?command=Create_ticket" method = "POST">
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="typeSeat">Type seat</label>
+        <div class="col-md-4">
+          <select id="typeSeat" name="typeSeat" class="form-control" required="">
+            <option value="Партер">Parterre</option>
+            <option value="Ложа">Lodge</option>
+            <option value="Бельэтаж">Mezzanine</option>
+            <option value="Балкон">Balcony</option>
+            <option value="Сектор A">Sector A</option>
+            <option value="Сектор B">Sector B</option>
+            <option value="Сектор C">Sector C</option>
+            <option value="Сектор D">Sector D</option>
+            <option value="Трибуна A">Tribune A</option>
+            <option value="Трибуна B">Tribune B</option>
+            <option value="Трибуна C">Tribune C</option>
+            <option value="Трибуна D">Tribune D</option>
+            <option value="Фанзона">Fan zone</option>
+            <option value="Танцпол">Dance floor</option>
+          </select>
         </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="address">Address</label>
-            <div class="col-md-4">
-                <input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="">
-            </div>
+    </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="price">Price BYN</label>
+        <div class="col-md-4">
+        <input id="price" name="price" type="text" placeholder="" class="form-control input-md" required="">
         </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="description">Description</label>
-            <div class="col-md-4">
-                <input id="description" name="description" type="text" placeholder="" class="form-control input-md" required="">
-            </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="numberOfTickets">Number of tickets</label>
+        <div class="col-md-4">
+        <input id="numberOfTickets" name="numberOfTickets" type="text" placeholder="" class="form-control input-md" required="">
         </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="date">Date</label>
-            <div class="col-md-4">
-                <input id="date" name="date" type="text" placeholder="" class="form-control input-md" required="">
-                <span class="help-block">date format yyyy-MM-dd HH:mm:ss</span>
-            </div>
-        </div>
-
-        <!-- Multiple Radios -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="type of event">Type of event</label>
-            <div class="col-md-4">
-                <div class="radio">
-                    <label for="type of event-0">
-                    <input type="radio" name="type of event" id="type of event-0" value="Спорт" checked="checked">Sport</label>
-                </div>
-                <div class="radio">
-                    <label for="type of event-1">
-                    <input type="radio" name="type of event" id="type of event-1" value="Концерты">Concerts</label>
-                </div>
-                <div class="radio">
-                    <label for="type of event-2">
-                    <input type="radio" name="type of event" id="type of event-2" value="Фестивали">Festivals</label>
-                </div>
-                <div class="radio">
-                    <label for="type of event-3">
-                    <input type="radio" name="type of event" id="type of event-3" value="Театр">Theater</label>
-                </div>
-                <div class="radio">
-                    <label for="type of event-4">
-                    <input type="radio" name="type of event" id="type of event-4" value="Для детей">For children</label>
-                </div>
-                <div class="radio">
-                    <label for="type of event-5">
-                    <input type="radio" name="type of event" id="type of event-5" value="Кино">Movie</label>
-                </div>
-            </div>
-        </div>
-
+     </div>
         <!-- Button -->
-        <div class="form-group" >
+        <div class="form-group" action = "do?command=Create_ticket" method = "POST">
             <label class="col-md-4 control-label" for="create"></label>
             <div class="col-md-4">
-                <button id="create" name="create" class="btn btn-success">Create event</button>
+                <button id="create" name="create" class="btn btn-success">Create ticket</button>
             </div>
         </div>
     </form>

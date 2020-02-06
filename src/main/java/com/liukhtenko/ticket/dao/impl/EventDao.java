@@ -24,6 +24,8 @@ public class EventDao extends AbstractDao<Long, Event> {
             "INSERT INTO events (name, address, description, type_event, date) values (?,?,?,?,?);";
     private static final String SQL_FIND_EVENT_BY_TYPE =
             "SELECT id, name, address, description, type_event, date FROM events WHERE type_event = ?;";
+    private static final String SQL_FIND__BY_ID =
+            "SELECT id, name, address, description, type_event, date FROM events WHERE id = ?;";
     private static final String SQL_FIND_EVENT_ALL =
             "SELECT id, name, address, description, type_event, date FROM events;";
     private static final String SQL_DELETE_EVENT_BY_ID =
@@ -82,7 +84,7 @@ public class EventDao extends AbstractDao<Long, Event> {
                 events.add(event);
             }
         } catch (SQLException | ParseException e) {
-            throw new DaoException("Unable to find user", e);
+            throw new DaoException("Unable to find event", e);
         } finally {
             close(resultSet);
             close(statement);
@@ -90,6 +92,33 @@ public class EventDao extends AbstractDao<Long, Event> {
         return events;
     }
 
+    public Event findById(Long id) throws DaoException {
+        Event event = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SQL_FIND__BY_ID);
+            statement.setLong(1, id);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                event = new Event();
+                event.setId(resultSet.getLong(ColumnName.ID));
+                event.setName(resultSet.getString(ColumnName.NAME));
+                event.setAddress(resultSet.getString(ColumnName.ADDRESS));
+                event.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
+                TypeEvent typeEventInsert = TypeEvent.findByType(resultSet.getString(ColumnName.TYPE_EVENT));
+                event.setTypeOfEvent(typeEventInsert);
+                Date dateInsert = transformDate(resultSet.getString(ColumnName.DATE));
+                event.setDate(dateInsert);
+            }
+        } catch (SQLException | ParseException e) {
+            throw new DaoException("Unable to find event", e);
+        } finally {
+            close(resultSet);
+            close(statement);
+        }
+        return event;
+    }
     @Override
     public Event find(Long aLong) throws DaoException {
         return null;

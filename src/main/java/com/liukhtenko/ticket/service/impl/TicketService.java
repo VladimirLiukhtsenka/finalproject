@@ -89,5 +89,39 @@ public class TicketService implements TicketServiceInterface {
         }
         return flag;
     }
+    public boolean deleteTicketById(long id) throws ServiceException {
+        boolean flag;
+        TicketDao ticketDao = new TicketDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(ticketDao);
+          flag =  ticketDao.delete(id);
+            transaction.commit();
+            logger.log(Level.DEBUG, "deleteTicketById completed successfully");
+        } catch (DaoException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+        return flag;
+    }
 
+    public static int numberTicketsRemaining (long id) throws ServiceException {
+        int number;
+        TicketDao ticketDao = new TicketDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(ticketDao);
+            number =  ticketDao.numberTicketsRemaining(id);
+            transaction.commit();
+            logger.log(Level.DEBUG, "numberTicketsRemaining completed successfully");
+        } catch (DaoException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+        return number;
+    }
 }

@@ -12,7 +12,8 @@ public class TestTicketService {
 //        System.out.println(list1);
 //        int k = ticketService.buyTicket(1,1);
 //        System.out.println(k);
-        Ticket ticket = new Ticket(1,2,TypeSeat.TRIBUNE_A,100,4);
-        System.out.println( ticketService.createTicket(ticket));
+//        Ticket ticket = new Ticket(1,2,TypeSeat.TRIBUNE_A,100,4);
+//        System.out.println( ticketService.createTicket(ticket));
+        //System.out.println( ticketService.deleteTicketByEventIdAndTypeSeat(2,"Сектор A"));
     }
 }

@@ -25,7 +25,7 @@
             <div class="col-md-3"><b></b></div>
         </div>
         <c:forEach items="${events}" var="event">
-            <form class="form-horizontal-${event.id}" action = "do?command=Edit_ticket" method="POST">
+            <form class="form-horizontal" action = "do?command=Edit_ticket" method = "POST">
                 <div class="row">
                     <div class="col-md-2">${event.name}</div>
                     <div class="col-md-2">${event.address}</div>
@@ -33,7 +33,7 @@
                     <div class="col-md-2">${event.date}</div>
                     <div class="col-md-1">${event.getTypeOfEvent().getValue()}</div>
                     <div class="col-md-3">
-                        <form class="form-horizontal-${event.id}" action = "do?command=Edit_ticket" method="POST">
+                        <form class="form-horizontal" action = "do?command=Edit_ticket" method = "POST">
                             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                                                 required="" value="${event.id}">
                             <div class="col-md-5">
