@@ -4,7 +4,7 @@ import com.liukhtenko.ticket.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class CommandHelper { // FIXME: 02.02.2020 Rename
+public class CommandHelper {
     private static final String ATTRIBUTE_USER_KEY = "user";
 
     public static User findUserInSession(HttpServletRequest req) {

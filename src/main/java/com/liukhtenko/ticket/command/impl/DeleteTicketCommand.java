@@ -1,23 +1,23 @@
 package com.liukhtenko.ticket.command.impl;
 
-import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.CommandHelper;
-import com.liukhtenko.ticket.command.PageMessage;
-import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.impl.EventService;
 import com.liukhtenko.ticket.service.impl.TicketService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
 public class DeleteTicketCommand extends Command {
+    static Logger logger = LogManager.getLogger();
+
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
         if (user == null) {     // FIXME: 03.02.2020 maybe delete
             return PagePath.PAGE_LOGIN;
-        } else if (user.getRoleID() != 1) {
+        } else if (user.getRoleID() != FormParameterName.ADMIN_ID) {
             return PagePath.PAGE_ERROR;
         }
         String page = null;

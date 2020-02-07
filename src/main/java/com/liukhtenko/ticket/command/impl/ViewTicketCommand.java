@@ -8,37 +8,40 @@ import com.liukhtenko.ticket.entity.Ticket;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 import com.liukhtenko.ticket.service.impl.TicketService;
-import com.liukhtenko.ticket.validator.FormValidator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewTicketCommand extends Command  {
+public class ViewTicketCommand extends Command {
+    static Logger logger = LogManager.getLogger();
+
     @Override
     public String execute(HttpServletRequest request) {
         String page;
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
         try {
-            long id = Long.parseLong( request.getParameter("id"));
+            long id = Long.parseLong(request.getParameter("id"));
             HttpSession session = request.getSession();
-            session.setAttribute("eventId",id);
+            session.setAttribute("eventId", id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
-            request.setAttribute("tickets",tickets);
+            request.setAttribute("tickets", tickets);
             request.setAttribute(PageMessage.MESSAGE_ERROR, "тут метод!");
             Event event = eventService.findEventById(id);
 
-            List <Integer> remTickets = new ArrayList<>();
+            List<Integer> remTickets = new ArrayList<>();
             for (Ticket ticket : tickets) {
                 int rem = ticketService.numberTicketsRemaining(ticket.getId());
                 remTickets.add(rem);
             }
-            request.setAttribute("remTickets",remTickets);
-            int end = remTickets.size();
-            request.setAttribute("end",end);
-            session.setAttribute("eventName",event.getName());
+            request.setAttribute("remTickets", remTickets);
+            int end = remTickets.size() - 1; // FIXME: 07.02.2020
+            request.setAttribute("end", end);
+            session.setAttribute("eventName", event.getName());
         } catch (ServiceException e) {
             HttpSession session = request.getSession();
             session.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 27.01.2020 нормальную вальдац

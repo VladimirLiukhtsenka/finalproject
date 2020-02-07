@@ -6,7 +6,9 @@ import com.liukhtenko.ticket.service.impl.EventService;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 public class TestEventService {
@@ -28,5 +30,8 @@ public class TestEventService {
 //                TypeEvent.CONCERTS, moment);
 //        eventService.updateEvent(event1);
 //eventService.deleteEventById(3);
+        List<String> list = new ArrayList<>();
+        Integer l =1;
+        list.add(l.toString());
     }
 }

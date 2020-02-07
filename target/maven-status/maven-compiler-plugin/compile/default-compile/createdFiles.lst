@@ -8,8 +8,8 @@ com\liukhtenko\ticket\command\impl\HomeCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command.class
 com\liukhtenko\ticket\command\impl\CreateTicketCommand.class
 com\liukhtenko\ticket\command\CommandFactory$Command$17.class
-com\liukhtenko\ticket\controller\SessionRequestContent.class
 com\liukhtenko\ticket\command\impl\AdminProfileCommand.class
+com\liukhtenko\ticket\command\impl\BuyTicketCommand.class
 com\liukhtenko\ticket\command\impl\LogOutCommand.class
 com\liukhtenko\ticket\service\UserServiceInterface.class
 com\liukhtenko\ticket\command\impl\CreateEventCommand.class
@@ -25,6 +25,7 @@ com\liukhtenko\ticket\entity\TypeSeat.class
 com\liukhtenko\ticket\dao\EntityTransaction.class
 com\liukhtenko\ticket\validator\FormValidator.class
 TestTypeEvent.class
+com\liukhtenko\ticket\command\CommandFactory$Command$22.class
 com\liukhtenko\ticket\command\CommandFactory$Command$16.class
 com\liukhtenko\ticket\command\CommandFactory.class
 TestTicketService.class
@@ -46,6 +47,7 @@ com\liukhtenko\ticket\command\PagePath.class
 com\liukhtenko\ticket\command\CommandFactory$Command$10.class
 com\liukhtenko\ticket\command\CommandFactory$Command$6.class
 com\liukhtenko\ticket\command\impl\ViewConcertsEventCommand.class
+com\liukhtenko\ticket\command\FormParameterName.class
 com\liukhtenko\ticket\command\CommandFactory$Command$15.class
 com\liukhtenko\ticket\exception\DaoException.class
 com\liukhtenko\ticket\dao\TableName.class

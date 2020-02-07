@@ -2,7 +2,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Role.ja
 D:\Java\Projects\finalproject\src\main\java\TestEventService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\impl\UserService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\UserServiceInterface.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\controller\SessionRequestContent.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TypeSeat.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\PoolException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\CreateTicketCommand.java
@@ -13,10 +12,12 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\controller\Fro
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Ticket.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\EditTicketCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\CustomConnectionPool.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\BuyTicketCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\ServiceException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ProfileCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\PagePath.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\ColumnName.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\FormParameterName.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\DeleteTicketCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\SignUpCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\impl\TicketOfficeService.java

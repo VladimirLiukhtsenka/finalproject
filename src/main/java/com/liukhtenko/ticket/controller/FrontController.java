@@ -36,7 +36,8 @@ public class FrontController extends HttpServlet {
         Command command = CommandFactory.defineFrom(nameCommand);
         String page = command.execute(req);
         if (page != null) {
-            if (FormValidator.isPost(req) && req.getAttribute(PageMessage.MESSAGE_ERROR) == null) { // FIXME: 04.02.2020
+            if (FormValidator.isPost(req) && req.getAttribute(PageMessage.MESSAGE_ERROR) == null
+                    &&req.getAttribute(PageMessage.MESSAGE) == null) { // FIXME: 04.02.2020
                 resp.sendRedirect(req.getContextPath() + page);
             } else {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);

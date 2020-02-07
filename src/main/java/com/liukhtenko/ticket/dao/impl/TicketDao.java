@@ -28,6 +28,8 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
             "INSERT INTO user_tickets (user_id,ticket_id,seat_number) VALUES(?,?,?);";
     private static final String SQL_CREATE_TICKETS =
             "INSERT INTO tickets (event_id,type_seat,number_of_tickets,price) VALUES(?,?,?,?);";
+    private static final String SQL_FIND_USER_TICKETS =
+            "SELECT events.name, events.address, events.description, events.date,tickets.type_seat, tickets.price, user_tickets.seat_number  FROM tickets JOIN user_tickets ON user_tickets.ticket_id = tickets.id JOIN events ON tickets.event_id = events.id WHERE user_tickets.user_id =?;";
 
     public int buyTicket(long userId, long ticketId) throws DaoException {
         if (isTicketsAvailable(ticketId)) {  // FIXME: 01.02.2020 in service or not
@@ -59,6 +61,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
     public int numberTicketsRemaining(long ticketsId) throws DaoException {
         return findAllTicketsByTicketsId(ticketsId) - countUserTicketByTicketId(ticketsId);
     }
+
     private int findAllTicketsByTicketsId(long id) throws DaoException {
         int count = 0;
         PreparedStatement statement = null;
@@ -227,6 +230,36 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         ticket.setNumberOfTickets(resultSet.getInt(ColumnName.NUMBER_OF_TICKETS));
         ticket.setPrice(resultSet.getDouble(ColumnName.PRICE));
         return ticket;
+    }
+
+    public List<List<String>> printTickets(long UserId) throws DaoException {
+        List<List<String>> printUserTickets = new ArrayList<>();
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SQL_FIND_USER_TICKETS);
+            statement.setLong(1, UserId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                List<String> printUserTicket = new ArrayList<>();
+                printUserTicket.add(resultSet.getString(ColumnName.NAME));
+                printUserTicket.add(resultSet.getString(ColumnName.ADDRESS));
+                printUserTicket.add(resultSet.getString(ColumnName.DESCRIPTION));
+                printUserTicket.add(resultSet.getString(ColumnName.DATE));
+                printUserTicket.add(resultSet.getString(ColumnName.TYPE_SEAT));
+                String price = Double.toString(resultSet.getDouble(ColumnName.PRICE));
+                printUserTicket.add(price);
+                String seatNumber = Integer.toString(resultSet.getInt(ColumnName.SEAT_NUMBER));
+                printUserTicket.add(seatNumber);
+                printUserTickets.add(printUserTicket);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Unable to print tickets", e);
+        } finally {
+            close(resultSet);
+            close(statement);
+        }
+        return printUserTickets;
     }
 
 }

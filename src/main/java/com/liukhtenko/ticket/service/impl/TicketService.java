@@ -2,9 +2,7 @@ package com.liukhtenko.ticket.service.impl;
 
 import com.liukhtenko.ticket.dao.EntityTransaction;
 import com.liukhtenko.ticket.dao.impl.TicketDao;
-import com.liukhtenko.ticket.dao.impl.UserDao;
 import com.liukhtenko.ticket.entity.Ticket;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.TicketServiceInterface;
@@ -72,6 +70,24 @@ public class TicketService implements TicketServiceInterface {
         return tickets;
     }
 
+    public List<List<String>> printTickets(long UserId) throws ServiceException {
+        List<List<String>> printUserTickets;
+        TicketDao ticketDao = new TicketDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(ticketDao);
+            printUserTickets = ticketDao.printTickets(UserId);
+            transaction.commit();
+            logger.log(Level.DEBUG, "printTickets completed successfully");
+        } catch (DaoException e) {
+            transaction.rollback();
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+        return printUserTickets;
+    }
+
     public boolean createTicket(Ticket ticket) throws ServiceException {
         TicketDao ticketDao = new TicketDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -89,13 +105,14 @@ public class TicketService implements TicketServiceInterface {
         }
         return flag;
     }
+
     public boolean deleteTicketById(long id) throws ServiceException {
         boolean flag;
         TicketDao ticketDao = new TicketDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(ticketDao);
-          flag =  ticketDao.delete(id);
+            flag = ticketDao.delete(id);
             transaction.commit();
             logger.log(Level.DEBUG, "deleteTicketById completed successfully");
         } catch (DaoException e) {
@@ -107,13 +124,13 @@ public class TicketService implements TicketServiceInterface {
         return flag;
     }
 
-    public static int numberTicketsRemaining (long id) throws ServiceException {
+    public static int numberTicketsRemaining(long id) throws ServiceException {
         int number;
         TicketDao ticketDao = new TicketDao();
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(ticketDao);
-            number =  ticketDao.numberTicketsRemaining(id);
+            number = ticketDao.numberTicketsRemaining(id);
             transaction.commit();
             logger.log(Level.DEBUG, "numberTicketsRemaining completed successfully");
         } catch (DaoException e) {

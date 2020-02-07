@@ -4,7 +4,6 @@ import com.liukhtenko.ticket.dao.AbstractDao;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 
 import java.sql.PreparedStatement;
@@ -119,6 +118,7 @@ public class EventDao extends AbstractDao<Long, Event> {
         }
         return event;
     }
+
     @Override
     public Event find(Long aLong) throws DaoException {
         return null;
@@ -197,7 +197,7 @@ public class EventDao extends AbstractDao<Long, Event> {
         return moment;
     }
 
-    private String transformDate(Date date) throws ParseException {
+    String transformDate(Date date) throws ParseException {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         String time = dateFormat.format(date);
         return time;

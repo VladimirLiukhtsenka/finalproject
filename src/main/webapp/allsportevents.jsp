@@ -14,6 +14,7 @@
         <div class="col-md-2"><b></b></div>
     </div>
    <c:forEach items="${events}" var="event">
+    <form class="form-horizontal">
            <div class="row">
                <div class="col-md-2"></div>
                <div class="col-md-2">${event.name}</div>
@@ -30,6 +31,7 @@
                    </form>
                </div>
             </div>
+        </form>
        </c:forEach>
 </div>
 </body>

@@ -104,6 +104,11 @@ public class CommandFactory {
                 this.command = new DeleteTicketCommand();
             }
         },
+        BUY_TICKET{
+            {
+                this.command = new BuyTicketCommand();
+            }
+        },
         ERROR{
             {
                 this.command = new ErrorCommand();
@@ -160,6 +165,8 @@ public class CommandFactory {
                 return CommandFactory.Command. EDIT_TICKET.command;
             case  DELETE_TICKET:
                 return CommandFactory.Command. DELETE_TICKET.command;
+            case  BUY_TICKET:
+                return CommandFactory.Command. BUY_TICKET.command;
             default:
                 return CommandFactory.Command.ERROR.command;
         }

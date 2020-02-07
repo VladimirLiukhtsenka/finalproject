@@ -12,12 +12,14 @@
             <div class="col-md-3"><b>Phone</b></div>
         </div>
         <c:forEach items="${ticketOffices}" var="ticketOffice">
+        <form class="form-horizontal">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-3">${ticketOffice.address}</div>
                 <div class="col-md-3">${ticketOffice.operatingMode}</div>
                 <div class="col-md-3">${ticketOffice.phone}</div>
             </div>
+              </form>
         </c:forEach>
     </div>
     <%@ include file="include/footer.jsp" %>
