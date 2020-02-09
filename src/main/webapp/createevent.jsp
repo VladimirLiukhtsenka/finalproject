@@ -44,28 +44,28 @@
             <label class="col-md-4 control-label" for="type of event">Type of event</label>
             <div class="col-md-4">
                 <div class="radio">
-                    <label for="type of event-0">
-                    <input type="radio" name="type of event" id="type of event-0" value="Спорт" checked="checked">Sport</label>
+                    <label for="type_event-0">
+                    <input type="radio" name="type_event" id="type_event-0" value="Спорт" checked="checked">Sport</label>
                 </div>
                 <div class="radio">
-                    <label for="type of event-1">
-                    <input type="radio" name="type of event" id="type of event-1" value="Концерты">Concerts</label>
+                    <label for="type_event-1">
+                    <input type="radio" name="type_event" id="type_event-1" value="Концерты">Concerts</label>
                 </div>
                 <div class="radio">
-                    <label for="type of event-2">
-                    <input type="radio" name="type of event" id="type of event-2" value="Фестивали">Festivals</label>
+                    <label for="type_event-2">
+                    <input type="radio" name="type_event" id="type_event-2" value="Фестивали">Festivals</label>
                 </div>
                 <div class="radio">
-                    <label for="type of event-3">
-                    <input type="radio" name="type of event" id="type of event-3" value="Театр">Theater</label>
+                    <label for="type_event-3">
+                    <input type="radio" name="type_event" id="type_event-3" value="Театр">Theater</label>
                 </div>
                 <div class="radio">
-                    <label for="type of event-4">
-                    <input type="radio" name="type of event" id="type of event-4" value="Для детей">For children</label>
+                    <label for="type_event-4">
+                    <input type="radio" name="type_event" id="type_event-4" value="Для детей">For children</label>
                 </div>
                 <div class="radio">
-                    <label for="type of event-5">
-                    <input type="radio" name="type of event" id="type of event-5" value="Кино">Movie</label>
+                    <label for="type_event-5">
+                    <input type="radio" name="type_event" id="type_event-5" value="Кино">Movie</label>
                 </div>
             </div>
         </div>

@@ -42,6 +42,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Event.j
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\EventDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\Command.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\LoginCommand.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\CustomTimer.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\ProxyConnection.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\AbstractDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\EventServiceInterface.java
@@ -56,6 +57,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\PropertyL
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketDao.java
 D:\Java\Projects\finalproject\src\main\java\TestUserService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\User.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\Watcher.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTicketOfficeCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TicketOffice.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewMovieEventCommand.java

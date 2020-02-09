@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.command.impl;
 
 import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
@@ -15,20 +16,18 @@ public class DeleteEventCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user == null) {     // FIXME: 03.02.2020 maybe delete
+        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
             return PagePath.PAGE_LOGIN;
-        } else if (user.getRoleID() != FormParameterName.ADMIN_ID) {
-            return PagePath.PAGE_ERROR;
         }
         String page = null;
-        if (request.getParameter("delete event") != null) {
+        if (request.getParameter(FormParameterName.FORM_PARAM_DELETE_EVENT) != null) {
             EventService eventService = new EventService();
-            long id = Long.parseLong(request.getParameter("id")); // FIXME: 03.02.2020
+            long id = Long.parseLong(request.getParameter(ColumnName.ID)); // FIXME: 03.02.2020
             try {
                 eventService.deleteEventById(id);
             } catch (ServiceException e) {
                 page = PagePath.PAGE_ERROR; // FIXME: 03.02.2020
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "mistake");
+                request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to delete event");
                 return page;
             }
             page = PagePath.PAGE_EDIT_EVENTS; // FIXME: 03.02.2020

@@ -1,9 +1,9 @@
 package com.liukhtenko.ticket.command.impl;
 
-import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.PageMessage;
-import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Event;
+import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 import org.apache.logging.log4j.LogManager;
@@ -19,11 +19,15 @@ public class EditEventCommand extends Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+        User user = CommandHelper.findUserInSession(request);
+        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
+            return PagePath.PAGE_LOGIN;
+        }
         String page;
         EventService eventService = new EventService();
         try {
             List<Event> events = eventService.findAllEvents();
-            request.setAttribute("events", events);
+            request.setAttribute(FormParameterName.FORM_PARAM_EVENTS, events);
         } catch (ServiceException e) {
             HttpSession session = request.getSession();
             session.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 27.01.2020 нормальную вальдац

@@ -4,6 +4,7 @@ import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
 import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
@@ -30,33 +31,33 @@ public class LoginCommand extends Command {
         } else {
             try {
                 String mail = FormParameterName.DEFAULT_VALUE;
-                if (FormValidator.isValidString(request.getParameter(FormParameterName.FORM_PARAM_MAIL), FormRegexValidator.EMAIL)) {
-                    mail = request.getParameter(FormParameterName.FORM_PARAM_MAIL);
+                if (FormValidator.isValidString(request.getParameter(ColumnName.MAIL), FormRegexValidator.EMAIL)) {
+                    mail = request.getParameter(ColumnName.MAIL);
                 }
                 String password = FormParameterName.DEFAULT_VALUE;
-                if (FormValidator.isValidString(request.getParameter(FormParameterName.FORM_PARAM_PASSWORD), FormRegexValidator.PASSWORD)) {
-                    password = request.getParameter(FormParameterName.FORM_PARAM_PASSWORD);
+                if (FormValidator.isValidString(request.getParameter(ColumnName.PASSWORD), FormRegexValidator.PASSWORD)) {
+                    password = request.getParameter(ColumnName.PASSWORD);
                 }
                 TicketService ticketService = new TicketService();
                 UserService userService = new UserService();
                 User user = userService.findUserByMailAndPassword(mail, password);  // FIXME: 07.02.2020 Валидацию 
                 HttpSession session = request.getSession();
-                session.setAttribute("user", user);
-                session.setAttribute("isAdmin", false);
-                if (user.getRoleID() == 1) {
-                    session.setAttribute("isAdmin", true);
+                session.setAttribute(FormParameterName.FORM_PARAM_USER, user);
+                session.setAttribute(FormParameterName.FORM_PARAM_IS_ADMIN, false);
+                if (user.getRoleID() == FormParameterName.ADMIN_ID) {
+                    session.setAttribute(FormParameterName.FORM_PARAM_IS_ADMIN, true);
                     page = PagePath.PAGE_ADMIN_PROFILE;
                 } else {
-                    session.setAttribute("isUser", true);
+                    session.setAttribute(FormParameterName.FORM_PARAM_IS_USER, true);
                     page = PagePath.PAGE_PROFILE;
                     long userId = user.getId();
                     List<List<String>> userTickets = ticketService.printTickets(userId);
-                    request.setAttribute("userTickets", userTickets);
+                    request.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
                     request.setAttribute(PageMessage.MESSAGE, "Have a great shopping!");
                 }
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "incorrect data", e);
-                request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 08.02.2020
+                request.setAttribute(PageMessage.MESSAGE_ERROR,"incorrect data"+ e.toString()); // FIXME: 08.02.2020
                 page = PagePath.PAGE_LOGIN;
             }
         }

@@ -1,10 +1,10 @@
 package com.liukhtenko.ticket.command.impl;
 
-import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.PageMessage;
-import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.Ticket;
+import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 import com.liukhtenko.ticket.service.impl.TicketService;
@@ -20,18 +20,22 @@ public class EditTicketCommand extends Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+        User user = CommandHelper.findUserInSession(request);
+        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
+            return PagePath.PAGE_LOGIN;
+        }
         String page;
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
         try {
-            long id = Long.parseLong(request.getParameter("id"));
+            long id = Long.parseLong(request.getParameter(ColumnName.ID));
             HttpSession session = request.getSession();
-            session.setAttribute("eventId", id);
+            session.setAttribute(ColumnName.EVENT_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
-            request.setAttribute("tickets", tickets);
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "тут метод!");
+            request.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
+            request.setAttribute(PageMessage.MESSAGE, "All tickets"); // FIXME: 09.02.2020
             Event event = eventService.findEventById(id);
-            session.setAttribute("eventName", event.getName());
+            session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {
             HttpSession session = request.getSession();
             session.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 27.01.2020 нормальную вальдац

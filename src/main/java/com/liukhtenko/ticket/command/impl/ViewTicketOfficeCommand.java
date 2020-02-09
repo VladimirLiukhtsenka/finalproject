@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.command.impl;
 
 import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
 import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.TicketOffice;
@@ -21,7 +22,7 @@ public class ViewTicketOfficeCommand extends Command {
         TicketOfficeService ticketOfficeService = new TicketOfficeService();
         try {
             List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
-            request.setAttribute("ticketOffices", ticketOffices);
+            request.setAttribute(FormParameterName.FORM_PARAM_TICKET_OFFICES, ticketOffices);
         } catch (ServiceException e) {
             request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 02.02.2020
             page = PagePath.PAGE_ERROR;

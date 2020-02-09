@@ -20,8 +20,8 @@ public enum CustomConnectionPool {
     INSTANCE;
 
     static Logger logger = LogManager.getLogger();
-    private BlockingQueue<ProxyConnection> freeConnections; // FIXME: 13.01.2020 private
-    private Queue<ProxyConnection> givenAwayConnections;
+    BlockingQueue<ProxyConnection> freeConnections; // FIXME: 13.01.2020 private
+    Queue<ProxyConnection> givenAwayConnections;
     private static final String URL = "url";
     private static final String DRIVER_REGISTRATION = "driverRegistration";
     private final static int DEFAULT_POOL_SIZE = 32;

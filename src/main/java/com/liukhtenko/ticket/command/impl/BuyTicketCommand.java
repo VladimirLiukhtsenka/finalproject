@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.command.impl;
 
 import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
@@ -24,10 +25,10 @@ public class BuyTicketCommand extends Command {
         TicketService ticketService = new TicketService();
         try {
             long userId = user.getId();
-            long ticketId = Long.parseLong(request.getParameter("ticketId"));
+            long ticketId = Long.parseLong(request.getParameter(ColumnName.TICKET_ID));
             ticketService.buyTicket(userId, ticketId);
             List<List<String>> userTickets = ticketService.printTickets(userId);
-            request.setAttribute("userTickets", userTickets);
+            request.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
             page = PagePath.PAGE_PROFILE;
             request.setAttribute(PageMessage.MESSAGE, "You have successfully bought a ticket!");
         } catch (NumberFormatException | ServiceException e) {

@@ -21,7 +21,7 @@ public class AdminProfileCommand extends Command {
             page = PagePath.PAGE_ADMIN_PROFILE;
             return page;
         } else page = PagePath.PAGE_LOGIN;
-        if (FormValidator.isPost(request) && request.getParameter("logout") != null) {
+        if (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_LOGOUT) != null) {
             HttpSession session = request.getSession();
             session.invalidate();
             page = PagePath.PAGE_LOGIN;

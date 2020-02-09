@@ -7,9 +7,9 @@
 <h1 align="center">Create ticket</h1>
   <form class="form-horizontal"action = "do?command=Create_ticket" method = "POST">
     <div class="form-group">
-        <label class="col-md-4 control-label" for="typeSeat">Type seat</label>
+        <label class="col-md-4 control-label" for="type_seat">Type seat</label>
         <div class="col-md-4">
-          <select id="typeSeat" name="typeSeat" class="form-control" required="">
+          <select id="type_seat" name="type_seat" class="form-control" required="">
             <option value="Партер">Parterre</option>
             <option value="Ложа">Lodge</option>
             <option value="Бельэтаж">Mezzanine</option>
@@ -34,9 +34,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="numberOfTickets">Number of tickets</label>
+        <label class="col-md-4 control-label" for="number_of_tickets">Number of tickets</label>
         <div class="col-md-4">
-        <input id="numberOfTickets" name="numberOfTickets" type="text" placeholder="" class="form-control input-md" required="">
+        <input id="number_of_tickets" name="number_of_tickets" type="text" placeholder="" class="form-control input-md" required="">
         </div>
      </div>
         <!-- Button -->

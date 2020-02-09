@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.command.impl;
 
 import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
 import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.Event;
@@ -22,7 +23,7 @@ public class ViewForChildrenEventCommand extends Command {
         EventService eventService = new EventService();
         try {
             List<Event> events = eventService.findEventByType(TypeEvent.FOR_CHILDREN.getValue());
-            request.setAttribute("events", events);
+            request.setAttribute(FormParameterName.FORM_PARAM_EVENTS, events);
         } catch (ServiceException e) {
             request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 02.02.2020
             page = PagePath.PAGE_ERROR;

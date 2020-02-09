@@ -23,7 +23,7 @@
                                <div class="col-md-2">${remTickets [i]}</div>
                                <div class="col-md-2">
                                    <form class="form-horizontal">
-                                       <input id="ticketId" name="ticketId" type="hidden" placeholder="" class="form-control input-md"
+                                       <input id="ticket_id" name="ticket_id" type="hidden" placeholder="" class="form-control input-md"
                                                required="" value="${tickets [i].id}">
                                        <div class="col-md-2">
                                            <button id="buy ticket" name="buy ticket" class="btn btn-success">Buy ticket</button>

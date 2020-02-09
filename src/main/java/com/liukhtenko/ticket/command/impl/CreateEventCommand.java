@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.command.impl;
 
 import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.dao.impl.EventDao;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
@@ -20,14 +21,12 @@ public class CreateEventCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user == null) {
+        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
             return PagePath.PAGE_LOGIN;
-        } else if (user.getRoleID() != FormParameterName.ADMIN_ID) {
-            return PagePath.PAGE_ERROR;
         }
         String page = null;
         if (!FormValidator.isPost(request)
-         || (FormValidator.isPost(request) && request.getParameter("addEvent") != null))
+         || (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_ADD_EVENT) != null))
         {
             page = PagePath.PAGE_CREATE_EVENT;
         } else {
@@ -35,15 +34,15 @@ public class CreateEventCommand extends Command {
             Event event = new Event();
             try {
              //   event.setId(1); // FIXME: 08.02.2020 возможно не нужен
-                String name = request.getParameter("name"); // FIXME: 02.02.2020 in const and valid
+                String name = request.getParameter(ColumnName.NAME); // FIXME: 02.02.2020  valid
                 event.setName(name);
-                String address = request.getParameter("address");
+                String address = request.getParameter(ColumnName.ADDRESS);
                 event.setAddress(address);
-                String description = request.getParameter("description");
+                String description = request.getParameter(ColumnName.DESCRIPTION);
                 event.setDescription(description);
-                TypeEvent typeEvent = TypeEvent.findByType(request.getParameter("type of event"));
+                TypeEvent typeEvent = TypeEvent.findByType(request.getParameter(ColumnName.TYPE_EVENT));
                 event.setTypeOfEvent(typeEvent);
-                String date = request.getParameter("date");
+                String date = request.getParameter(ColumnName.DATE);
                 if (FormValidator.isValidDate(date)) {
                     Date moment = EventDao.transformDate(date);  // FIXME: 02.02.2020 method replace
                     event.setDate(moment);
