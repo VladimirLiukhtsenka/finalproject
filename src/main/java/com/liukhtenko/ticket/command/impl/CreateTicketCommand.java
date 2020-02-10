@@ -19,10 +19,7 @@ public class CreateTicketCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
-            return PagePath.PAGE_LOGIN;
-        }
-        String page = null;
+        String page;
         if (!FormValidator.isPost(request)
                 || (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_ADD_TICKET) != null)) {
             page = PagePath.PAGE_CREATE_TICKET;

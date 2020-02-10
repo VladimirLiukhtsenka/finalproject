@@ -40,7 +40,7 @@ public class LoginCommand extends Command {
                 }
                 TicketService ticketService = new TicketService();
                 UserService userService = new UserService();
-                User user = userService.findUserByMailAndPassword(mail, password);  // FIXME: 07.02.2020 Валидацию 
+                User user = userService.findUserByMailAndPassword(mail, password);
                 HttpSession session = request.getSession();
                 session.setAttribute(FormParameterName.FORM_PARAM_USER, user);
                 session.setAttribute(FormParameterName.FORM_PARAM_IS_ADMIN, false);
@@ -56,8 +56,8 @@ public class LoginCommand extends Command {
                     request.setAttribute(PageMessage.MESSAGE, "Have a great shopping!");
                 }
             } catch (ServiceException e) {
-                logger.log(Level.INFO, "incorrect data", e);
-                request.setAttribute(PageMessage.MESSAGE_ERROR,"incorrect data"+ e.toString()); // FIXME: 08.02.2020
+                logger.log(Level.INFO, "incorrect data");
+                request.setAttribute(PageMessage.MESSAGE_ERROR, "incorrect data" + e.toString()); // FIXME: 08.02.2020
                 page = PagePath.PAGE_LOGIN;
             }
         }

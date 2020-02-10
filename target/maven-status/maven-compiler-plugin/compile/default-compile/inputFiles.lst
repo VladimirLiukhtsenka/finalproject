@@ -65,6 +65,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\E
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketOfficeInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketServiceInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTicketCommand.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\filter\FilterRole.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\HomeCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewSportEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\impl\EventService.java

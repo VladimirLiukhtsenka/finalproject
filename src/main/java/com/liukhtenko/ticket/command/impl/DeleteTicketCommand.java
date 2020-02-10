@@ -16,9 +16,6 @@ public class DeleteTicketCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
-            return PagePath.PAGE_LOGIN;
-        }
         String page = null;
         if (request.getParameter(FormParameterName.FORM_PARAM_DELETE_TICKET) != null) {
             TicketService ticketService = new TicketService();

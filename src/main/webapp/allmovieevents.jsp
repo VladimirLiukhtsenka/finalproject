@@ -14,7 +14,7 @@
         <div class="col-md-2"><b></b></div>
     </div>
     <c:forEach items="${events}" var="event">
-     <form class="form-horizontal""action= "do?command=view_ticket" method="POST">
+     <form class="form-horizontal"action= "do?command=view_ticket" method="POST">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-2">${event.name}</div>

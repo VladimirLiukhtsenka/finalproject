@@ -20,9 +20,6 @@ public class EditEventCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
-            return PagePath.PAGE_LOGIN;
-        }
         String page;
         EventService eventService = new EventService();
         try {

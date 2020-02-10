@@ -3,7 +3,7 @@ import com.liukhtenko.ticket.command.impl.*;
 
 public class CommandFactory {
 
-    private enum Command {
+    public enum Command {
         LOGIN{
             {
                 this.command = new LoginCommand();
@@ -117,7 +117,7 @@ public class CommandFactory {
         com.liukhtenko.ticket.command.Command command;
     }
 
-    public static com.liukhtenko.ticket.command.Command defineFrom(String cmd) { // FIXME: 06.02.2020 
+    public static com.liukhtenko.ticket.command.Command defineFrom(String cmd) { // FIXME: 06.02.2020
         Command command;
         try {
             command = CommandFactory.Command.valueOf(cmd);

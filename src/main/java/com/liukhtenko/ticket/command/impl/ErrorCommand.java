@@ -13,9 +13,6 @@ public class ErrorCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page = PagePath.PAGE_ERROR;
-//        if (!FormValidator.isPost(request)) {// FIXME: 04.02.2020 
-//            page = PagePath.PAGE_ERROR;
-//        }
         return page;
     }
 }

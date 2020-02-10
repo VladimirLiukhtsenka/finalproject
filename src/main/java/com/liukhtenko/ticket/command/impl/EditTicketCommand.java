@@ -21,9 +21,6 @@ public class EditTicketCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user.getRoleID() != FormParameterName.ADMIN_ID || user == null) {
-            return PagePath.PAGE_LOGIN;
-        }
         String page;
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();

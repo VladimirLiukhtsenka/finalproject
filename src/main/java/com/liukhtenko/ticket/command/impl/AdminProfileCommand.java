@@ -16,8 +16,7 @@ public class AdminProfileCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
-        User user = CommandHelper.findUserInSession(request);
-        if (!FormValidator.isPost(request) && user.getRoleID() == FormParameterName.ADMIN_ID) {
+        if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_ADMIN_PROFILE;
             return page;
         } else page = PagePath.PAGE_LOGIN;

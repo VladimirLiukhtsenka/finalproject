@@ -18,9 +18,6 @@ public class BuyTicketCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        if (user.getRoleID() != FormParameterName.USER_ID || user == null) {
-            return PagePath.PAGE_LOGIN;
-        }
         String page;
         TicketService ticketService = new TicketService();
         try {

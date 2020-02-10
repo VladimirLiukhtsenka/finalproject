@@ -20,7 +20,7 @@ public class ProfileCommand extends Command {
     public String execute(HttpServletRequest request) {
         String page;
         User user = CommandHelper.findUserInSession(request);
-        if (!FormValidator.isPost(request) && user.getRoleID() == FormParameterName.USER_ID) {
+        if (!FormValidator.isPost(request)) {
             TicketService ticketService = new TicketService();
             try {
                 long userId = user.getId();

@@ -8,68 +8,67 @@ import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.UserService;
-import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpCommand extends Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = null;
+        String page;
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_SIGN_UP;
             return page;
         } else {
-            UserService userService = new UserService();
-            User user = new User();
-            try {
-                user.setId(FormParameterName.USER_ID);
-                user.setRoleID(FormParameterName.USER_ID);
-                String phone = request.getParameter(ColumnName.PHONE);
-                if (FormValidator.isValidString(phone, FormRegexValidator.PHONE)) { // FIXME: 02.02.2020 upgrade validate
+            String phone = request.getParameter(ColumnName.PHONE);
+            String name = request.getParameter(ColumnName.NAME);
+            String surName = request.getParameter(ColumnName.SURNAME);
+            String fatherName = request.getParameter(ColumnName.FATHER_NAME);
+            String gender = request.getParameter(ColumnName.GENDER);
+            String password = request.getParameter(ColumnName.PASSWORD);
+            String mail = request.getParameter(ColumnName.MAIL);
+            Map<String, String> inputMap = new HashMap<>();
+            inputMap.put(ColumnName.PHONE, phone); // FIXME: 10.02.2020
+            inputMap.put(ColumnName.NAME, name);
+            inputMap.put(ColumnName.SURNAME, surName);
+            inputMap.put(ColumnName.FATHER_NAME, surName);
+            inputMap.put(ColumnName.GENDER, gender);
+            inputMap.put(ColumnName.PASSWORD, password);
+            inputMap.put(ColumnName.MAIL, mail);
+            if (FormValidator.validateSigUpForm(inputMap, request)) {
+                try {
+                    UserService userService = new UserService();
+                    User user = new User();
+                    user.setId(FormParameterName.USER_ID);
+                    user.setRoleID(FormParameterName.USER_ID);
                     user.setPhone(phone);
-                }
-                String name = request.getParameter(ColumnName.NAME);
-                if (FormValidator.isValidString(name, FormRegexValidator.LOGIN)) {
                     user.setName(name);
-                }
-                String surName = request.getParameter(ColumnName.SURNAME);
-                if (FormValidator.isValidString(surName, FormRegexValidator.LOGIN)) {
                     user.setSurName(surName);
-                }
-                String fatherName = request.getParameter(ColumnName.FATHER_NAME);
-                if (FormValidator.isValidString(fatherName, FormRegexValidator.LOGIN)) {
                     user.setFatherName(fatherName);
-                }
-                String gender = request.getParameter(ColumnName.GENDER);
-                if (FormValidator.isValidNumber(gender)) {
                     user.setGender(Byte.parseByte(gender));
-                }
-                String password = request.getParameter(ColumnName.PASSWORD);
-                if (FormValidator.isValidString(password, FormRegexValidator.PASSWORD)) {
                     user.setPassword(password);
-                }
-                String mail = request.getParameter(ColumnName.MAIL);
-                if (FormValidator.isValidString(mail, FormRegexValidator.EMAIL)) {
                     user.setMail(mail);
-                }
-                if (userService.createUser(user)) { // FIXME: 04.02.2020 
+                    userService.createUser(user);  // FIXME: 04.02.2020
                     page = PagePath.PAGE_LOGIN;
                     return page;
+                } catch (ServiceException e) {
+                    request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 09.02.2020
+                    page = PagePath.PAGE_SIGN_UP;
+                    return page; // FIXME: 28.01.2020
                 }
-            } catch (ServiceException e) {
-                HttpSession session = request.getSession();
-                session.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 09.02.2020
+            } else {
                 page = PagePath.PAGE_SIGN_UP;
-                return page; // FIXME: 28.01.2020
+                request.setAttribute(PageMessage.MESSAGE, "Try signUp again");
             }
+
         }
         return page;
     }
+
 }
