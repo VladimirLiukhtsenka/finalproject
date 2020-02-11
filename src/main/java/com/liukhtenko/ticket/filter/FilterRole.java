@@ -18,40 +18,40 @@ import java.util.Set;
 @WebFilter(urlPatterns = {"/*"}, servletNames = {"FrontController"})
 public class FilterRole implements Filter {
     static Logger logger = LogManager.getLogger();
-    private final static Set<CommandFactory.Command> ALLOW_GUEST = new HashSet<>();
-    private final static Set<CommandFactory.Command> ALLOW_USER = new HashSet<>();
-    private final static Set<CommandFactory.Command> ALLOW_ADMIN = new HashSet<>();
+    private final static Set<CommandType> ALLOW_GUEST = new HashSet<>();
+    private final static Set<CommandType> ALLOW_USER = new HashSet<>();
+    private final static Set<CommandType> ALLOW_ADMIN = new HashSet<>();
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        ALLOW_GUEST.add(CommandFactory.Command.ERROR);
-        ALLOW_GUEST.add(CommandFactory.Command.SIGN_UP);
-        ALLOW_GUEST.add(CommandFactory.Command.HOME);
-        ALLOW_GUEST.add(CommandFactory.Command.LOGIN);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_CONCERTS_EVENT);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_FESTIVALS_EVENT);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_FOR_CHILDREN_EVENT);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_FOR_MOVIE_EVENT);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_SPORT_EVENT);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_THEATER_EVENT);
-        ALLOW_GUEST.add(CommandFactory.Command.VIEW_TICKET_OFFICE);
+        ALLOW_GUEST.add(CommandType.ERROR);
+        ALLOW_GUEST.add(CommandType.SIGN_UP);
+        ALLOW_GUEST.add(CommandType.HOME);
+        ALLOW_GUEST.add(CommandType.LOGIN);
+        ALLOW_GUEST.add(CommandType.VIEW_CONCERTS_EVENT);
+        ALLOW_GUEST.add(CommandType.VIEW_FESTIVALS_EVENT);
+        ALLOW_GUEST.add(CommandType.VIEW_FOR_CHILDREN_EVENT);
+        ALLOW_GUEST.add(CommandType.VIEW_FOR_MOVIE_EVENT);
+        ALLOW_GUEST.add(CommandType.VIEW_SPORT_EVENT);
+        ALLOW_GUEST.add(CommandType.VIEW_THEATER_EVENT);
+        ALLOW_GUEST.add(CommandType.VIEW_TICKET_OFFICE);
 
         ALLOW_USER.addAll(ALLOW_GUEST);
-        ALLOW_USER.remove(CommandFactory.Command.SIGN_UP);
-        ALLOW_USER.remove(CommandFactory.Command.LOGIN);
-        ALLOW_USER.add(CommandFactory.Command.VIEW_TICKET);
-        ALLOW_USER.add(CommandFactory.Command.BUY_TICKET);
-        ALLOW_USER.add(CommandFactory.Command.PROFILE);
+        ALLOW_USER.remove(CommandType.SIGN_UP);
+        ALLOW_USER.remove(CommandType.LOGIN);
+        ALLOW_USER.add(CommandType.VIEW_TICKET);
+        ALLOW_USER.add(CommandType.BUY_TICKET);
+        ALLOW_USER.add(CommandType.PROFILE);
 
         ALLOW_ADMIN.addAll(ALLOW_USER);
-        ALLOW_ADMIN.remove(CommandFactory.Command.BUY_TICKET);
-        ALLOW_ADMIN.add(CommandFactory.Command.ADMIN_PROFILE);
-        ALLOW_ADMIN.add(CommandFactory.Command.CREATE_EVENT);
-        ALLOW_ADMIN.add(CommandFactory.Command.CREATE_TICKET);
-        ALLOW_ADMIN.add(CommandFactory.Command.DELETE_EVENT);
-        ALLOW_ADMIN.add(CommandFactory.Command.DELETE_TICKET);
-        ALLOW_ADMIN.add(CommandFactory.Command.EDIT_EVENT);
-        ALLOW_ADMIN.add(CommandFactory.Command.EDIT_TICKET);
+        ALLOW_ADMIN.remove(CommandType.BUY_TICKET);
+        ALLOW_ADMIN.add(CommandType.ADMIN_PROFILE);
+        ALLOW_ADMIN.add(CommandType.CREATE_EVENT);
+        ALLOW_ADMIN.add(CommandType.CREATE_TICKET);
+        ALLOW_ADMIN.add(CommandType.DELETE_EVENT);
+        ALLOW_ADMIN.add(CommandType.DELETE_TICKET);
+        ALLOW_ADMIN.add(CommandType.EDIT_EVENT);
+        ALLOW_ADMIN.add(CommandType.EDIT_TICKET);
 
     }
 
@@ -64,7 +64,7 @@ public class FilterRole implements Filter {
         String s = req.getParameter("command");
         if (s != null) {
             String nameCommand = s.toUpperCase();
-            CommandFactory.Command command = CommandFactory.Command.valueOf(nameCommand);
+            CommandType command = CommandType.valueOf(nameCommand);
             User user = CommandHelper.findUserInSession(req);
             long roleId = user.getRoleID();
             switch ((int) roleId) {

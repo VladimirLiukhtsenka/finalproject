@@ -16,6 +16,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\B
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\ServiceException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ProfileCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\PagePath.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CommandType.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\ColumnName.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\FormParameterName.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\DeleteTicketCommand.java
@@ -55,6 +56,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\V
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketOfficeDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\PropertyLoader.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketDao.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\StartWatcher.java
 D:\Java\Projects\finalproject\src\main\java\TestUserService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\User.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\Watcher.java
