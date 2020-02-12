@@ -37,7 +37,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\PageMe
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ErrorCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewFestivalsEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\validator\FormValidator.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CommandFactory.java
 D:\Java\Projects\finalproject\src\main\java\TestTicketOfficeService.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\Event.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\EventDao.java
@@ -58,6 +57,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\PropertyL
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\StartWatcher.java
 D:\Java\Projects\finalproject\src\main\java\TestUserService.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CommandProvider.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\User.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\Watcher.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTicketOfficeCommand.java

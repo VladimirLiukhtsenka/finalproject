@@ -10,7 +10,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="name">Name</label>
             <div class="col-md-4">
-                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" maxlength=20 pattern="^[\wа-яА-ЯёЁ]{3,20}$">
             </div>
         </div>
 
@@ -34,7 +34,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="date">Date</label>
             <div class="col-md-4">
-                <input id="date" name="date" type="text" placeholder="" class="form-control input-md" required="">
+                <input id="date" name="date" type="text" placeholder="" class="form-control input-md" required=""pattern="^\d{4}-\d{2}-\d{2}$">
                 <span class="help-block">date format yyyy-MM-dd HH:mm:ss</span>
             </div>
         </div>

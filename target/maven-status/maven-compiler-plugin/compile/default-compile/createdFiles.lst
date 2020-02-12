@@ -66,9 +66,9 @@ TestEventService.class
 com\liukhtenko\ticket\entity\TypeSeat.class
 com\liukhtenko\ticket\command\CommandType$15.class
 com\liukhtenko\ticket\dao\EntityTransaction.class
+com\liukhtenko\ticket\command\CommandProvider$1.class
 com\liukhtenko\ticket\validator\FormValidator.class
 TestTypeEvent.class
-com\liukhtenko\ticket\command\CommandFactory.class
 TestTicketService.class
 com\liukhtenko\ticket\command\CommandHelper.class
 com\liukhtenko\ticket\command\CommandType$18.class
@@ -92,5 +92,5 @@ com\liukhtenko\ticket\service\impl\TicketOfficeService.class
 com\liukhtenko\ticket\command\CommandType$9.class
 com\liukhtenko\ticket\exception\PoolException.class
 com\liukhtenko\ticket\service\impl\EventService.class
-com\liukhtenko\ticket\command\CommandFactory$1.class
 com\liukhtenko\ticket\command\CommandType$13.class
+com\liukhtenko\ticket\command\CommandProvider.class
