@@ -3,29 +3,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
 <%@ include file="include/head.jsp" %>
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript">
-
-            var auto_refresh = setInterval(
-            function ()
-            {
-                $('#load_me').load('/FrontController').fadeIn("slow");
-            }, 1);
-        </script>
 <body>
-<% response.setIntHeader("Refresh", 1);%>
     <%@ include file="include/menu.jsp" %>
+    <script type="text/javascript">
+        setInterval(function () {
+         date = new Date(),
+         h = date.getHours(),
+         m = date.getMinutes(),
+         s = date.getSeconds(),
+         h = (h < 10) ? '0' + h : h,
+         m = (m < 10) ? '0' + m : m,
+         s = (s < 10) ? '0' + s : s,
+         document.getElementById('time').innerHTML = h + ':' + m + ':' + s;
+        }, 1000);
+    </script>
     <b><hr/><h2 align="center">Welcome</h2><hr/></b>
-
-    <c:set var = "id" scope = "session" value = "${user.id}"/>
-    <c:if test = "${id == 1}">
-    </c:if>
-    <div id="load_me">
-     <ctg:info-time />
-    </div>
-
-
+    <b><hr/><h2 align="center"><ctg:info-time /></h2><hr/></b>
+    <b><hr/><h2 align="center"><span id="time">00:00:00</span></h2><hr/></b>
     <%@ include file="include/footer.jsp" %>
 </body>
 </html>
