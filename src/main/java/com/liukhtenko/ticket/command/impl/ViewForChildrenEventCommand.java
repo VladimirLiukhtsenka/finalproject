@@ -8,6 +8,7 @@ import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,11 +26,12 @@ public class ViewForChildrenEventCommand extends Command {
             List<Event> events = eventService.findEventByType(TypeEvent.FOR_CHILDREN.getValue());
             request.setAttribute(FormParameterName.FORM_PARAM_EVENTS, events);
         } catch (ServiceException e) {
-            request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 02.02.2020
+            logger.log(Level.WARN, "Error in ViewForChildrenEventCommand", e);
+            request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view for children events.");
             page = PagePath.PAGE_ERROR;
             return page;
         }
 
-        return PagePath.PAGE_FOR_CHILDREN_EVENTS; // FIXME: 02.02.2020
-    }
+        return PagePath.PAGE_FOR_CHILDREN_EVENTS;
+}
 }

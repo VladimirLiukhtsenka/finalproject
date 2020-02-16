@@ -8,49 +8,61 @@ import com.liukhtenko.ticket.entity.TypeEvent;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
+import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.List;
 
 public class CreateEventCommand extends Command {
     static Logger logger = LogManager.getLogger();
+
     @Override
     public String execute(HttpServletRequest request) {
-        User user = CommandHelper.findUserInSession(request);
         String page = null;
         if (!FormValidator.isPost(request)
-         || (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_ADD_EVENT) != null))
-        {
+                || (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_ADD_EVENT) != null)) {
             page = PagePath.PAGE_CREATE_EVENT;
         } else {
             EventService eventService = new EventService();
             Event event = new Event();
             try {
-             //   event.setId(1); // FIXME: 08.02.2020 возможно не нужен
-                String name = request.getParameter(ColumnName.NAME); // FIXME: 02.02.2020  valid
-                event.setName(name);
+                String name = request.getParameter(ColumnName.NAME);
+                if (FormValidator.isValidString(name, FormRegexValidator.EVENT_NAME)) {
+                    event.setName(name);
+                }
                 String address = request.getParameter(ColumnName.ADDRESS);
-                event.setAddress(address);
+                if (FormValidator.isValidString(address, FormRegexValidator.EVENT_ADDRESS)) {
+                    event.setAddress(address);
+                }
                 String description = request.getParameter(ColumnName.DESCRIPTION);
-                event.setDescription(description);
+                if (FormValidator.isValidString(description, FormRegexValidator.EVENT_DESCRIPTION)) {
+                    event.setDescription(description);
+                }
                 TypeEvent typeEvent = TypeEvent.findByType(request.getParameter(ColumnName.TYPE_EVENT));
                 event.setTypeOfEvent(typeEvent);
                 String date = request.getParameter(ColumnName.DATE);
                 if (FormValidator.isValidDate(date)) {
-                    Date moment = EventDao.transformDate(date);  // FIXME: 02.02.2020 method replace
+                    Date moment = EventDao.transformDate(date);
                     event.setDate(moment);
                 }
                 if (eventService.createEvent(event)) {
-                    page = PagePath.PAGE_EDIT_EVENTS; // FIXME: 02.02.2020 page administrator
+                    List<Event> events = eventService.findAllEvents();
+                    HttpSession session = request.getSession();
+                    session.setAttribute(FormParameterName.FORM_PARAM_EVENTS, events);
+                    page = PagePath.PAGE_EDIT_EVENTS;
                     return page;
                 }
             } catch (ServiceException | ParseException e) {
-                request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 02.02.2020
-                return PagePath.PAGE_CREATE_EVENT; // FIXME: 02.02.2020
+                logger.log(Level.ERROR, "Error in CreateEventCommand", e);
+                request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible create event.");
+                return PagePath.PAGE_CREATE_EVENT;
             }
         }
 

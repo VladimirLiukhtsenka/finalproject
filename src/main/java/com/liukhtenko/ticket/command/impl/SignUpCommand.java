@@ -9,6 +9,7 @@ import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.UserService;
 import com.liukhtenko.ticket.validator.FormValidator;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,7 +35,7 @@ public class SignUpCommand extends Command {
             String password = request.getParameter(ColumnName.PASSWORD);
             String mail = request.getParameter(ColumnName.MAIL);
             Map<String, String> inputMap = new HashMap<>();
-            inputMap.put(ColumnName.PHONE, phone); // FIXME: 10.02.2020
+            inputMap.put(ColumnName.PHONE, phone);
             inputMap.put(ColumnName.NAME, name);
             inputMap.put(ColumnName.SURNAME, surName);
             inputMap.put(ColumnName.FATHER_NAME, surName);
@@ -54,19 +55,18 @@ public class SignUpCommand extends Command {
                     user.setGender(Byte.parseByte(gender));
                     user.setPassword(password);
                     user.setMail(mail);
-                    userService.createUser(user);  // FIXME: 04.02.2020
+                    userService.createUser(user);
                     page = PagePath.PAGE_LOGIN;
-                    return page;
                 } catch (ServiceException e) {
-                    request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 09.02.2020
+                    request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to signUp.");
+                    logger.log(Level.WARN, "Error in SignUpCommand", e);
                     page = PagePath.PAGE_SIGN_UP;
-                    return page; // FIXME: 28.01.2020
+                    return page;
                 }
             } else {
                 page = PagePath.PAGE_SIGN_UP;
                 request.setAttribute(PageMessage.MESSAGE, "Try signUp again");
             }
-
         }
         return page;
     }

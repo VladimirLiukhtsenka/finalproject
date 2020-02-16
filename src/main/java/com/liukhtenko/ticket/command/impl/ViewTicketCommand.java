@@ -10,6 +10,7 @@ import com.liukhtenko.ticket.entity.Ticket;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 import com.liukhtenko.ticket.service.impl.TicketService;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,24 +32,24 @@ public class ViewTicketCommand extends Command {
             HttpSession session = request.getSession();
             session.setAttribute(ColumnName.TICKET_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
-            request.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
-            request.setAttribute(PageMessage.MESSAGE, "All tickets");
+            session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
             Event event = eventService.findEventById(id);
             List<Integer> remTickets = new ArrayList<>();
             for (Ticket ticket : tickets) {
                 int rem = ticketService.numberTicketsRemaining(ticket.getId());
                 remTickets.add(rem);
             }
-            request.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remTickets);
+            session.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remTickets);
             int end = remTickets.size() > 0 ? remTickets.size() - 1 : 0;
-            request.setAttribute(FormParameterName.FORM_PARAM_END, end);
+            session.setAttribute(FormParameterName.FORM_PARAM_END, end);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {
             HttpSession session = request.getSession();
-            session.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to see tickets" + e.toString()); // FIXME: 27.01.2020 нормальную вальдац
+            session.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to see tickets");
             page = PagePath.PAGE_ERROR;
+            logger.log(Level.WARN, "Error in ViewTicketCommand", e);
             return page;
         }
-        return PagePath.PAGE_VIEW_TICKET; // FIXME: 02.02.2020
+        return PagePath.PAGE_VIEW_TICKET;
     }
 }

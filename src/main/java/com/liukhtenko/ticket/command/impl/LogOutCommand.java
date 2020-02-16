@@ -15,7 +15,6 @@ public class LogOutCommand extends Command {  // FIXME: 04.02.2020 delete
     public String execute(HttpServletRequest request) {
         String page = null;
         if (!FormValidator.isPost(request)) {
-//            return null;
             page = PagePath.PAGE_LOGOUT;
         }
         return page;

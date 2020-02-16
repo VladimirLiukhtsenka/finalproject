@@ -4,17 +4,18 @@
 <body>
     <%@ include file="include/menu.jsp" %>
     <h1 align="center">Profile</h1>
-    <p>${user.name},Hello! </p>
-    <%@ include file="include/footer.jsp" %>
+    <p align="center"><a href=do?command=Update_user>Update personal data</a></p>
+    <h2>${user.name},Hello! </h2>
     <form class="form-horizontal" action = "do?command=profile" method="POST">
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-2 control-label" for="logout"></label>
-            <div class="col-md-2">
+            <label class="col-md-0 control-label" for="logout"></label>
+            <div class="col-md-0">
                 <button id="logout" name="logout" class="btn btn-danger">Logout</button>
             </div>
         </div>
     </form>
+    <%@ include file="include/footer.jsp" %>
     <h2 align="center">Your tickets</h2>
     <div class="row">
                 <div class="col-md-2"><b>Name</b></div>

@@ -15,11 +15,10 @@ import javax.servlet.http.HttpSession;
 public class AdminProfileCommand extends Command {
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
+        String page = null;
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_ADMIN_PROFILE;
-            return page;
-        } else page = PagePath.PAGE_LOGIN;
+        }
         if (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_LOGOUT) != null) {
             HttpSession session = request.getSession();
             session.invalidate();

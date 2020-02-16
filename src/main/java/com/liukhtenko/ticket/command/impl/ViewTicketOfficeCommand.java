@@ -7,6 +7,7 @@ import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.TicketOffice;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketOfficeService;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,11 +25,11 @@ public class ViewTicketOfficeCommand extends Command {
             List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
             request.setAttribute(FormParameterName.FORM_PARAM_TICKET_OFFICES, ticketOffices);
         } catch (ServiceException e) {
-            request.setAttribute(PageMessage.MESSAGE_ERROR, e.toString()); // FIXME: 02.02.2020
+            logger.log(Level.WARN, "Error in ViewTicketOfficeCommand", e);
+            request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view ticket office.");
             page = PagePath.PAGE_ERROR;
             return page;
         }
-
-        return PagePath.PAGE_VIEW_TICKET_OFFICE; // FIXME: 02.02.2020
+        return PagePath.PAGE_VIEW_TICKET_OFFICE;
     }
 }

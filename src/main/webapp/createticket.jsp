@@ -30,13 +30,13 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="price">Price BYN</label>
         <div class="col-md-4">
-        <input id="price" name="price" type="text" placeholder="" class="form-control input-md" required="">
+        <input id="price" name="price" type="text" placeholder="" class="form-control input-md" required="" pattern="(\d{1,4}(\.\d{1,2})?)">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="number_of_tickets">Number of tickets</label>
         <div class="col-md-4">
-        <input id="number_of_tickets" name="number_of_tickets" type="text" placeholder="" class="form-control input-md" required="">
+        <input id="number_of_tickets" name="number_of_tickets" type="text" placeholder="" class="form-control input-md" required="" pattern="(\d{1,7})">
         </div>
      </div>
         <!-- Button -->

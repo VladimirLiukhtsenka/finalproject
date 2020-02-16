@@ -9,7 +9,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="name">Name*</label>
             <div class="col-md-4">
-                <input id="name" name="name" type="text" value="${name}" class="form-control input-md" required=""><h5 style="color:#ff0000">${errorname}</h5>
+                <input id="name" name="name" type="text" value="${name}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorname}</h5>
             </div>
         </div>
 
@@ -17,7 +17,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="surname">Surname*</label>
             <div class="col-md-4">
-                <input id="surname" name="surname" type="text" value="${surname}" class="form-control input-md" required=""><h5 style="color:#ff0000">${errorsurname}</h5>
+                <input id="surname" name="surname" type="text" value="${surname}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorsurname}</h5>
             </div>
         </div>
 
@@ -25,7 +25,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="father name">Father name*</label>
             <div class="col-md-4">
-                <input id="father_name" name="father_name" type="text" value="${father_name}" class="form-control input-md" required=""><h5 style="color:#ff0000">${errorFatherName}</h5>
+                <input id="father_name" name="father_name" type="text" value="${father_name}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorFatherName}</h5>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="mail">Mail*</label>
             <div class="col-md-4">
-                <input id="mail" name="mail" type="text" value="${mail}" class="form-control input-md" required=""><h5 style="color:#ff0000">${errormail}</h5>
+                <input id="mail" name="mail" type="text" value="${mail}" class="form-control input-md" required="" maxlength=30 pattern="^[\w-\+]+(\.[\w-]+)*@[\w-]+(\.[\w]+)*(\.[a-zA-Z]{2,})$"><h5 style="color:#ff0000">${errormail}</h5>
             </div>
         </div>
 
@@ -53,7 +53,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="phone">Phone*</label>
             <div class="col-md-4">
-                <input id="phone" name="phone" type="text" value="${phone}" class="form-control input-md" required=""><h5 style="color:#ff0000">${errorphone}</h5>
+                <input id="phone" name="phone" type="text" value="${phone}" class="form-control input-md" required="" maxlength=13 pattern="^([+])*[\d]{12,13}$"><h5 style="color:#ff0000">${errorphone}</h5>
                 <span class="help-block">for example +375251234567</span>
             </div>
         </div>
@@ -62,7 +62,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="password">Password*</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" value="${password}" class="form-control input-md" required=""><h5 style="color:#ff0000">${errorpassword}</h5>
+                <input id="password" name="password" type="password" value="${password}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{8,45}$"><h5 style="color:#ff0000">${errorpassword}</h5>
                 <span class="help-block">no less than 8 characters</span>
             </div>
         </div>

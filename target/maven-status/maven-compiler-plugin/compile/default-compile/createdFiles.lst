@@ -20,6 +20,7 @@ TestUserService.class
 com\liukhtenko\ticket\command\CommandType$11.class
 com\liukhtenko\ticket\service\EventServiceInterface.class
 com\liukhtenko\ticket\filter\FilterEncoding.class
+com\liukhtenko\ticket\command\CommandType$23.class
 com\liukhtenko\ticket\command\impl\ViewConcertsEventCommand.class
 com\liukhtenko\ticket\command\FormParameterName.class
 com\liukhtenko\ticket\service\TicketOfficeInterface.class
@@ -92,5 +93,6 @@ com\liukhtenko\ticket\service\impl\TicketOfficeService.class
 com\liukhtenko\ticket\command\CommandType$9.class
 com\liukhtenko\ticket\exception\PoolException.class
 com\liukhtenko\ticket\service\impl\EventService.class
+com\liukhtenko\ticket\command\impl\UpdateUserCommand.class
 com\liukhtenko\ticket\command\CommandType$13.class
 com\liukhtenko\ticket\command\CommandProvider.class

@@ -108,6 +108,11 @@ public enum CommandType {
             this.command = new BuyTicketCommand();
         }
     },
+    UPDATE_USER {
+        {
+            this.command = new UpdateUserCommand();
+        }
+    },
     ERROR {
         {
             this.command = new ErrorCommand();

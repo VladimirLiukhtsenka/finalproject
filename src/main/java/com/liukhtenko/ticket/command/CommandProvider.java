@@ -51,6 +51,8 @@ public class CommandProvider {
                 return CommandType.DELETE_TICKET.command;
             case BUY_TICKET:
                 return CommandType.BUY_TICKET.command;
+            case UPDATE_USER:
+                return CommandType.UPDATE_USER.command;
             default:
                 return CommandType.ERROR.command;
         }

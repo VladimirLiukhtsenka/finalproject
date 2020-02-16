@@ -37,21 +37,21 @@ public class FrontController extends HttpServlet {
         processRequest(req, resp);
     }
 
-    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException { // FIXME: 11.02.2020 
+    private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String reqParameter = req.getParameter("command");
         String nameCommand = reqParameter.toUpperCase();
         Command command = CommandProvider.defineFrom(nameCommand);
         String page = command.execute(req);
         if (page != null) {
             if (FormValidator.isPost(req) && req.getAttribute(PageMessage.MESSAGE_ERROR) == null
-                    && req.getAttribute(PageMessage.MESSAGE) == null) { // FIXME: 04.02.2020
+                    && req.getAttribute(PageMessage.MESSAGE) == null) {
                 resp.sendRedirect(req.getContextPath() + page);
             } else {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
                 dispatcher.forward(req, resp);
             }
         } else {
-            page = PagePath.PAGE_ERROR;  // FIXME: 04.02.2020 
+            page = PagePath.PAGE_ERROR;
             resp.sendRedirect(req.getContextPath() + page);
         }
     }

@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.filter;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.CommandType;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -42,6 +45,7 @@ public class FilterRole implements Filter {
         ALLOW_USER.add(CommandType.VIEW_TICKET);
         ALLOW_USER.add(CommandType.BUY_TICKET);
         ALLOW_USER.add(CommandType.PROFILE);
+        ALLOW_USER.add(CommandType.UPDATE_USER);
 
         ALLOW_ADMIN.addAll(ALLOW_USER);
         ALLOW_ADMIN.remove(CommandType.BUY_TICKET);

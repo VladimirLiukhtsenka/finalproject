@@ -52,12 +52,11 @@ public class LoginCommand extends Command {
                     page = PagePath.PAGE_PROFILE;
                     long userId = user.getId();
                     List<List<String>> userTickets = ticketService.printTickets(userId);
-                    request.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
-                    request.setAttribute(PageMessage.MESSAGE, "Have a great shopping!");
+                    session.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
                 }
             } catch (ServiceException e) {
-                logger.log(Level.INFO, "incorrect data");
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "incorrect data" + e.toString()); // FIXME: 08.02.2020
+                logger.log(Level.INFO, "Incorrect data" + e.toString());
+                request.setAttribute(PageMessage.MESSAGE_ERROR, "Incorrect data");
                 page = PagePath.PAGE_LOGIN;
             }
         }

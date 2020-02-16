@@ -5,6 +5,7 @@ import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -15,20 +16,19 @@ public class DeleteTicketCommand extends Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        User user = CommandHelper.findUserInSession(request);
         String page = null;
         if (request.getParameter(FormParameterName.FORM_PARAM_DELETE_TICKET) != null) {
             TicketService ticketService = new TicketService();
-            long id = Long.parseLong(request.getParameter(ColumnName.ID)); // FIXME: 03.02.2020
+            long id = Long.parseLong(request.getParameter(ColumnName.ID));
             try {
                 ticketService.deleteTicketById(id);
             } catch (ServiceException e) {
-                page = PagePath.PAGE_ERROR; // FIXME: 03.02.2020
+                page = PagePath.PAGE_ERROR;
                 request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to delete ticket");
+                logger.log(Level.ERROR, "Error in DeleteTicketCommand", e);
                 return page;
             }
-            page = PagePath.PAGE_EDIT_TICKET; // FIXME: 03.02.2020
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Event deleted");
+            page = PagePath.PAGE_EDIT_TICKET;
         }
         return page;
     }

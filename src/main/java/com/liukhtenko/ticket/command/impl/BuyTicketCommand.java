@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class BuyTicketCommand extends Command {
@@ -25,11 +26,11 @@ public class BuyTicketCommand extends Command {
             long ticketId = Long.parseLong(request.getParameter(ColumnName.TICKET_ID));
             ticketService.buyTicket(userId, ticketId);
             List<List<String>> userTickets = ticketService.printTickets(userId);
-            request.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
+            HttpSession session = request.getSession();
+            session.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
             page = PagePath.PAGE_PROFILE;
-            request.setAttribute(PageMessage.MESSAGE, "You have successfully bought a ticket!");
         } catch (NumberFormatException | ServiceException e) {
-            logger.log(Level.DEBUG, "Impossible to buy ticket for" + user, e);
+            logger.log(Level.WARN, "Impossible to buy ticket for" + user, e);
             request.setAttribute(PageMessage.MESSAGE_ERROR, "Unfortunately it is impossible to buy a ticket");
             page = PagePath.PAGE_ERROR;
         }

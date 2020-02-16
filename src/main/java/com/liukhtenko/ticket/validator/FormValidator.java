@@ -11,7 +11,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-// FIXME: 24.01.2020 ServiceException?? 3.Можно в сервис валидацию
 public class FormValidator {
 
     public static boolean isValidString(String value, String pattern) {
@@ -21,6 +20,15 @@ public class FormValidator {
     public static boolean isValidNumber(String value) throws ServiceException {
         try {
             Long.parseLong(value);
+        } catch (NumberFormatException e) {
+            throw new ServiceException("Wrong data");
+        }
+        return true;
+    }
+
+    public static boolean isValidPrice(String value) throws ServiceException {
+        try {
+            Double.parseDouble(value);
         } catch (NumberFormatException e) {
             throw new ServiceException("Wrong data");
         }

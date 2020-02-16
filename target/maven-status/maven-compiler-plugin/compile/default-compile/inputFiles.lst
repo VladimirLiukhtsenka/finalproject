@@ -57,6 +57,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\PropertyL
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketDao.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\StartWatcher.java
 D:\Java\Projects\finalproject\src\main\java\TestUserService.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\UpdateUserCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\CommandProvider.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\User.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\Watcher.java

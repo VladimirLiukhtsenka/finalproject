@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command.impl;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PageMessage;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
@@ -18,26 +21,25 @@ public class ProfileCommand extends Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
-        User user = CommandHelper.findUserInSession(request);
+        String page = null;
+        User user = (User) request.getSession().getAttribute(FormParameterName.FORM_PARAM_USER);
+        HttpSession session = request.getSession();
         if (!FormValidator.isPost(request)) {
             TicketService ticketService = new TicketService();
             try {
                 long userId = user.getId();
                 List<List<String>> userTickets = ticketService.printTickets(userId);
-                request.setAttribute("userTickets", userTickets);
+                session.setAttribute("userTickets", userTickets);
                 page = PagePath.PAGE_PROFILE;
-                request.setAttribute(PageMessage.MESSAGE, "Have a great shopping!");
             } catch (NumberFormatException | ServiceException e) {
                 logger.log(Level.DEBUG, "Impossible to find ticket fot" + user, e);
                 request.setAttribute(PageMessage.MESSAGE_ERROR, "Unfortunately it is impossible to buy a ticket");
                 page = PagePath.PAGE_ERROR;
             }
-            page = PagePath.PAGE_PROFILE;
             return page;
-        } else page = PagePath.PAGE_LOGIN;
+        }
         if (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_LOGOUT) != null) {
-            HttpSession session = request.getSession();
+            session = request.getSession();
             session.invalidate();
             page = PagePath.PAGE_LOGIN;
             return page;
