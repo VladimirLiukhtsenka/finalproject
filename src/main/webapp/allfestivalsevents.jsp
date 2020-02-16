@@ -15,7 +15,7 @@
     </div>
     <c:forEach items="${events}" var="event">
      <form class="form-horizontal"action= "do?command=view_ticket" method="POST">
-            <div class="row">
+            <div class="row" style ="height: 100px;">
                 <div class="col-md-2"></div>
                 <div class="col-md-2">${event.name}</div>
                 <div class="col-md-2">${event.address}</div>
@@ -32,7 +32,27 @@
                 </div>
              </div>
          </form>
-        </c:forEach>
+    </c:forEach>
 </div>
+     <table style = "margin: auto;padding: 0;">
+            <tr>
+                <c:if test="${currentPage != 1}">
+                    <td><a href="do?command=View_festivals_event&page=${currentPage - 1}">Previous</a></td>
+                </c:if>
+                <c:forEach begin="1" end="${noOfPages}" var="i">
+                    <c:choose>
+                        <c:when test="${currentPage == i}">
+                            <td style = "padding: 6px;">${i}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td style = "padding: 6px;"><a href="do?command=View_festivals_event&page=${i}">${i}</a></td>
+                        </c:otherwise>
+                    </c:choose>
+                </c:forEach>
+                <c:if test="${currentPage < noOfPages}">
+                    <td><a href="do?command=View_festivals_event&page=${currentPage + 1}">Next</a></td>
+                </c:if>
+            </tr>
+    </table>
 </body>
 </html>

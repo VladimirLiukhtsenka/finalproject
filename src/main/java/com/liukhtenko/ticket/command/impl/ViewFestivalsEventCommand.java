@@ -1,9 +1,6 @@
 package com.liukhtenko.ticket.command.impl;
 
-import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
-import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
 import com.liukhtenko.ticket.exception.ServiceException;
@@ -24,7 +21,7 @@ public class ViewFestivalsEventCommand extends Command {
         EventService eventService = new EventService();
         try {
             List<Event> events = eventService.findEventByType(TypeEvent.FESTIVALS.getValue());
-            request.setAttribute(FormParameterName.FORM_PARAM_EVENTS, events);
+            CommandHelper.ViewEvents(request, events);
         } catch (ServiceException e) {
             logger.log(Level.WARN, "Error in ViewFestivalsEventCommand", e);
             request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view festivals.");
