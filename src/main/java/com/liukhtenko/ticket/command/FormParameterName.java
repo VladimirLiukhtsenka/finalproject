@@ -23,11 +23,17 @@ public class FormParameterName {
     public static final String FORM_PARAM_ERROR_FATHER_NAME= "errorFatherName";
     public static final String FORM_PARAM_ERROR_PASSWORD= "errorpassword";
     public static final String FORM_PARAM_ERROR_MAIL= "errormail";
+    public static final String FORM_PARAM_TICKET_SIZE= "TicketsSize";
     public static final String FORM_PARAM_PAGE= "page";
     public static final String FORM_PARAM_COUNT_PAGES= "noOfPages";
     public static final String FORM_PARAM_CURRENT_PAGE= "currentPage";
+    public static final String MESSAGE_DIGEST= "MD5";
+    public static final int HEXADECIMAL_FORMAT= 0xff;
+    public static final int HEXADECIMAL_FORMAT_ADD= 0x100;
+    public static final int RADIX= 16;
     public static final int ADMIN_ID = 1;
     public static final int FIRST_PAGE = 1;
+    public static final int OFFSET = 1;
     public static final int USER_ID = 2;
     public static final int RECORDS_PER_PAGE = 3;
     public static final int GUEST_ID = 0;

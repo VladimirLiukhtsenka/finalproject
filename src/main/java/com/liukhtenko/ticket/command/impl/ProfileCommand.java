@@ -29,7 +29,8 @@ public class ProfileCommand extends Command {
             try {
                 long userId = user.getId();
                 List<List<String>> userTickets = ticketService.printTickets(userId);
-                session.setAttribute("userTickets", userTickets);
+                session.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
+                session.setAttribute(FormParameterName.FORM_PARAM_TICKET_SIZE, userTickets.size());
                 page = PagePath.PAGE_PROFILE;
             } catch (NumberFormatException | ServiceException e) {
                 logger.log(Level.DEBUG, "Impossible to find ticket fot" + user, e);

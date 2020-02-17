@@ -8,6 +8,7 @@ import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.UserService;
+import com.liukhtenko.ticket.validator.EncryptionPassword;
 import com.liukhtenko.ticket.validator.FormValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
@@ -53,6 +54,7 @@ public class SignUpCommand extends Command {
                     user.setSurName(surName);
                     user.setFatherName(fatherName);
                     user.setGender(Byte.parseByte(gender));
+                    password = EncryptionPassword.encrypt(password);
                     user.setPassword(password);
                     user.setMail(mail);
                     userService.createUser(user);

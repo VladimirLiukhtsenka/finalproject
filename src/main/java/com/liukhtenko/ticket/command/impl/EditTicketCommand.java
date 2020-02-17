@@ -31,7 +31,7 @@ public class EditTicketCommand extends Command {
             HttpSession session = request.getSession();
             session.setAttribute(ColumnName.EVENT_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
-            request.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
+            session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
             Event event = eventService.findEventById(id);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {

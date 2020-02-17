@@ -64,6 +64,7 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\pool\Watcher.j
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTicketOfficeCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\entity\TicketOffice.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewMovieEventCommand.java
+D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\validator\EncryptionPassword.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\EditEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketOfficeInterface.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\TicketServiceInterface.java

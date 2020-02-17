@@ -54,8 +54,7 @@ public class CreateEventCommand extends Command {
                 }
                 if (eventService.createEvent(event)) {
                     List<Event> events = eventService.findAllEvents();
-                    HttpSession session = request.getSession();
-                    session.setAttribute(FormParameterName.FORM_PARAM_EVENTS, events);
+                    CommandHelper.ViewEvents(request, events);
                     page = PagePath.PAGE_EDIT_EVENTS;
                     return page;
                 }

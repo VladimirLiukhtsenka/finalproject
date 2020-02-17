@@ -9,6 +9,7 @@ import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
 import com.liukhtenko.ticket.service.impl.UserService;
+import com.liukhtenko.ticket.validator.EncryptionPassword;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
 import org.apache.logging.log4j.Level;
@@ -37,6 +38,7 @@ public class LoginCommand extends Command {
                 String password = FormParameterName.DEFAULT_VALUE;
                 if (FormValidator.isValidString(request.getParameter(ColumnName.PASSWORD), FormRegexValidator.PASSWORD)) {
                     password = request.getParameter(ColumnName.PASSWORD);
+                    password = EncryptionPassword.encrypt(password);
                 }
                 TicketService ticketService = new TicketService();
                 UserService userService = new UserService();
@@ -53,6 +55,7 @@ public class LoginCommand extends Command {
                     long userId = user.getId();
                     List<List<String>> userTickets = ticketService.printTickets(userId);
                     session.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
+                    session.setAttribute(FormParameterName.FORM_PARAM_TICKET_SIZE, userTickets.size());
                 }
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "Incorrect data" + e.toString());

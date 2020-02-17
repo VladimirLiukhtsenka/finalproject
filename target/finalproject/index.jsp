@@ -2,9 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
-<%@ include file="include/head.jsp" %>
+<%@ include file="/pages/include/head.jsp" %>
 <body>
-    <%@ include file="include/menu.jsp" %>
+    <%@ include file="/pages/include/menu.jsp" %>
     <script type="text/javascript">
         setInterval(function () {
          date = new Date(),
@@ -20,6 +20,6 @@
     <b><hr/><h2 align="center">Welcome</h2><hr/></b>
     <b><hr/><h2 align="center"><ctg:info-time /></h2><hr/></b>
     <b><hr/><h2 align="center"><span id="time">00:00:00</span></h2><hr/></b>
-    <%@ include file="include/footer.jsp" %>
+    <%@ include file="/pages/include/footer.jsp" %>
 </body>
 </html>

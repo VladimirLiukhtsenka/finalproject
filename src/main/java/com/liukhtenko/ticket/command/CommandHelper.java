@@ -4,6 +4,7 @@ import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class CommandHelper {
         return user;
     }
     public static void ViewEvents(HttpServletRequest request, List <Event> listAllEvents){
+        HttpSession session = request.getSession();
         int page = FormParameterName.FIRST_PAGE;
         int recordsPerPage = FormParameterName.RECORDS_PER_PAGE;
         if (request.getParameter(FormParameterName.FORM_PARAM_PAGE) != null) {
@@ -30,8 +32,8 @@ public class CommandHelper {
         }
         int noOfRecords = listAllEvents.size();
         int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-        request.setAttribute(FormParameterName.FORM_PARAM_EVENTS, eventsToPage);
-        request.setAttribute(FormParameterName.FORM_PARAM_COUNT_PAGES, noOfPages);
-        request.setAttribute(FormParameterName.FORM_PARAM_CURRENT_PAGE, page);
+        session.setAttribute(FormParameterName.FORM_PARAM_EVENTS, eventsToPage);
+        session.setAttribute(FormParameterName.FORM_PARAM_COUNT_PAGES, noOfPages);
+        session.setAttribute(FormParameterName.FORM_PARAM_CURRENT_PAGE, page);
     }
 }
