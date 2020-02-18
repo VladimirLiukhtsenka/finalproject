@@ -2,6 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
+<style>
+body {
+    background-size: cover;
+    background-image: url("images/indexback.jpg");
+}
+</style>
 <%@ include file="/pages/include/head.jsp" %>
 <body>
     <%@ include file="/pages/include/menu.jsp" %>
@@ -17,9 +23,10 @@
          document.getElementById('time').innerHTML = h + ':' + m + ':' + s;
         }, 1000);
     </script>
-    <b><hr/><h2 align="center">Welcome</h2><hr/></b>
-    <b><hr/><h2 align="center"><ctg:info-time /></h2><hr/></b>
-    <b><hr/><h2 align="center"><span id="time">00:00:00</span></h2><hr/></b>
+    <b><h2 align="center">Welcome</h2></b>
+    <b><h3 align="center">Just choose a ticket and pick it up absolutely free.<br> Please enjoy!</h3></b>
+    <b><h4 align="center"><ctg:info-time /></h4></b>
+    <b><h4 align="center"><span id="time">00:00:00</span></h4></b>
     <%@ include file="/pages/include/footer.jsp" %>
 </body>
 </html>
