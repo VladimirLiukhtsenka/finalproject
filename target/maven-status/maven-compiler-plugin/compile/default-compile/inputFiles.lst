@@ -49,7 +49,6 @@ D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\service\EventS
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewTheaterEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\exception\DaoException.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\EntityTransaction.java
-D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\LogOutCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\validator\FormRegexValidator.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\command\impl\ViewForChildrenEventCommand.java
 D:\Java\Projects\finalproject\src\main\java\com\liukhtenko\ticket\dao\impl\TicketOfficeDao.java

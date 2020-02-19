@@ -5,7 +5,7 @@
     <%@ include file="include/menu.jsp" %>
     <h1 align="center">Profile</h1>
     <p align="center"><a href=do?command=Update_user>Update personal data</a></p>
-    <h2>${user.name},Hello! </h2>
+    <h3>${user.name},Hello! </h3>
     <form class="form-horizontal" action = "do?command=profile" method="POST">
         <!-- Button -->
         <div class="form-group">
@@ -18,7 +18,7 @@
     <%@ include file="include/footer.jsp" %>
     <c:set var = "size" scope = "session" value = "${TicketsSize}"/>
     <c:if test = "${size > 0}">
-    <h2 align="center">Your tickets</h2>
+    <h3 align="center">Your tickets</h3>
     <div class="row">
                 <div class="col-md-2"><b>Name</b></div>
                 <div class="col-md-2"><b>Address</b></div>

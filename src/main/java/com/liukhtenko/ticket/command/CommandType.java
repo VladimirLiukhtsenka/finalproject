@@ -8,11 +8,6 @@ public enum CommandType {
             this.command = new LoginCommand();
         }
     },
-    LOGOUT {
-        {
-            this.command = new LogOutCommand();
-        }
-    },
     SIGN_UP {
         {
             this.command = new SignUpCommand();

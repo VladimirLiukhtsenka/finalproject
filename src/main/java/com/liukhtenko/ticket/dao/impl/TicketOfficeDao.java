@@ -48,11 +48,6 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
     }
 
     @Override
-    public TicketOffice find(String s) throws DaoException {
-        return null; // FIXME: 31.01.2020
-    }
-
-    @Override
     public boolean delete(String phone) throws DaoException {
         boolean flag;
         PreparedStatement statement = null;
@@ -66,12 +61,6 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
             close(statement);
         }
         return flag;
-    }
-
-    @Override
-    public boolean delete(TicketOffice entity) throws DaoException {
-
-        return false;// FIXME: 31.01.2020
     }
 
     @Override
@@ -95,6 +84,6 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
 
     @Override
     public boolean update(TicketOffice entity) throws DaoException {
-        return false;// FIXME: 31.01.2020
+        throw  new DaoException("Impossible to update TicketOffice");// FIXME: 31.01.2020
     }
 }

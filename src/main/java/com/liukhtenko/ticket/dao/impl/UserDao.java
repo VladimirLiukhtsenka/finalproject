@@ -37,16 +37,7 @@ public class UserDao extends AbstractDao<Long, User> {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_SELECT_ALL_USERS);
             while (resultSet.next()) {
-                User user = new User();
-                user.setId(resultSet.getLong(ColumnName.ID));
-                user.setPhone(resultSet.getString(ColumnName.PHONE));
-                user.setName(resultSet.getString(ColumnName.NAME));
-                user.setSurName(resultSet.getString(ColumnName.SURNAME));
-                user.setFatherName(resultSet.getString(ColumnName.FATHER_NAME));
-                user.setGender(resultSet.getByte(ColumnName.GENDER));
-                user.setPassword(resultSet.getString(ColumnName.PASSWORD));
-                user.setMail(resultSet.getString(ColumnName.MAIL));
-                user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+                User user = findUser(resultSet);
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -58,7 +49,6 @@ public class UserDao extends AbstractDao<Long, User> {
         return users;
     }
 
-    @Override
     public User find(Long id) throws DaoException {
         User user = null;
         PreparedStatement statement = null;
@@ -68,16 +58,9 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setLong(1, id);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                user = new User();
-                user.setId(resultSet.getLong(ColumnName.ID));
-                user.setPhone(resultSet.getString(ColumnName.PHONE));
-                user.setName(resultSet.getString(ColumnName.NAME));
-                user.setSurName(resultSet.getString(ColumnName.SURNAME));
-                user.setFatherName(resultSet.getString(ColumnName.FATHER_NAME));
-                user.setGender(resultSet.getByte(ColumnName.GENDER));
-                user.setPassword(resultSet.getString(ColumnName.PASSWORD));
-                user.setMail(resultSet.getString(ColumnName.MAIL));
-                user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+                user = findUser(resultSet);
+            }else{
+                throw new DaoException("Unable to find user");
             }
         } catch (SQLException e) {
             throw new DaoException("Unable to find user", e);
@@ -98,18 +81,9 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setString(2, password);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                user = new User();
-                user.setId(resultSet.getLong(ColumnName.ID));
-                user.setPhone(resultSet.getString(ColumnName.PHONE));
-                user.setName(resultSet.getString(ColumnName.NAME)); // FIXME: 31.01.2020 В ОДИН МЕТОД
-                user.setSurName(resultSet.getString(ColumnName.SURNAME));
-                user.setFatherName(resultSet.getString(ColumnName.FATHER_NAME));
-                user.setGender(resultSet.getByte(ColumnName.GENDER));
-                user.setPassword(resultSet.getString(ColumnName.PASSWORD));
-                user.setMail(resultSet.getString(ColumnName.MAIL));
-                user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+                user = findUser(resultSet);
             }else{
-                throw new DaoException("Unable to find user");  // FIXME: 02.02.2020
+                throw new DaoException("Unable to find user");
             }
         } catch (SQLException e) {
             throw new DaoException("Unable to find user", e);
@@ -134,12 +108,6 @@ public class UserDao extends AbstractDao<Long, User> {
             close(statement);
         }
         return flag;
-    }
-
-
-    @Override
-    public boolean delete(User entity) throws DaoException {
-        return false; // FIXME: 23.01.2020 удалить метод из AbstractDAO
     }
 
     @Override
@@ -189,4 +157,19 @@ public class UserDao extends AbstractDao<Long, User> {
         }
         return flag;
     }
+
+    private User findUser (ResultSet resultSet) throws SQLException {
+        User user = new User();
+        user.setId(resultSet.getLong(ColumnName.ID));
+        user.setPhone(resultSet.getString(ColumnName.PHONE));
+        user.setName(resultSet.getString(ColumnName.NAME));
+        user.setSurName(resultSet.getString(ColumnName.SURNAME));
+        user.setFatherName(resultSet.getString(ColumnName.FATHER_NAME));
+        user.setGender(resultSet.getByte(ColumnName.GENDER));
+        user.setPassword(resultSet.getString(ColumnName.PASSWORD));
+        user.setMail(resultSet.getString(ColumnName.MAIL));
+        user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+        return user;
+    }
+
 }

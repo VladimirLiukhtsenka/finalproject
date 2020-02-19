@@ -64,20 +64,21 @@ public class FilterRole implements Filter {
                          FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
-        HttpSession session = req.getSession();
-        String s = req.getParameter("command");
-        if (s != null) {
-            String nameCommand = s.toUpperCase();
-            CommandType command = CommandType.valueOf(nameCommand);
-            User user = CommandHelper.findUserInSession(req);
-            long roleId = user.getRoleID();
-            switch ((int) roleId) {
-                case (FormParameterName.GUEST_ID):
-                    if (ALLOW_GUEST.contains(command)) {
-                        filterChain.doFilter(servletRequest, servletResponse);
-                    } else {
-                        logger.log(Level.INFO, "Command is not available for GUEST");
-                        resp.sendRedirect(req.getContextPath() + PagePath.PAGE_LOGIN);
+                        HttpSession session = req.getSession();
+                        String s = req.getParameter("command");
+                        if (s != null) {
+                            String nameCommand = s.toUpperCase();
+                            CommandType command = CommandType.valueOf(nameCommand);
+                            User user = CommandHelper.findUserInSession(req);
+                            long roleId = user.getRoleID();
+                            switch ((int) roleId) {
+                                case (FormParameterName.GUEST_ID):
+                                    if (ALLOW_GUEST.contains(command)) {
+                                        filterChain.doFilter(servletRequest, servletResponse);
+                                    } else {
+                                        logger.log(Level.INFO, "Command is not available for GUEST");
+                                        RequestDispatcher dispatcher = req.getServletContext().getRequestDispatcher(PagePath.PAGE_LOGIN);
+                                        dispatcher.forward(req, resp);
                     }
                     break;
                 case (FormParameterName.USER_ID):

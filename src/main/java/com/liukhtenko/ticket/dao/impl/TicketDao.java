@@ -32,7 +32,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
             "SELECT events.name, events.address, events.description, events.date,tickets.type_seat, tickets.price, user_tickets.seat_number  FROM tickets JOIN user_tickets ON user_tickets.ticket_id = tickets.id JOIN events ON tickets.event_id = events.id WHERE user_tickets.user_id =?;";
 
     public int buyTicket(long userId, long ticketId) throws DaoException {
-        if (isTicketsAvailable(ticketId)) {  // FIXME: 01.02.2020 in service or not
+        if (isTicketsAvailable(ticketId)) {
             int seatNumber;
             PreparedStatement statement = null;
             try {
@@ -60,50 +60,6 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
 
     public int numberTicketsRemaining(long ticketsId) throws DaoException {
         return findAllTicketsByTicketsId(ticketsId) - countUserTicketByTicketId(ticketsId);
-    }
-
-    private int findAllTicketsByTicketsId(long id) throws DaoException {
-        int count = 0;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.prepareStatement(SQL_FIND_NUMBER_OF_TICKETS_BY_TICKETS_ID);
-            statement.setLong(1, id);
-            resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                count = resultSet.getInt(ColumnName.NUMBER_OF_TICKETS);
-            }
-        } catch (SQLException e) {
-            throw new DaoException("Unable find all tickets by ticket id", e);
-        } finally {
-            close(resultSet);
-            close(statement);
-        }
-        return count;
-    }
-
-    private int defineSeatNumber(int lastSeatNumber) {
-        return ++lastSeatNumber;
-    }
-
-    private int countUserTicketByTicketId(long id) throws DaoException {
-        int count = 0;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        try {
-            statement = connection.prepareStatement(SQL_COUNT_USER_TICKETS_BY_TICKET_ID);
-            statement.setLong(1, id);
-            resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                count = resultSet.getInt(ColumnName.ROW_COUNT);
-            }
-        } catch (SQLException e) {
-            throw new DaoException("Unable count user ticket by ticket id", e);
-        } finally {
-            close(resultSet);
-            close(statement);
-        }
-        return count;
     }
 
 
@@ -152,12 +108,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
 
     @Override
     public List<Ticket> findAll() throws DaoException {
-        return null;
-    }
-
-    @Override
-    public Ticket find(Long aLong) throws DaoException {
-        return null;
+        throw  new DaoException("Impossible to find all tickets");// FIXME: 31.01.2020
     }
 
     @Override
@@ -174,11 +125,6 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
             close(statement);
         }
         return flag;
-    }
-
-    @Override
-    public boolean delete(Ticket entity) throws DaoException {
-        return false;
     }
 
     public boolean delete(long id, String type) throws DaoException {
@@ -218,18 +164,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
 
     @Override
     public boolean update(Ticket entity) throws DaoException {
-        return false;
-    }
-
-    private Ticket findTicket(ResultSet resultSet) throws SQLException {
-        Ticket ticket = new Ticket();
-        ticket.setId(resultSet.getLong(ColumnName.ID));
-        ticket.setEventId(resultSet.getLong(ColumnName.EVENT_ID));
-        TypeSeat typeSeat = TypeSeat.findByType(resultSet.getString(ColumnName.TYPE_SEAT));
-        ticket.setTypeSeat(typeSeat);
-        ticket.setNumberOfTickets(resultSet.getInt(ColumnName.NUMBER_OF_TICKETS));
-        ticket.setPrice(resultSet.getDouble(ColumnName.PRICE));
-        return ticket;
+        throw  new DaoException("Impossible to update Ticket");// FIXME: 31.01.2020
     }
 
     public List<List<String>> printTickets(long UserId) throws DaoException {
@@ -262,4 +197,58 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return printUserTickets;
     }
 
+    private int findAllTicketsByTicketsId(long id) throws DaoException {
+        int count = 0;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SQL_FIND_NUMBER_OF_TICKETS_BY_TICKETS_ID);
+            statement.setLong(1, id);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                count = resultSet.getInt(ColumnName.NUMBER_OF_TICKETS);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Unable find all tickets by ticket id", e);
+        } finally {
+            close(resultSet);
+            close(statement);
+        }
+        return count;
+    }
+
+    private int defineSeatNumber(int lastSeatNumber) {
+        return ++lastSeatNumber;
+    }
+
+    private int countUserTicketByTicketId(long id) throws DaoException {
+        int count = 0;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        try {
+            statement = connection.prepareStatement(SQL_COUNT_USER_TICKETS_BY_TICKET_ID);
+            statement.setLong(1, id);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                count = resultSet.getInt(ColumnName.ROW_COUNT);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("Unable count user ticket by ticket id", e);
+        } finally {
+            close(resultSet);
+            close(statement);
+        }
+        return count;
+    }
+
+    private Ticket findTicket(ResultSet resultSet) throws SQLException {
+        Ticket ticket = new Ticket();
+        ticket.setId(resultSet.getLong(ColumnName.ID));
+        ticket.setEventId(resultSet.getLong(ColumnName.EVENT_ID));
+        TypeSeat typeSeat = TypeSeat.findByType(resultSet.getString(ColumnName.TYPE_SEAT));
+        ticket.setTypeSeat(typeSeat);
+        ticket.setNumberOfTickets(resultSet.getInt(ColumnName.NUMBER_OF_TICKETS));
+        ticket.setPrice(resultSet.getDouble(ColumnName.PRICE));
+        return ticket;
+    }
 }

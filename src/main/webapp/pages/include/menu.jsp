@@ -29,7 +29,6 @@
                         <li><a href=do?command=Login>login</a></li>
                         <li><a href=do?command=Sign_Up>sign-up</a></li>
                     </c:if>
-                <!--<li><a href=do?command=Logout>logout</a></li>-->
                 <c:set var = "isUser" scope = "session" value = "${isUser}"/>
                 <c:if test = "${isUser == true}">
                     <li><a href=do?command=Profile>profile</a></li>

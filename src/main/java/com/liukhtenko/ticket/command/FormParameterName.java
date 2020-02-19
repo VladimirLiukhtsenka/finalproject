@@ -28,6 +28,9 @@ public class FormParameterName {
     public static final String FORM_PARAM_COUNT_PAGES= "noOfPages";
     public static final String FORM_PARAM_CURRENT_PAGE= "currentPage";
     public static final String MESSAGE_DIGEST= "MD5";
+    public static final String POST= "POST";
+    public static final String DATE_FORMAT= "yyyy-MM-dd HH:mm:ss";
+    public static final String SIMPLE_DATE_FORMAT= "yyyy-MM-dd";
     public static final int HEXADECIMAL_FORMAT= 0xff;
     public static final int HEXADECIMAL_FORMAT_ADD= 0x100;
     public static final int RADIX= 16;

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <footer class="navbar-bottom row-fluid">
     <div style="text-align: left;" class="container">
-        <h4>${message} </h4>
-        <h3><b>${mes_error} </b></h3>
+        <h5 align="center">${message} </h5>
+        <h4 align="center"><b>${mes_error} </b></h4>
     </div>
 </footer>

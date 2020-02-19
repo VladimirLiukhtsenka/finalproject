@@ -27,12 +27,12 @@
         </div>
     </nav>
     <h1 align="center">Admin page</h1>
-    <p>Hello! ${user.name}</p>
+    <h3>Hello! ${user.name}</h3>
     <form class="form-horizontal" action = "do?command=admin_profile" method="POST">
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-2 control-label" for="logout">Single Button</label>
-            <div class="col-md-2">
+            <label class="col-md-0 control-label" for="logout"></label>
+            <div class="col-md-0">
                 <button id="logout" name="logout" class="btn btn-danger">Logout</button>
             </div>
         </div>

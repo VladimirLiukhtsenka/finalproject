@@ -32,6 +32,7 @@ public class EventDao extends AbstractDao<Long, Event> {
     private static final String SQL_UPDATE_EVENT =
             "UPDATE events SET name=?, address=?, description=?, type_event=?, date=? WHERE id=?";
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    private static final String TIME_ZONE = "Europe/Minsk";
 
     @Override
     public List<Event> findAll() throws DaoException {
@@ -42,15 +43,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             statement = connection.createStatement();
             resultSet = statement.executeQuery(SQL_FIND_EVENT_ALL);
             while (resultSet.next()) {
-                Event event = new Event();
-                event.setId(resultSet.getLong(ColumnName.ID));
-                event.setName(resultSet.getString(ColumnName.NAME));
-                event.setAddress(resultSet.getString(ColumnName.ADDRESS));
-                event.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
-                TypeEvent typeEventInsert = TypeEvent.findByType(resultSet.getString(ColumnName.TYPE_EVENT));
-                event.setTypeOfEvent(typeEventInsert);
-                Date dateInsert = transformDate(resultSet.getString(ColumnName.DATE));
-                event.setDate(dateInsert);
+                Event event = findEvent(resultSet);
                 events.add(event);
             }
         } catch (SQLException | ParseException e) {
@@ -71,15 +64,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             statement.setString(1, typeEvent);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Event event = new Event();
-                event.setId(resultSet.getLong(ColumnName.ID));
-                event.setName(resultSet.getString(ColumnName.NAME));
-                event.setAddress(resultSet.getString(ColumnName.ADDRESS));
-                event.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
-                TypeEvent typeEventInsert = TypeEvent.findByType(resultSet.getString(ColumnName.TYPE_EVENT));
-                event.setTypeOfEvent(typeEventInsert);
-                Date dateInsert = transformDate(resultSet.getString(ColumnName.DATE));
-                event.setDate(dateInsert);
+                Event event = findEvent(resultSet);
                 events.add(event);
             }
         } catch (SQLException | ParseException e) {
@@ -100,15 +85,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             statement.setLong(1, id);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                event = new Event();
-                event.setId(resultSet.getLong(ColumnName.ID));
-                event.setName(resultSet.getString(ColumnName.NAME));
-                event.setAddress(resultSet.getString(ColumnName.ADDRESS));
-                event.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
-                TypeEvent typeEventInsert = TypeEvent.findByType(resultSet.getString(ColumnName.TYPE_EVENT));
-                event.setTypeOfEvent(typeEventInsert);
-                Date dateInsert = transformDate(resultSet.getString(ColumnName.DATE));
-                event.setDate(dateInsert);
+                event = findEvent(resultSet);
             }
         } catch (SQLException | ParseException e) {
             throw new DaoException("Unable to find event", e);
@@ -117,11 +94,6 @@ public class EventDao extends AbstractDao<Long, Event> {
             close(statement);
         }
         return event;
-    }
-
-    @Override
-    public Event find(Long aLong) throws DaoException {
-        return null;
     }
 
     @Override
@@ -141,11 +113,6 @@ public class EventDao extends AbstractDao<Long, Event> {
     }
 
     @Override
-    public boolean delete(Event entity) throws DaoException {
-        return false;
-    }
-
-    @Override
     public boolean create(Event event) throws DaoException {
         boolean flag;
         PreparedStatement statement = null;
@@ -158,7 +125,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             String date = transformDate(event.getDate());
             statement.setString(5, date);
             flag = (1 == statement.executeUpdate());
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             throw new DaoException("Unable to create event", e);
         } finally {
             close(statement);
@@ -180,7 +147,7 @@ public class EventDao extends AbstractDao<Long, Event> {
             statement.setString(5, date);
             statement.setLong(6, event.getId());
             flag = (1 == statement.executeUpdate());
-        } catch (SQLException | ParseException e) {
+        } catch (SQLException e) {
             throw new DaoException("Unable to update user", e);
         } finally {
             close(statement);
@@ -189,7 +156,7 @@ public class EventDao extends AbstractDao<Long, Event> {
     }
 
     public static Date transformDate(String date) throws ParseException { // FIXME: 02.02.2020 перенести метод
-        TimeZone tz = TimeZone.getTimeZone("Europe/Minsk");
+        TimeZone tz = TimeZone.getTimeZone(TIME_ZONE);
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setLenient(false);
         dateFormat.setTimeZone(tz);
@@ -197,9 +164,22 @@ public class EventDao extends AbstractDao<Long, Event> {
         return moment;
     }
 
-    String transformDate(Date date) throws ParseException {
+    private String transformDate(Date date) {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         String time = dateFormat.format(date);
         return time;
+    }
+
+    private Event findEvent(ResultSet resultSet) throws SQLException, ParseException {
+        Event event = new Event();
+        event.setId(resultSet.getLong(ColumnName.ID));
+        event.setName(resultSet.getString(ColumnName.NAME));
+        event.setAddress(resultSet.getString(ColumnName.ADDRESS));
+        event.setDescription(resultSet.getString(ColumnName.DESCRIPTION));
+        TypeEvent typeEventInsert = TypeEvent.findByType(resultSet.getString(ColumnName.TYPE_EVENT));
+        event.setTypeOfEvent(typeEventInsert);
+        Date dateInsert = transformDate(resultSet.getString(ColumnName.DATE));
+        event.setDate(dateInsert);
+        return event;
     }
 }

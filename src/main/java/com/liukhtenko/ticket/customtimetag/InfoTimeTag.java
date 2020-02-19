@@ -1,30 +1,32 @@
 package com.liukhtenko.ticket.customtimetag;
+import com.liukhtenko.ticket.command.FormParameterName;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.Locale;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
-public class InfoTimeTag extends TagSupport { // FIXME: 30.01.2020 upgrade
+public class InfoTimeTag extends TagSupport {
+    static Logger logger = LogManager.getLogger();
     @Override
     public int doStartTag() throws JspException {
-//        GregorianCalendar gc = new GregorianCalendar(new Locale("ru","RU")); // FIXME: 04.02.2020
-//        String time = "<hr/><h2 align=\"center\">Time :  " + gc.getTime() + " </h2><hr/>";
-       // String locale = "Locale : <b> " + Locale.getDefault() + " </b><hr/> ";
-        SimpleDateFormat frm = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat frm = new SimpleDateFormat(FormParameterName.SIMPLE_DATE_FORMAT);
         try {
             JspWriter out = pageContext.getOut();
             out.write(frm.format(new Date()));
         } catch (IOException e) {
-            throw new JspException(e.getMessage());
+            logger.log(Level.ERROR, "Incorrect work InfoTimeTag", e);
+            throw new JspException(e.getCause());
         }
         return SKIP_BODY;
     }
 
     @Override
-    public int doEndTag() throws JspException {
+    public int doEndTag() {
         return EVAL_PAGE;
     }
 }

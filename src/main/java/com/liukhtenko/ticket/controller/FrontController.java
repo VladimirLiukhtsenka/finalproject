@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "FrontController", urlPatterns = {"/do"})
+@WebServlet(name = "FrontController", urlPatterns = {"/do","/pages/do"}) // FIXME: 19.02.2020  /pages/do при redirect добавляет
 public class FrontController extends HttpServlet {
     static Logger logger = LogManager.getLogger();
 
@@ -45,7 +45,7 @@ public class FrontController extends HttpServlet {
         if (page != null) {
             if (FormValidator.isPost(req) && req.getAttribute(PageMessage.MESSAGE_ERROR) == null
                     && req.getAttribute(PageMessage.MESSAGE) == null) {
-                resp.sendRedirect(req.getContextPath() + page);
+                resp.sendRedirect(req.getContextPath().replace("/pages","") + page);
             } else {
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
                 dispatcher.forward(req, resp);

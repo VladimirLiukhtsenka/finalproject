@@ -8,7 +8,7 @@ public class StartWatcher {
     private static final int DELAY = 10;
 
     public static void start() {
-        TimerTask timerTask = new CustomTimer(); // FIXME: 10.02.2020
+        TimerTask timerTask = new CustomTimer();
         Timer timer = new Timer(true);
         timer.schedule(timerTask, DELAY, PERIOD);
     }

@@ -5,7 +5,7 @@
 <div class="container">
 <%@ include file="include/menu.jsp" %>
     <h1 align="center">View ticket</h1>
-    <p align="center">${eventName}</p>
+    <h3 align="center">${eventName}</h3>
      <div class="container">
         <div class="row">
             <div class="col-md-2"><b>Type seat</b></div>
@@ -26,7 +26,7 @@
                                        <input id="ticket_id" name="ticket_id" type="hidden" placeholder="" class="form-control input-md"
                                                required="" value="${tickets [i].id}">
                                        <div class="col-md-2">
-                                           <button id="buy ticket" name="buy ticket" class="btn btn-success">Buy ticket</button>
+                                           <button id="buy ticket" name="buy ticket" class="btn btn-success">Pick up</button>
                                        </div>
                                    </form>
                                </div>

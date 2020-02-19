@@ -37,7 +37,7 @@ public class FormValidator {
 
     public static boolean isValidDate(String value) throws ServiceException {
         try {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");// FIXME: 02.02.2020 in CONST
+            DateFormat dateFormat = new SimpleDateFormat(FormParameterName.DATE_FORMAT);
             Date moment = dateFormat.parse(value);
         } catch (ParseException e) {
             throw new ServiceException("Wrong data");
@@ -47,7 +47,7 @@ public class FormValidator {
 
 
     public static boolean isPost(HttpServletRequest req) {
-        return req.getMethod().toUpperCase().equals("POST");
+        return req.getMethod().toUpperCase().equals(FormParameterName.POST);
     }
 
     public static boolean validateSigUpForm(Map<String, String> map, HttpServletRequest request) {

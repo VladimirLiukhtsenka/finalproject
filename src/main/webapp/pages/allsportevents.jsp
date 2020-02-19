@@ -3,7 +3,7 @@
 <style>
 body {
     background-size: cover;
-    background-image: url("images/f.jpg");
+    background-image: url("images/eventsbackground.jpg");
 }
 </style>
 <%@ include file="include/head.jsp" %>

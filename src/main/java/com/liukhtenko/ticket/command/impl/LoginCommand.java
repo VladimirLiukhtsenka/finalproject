@@ -25,8 +25,7 @@ public class LoginCommand extends Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page = null;
-        page.getBytes();
+        String page;
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_LOGIN;
             return page;

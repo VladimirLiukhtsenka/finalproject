@@ -1,24 +1,22 @@
 package com.liukhtenko.ticket.command;
 
 public class CommandProvider {
-    public static Command defineFrom(String cmd) { // FIXME: 06.02.2020
+    public static Command defineFrom(String cmd) {
         CommandType commandType;
         try {
             commandType = CommandType.valueOf(cmd);
         } catch (IllegalArgumentException e) {
-            return CommandType.ERROR.command; // FIXME: 29.01.2020
+            return CommandType.ERROR.command;
         }
         switch (commandType) {
             case LOGIN:
                 return CommandType.LOGIN.command;
-            case LOGOUT:
-                return CommandType.LOGOUT.command;  // FIXME: 04.02.2020 delete and jsp
             case SIGN_UP:
                 return CommandType.SIGN_UP.command;
             case PROFILE:
                 return CommandType.PROFILE.command;
             case VIEW_TICKET:
-                return CommandType.VIEW_TICKET.command; // FIXME: 04.02.2020 delete and jsp
+                return CommandType.VIEW_TICKET.command;
             case CREATE_EVENT:
                 return CommandType.CREATE_EVENT.command;
             case VIEW_CONCERTS_EVENT:

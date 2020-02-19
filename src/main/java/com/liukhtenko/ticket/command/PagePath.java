@@ -7,7 +7,6 @@ public class PagePath {
     public final static String PAGE_LOGIN = "/pages/login.jsp";
     public final static String PAGE_CREATE_EVENT = "/pages/createevent.jsp";
     public final static String PAGE_ERROR = "/pages/error.jsp";
-    public final static String PAGE_LOGOUT = "/pages/logout.jsp";
     public final static String PAGE_PROFILE = "/pages/profile.jsp";
     public final static String PAGE_SIGN_UP = "/pages/signup.jsp";
     public final static String PAGE_VIEW_TICKET = "/pages/viewticket.jsp";
