@@ -27,6 +27,11 @@ public class FormParameterName {
     public static final String FORM_PARAM_PAGE= "page";
     public static final String FORM_PARAM_COUNT_PAGES= "noOfPages";
     public static final String FORM_PARAM_CURRENT_PAGE= "currentPage";
+    public static final String FORM_PARAM_LOCALE= "locale";
+    public static final String LOCALE_RU= "ru_RU";
+    public static final String LOCALE_EN= "en_US";
+    public static final String LANGUAGE_RU = "ru";
+    public static final String LANGUAGE_EN = "en";
     public static final String MESSAGE_DIGEST= "MD5";
     public static final String POST= "POST";
     public static final String DATE_FORMAT= "yyyy-MM-dd HH:mm:ss";

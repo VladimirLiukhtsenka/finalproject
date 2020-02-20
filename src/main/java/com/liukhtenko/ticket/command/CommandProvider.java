@@ -51,6 +51,8 @@ public class CommandProvider {
                 return CommandType.BUY_TICKET.command;
             case UPDATE_USER:
                 return CommandType.UPDATE_USER.command;
+            case CHANGE_LOCALE:
+                return CommandType.CHANGE_LOCALE.command;
             default:
                 return CommandType.ERROR.command;
         }

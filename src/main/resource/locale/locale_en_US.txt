@@ -1,0 +1,11 @@
+message.title=Welcome
+message.subtitleOne=Just choose a ticket and pick it up absolutely free.
+message.subtitleTwo=Please enjoy!
+message.festivalTitle=FESTIVALS
+button.viewTickets=View tickets
+button.previous=Previous
+button.next=Next
+field.name=Name
+field.address=Address
+field.description=Description
+field.date=Date

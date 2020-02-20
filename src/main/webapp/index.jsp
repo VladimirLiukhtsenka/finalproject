@@ -9,9 +9,31 @@ body {
 }
 </style>
 <%@ include file="/pages/include/head.jsp" %>
+<%@ include file="/pages/include/menu.jsp" %>
 <body>
-    <%@ include file="/pages/include/menu.jsp" %>
-    <script type="text/javascript">
+    <table align="center" >
+        <tr>
+            <td>
+                <form class="form-horizontal" action = "do?command=change_locale" method="POST">
+                    <div class="form-group">
+                      <div class="col-md-1">
+                        <button id="en" name="en" class="btn btn-default">en</button>
+                      </div>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form class="form-horizontal" action = "do?command=change_locale" method="POST">
+                    <div class="form-group">
+                     <div class="col-md-1">
+                        <button id="ru" name="ru" class="btn btn-default">ru</button>
+                      </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+       <script type="text/javascript">
         setInterval(function () {
          date = new Date(),
          h = date.getHours(),
@@ -23,8 +45,9 @@ body {
          document.getElementById('time').innerHTML = h + ':' + m + ':' + s;
         }, 1000);
     </script>
-    <b><h2 align="center">Welcome</h2></b>
-    <b><h3 align="center">Just choose a ticket and pick it up absolutely free.<br> Please enjoy!</h3></b>
+    <b><h2 align="center"><fmt:message key="message.title" bundle="${ rb }"/></h2></b>
+    <b><h3 align="center"><fmt:message key="message.subtitleOne" bundle="${ rb }"/>
+    <br><fmt:message key="message.subtitleTwo" bundle="${ rb }"/></h3></b>
     <b><h4 align="center"><ctg:info-time /></h4></b>
     <b><h4 align="center"><span id="time">00:00:00</span></h4></b>
     <%@ include file="/pages/include/footer.jsp" %>

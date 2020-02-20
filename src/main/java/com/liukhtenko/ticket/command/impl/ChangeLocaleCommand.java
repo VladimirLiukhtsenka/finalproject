@@ -1,0 +1,26 @@
+package com.liukhtenko.ticket.command.impl;
+
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+public class ChangeLocaleCommand extends Command {
+    String locale = FormParameterName.LOCALE_EN;
+
+    @Override
+    public String execute(HttpServletRequest request) {
+        if (request.getParameter(FormParameterName.LANGUAGE_EN) != null) {
+            locale = FormParameterName.LOCALE_EN;
+        }
+        if (request.getParameter(FormParameterName.LANGUAGE_RU) != null) {
+            locale = FormParameterName.LOCALE_RU;
+        }
+        HttpSession session = request.getSession();
+        session.setAttribute(FormParameterName.FORM_PARAM_LOCALE, locale);
+        String page = PagePath.PAGE_INDEX;
+        return page;
+    }
+}

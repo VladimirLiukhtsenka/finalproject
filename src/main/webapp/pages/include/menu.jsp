@@ -38,7 +38,7 @@
                     <li><a href=do?command=Admin_profile>admin profile</a></li>
                 </c:if>
                 </ul>
-        </div><!-- /.navbar-collapse -->
+         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 </div>

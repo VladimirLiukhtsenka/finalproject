@@ -10,13 +10,13 @@ body {
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <h1 align="center">FESTIVALS</h1>
+    <h1 align="center"><fmt:message key="message.festivalTitle" bundle="${ rb }"/></h1>
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-2"><b>Name</b></div>
-        <div class="col-md-2"><b>Address</b></div>
-        <div class="col-md-2"><b>Description</b></div>
-        <div class="col-md-2"><b>Date</b></div>
+        <div class="col-md-2"><b><fmt:message key="field.name" bundle="${ rb }"/></b></div>
+        <div class="col-md-2"><b><fmt:message key="field.address" bundle="${ rb }"/></b></div>
+        <div class="col-md-2"><b><fmt:message key="field.description" bundle="${ rb }"/></b></div>
+        <div class="col-md-2"><b><fmt:message key="field.date" bundle="${ rb }"/></b></div>
         <div class="col-md-2"><b></b></div>
     </div>
     <c:forEach items="${events}" var="event">
@@ -32,7 +32,7 @@ body {
                         <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                 required="" value="${event.id}">
                         <div class="col-md-3">
-                            <button id="view ticket" name="view ticket" class="btn btn-primary">View tickets</button>
+                            <button id="view ticket" name="view ticket" class="btn btn-primary"><fmt:message key="button.viewTickets" bundle="${ rb }"/></button>
                         </div>
                     </form>
                 </div>
@@ -43,7 +43,7 @@ body {
      <table style = "margin: auto;padding: 0;">
             <tr>
                 <c:if test="${currentPage != 1}">
-                    <td><a href="do?command=View_festivals_event&page=${currentPage - 1}">Previous</a></td>
+                    <td><a href="do?command=View_festivals_event&page=${currentPage - 1}"><fmt:message key="button.previous" bundle="${ rb }"/></a></td>
                 </c:if>
                 <c:forEach begin="1" end="${noOfPages}" var="i">
                     <c:choose>
@@ -56,7 +56,7 @@ body {
                     </c:choose>
                 </c:forEach>
                 <c:if test="${currentPage < noOfPages}">
-                    <td><a href="do?command=View_festivals_event&page=${currentPage + 1}">Next</a></td>
+                    <td><a href="do?command=View_festivals_event&page=${currentPage + 1}"><fmt:message key="button.next" bundle="${ rb }"/></a></td>
                 </c:if>
             </tr>
     </table>

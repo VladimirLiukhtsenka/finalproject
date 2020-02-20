@@ -1,0 +1,11 @@
+message.title=Добро пожаловать!
+message.subtitleOne=Просто выберите билет и получите его абсолютно бесплатно.
+message.subtitleTwo=Получайте удовольствие!
+message.festivalTitle=ФЕСТИВАЛИ
+button.viewTickets=Просмотреть билеты
+button.previous=Предыдущая
+button.next=Следующая
+field.name=Название
+field.address=Адресс
+field.description=Описание
+field.date=Дата

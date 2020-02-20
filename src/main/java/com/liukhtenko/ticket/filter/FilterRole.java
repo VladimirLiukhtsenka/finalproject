@@ -31,6 +31,7 @@ public class FilterRole implements Filter {
         ALLOW_GUEST.add(CommandType.SIGN_UP);
         ALLOW_GUEST.add(CommandType.HOME);
         ALLOW_GUEST.add(CommandType.LOGIN);
+        ALLOW_GUEST.add(CommandType.CHANGE_LOCALE);
         ALLOW_GUEST.add(CommandType.VIEW_CONCERTS_EVENT);
         ALLOW_GUEST.add(CommandType.VIEW_FESTIVALS_EVENT);
         ALLOW_GUEST.add(CommandType.VIEW_FOR_CHILDREN_EVENT);

@@ -14,10 +14,10 @@ public class InfoTimeTag extends TagSupport {
     static Logger logger = LogManager.getLogger();
     @Override
     public int doStartTag() throws JspException {
-        SimpleDateFormat frm = new SimpleDateFormat(FormParameterName.SIMPLE_DATE_FORMAT);
+        SimpleDateFormat dateFormat = new SimpleDateFormat(FormParameterName.SIMPLE_DATE_FORMAT);
         try {
             JspWriter out = pageContext.getOut();
-            out.write(frm.format(new Date()));
+            out.write(dateFormat.format(new Date()));
         } catch (IOException e) {
             logger.log(Level.ERROR, "Incorrect work InfoTimeTag", e);
             throw new JspException(e.getCause());

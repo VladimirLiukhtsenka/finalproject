@@ -108,6 +108,11 @@ public enum CommandType {
             this.command = new UpdateUserCommand();
         }
     },
+    CHANGE_LOCALE {
+        {
+            this.command = new ChangeLocaleCommand();
+        }
+    },
     ERROR {
         {
             this.command = new ErrorCommand();
