@@ -6,7 +6,7 @@ public class Watcher implements Callable<Integer> {
     @Override
     public Integer call() {
         CustomConnectionPool connectionPool = CustomConnectionPool.INSTANCE;
-        Integer result = connectionPool.freeConnections.size() + connectionPool.givenAwayConnections.size();
+        Integer result = connectionPool.getFreeConnectionsSize() + connectionPool.getGivenAwayConnectionsSize();
         return result;
     }
 }

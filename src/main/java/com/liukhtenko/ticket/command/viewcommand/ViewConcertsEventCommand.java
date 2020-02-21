@@ -1,7 +1,8 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.viewcommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.entity.Event;
+import com.liukhtenko.ticket.entity.TypeEvent;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 import org.apache.logging.log4j.Level;
@@ -11,8 +12,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-
-public class EditEventCommand extends Command {
+public class ViewConcertsEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -20,14 +20,14 @@ public class EditEventCommand extends Command {
         String page;
         EventService eventService = new EventService();
         try {
-            List<Event> events = eventService.findAllEvents();
-            CommandHelper.ViewEvents(request, events);
+            List<Event> events = eventService.findEventByType(TypeEvent.CONCERTS.getValue());
+            CommandHelper.viewEvents(request, events);
         } catch (ServiceException e) {
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to edit event");
-            logger.log(Level.ERROR, "Error in EditEventCommand", e);
+            logger.log(Level.WARN, "Error in ViewConcertsEventCommand", e);
+            request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view concerts.");
             page = PagePath.PAGE_ERROR;
             return page;
         }
-        return PagePath.PAGE_EDIT_EVENTS;
+        return PagePath.PAGE_CONCERTS_EVENTS;
     }
 }

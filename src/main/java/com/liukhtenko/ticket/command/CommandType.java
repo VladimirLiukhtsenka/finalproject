@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command;
 
-import com.liukhtenko.ticket.command.impl.*;
+import com.liukhtenko.ticket.command.admincommand.*;
+import com.liukhtenko.ticket.command.supportcommand.*;
+import com.liukhtenko.ticket.command.usercommand.*;
+import com.liukhtenko.ticket.command.viewcommand.*;
 
 public enum CommandType {
     LOGIN {
@@ -119,4 +122,8 @@ public enum CommandType {
         }
     };
    public Command command;
+
+    public Command getCommand() {
+        return command;
+    }
 }

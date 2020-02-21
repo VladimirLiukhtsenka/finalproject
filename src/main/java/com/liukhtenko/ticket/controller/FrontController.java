@@ -1,9 +1,6 @@
 package com.liukhtenko.ticket.controller;
 
-import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.CommandProvider;
-import com.liukhtenko.ticket.command.PageMessage;
-import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.pool.CustomConnectionPool;
 import com.liukhtenko.ticket.pool.StartWatcher;
 import com.liukhtenko.ticket.validator.FormValidator;
@@ -38,7 +35,7 @@ public class FrontController extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String reqParameter = req.getParameter("command");
+        String reqParameter = req.getParameter(FormParameterName.FORM_PARAM_COMMAND);
         String nameCommand = reqParameter.toUpperCase();
         Command command = CommandProvider.defineFrom(nameCommand);
         String page = command.execute(req);

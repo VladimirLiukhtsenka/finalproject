@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <fmt:setLocale value="${locale}" scope="session" />
-<fmt:setBundle basename="locale.locale" var="rb" />
+<fmt:setBundle basename="locale.locale"  />
 <!-- <html lang="en"> -->
 <head>
     <title>Liukhtenko's tickets</title>

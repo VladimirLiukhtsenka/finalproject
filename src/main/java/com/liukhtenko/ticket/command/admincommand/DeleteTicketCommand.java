@@ -1,8 +1,7 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.dao.ColumnName;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
 import org.apache.logging.log4j.Level;
@@ -11,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class DeleteTicketCommand extends Command {
+public class DeleteTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override

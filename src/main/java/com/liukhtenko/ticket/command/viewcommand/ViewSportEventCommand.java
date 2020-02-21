@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.viewcommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.entity.Event;
@@ -10,10 +10,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ViewSportEventCommand extends Command {
+public class ViewSportEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -22,7 +21,7 @@ public class ViewSportEventCommand extends Command {
         EventService eventService = new EventService();
         try {
             List<Event> events = eventService.findEventByType(TypeEvent.SPORT.getValue());
-            CommandHelper.ViewEvents(request, events);
+            CommandHelper.viewEvents(request, events);
         } catch (ServiceException e) {
             logger.log(Level.WARN, "Error in ViewMovieEventCommand", e);
             request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view sport events.");

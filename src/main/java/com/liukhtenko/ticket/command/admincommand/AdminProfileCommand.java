@@ -1,18 +1,14 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.CommandHelper;
 import com.liukhtenko.ticket.command.FormParameterName;
 import com.liukhtenko.ticket.command.PagePath;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.validator.FormValidator;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class AdminProfileCommand extends Command {
+public class AdminProfileCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

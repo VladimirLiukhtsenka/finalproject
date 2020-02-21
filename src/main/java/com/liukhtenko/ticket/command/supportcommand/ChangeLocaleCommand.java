@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.supportcommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
@@ -7,7 +7,7 @@ import com.liukhtenko.ticket.command.PagePath;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class ChangeLocaleCommand extends Command {
+public class ChangeLocaleCommand implements Command {
     String locale = FormParameterName.LOCALE_EN;
 
     @Override

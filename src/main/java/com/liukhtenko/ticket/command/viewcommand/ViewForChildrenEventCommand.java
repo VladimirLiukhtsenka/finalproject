@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.viewcommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.entity.Event;
@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class ViewForChildrenEventCommand extends Command {
+public class ViewForChildrenEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -21,7 +21,7 @@ public class ViewForChildrenEventCommand extends Command {
         EventService eventService = new EventService();
         try {
             List<Event> events = eventService.findEventByType(TypeEvent.FOR_CHILDREN.getValue());
-            CommandHelper.ViewEvents(request, events);
+            CommandHelper.viewEvents(request, events);
         } catch (ServiceException e) {
             logger.log(Level.WARN, "Error in ViewForChildrenEventCommand", e);
             request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view for children events.");

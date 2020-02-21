@@ -117,10 +117,9 @@
           </execution>
         </executions>
         <configuration>
-          <executable>test.bat</executable>
+          <executable>start.bat</executable>
         </configuration>
       </plugin>
-
     </plugins>
   </build>
 </project>

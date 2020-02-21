@@ -1,11 +1,10 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.dao.impl.EventDao;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
@@ -15,12 +14,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-public class CreateEventCommand extends Command {
+public class CreateEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -54,7 +52,7 @@ public class CreateEventCommand extends Command {
                 }
                 if (eventService.createEvent(event)) {
                     List<Event> events = eventService.findAllEvents();
-                    CommandHelper.ViewEvents(request, events);
+                    CommandHelper.viewEvents(request, events);
                     page = PagePath.PAGE_EDIT_EVENTS;
                     return page;
                 }

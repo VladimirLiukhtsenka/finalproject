@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.usercommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.dao.ColumnName;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class BuyTicketCommand extends Command {
+public class BuyTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override

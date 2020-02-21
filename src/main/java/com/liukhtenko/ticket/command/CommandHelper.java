@@ -18,7 +18,7 @@ public class CommandHelper {
         }
         return user;
     }
-    public static void ViewEvents(HttpServletRequest request, List <Event> listAllEvents){
+    public static void viewEvents(HttpServletRequest request, List <Event> listAllEvents){
         HttpSession session = request.getSession();
         int page = FormParameterName.FIRST_PAGE;
         int recordsPerPage = FormParameterName.RECORDS_PER_PAGE;

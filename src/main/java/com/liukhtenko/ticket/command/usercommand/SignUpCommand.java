@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.usercommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpCommand extends Command {
+public class SignUpCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override

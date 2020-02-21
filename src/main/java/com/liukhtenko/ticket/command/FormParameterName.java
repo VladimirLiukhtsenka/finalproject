@@ -26,6 +26,7 @@ public class FormParameterName {
     public static final String FORM_PARAM_TICKET_SIZE= "TicketsSize";
     public static final String FORM_PARAM_PAGE= "page";
     public static final String FORM_PARAM_COUNT_PAGES= "noOfPages";
+    public static final String FORM_PARAM_COMMAND= "command";
     public static final String FORM_PARAM_CURRENT_PAGE= "currentPage";
     public static final String FORM_PARAM_LOCALE= "locale";
     public static final String LOCALE_RU= "ru_RU";

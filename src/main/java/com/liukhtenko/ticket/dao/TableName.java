@@ -9,4 +9,7 @@ public class TableName {
     public static final String USERS = "users";
     public static final String ROLES = "roles";
     public static final String USER_TICKETS = "user_tickets";
+
+    private TableName() {
+    }
 }

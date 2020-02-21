@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.customtimetag;
+package com.liukhtenko.ticket.tag;
 import com.liukhtenko.ticket.command.FormParameterName;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;

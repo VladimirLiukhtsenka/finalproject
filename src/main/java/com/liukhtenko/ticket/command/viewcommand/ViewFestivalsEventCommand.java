@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.viewcommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.entity.Event;
@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class ViewConcertsEventCommand extends Command {
+public class ViewFestivalsEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -20,14 +20,15 @@ public class ViewConcertsEventCommand extends Command {
         String page;
         EventService eventService = new EventService();
         try {
-            List<Event> events = eventService.findEventByType(TypeEvent.CONCERTS.getValue());
-            CommandHelper.ViewEvents(request, events);
+            List<Event> events = eventService.findEventByType(TypeEvent.FESTIVALS.getValue());
+            CommandHelper.viewEvents(request, events);
         } catch (ServiceException e) {
-            logger.log(Level.WARN, "Error in ViewConcertsEventCommand", e);
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view concerts.");
+            logger.log(Level.WARN, "Error in ViewFestivalsEventCommand", e);
+            request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view festivals.");
             page = PagePath.PAGE_ERROR;
             return page;
         }
-        return PagePath.PAGE_CONCERTS_EVENTS;
+
+        return PagePath.PAGE_FESTIVALS_EVENTS;
     }
 }

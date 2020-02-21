@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.viewcommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
@@ -14,7 +14,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class ViewTicketOfficeCommand extends Command {
+public class ViewTicketOfficeCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override

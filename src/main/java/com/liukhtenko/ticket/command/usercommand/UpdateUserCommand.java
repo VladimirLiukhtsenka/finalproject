@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.usercommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class UpdateUserCommand extends Command {
+public class UpdateUserCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override

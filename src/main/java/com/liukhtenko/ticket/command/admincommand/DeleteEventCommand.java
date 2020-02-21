@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.dao.ColumnName;
@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-public class DeleteEventCommand extends Command {
+public class DeleteEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -24,7 +24,7 @@ public class DeleteEventCommand extends Command {
             try {
                 eventService.deleteEventById(id);
                 List<Event> events = eventService.findAllEvents();
-                CommandHelper.ViewEvents(request, events);
+                CommandHelper.viewEvents(request, events);
             } catch (ServiceException e) {
                 page = PagePath.PAGE_ERROR;
                 request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to delete event");

@@ -84,6 +84,6 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
 
     @Override
     public boolean update(TicketOffice entity) throws DaoException {
-        throw  new DaoException("Impossible to update TicketOffice");// FIXME: 31.01.2020
+        throw  new UnsupportedOperationException("update method not implemented");
     }
 }

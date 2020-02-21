@@ -1,4 +1,4 @@
-package com.liukhtenko.ticket.command.impl;
+package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
@@ -16,10 +16,9 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
-public class ViewTicketCommand extends Command {
+public class EditTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
@@ -30,26 +29,17 @@ public class ViewTicketCommand extends Command {
         try {
             long id = Long.parseLong(request.getParameter(ColumnName.ID));
             HttpSession session = request.getSession();
-            session.setAttribute(ColumnName.TICKET_ID, id);
+            session.setAttribute(ColumnName.EVENT_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
             session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
             Event event = eventService.findEventById(id);
-            List<Integer> remTickets = new ArrayList<>();
-            for (Ticket ticket : tickets) {
-                int rem = ticketService.numberTicketsRemaining(ticket.getId());
-                remTickets.add(rem);
-            }
-            session.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remTickets);
-            int end = remTickets.size() > 0 ? remTickets.size() - 1 : 0;
-            session.setAttribute(FormParameterName.FORM_PARAM_END, end);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {
-            HttpSession session = request.getSession();
-            session.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to see tickets");
+            request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to edit tickets");
+            logger.log(Level.WARN, "Error in EditTicketCommand", e);
             page = PagePath.PAGE_ERROR;
-            logger.log(Level.WARN, "Error in ViewTicketCommand", e);
             return page;
         }
-        return PagePath.PAGE_VIEW_TICKET;
+        return PagePath.PAGE_EDIT_TICKET;
     }
 }

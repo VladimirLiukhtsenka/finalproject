@@ -108,7 +108,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
 
     @Override
     public List<Ticket> findAll() throws DaoException {
-        throw  new DaoException("Impossible to find all tickets");// FIXME: 31.01.2020
+        throw  new UnsupportedOperationException("findAll method not implemented");
     }
 
     @Override
@@ -164,7 +164,7 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
 
     @Override
     public boolean update(Ticket entity) throws DaoException {
-        throw  new DaoException("Impossible to update Ticket");// FIXME: 31.01.2020
+        throw  new UnsupportedOperationException("update method not implemented");
     }
 
     public List<List<String>> printTickets(long UserId) throws DaoException {
