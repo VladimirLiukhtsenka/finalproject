@@ -155,7 +155,7 @@ public class EventDao extends AbstractDao<Long, Event> {
         return flag;
     }
 
-    public static Date transformDate(String date) throws ParseException { // FIXME: 02.02.2020 перенести метод
+    public static Date transformDate(String date) throws ParseException {
         TimeZone tz = TimeZone.getTimeZone(TIME_ZONE);
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setLenient(false);
