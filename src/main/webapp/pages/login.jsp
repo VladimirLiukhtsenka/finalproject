@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="password">Password*</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{8,45}$">
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{8,45}$" >
                 <span class="help-block">no less than 8 characters</span>
             </div>
         </div>

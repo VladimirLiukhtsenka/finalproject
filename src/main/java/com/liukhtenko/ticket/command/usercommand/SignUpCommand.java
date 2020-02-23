@@ -24,6 +24,7 @@ public class SignUpCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_SIGN_UP;
             return page;
@@ -59,6 +60,7 @@ public class SignUpCommand implements Command {
                     user.setMail(mail);
                     userService.createUser(user);
                     page = PagePath.PAGE_LOGIN;
+                    request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.POST);
                 } catch (ServiceException e) {
                     request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to signUp.");
                     logger.log(Level.WARN, "Error in SignUpCommand", e);

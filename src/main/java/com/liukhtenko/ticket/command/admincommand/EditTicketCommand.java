@@ -24,12 +24,18 @@ public class EditTicketCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
         try {
-            long id = Long.parseLong(request.getParameter(ColumnName.ID));
             HttpSession session = request.getSession();
-            session.setAttribute(ColumnName.EVENT_ID, id);
+            long id = 0;
+            if (request.getParameter(ColumnName.ID) != null) {
+                id = Long.parseLong(request.getParameter(ColumnName.ID));
+                session.setAttribute(ColumnName.EVENT_ID, id);
+            }else {
+                id = (long) session.getAttribute(ColumnName.EVENT_ID);
+            }
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
             session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
             Event event = eventService.findEventById(id);

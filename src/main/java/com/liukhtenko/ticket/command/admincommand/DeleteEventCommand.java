@@ -18,13 +18,15 @@ public class DeleteEventCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
+        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
         if (request.getParameter(FormParameterName.FORM_PARAM_DELETE_EVENT) != null) {
             EventService eventService = new EventService();
-            long id = Long.parseLong(request.getParameter(ColumnName.ID));
+            long id = Long.parseLong(request.getParameter(ColumnName.ID)); // FIXME: 23.02.2020 
             try {
                 eventService.deleteEventById(id);
-                List<Event> events = eventService.findAllEvents();
-                CommandHelper.viewEvents(request, events);
+                request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.POST);
+//                List<Event> events = eventService.findAllEvents();
+//                CommandHelper.viewEvents(request, events);
             } catch (ServiceException e) {
                 page = PagePath.PAGE_ERROR;
                 request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to delete event");

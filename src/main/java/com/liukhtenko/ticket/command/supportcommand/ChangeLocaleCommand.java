@@ -12,6 +12,7 @@ public class ChangeLocaleCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (request.getParameter(FormParameterName.LANGUAGE_EN) != null) {
             locale = FormParameterName.LOCALE_EN;
         }

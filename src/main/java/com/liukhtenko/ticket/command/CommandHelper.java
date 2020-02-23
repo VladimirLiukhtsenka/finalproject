@@ -36,4 +36,27 @@ public class CommandHelper {
         session.setAttribute(FormParameterName.FORM_PARAM_COUNT_PAGES, noOfPages);
         session.setAttribute(FormParameterName.FORM_PARAM_CURRENT_PAGE, page);
     }
+
+    public static String findRedirectCommand (String nameCommand){
+        String redirectCommand;
+        switch (nameCommand){
+            case ("SIGN_UP"):
+                redirectCommand = "do?command=Login";
+            break;
+            case ("BUY_TICKET"):
+                redirectCommand = "do?command=Profile";
+                break;
+            case ("CREATE_EVENT"):
+            case ("DELETE_EVENT"):
+                redirectCommand = "do?command=Edit_event";
+                break;
+            case ("CREATE_TICKET"):
+            case ("DELETE_TICKET"):
+                redirectCommand = "do?command=Edit_ticket";
+                break;
+            default:
+                redirectCommand = "do?command=Edit_event";
+        }
+        return redirectCommand;
+    }
 }

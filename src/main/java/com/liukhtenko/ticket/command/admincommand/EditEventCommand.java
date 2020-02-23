@@ -18,7 +18,9 @@ public class EditEventCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
         EventService eventService = new EventService();
+        request.setAttribute(PageMessage.MESSAGE,"админ"); // FIXME: 23.02.2020
         try {
             List<Event> events = eventService.findAllEvents();
             CommandHelper.viewEvents(request, events);

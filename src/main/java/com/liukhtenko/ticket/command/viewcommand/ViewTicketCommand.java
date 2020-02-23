@@ -19,17 +19,19 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewTicketCommand implements Command {
+public class    ViewTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+         HttpSession session = request.getSession();
+        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
         try {
             long id = Long.parseLong(request.getParameter(ColumnName.ID));
-            HttpSession session = request.getSession();
+            session = request.getSession();
             session.setAttribute(ColumnName.TICKET_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
             session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
@@ -44,7 +46,7 @@ public class ViewTicketCommand implements Command {
             session.setAttribute(FormParameterName.FORM_PARAM_END, end);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {
-            HttpSession session = request.getSession();
+            session = request.getSession();
             session.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to see tickets");
             page = PagePath.PAGE_ERROR;
             logger.log(Level.WARN, "Error in ViewTicketCommand", e);

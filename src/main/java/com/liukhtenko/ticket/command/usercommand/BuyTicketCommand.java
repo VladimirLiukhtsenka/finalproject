@@ -21,6 +21,7 @@ public class BuyTicketCommand implements Command {
         User user = CommandHelper.findUserInSession(request);
         String page;
         TicketService ticketService = new TicketService();
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         try {
             long userId = user.getId();
             long ticketId = Long.parseLong(request.getParameter(ColumnName.TICKET_ID));
@@ -29,6 +30,7 @@ public class BuyTicketCommand implements Command {
             HttpSession session = request.getSession();
             session.setAttribute(FormParameterName.FORM_PARAM_USER_TICKETS, userTickets);
             page = PagePath.PAGE_PROFILE;
+            request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
         } catch (NumberFormatException | ServiceException e) {
             logger.log(Level.WARN, "Impossible to buy ticket for" + user, e);
             request.setAttribute(PageMessage.MESSAGE_ERROR, "Unfortunately it is impossible to buy a ticket");

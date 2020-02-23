@@ -26,6 +26,9 @@ public class LoginCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        HttpSession session = request.getSession();
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
+//        session.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_LOGIN;
             return page;
@@ -43,7 +46,7 @@ public class LoginCommand implements Command {
                 TicketService ticketService = new TicketService();
                 UserService userService = new UserService();
                 User user = userService.findUserByMailAndPassword(mail, password);
-                HttpSession session = request.getSession();
+                session = request.getSession();
                 session.setAttribute(FormParameterName.FORM_PARAM_USER, user);
                 session.setAttribute(FormParameterName.FORM_PARAM_IS_ADMIN, false);
                 if (user.getRoleID() == FormParameterName.ADMIN_ID) {

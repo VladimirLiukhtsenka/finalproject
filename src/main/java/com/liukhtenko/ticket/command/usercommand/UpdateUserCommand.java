@@ -1,9 +1,6 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-import com.liukhtenko.ticket.command.Command;
-import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
-import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
@@ -24,8 +21,10 @@ public class UpdateUserCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        User user = (User) request.getSession().getAttribute(FormParameterName.FORM_PARAM_USER);
-        String page = null;
+        User user = CommandHelper.findUserInSession(request);
+        // HttpSession session = request.getSession();
+        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        String page;
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_UPDATE_USER;
             return page;

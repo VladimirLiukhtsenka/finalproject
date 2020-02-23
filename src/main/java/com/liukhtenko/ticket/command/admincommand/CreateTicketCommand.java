@@ -24,6 +24,7 @@ public class CreateTicketCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
+        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
         if (!FormValidator.isPost(request)
                 || (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_ADD_TICKET) != null)) {
             page = PagePath.PAGE_CREATE_TICKET;
@@ -50,6 +51,7 @@ public class CreateTicketCommand implements Command {
                 List<Ticket> tickets = ticketService.findTicketsByEventId(eventId);
                 HttpSession session = request.getSession();
                 session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
+                request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.POST);
                 page = PagePath.PAGE_EDIT_TICKET;
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, "Error in CreateTicketCommand", e);

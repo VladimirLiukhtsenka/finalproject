@@ -35,6 +35,9 @@ public class FormParameterName {
     public static final String LANGUAGE_EN = "en";
     public static final String MESSAGE_DIGEST= "MD5";
     public static final String POST= "POST";
+    public static final String GET= "GET";
+    public static final String TYPE_METHOD= "typeMethod";
+    public static final String REDIRECT_SECURE= "flag";
     public static final String DATE_FORMAT= "yyyy-MM-dd HH:mm:ss";
     public static final String SIMPLE_DATE_FORMAT= "yyyy-MM-dd";
     public static final int HEXADECIMAL_FORMAT= 0xff;
