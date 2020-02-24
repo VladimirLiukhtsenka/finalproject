@@ -28,7 +28,6 @@ public class LoginCommand implements Command {
         String page;
         HttpSession session = request.getSession();
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
-//        session.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_LOGIN;
             return page;

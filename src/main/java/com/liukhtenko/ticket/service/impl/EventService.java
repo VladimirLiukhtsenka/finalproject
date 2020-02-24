@@ -22,10 +22,8 @@ public class EventService implements EventServiceInterface {
         try {
             transaction.begin(eventDao);
             events = eventDao.findAll();
-            transaction.commit();
             logger.log(Level.DEBUG, "findAllEvents completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -40,10 +38,8 @@ public class EventService implements EventServiceInterface {
         try {
             transaction.begin(eventDao);
             events = eventDao.findByType(type);
-            transaction.commit();
             logger.log(Level.DEBUG, "findEventByType completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -58,10 +54,8 @@ public class EventService implements EventServiceInterface {
         try {
             transaction.begin(eventDao);
             event = eventDao.findById(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "findEventById completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -75,10 +69,8 @@ public class EventService implements EventServiceInterface {
         try {
             transaction.begin(eventDao);
             flag = eventDao.create(event);
-            transaction.commit();
             logger.log(Level.DEBUG, "createEvent completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -92,10 +84,8 @@ public class EventService implements EventServiceInterface {
         try {
             transaction.begin(eventDao);
             eventDao.delete(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "deleteEventById completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -109,9 +99,7 @@ public class EventService implements EventServiceInterface {
             transaction.begin(eventDao);
             eventDao.update(event);
             logger.log(Level.DEBUG, "updateEvent completed successfully");
-            transaction.commit();
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();

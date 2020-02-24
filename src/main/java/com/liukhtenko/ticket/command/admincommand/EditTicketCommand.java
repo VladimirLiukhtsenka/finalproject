@@ -29,11 +29,11 @@ public class EditTicketCommand implements Command {
         EventService eventService = new EventService();
         try {
             HttpSession session = request.getSession();
-            long id = 0;
+            long id;
             if (request.getParameter(ColumnName.ID) != null) {
                 id = Long.parseLong(request.getParameter(ColumnName.ID));
                 session.setAttribute(ColumnName.EVENT_ID, id);
-            }else {
+            } else {
                 id = (long) session.getAttribute(ColumnName.EVENT_ID);
             }
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);

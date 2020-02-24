@@ -4,14 +4,14 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <h1 align="center">Edit ticket</h1>
-    <p align="center">${eventName}</p>
+    <h1 align="center"><fmt:message key="message.editTicket"/></h1>
+    <h5 align="center">${eventName}</h5>
     <form class="form-horizontal"action = "do?command=Create_Ticket" method="POST">
         <!-- Button -->
         <label class="col-md-1 control-label" for="addTicket"></label>
         <div class="form-group">
             <div class="col-md-4">
-                <button id="addTicket" name="addTicket" class="btn btn-success">Add ticket</button>
+                <button id="addTicket" name="addTicket" class="btn btn-success"><fmt:message key="button.addTicket"/></button>
             </div>
         </div>
     </form>
@@ -33,7 +33,7 @@
                             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                     required="" value="${ticket.id}">
                             <div class="col-md-3">
-                                <button id="delete ticket" name="delete ticket" class="btn btn-danger">Delete ticket</button>
+                                <button id="delete ticket" name="delete ticket" class="btn btn-danger"><fmt:message key="button.deleteTicket"/></button>
                             </div>
                         </form>
                     </div>

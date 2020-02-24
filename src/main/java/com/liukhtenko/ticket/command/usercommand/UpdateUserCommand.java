@@ -4,7 +4,6 @@ import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.impl.TicketService;
 import com.liukhtenko.ticket.service.impl.UserService;
 import com.liukhtenko.ticket.validator.FormRegexValidator;
 import com.liukhtenko.ticket.validator.FormValidator;
@@ -13,8 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.List;
 
 public class UpdateUserCommand implements Command {
     static Logger logger = LogManager.getLogger();
@@ -22,8 +19,7 @@ public class UpdateUserCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        // HttpSession session = request.getSession();
-        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         String page;
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_UPDATE_USER;
@@ -52,7 +48,7 @@ public class UpdateUserCommand implements Command {
                 }
                 UserService userService = new UserService();
                 userService.updateUser(user);
-                page=PagePath.PAGE_PROFILE;
+                page = PagePath.PAGE_PROFILE;
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "Incorrect data" + e.toString());
                 request.setAttribute(PageMessage.MESSAGE_ERROR, "Incorrect data");

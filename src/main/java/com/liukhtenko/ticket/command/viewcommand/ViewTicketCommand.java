@@ -19,19 +19,19 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-public class    ViewTicketCommand implements Command {
+public class ViewTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
-
+    private static final int ZERO = 0;
+    private static final int ONE = 1;
     @Override
     public String execute(HttpServletRequest request) {
         String page;
-         HttpSession session = request.getSession();
-        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        HttpSession session = request.getSession();
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
         try {
             long id = Long.parseLong(request.getParameter(ColumnName.ID));
-            session = request.getSession();
             session.setAttribute(ColumnName.TICKET_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
             session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
@@ -42,7 +42,7 @@ public class    ViewTicketCommand implements Command {
                 remTickets.add(rem);
             }
             session.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remTickets);
-            int end = remTickets.size() > 0 ? remTickets.size() - 1 : 0;
+            int end = remTickets.size() > ZERO ? remTickets.size() - ONE : ZERO;
             session.setAttribute(FormParameterName.FORM_PARAM_END, end);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {

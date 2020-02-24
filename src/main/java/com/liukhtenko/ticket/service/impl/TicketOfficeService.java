@@ -24,10 +24,8 @@ public class TicketOfficeService implements TicketOfficeInterface {
         try {
             transaction.begin(ticketOfficeDao);
             ticketOffices = ticketOfficeDao.findAll();
-            transaction.commit();
             logger.log(Level.DEBUG, "findAllTicketOffice completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -40,10 +38,8 @@ public class TicketOfficeService implements TicketOfficeInterface {
         try {
             transaction.begin(ticketOfficeDao);
             ticketOfficeDao.delete(phone);
-            transaction.commit();
             logger.log(Level.DEBUG, "deleteTicketOfficeByPhone completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -56,10 +52,8 @@ public class TicketOfficeService implements TicketOfficeInterface {
         try {
             transaction.begin(ticketOfficeDao);
             flag = ticketOfficeDao.create(ticketOffice);
-            transaction.commit();
             logger.log(Level.DEBUG, "createTicketOffice completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();

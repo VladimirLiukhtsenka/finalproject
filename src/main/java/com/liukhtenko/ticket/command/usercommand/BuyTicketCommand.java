@@ -1,17 +1,17 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-import com.liukhtenko.ticket.command.*;
-import com.liukhtenko.ticket.dao.ColumnName;
-import com.liukhtenko.ticket.entity.User;
-import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.impl.TicketService;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+        import com.liukhtenko.ticket.command.*;
+        import com.liukhtenko.ticket.dao.ColumnName;
+        import com.liukhtenko.ticket.entity.User;
+        import com.liukhtenko.ticket.exception.ServiceException;
+        import com.liukhtenko.ticket.service.impl.TicketService;
+        import org.apache.logging.log4j.Level;
+        import org.apache.logging.log4j.LogManager;
+        import org.apache.logging.log4j.Logger;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.List;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpSession;
+        import java.util.List;
 
 public class BuyTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();

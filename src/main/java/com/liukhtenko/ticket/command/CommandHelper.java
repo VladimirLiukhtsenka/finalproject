@@ -10,6 +10,18 @@ import java.util.List;
 
 public class CommandHelper {
     private static final String ATTRIBUTE_USER_KEY = "user";
+    private static final double FLOATING_ONE_NUMBER =  1.0;
+    private static final String POST_COMMAND_SIGN_UP = "SIGN_UP";
+    private static final String POST_COMMAND_BUY_TICKET = "BUY_TICKET";
+    private static final String POST_COMMAND_CREATE_EVENT = "CREATE_EVENT";
+    private static final String POST_COMMAND_DELETE_EVENT = "DELETE_EVENT";
+    private static final String POST_COMMAND_CREATE_TICKET = "CREATE_TICKET";
+    private static final String POST_COMMAND_DELETE_TICKET = "DELETE_TICKET";
+    private static final String GET_COMMAND_LOGIN = "do?command=Login";
+    private static final String GET_COMMAND_PROFILE = "do?command=Profile";
+    private static final String GET_COMMAND_EDIT_EVENT = "do?command=Edit_event";
+    private static final String GET_COMMAND_EDIT_TICKET = "do?command=Edit_ticket";
+    private static final String GET_COMMAND_ERROR = "do?command=Error";
 
     public static User findUserInSession(HttpServletRequest req) {
         User user = new User();
@@ -18,7 +30,8 @@ public class CommandHelper {
         }
         return user;
     }
-    public static void viewEvents(HttpServletRequest request, List <Event> listAllEvents){
+
+    public static void viewEvents(HttpServletRequest request, List<Event> listAllEvents) {
         HttpSession session = request.getSession();
         int page = FormParameterName.FIRST_PAGE;
         int recordsPerPage = FormParameterName.RECORDS_PER_PAGE;
@@ -31,31 +44,31 @@ public class CommandHelper {
             eventsToPage.add(listAllEvents.get(i));
         }
         int noOfRecords = listAllEvents.size();
-        int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
+        int noOfPages = (int) Math.ceil(noOfRecords * FLOATING_ONE_NUMBER / recordsPerPage);
         session.setAttribute(FormParameterName.FORM_PARAM_EVENTS, eventsToPage);
         session.setAttribute(FormParameterName.FORM_PARAM_COUNT_PAGES, noOfPages);
         session.setAttribute(FormParameterName.FORM_PARAM_CURRENT_PAGE, page);
     }
 
-    public static String findRedirectCommand (String nameCommand){
+    public static String findRedirectCommand(String nameCommand) {
         String redirectCommand;
-        switch (nameCommand){
-            case ("SIGN_UP"):
-                redirectCommand = "do?command=Login";
-            break;
-            case ("BUY_TICKET"):
-                redirectCommand = "do?command=Profile";
+        switch (nameCommand) {
+            case (POST_COMMAND_SIGN_UP):
+                redirectCommand = GET_COMMAND_LOGIN;
                 break;
-            case ("CREATE_EVENT"):
-            case ("DELETE_EVENT"):
-                redirectCommand = "do?command=Edit_event";
+            case (POST_COMMAND_BUY_TICKET):
+                redirectCommand = GET_COMMAND_PROFILE;
                 break;
-            case ("CREATE_TICKET"):
-            case ("DELETE_TICKET"):
-                redirectCommand = "do?command=Edit_ticket";
+            case (POST_COMMAND_CREATE_EVENT):
+            case (POST_COMMAND_DELETE_EVENT):
+                redirectCommand = GET_COMMAND_EDIT_EVENT;
+                break;
+            case (POST_COMMAND_CREATE_TICKET):
+            case (POST_COMMAND_DELETE_TICKET):
+                redirectCommand = GET_COMMAND_EDIT_TICKET;
                 break;
             default:
-                redirectCommand = "do?command=Edit_event";
+                redirectCommand = GET_COMMAND_ERROR;
         }
         return redirectCommand;
     }

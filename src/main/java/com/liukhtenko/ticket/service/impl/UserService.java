@@ -22,10 +22,8 @@ public class UserService implements UserServiceInterface {
         try {
             transaction.begin(userDao);
             users = userDao.findAll();
-            transaction.commit();
             logger.log(Level.DEBUG, "findAllUsers completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -40,10 +38,8 @@ public class UserService implements UserServiceInterface {
         try {
             transaction.begin(userDao);
             user = userDao.find(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "findUserById completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -58,10 +54,8 @@ public class UserService implements UserServiceInterface {
         try {
             transaction.begin(userDao);
             user = userDao.find(mail, password);
-            transaction.commit();
             logger.log(Level.DEBUG, "findUserByMailAndPassword completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -75,10 +69,8 @@ public class UserService implements UserServiceInterface {
         try {
             transaction.begin(userDao);
             userDao.delete(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "deleteUserById completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -92,10 +84,8 @@ public class UserService implements UserServiceInterface {
         try {
             transaction.begin(userDao);
             flag = userDao.create(user);
-            transaction.commit();
             logger.log(Level.DEBUG, "createUser completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -110,9 +100,7 @@ public class UserService implements UserServiceInterface {
             transaction.begin(userDao);
             userDao.update(user);
             logger.log(Level.DEBUG, "updateUser completed successfully");
-            transaction.commit();
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();

@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.validator.FormValidator;
 
@@ -13,7 +12,7 @@ public class AdminProfileCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
-        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (!FormValidator.isPost(request)) {
             page = PagePath.PAGE_ADMIN_PROFILE;
         }

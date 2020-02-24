@@ -10,7 +10,7 @@ body {
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <h1 align="center"><fmt:message key="message.festivalTitle"/></h1>
+    <h1 align="center"><fmt:message key="navBar.festivals"/></h1>
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-2"><b><fmt:message key="field.name"/></b></div>

@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command.admincommand;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PageMessage;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.TicketService;
@@ -16,13 +19,16 @@ public class DeleteTicketCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
-        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (request.getParameter(FormParameterName.FORM_PARAM_DELETE_TICKET) != null) {
             TicketService ticketService = new TicketService();
-            long id = Long.parseLong(request.getParameter(ColumnName.ID)); // FIXME: 23.02.2020
+            long id = 0;
+            if (request.getParameter(ColumnName.ID) != null) {
+                id = Long.parseLong(request.getParameter(ColumnName.ID));
+            }
             try {
                 ticketService.deleteTicketById(id);
-                request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.POST);
+                request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
             } catch (ServiceException e) {
                 page = PagePath.PAGE_ERROR;
                 request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to delete ticket");

@@ -14,26 +14,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="do?command=home">Home</a>
+                <a class="navbar-brand" href="do?command=home"><fmt:message key="navBar.home"/></a>
             </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href=do?command=Edit_event>edit-events</a></li>
+                    <li><a href=do?command=Edit_event><fmt:message key="navBar.editEvents"/></a></li>
                 </ul>
                     <ul class="nav navbar-nav navbar-right">
                 </ul>
             </div>
         </div>
     </nav>
-    <h1 align="center">Admin page</h1>
+    <h1 align="center"><fmt:message key="message.adminPage"/></h1>
     <h3>Hello! ${user.name}</h3>
     <form class="form-horizontal" action = "do?command=admin_profile" method="POST">
         <!-- Button -->
         <div class="form-group">
             <label class="col-md-0 control-label" for="logout"></label>
             <div class="col-md-0">
-                <button id="logout" name="logout" class="btn btn-danger">Logout</button>
+                <button id="logout" name="logout" class="btn btn-danger"><fmt:message key="button.logout"/></button>
             </div>
         </div>
     </form>

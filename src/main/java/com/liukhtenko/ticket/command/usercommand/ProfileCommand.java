@@ -40,7 +40,6 @@ public class ProfileCommand implements Command {
         if (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_LOGOUT) != null) {
             session = request.getSession();
             session.invalidate();
-          //  request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
             page = PagePath.PAGE_LOGIN;
             return page;
         }

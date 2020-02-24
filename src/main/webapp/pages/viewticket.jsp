@@ -4,14 +4,14 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <h1 align="center">View ticket</h1>
+    <h1 align="center"><fmt:message key="message.viewTicket"/></h1>
     <h3 align="center">${eventName}</h3>
      <div class="container">
         <div class="row">
-            <div class="col-md-2"><b>Type seat</b></div>
-            <div class="col-md-2"><b>Number of tickets</b></div>
-            <div class="col-md-2"><b>Price</b></div>
-            <div class="col-md-2"><b>Tickets left</b></div>
+            <div class="col-md-2"><b><fmt:message key="message.typeSeat"/></b></div>
+            <div class="col-md-2"><b><fmt:message key="message.numberOfTickets"/></b></div>
+            <div class="col-md-2"><b><fmt:message key="message.price"/></b></div>
+            <div class="col-md-2"><b><fmt:message key="message.ticketsLeft"/></b></div>
             <div class="col-md-2"><b></b></div>
         </div>
             <c:forEach var = "i" begin = "0" end = "${end}">
@@ -26,7 +26,7 @@
                                        <input id="ticket_id" name="ticket_id" type="hidden" placeholder="" class="form-control input-md"
                                                required="" value="${tickets [i].id}">
                                        <div class="col-md-2">
-                                           <button id="buy ticket" name="buy ticket" class="btn btn-success">Pick up</button>
+                                           <button id="buy ticket" name="buy ticket" class="btn btn-success"><fmt:message key="message.pickUp"/></button>
                                        </div>
                                    </form>
                                </div>

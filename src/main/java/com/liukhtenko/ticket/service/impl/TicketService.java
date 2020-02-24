@@ -22,10 +22,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             numberTicket = ticketDao.buyTicket(userId, ticketId);
-            transaction.commit();
             logger.log(Level.DEBUG, "buyTicket completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -41,10 +39,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             tickets = ticketDao.findTicketsByEventId(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "findTicketsByEventId completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -59,10 +55,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             tickets = ticketDao.findTicketsByEventIdAndTypeSeat(id, type);
-            transaction.commit();
             logger.log(Level.DEBUG, "findTicketsByEventIdAndTypeSeat completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -77,10 +71,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             printUserTickets = ticketDao.printTickets(UserId);
-            transaction.commit();
             logger.log(Level.DEBUG, "printTickets completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -95,10 +87,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             flag = ticketDao.create(ticket);
-            transaction.commit();
             logger.log(Level.DEBUG, "createTicket completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -113,10 +103,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             flag = ticketDao.delete(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "deleteTicketById completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();
@@ -131,10 +119,8 @@ public class TicketService implements TicketServiceInterface {
         try {
             transaction.begin(ticketDao);
             number = ticketDao.numberTicketsRemaining(id);
-            transaction.commit();
             logger.log(Level.DEBUG, "numberTicketsRemaining completed successfully");
         } catch (DaoException e) {
-            transaction.rollback();
             throw new ServiceException(e);
         } finally {
             transaction.end();

@@ -4,24 +4,24 @@
 <body>
 <div class="container">
 <%@ include file="include/menu.jsp" %>
-    <h1 align="center">Edit events</h1>
+    <h1 align="center"><fmt:message key="message.editEvents"/></h1>
     <form class="form-horizontal" action = "do?command=create_event" method="POST">
         <!-- Button -->
         <label class="col-md-1 control-label" for="addEvent"></label>
         <div class="form-group">
             <div class="col-md-4">
-                <button id="addEvent" name="addEvent" class="btn btn-success">Add event</button>
+                <button id="addEvent" name="addEvent" class="btn btn-success"><fmt:message key="button.addEvent"/></button>
             </div>
         </div>
     </form>
 
     <div class="container">
         <div class="row">
-            <div class="col-md-2"><b>Name</b></div>
-            <div class="col-md-2"><b>Address</b></div>
-            <div class="col-md-2"><b>Description</b></div>
-            <div class="col-md-2"><b>Date</b></div>
-            <div class="col-md-1"><b>Type</b></div>
+            <div class="col-md-2"><b><fmt:message key="field.name"/></b></div>
+            <div class="col-md-2"><b><fmt:message key="field.address"/></b></div>
+            <div class="col-md-2"><b><fmt:message key="field.description"/></b></div>
+            <div class="col-md-2"><b><fmt:message key="field.date"/></b></div>
+            <div class="col-md-1"><b><fmt:message key="field.typeEvent"/></b></div>
             <div class="col-md-3"><b></b></div>
         </div>
         <c:forEach items="${events}" var="event">
@@ -37,14 +37,14 @@
                             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                                                 required="" value="${event.id}">
                             <div class="col-md-5">
-                                <button id="Edit_ticket" name="Edit_ticket" class="btn btn-primary">Edit ticket</button>
+                                <button id="Edit_ticket" name="Edit_ticket" class="btn btn-primary"><fmt:message key="message.editTicket"/></button>
                             </div>
                         </form>
                         <form class="form-horizontal-${event.id}" action="do?command=delete_event" method="POST">
                             <input id="id" name="id" type="hidden" placeholder="" class="form-control input-md"
                                             required="" value="${event.id}">
                             <div class="col-md-5">
-                                <button id="delete event" name="delete event" class="btn btn-danger">Delete event</button>
+                                <button id="delete event" name="delete event" class="btn btn-danger"><fmt:message key="button.deleteEvent"/></button>
                             </div>
                         </form>
                     </div>
@@ -56,7 +56,7 @@
      <table style = "margin: auto;padding: 0;">
             <tr>
                 <c:if test="${currentPage != 1}">
-                    <td><a href="do?command=Edit_event&page=${currentPage - 1}">Previous</a></td>
+                    <td><a href="do?command=Edit_event&page=${currentPage - 1}"><fmt:message key="button.previous"/></a></td>
                 </c:if>
                 <c:forEach begin="1" end="${noOfPages}" var="i">
                     <c:choose>
@@ -69,7 +69,7 @@
                     </c:choose>
                 </c:forEach>
                 <c:if test="${currentPage < noOfPages}">
-                    <td><a href="do?command=Edit_event&page=${currentPage + 1}">Next</a></td>
+                    <td><a href="do?command=Edit_event&page=${currentPage + 1}"><fmt:message key="button.next"/></a></td>
                 </c:if>
             </tr>
     </table>

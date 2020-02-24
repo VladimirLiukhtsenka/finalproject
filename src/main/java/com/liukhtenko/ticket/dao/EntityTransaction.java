@@ -13,7 +13,15 @@ public class EntityTransaction {
     private Connection connection;
     static Logger logger = LogManager.getLogger();
 
-    public void begin(AbstractDao dao, AbstractDao... daos) {
+    public void begin(AbstractDao dao) {
+        if (connection == null) {
+            connection = CustomConnectionPool.INSTANCE.getConnection();
+        }
+        dao.setConnection(connection);
+        logger.log(Level.DEBUG, dao + " have a connection: " + connection);
+    }
+
+    public void begin(AbstractDao... daos) {
         try {
             if (connection == null) {
                 connection = CustomConnectionPool.INSTANCE.getConnection();
@@ -22,8 +30,6 @@ public class EntityTransaction {
         } catch (SQLException e) {
             logger.log(Level.WARN, "Impossible to establish AutoCommit to value false", e);
         }
-        dao.setConnection(connection);
-        logger.log(Level.DEBUG, dao + " have a connection: " + connection);
         for (AbstractDao abstractDao : daos) {
             if (abstractDao != null) {
                 abstractDao.setConnection(connection);
