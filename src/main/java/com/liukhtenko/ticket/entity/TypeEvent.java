@@ -9,10 +9,6 @@ public enum TypeEvent {
     MOVIE("Кино");
     private String value;
 
-
-    TypeEvent() {
-    }
-
     TypeEvent(String value) {
         this.value = value;
     }
@@ -21,9 +17,9 @@ public enum TypeEvent {
         return value;
     }
 
-    public static TypeEvent findByType(String type){
-        for(TypeEvent typeEvent : values()){
-            if( typeEvent.getValue().equalsIgnoreCase(type)){
+    public static TypeEvent findByType(String type) {
+        for (TypeEvent typeEvent : values()) {
+            if (typeEvent.getValue().equalsIgnoreCase(type)) {
                 return typeEvent;
             }
         }

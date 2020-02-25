@@ -1,7 +1,9 @@
 package com.liukhtenko.ticket.command;
 
 import com.liukhtenko.ticket.command.admincommand.*;
-import com.liukhtenko.ticket.command.supportcommand.*;
+import com.liukhtenko.ticket.command.supportcommand.ChangeLocaleCommand;
+import com.liukhtenko.ticket.command.supportcommand.ErrorCommand;
+import com.liukhtenko.ticket.command.supportcommand.HomeCommand;
 import com.liukhtenko.ticket.command.usercommand.*;
 import com.liukhtenko.ticket.command.viewcommand.*;
 
@@ -121,7 +123,7 @@ public enum CommandType {
             this.command = new ErrorCommand();
         }
     };
-   public Command command;
+    public Command command;
 
     public Command getCommand() {
         return command;

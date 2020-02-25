@@ -27,9 +27,6 @@ public enum TypeSeat {
     ROW_10("Ряд 10");
     private String value;
 
-    TypeSeat() {
-    }
-
     TypeSeat(String value) {
         this.value = value;
     }

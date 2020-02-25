@@ -2,6 +2,7 @@ package com.liukhtenko.ticket.service.impl;
 
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
+import com.liukhtenko.ticket.entity.TypeSeat;
 import com.liukhtenko.ticket.exception.ServiceException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;

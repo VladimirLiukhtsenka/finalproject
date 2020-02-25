@@ -8,6 +8,6 @@ public class CommandProvider {
         } catch (IllegalArgumentException e) {
             return CommandType.ERROR.command;
         }
-      return  commandType.getCommand();
+        return commandType.getCommand();
     }
 }

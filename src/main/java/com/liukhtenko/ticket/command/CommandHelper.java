@@ -10,7 +10,7 @@ import java.util.List;
 
 public class CommandHelper {
     private static final String ATTRIBUTE_USER_KEY = "user";
-    private static final double FLOATING_ONE_NUMBER =  1.0;
+    private static final double FLOATING_ONE_NUMBER = 1.0;
     private static final String POST_COMMAND_SIGN_UP = "SIGN_UP";
     private static final String POST_COMMAND_BUY_TICKET = "BUY_TICKET";
     private static final String POST_COMMAND_CREATE_EVENT = "CREATE_EVENT";
@@ -43,10 +43,10 @@ public class CommandHelper {
         for (int i = start; i < start + recordsPerPage && i < listAllEvents.size(); i++) {
             eventsToPage.add(listAllEvents.get(i));
         }
-        int noOfRecords = listAllEvents.size();
-        int noOfPages = (int) Math.ceil(noOfRecords * FLOATING_ONE_NUMBER / recordsPerPage);
+        int records = listAllEvents.size();
+        int pages = (int) Math.ceil(records * FLOATING_ONE_NUMBER / recordsPerPage);
         session.setAttribute(FormParameterName.FORM_PARAM_EVENTS, eventsToPage);
-        session.setAttribute(FormParameterName.FORM_PARAM_COUNT_PAGES, noOfPages);
+        session.setAttribute(FormParameterName.FORM_PARAM_COUNT_PAGES, pages);
         session.setAttribute(FormParameterName.FORM_PARAM_CURRENT_PAGE, page);
     }
 

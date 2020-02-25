@@ -2,9 +2,7 @@ package com.liukhtenko.ticket.dao.impl;
 
 import com.liukhtenko.ticket.dao.AbstractDao;
 import com.liukhtenko.ticket.dao.ColumnName;
-import com.liukhtenko.ticket.entity.Ticket;
 import com.liukhtenko.ticket.entity.TicketOffice;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 
 import java.sql.PreparedStatement;
@@ -83,7 +81,7 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
     }
 
     @Override
-    public boolean update(TicketOffice entity) throws DaoException {
-        throw  new UnsupportedOperationException("update method not implemented");
+    public boolean update(TicketOffice entity) {
+        throw new UnsupportedOperationException("update method not implemented");
     }
 }

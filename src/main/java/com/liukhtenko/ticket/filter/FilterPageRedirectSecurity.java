@@ -1,21 +1,21 @@
 package com.liukhtenko.ticket.filter;
 
-import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PagePath;
+        import com.liukhtenko.ticket.command.FormParameterName;
+        import com.liukhtenko.ticket.command.PagePath;
 
-import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
+        import javax.servlet.*;
+        import javax.servlet.annotation.WebFilter;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+        import javax.servlet.http.HttpSession;
+        import java.io.IOException;
 
 
 @WebFilter(urlPatterns = {"/pages/*"})
 public class FilterPageRedirectSecurity implements Filter {
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
 
     }
 
@@ -28,8 +28,6 @@ public class FilterPageRedirectSecurity implements Filter {
             httpResponse.sendRedirect(httpRequest.getContextPath() + PagePath.PAGE_INDEX);
         } else {
             session.setAttribute(FormParameterName.REDIRECT_SECURE, null);
-//            String redirectPath = (String) session.getAttribute("redirectPath");
-//            httpResponse.sendRedirect(httpRequest.getContextPath() + "do?command=View_festivals_event");
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }

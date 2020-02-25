@@ -1,18 +1,20 @@
 package com.liukhtenko.ticket.tag;
+
 import com.liukhtenko.ticket.command.FormParameterName;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class InfoTimeTag extends TagSupport {
     static Logger logger = LogManager.getLogger();
+
     @Override
     public int doStartTag() throws JspException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(FormParameterName.SIMPLE_DATE_FORMAT);

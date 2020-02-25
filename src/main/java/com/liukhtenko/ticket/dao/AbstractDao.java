@@ -1,20 +1,17 @@
 package com.liukhtenko.ticket.dao;
 
 
-
 import com.liukhtenko.ticket.entity.Entity;
+import com.liukhtenko.ticket.exception.DaoException;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
-
-import com.liukhtenko.ticket.exception.DaoException;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
@@ -47,6 +44,7 @@ public abstract class AbstractDao<K, T extends Entity> {
             logger.log(Level.WARN, "Impossible to close resultSet", e);
         }
     }
+
     void setConnection(Connection connection) {
         this.connection = connection;
     }

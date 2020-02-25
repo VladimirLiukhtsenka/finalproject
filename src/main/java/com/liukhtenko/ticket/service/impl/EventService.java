@@ -62,6 +62,7 @@ public class EventService implements EventServiceInterface {
         }
         return event;
     }
+
     public boolean createEvent(Event event) throws ServiceException {
         EventDao eventDao = new EventDao();
         EntityTransaction transaction = new EntityTransaction();

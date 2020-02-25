@@ -10,7 +10,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public class ViewConcertsEventCommand implements Command {
@@ -19,8 +18,7 @@ public class ViewConcertsEventCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         String page;
-       // HttpSession session = request.getSession();
-        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         EventService eventService = new EventService();
         try {
             List<Event> events = eventService.findEventByType(TypeEvent.CONCERTS.getValue());

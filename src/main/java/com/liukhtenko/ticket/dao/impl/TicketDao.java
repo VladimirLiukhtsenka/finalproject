@@ -107,8 +107,8 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
     }
 
     @Override
-    public List<Ticket> findAll() throws DaoException {
-        throw  new UnsupportedOperationException("findAll method not implemented");
+    public List<Ticket> findAll() {
+        throw new UnsupportedOperationException("findAll method not implemented");
     }
 
     @Override
@@ -163,8 +163,8 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
     }
 
     @Override
-    public boolean update(Ticket entity) throws DaoException {
-        throw  new UnsupportedOperationException("update method not implemented");
+    public boolean update(Ticket entity) {
+        throw new UnsupportedOperationException("update method not implemented");
     }
 
     public List<List<String>> printTickets(long UserId) throws DaoException {

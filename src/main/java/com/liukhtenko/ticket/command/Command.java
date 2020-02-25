@@ -2,6 +2,6 @@ package com.liukhtenko.ticket.command;
 
 import javax.servlet.http.HttpServletRequest;
 
-public interface  Command {
+public interface Command {
     String execute(HttpServletRequest request);
 }

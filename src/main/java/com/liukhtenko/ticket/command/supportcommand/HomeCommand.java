@@ -11,7 +11,6 @@ public class HomeCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
-        String page = PagePath.PAGE_INDEX;
-        return page;
+        return PagePath.PAGE_INDEX;
     }
 }

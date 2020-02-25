@@ -20,8 +20,8 @@ public class ProfileCommand implements Command {
     public String execute(HttpServletRequest request) {
         String page = null;
         User user = CommandHelper.findUserInSession(request);
-         HttpSession session = request.getSession();
-        request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.GET);
+        HttpSession session = request.getSession();
+        request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         if (!FormValidator.isPost(request)) {
             TicketService ticketService = new TicketService();
             try {

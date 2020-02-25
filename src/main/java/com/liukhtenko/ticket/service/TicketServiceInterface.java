@@ -1,9 +1,9 @@
 package com.liukhtenko.ticket.service;
 
-        import com.liukhtenko.ticket.entity.Ticket;
-        import com.liukhtenko.ticket.exception.ServiceException;
+import com.liukhtenko.ticket.entity.Ticket;
+import com.liukhtenko.ticket.exception.ServiceException;
 
-        import java.util.List;
+import java.util.List;
 
 public interface TicketServiceInterface {
     int buyTicket(long userId, long ticketId) throws ServiceException;

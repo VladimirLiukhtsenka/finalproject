@@ -50,7 +50,7 @@ public class UserDao extends AbstractDao<Long, User> {
     }
 
     public User find(Long id) throws DaoException {
-        User user = null;
+        User user;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -59,7 +59,7 @@ public class UserDao extends AbstractDao<Long, User> {
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 user = findUser(resultSet);
-            }else{
+            } else {
                 throw new DaoException("Unable to find user");
             }
         } catch (SQLException e) {
@@ -72,7 +72,7 @@ public class UserDao extends AbstractDao<Long, User> {
     }
 
     public User find(String mail, String password) throws DaoException {
-        User user = null;
+        User user;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -82,7 +82,7 @@ public class UserDao extends AbstractDao<Long, User> {
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 user = findUser(resultSet);
-            }else{
+            } else {
                 throw new DaoException("Unable to find user");
             }
         } catch (SQLException e) {
@@ -158,7 +158,7 @@ public class UserDao extends AbstractDao<Long, User> {
         return flag;
     }
 
-    private User findUser (ResultSet resultSet) throws SQLException {
+    private User findUser(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getLong(ColumnName.ID));
         user.setPhone(resultSet.getString(ColumnName.PHONE));

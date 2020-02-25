@@ -60,7 +60,7 @@ public class SignUpCommand implements Command {
                     user.setMail(mail);
                     userService.createUser(user);
                     page = PagePath.PAGE_LOGIN;
-                    request.setAttribute(FormParameterName.TYPE_METHOD,FormParameterName.POST);
+                    request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
                 } catch (ServiceException e) {
                     request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to signUp.");
                     logger.log(Level.WARN, "Error in SignUpCommand", e);

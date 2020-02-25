@@ -1,17 +1,17 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-        import com.liukhtenko.ticket.command.*;
-        import com.liukhtenko.ticket.dao.ColumnName;
-        import com.liukhtenko.ticket.entity.User;
-        import com.liukhtenko.ticket.exception.ServiceException;
-        import com.liukhtenko.ticket.service.impl.TicketService;
-        import org.apache.logging.log4j.Level;
-        import org.apache.logging.log4j.LogManager;
-        import org.apache.logging.log4j.Logger;
+import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.dao.ColumnName;
+import com.liukhtenko.ticket.entity.User;
+import com.liukhtenko.ticket.exception.ServiceException;
+import com.liukhtenko.ticket.service.impl.TicketService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpSession;
-        import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class BuyTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
@@ -22,9 +22,12 @@ public class BuyTicketCommand implements Command {
         String page;
         TicketService ticketService = new TicketService();
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
+        long ticketId = 0;
         try {
             long userId = user.getId();
-            long ticketId = Long.parseLong(request.getParameter(ColumnName.TICKET_ID));
+            if (request.getParameter(ColumnName.TICKET_ID) != null) {
+                ticketId = Long.parseLong(request.getParameter(ColumnName.TICKET_ID));
+            }
             ticketService.buyTicket(userId, ticketId);
             List<List<String>> userTickets = ticketService.printTickets(userId);
             HttpSession session = request.getSession();

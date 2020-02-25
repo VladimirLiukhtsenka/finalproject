@@ -13,7 +13,6 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
@@ -26,7 +25,7 @@ public class FilterRole implements Filter {
     private final static Set<CommandType> ALLOW_ADMIN = new HashSet<>();
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(FilterConfig filterConfig) {
         ALLOW_GUEST.add(CommandType.ERROR);
         ALLOW_GUEST.add(CommandType.SIGN_UP);
         ALLOW_GUEST.add(CommandType.HOME);

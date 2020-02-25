@@ -21,8 +21,7 @@ import java.util.List;
 
 public class ViewTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
-    private static final int ZERO = 0;
-    private static final int ONE = 1;
+
     @Override
     public String execute(HttpServletRequest request) {
         String page;
@@ -30,19 +29,22 @@ public class ViewTicketCommand implements Command {
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
+        long id = 0;
         try {
-            long id = Long.parseLong(request.getParameter(ColumnName.ID));
+            if (request.getParameter(ColumnName.ID) != null) {
+                id = Long.parseLong(request.getParameter(ColumnName.ID));
+            }
             session.setAttribute(ColumnName.TICKET_ID, id);
             List<Ticket> tickets = ticketService.findTicketsByEventId(id);
             session.setAttribute(FormParameterName.FORM_PARAM_TICKETS, tickets);
             Event event = eventService.findEventById(id);
-            List<Integer> remTickets = new ArrayList<>();
+            List<Integer> remainTickets = new ArrayList<>();
             for (Ticket ticket : tickets) {
                 int rem = ticketService.numberTicketsRemaining(ticket.getId());
-                remTickets.add(rem);
+                remainTickets.add(rem);
             }
-            session.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remTickets);
-            int end = remTickets.size() > ZERO ? remTickets.size() - ONE : ZERO;
+            session.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remainTickets);
+            int end = remainTickets.size() > 0 ? remainTickets.size() - 1 : 0;
             session.setAttribute(FormParameterName.FORM_PARAM_END, end);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {

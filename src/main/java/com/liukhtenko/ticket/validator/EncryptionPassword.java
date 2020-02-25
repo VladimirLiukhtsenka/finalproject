@@ -14,8 +14,8 @@ public class EncryptionPassword {
             md.update(value.getBytes());
             byte[] bytes = md.digest();
             StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & FormParameterName.HEXADECIMAL_FORMAT)
+            for (byte aByte : bytes) {
+                sb.append(Integer.toString((aByte & FormParameterName.HEXADECIMAL_FORMAT)
                         + FormParameterName.HEXADECIMAL_FORMAT_ADD, FormParameterName.RADIX)
                         .substring(FormParameterName.OFFSET));
             }

@@ -160,14 +160,12 @@ public class EventDao extends AbstractDao<Long, Event> {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         dateFormat.setLenient(false);
         dateFormat.setTimeZone(tz);
-        Date moment = dateFormat.parse(date);
-        return moment;
+        return dateFormat.parse(date);
     }
 
     private String transformDate(Date date) {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
-        String time = dateFormat.format(date);
-        return time;
+        return dateFormat.format(date);
     }
 
     private Event findEvent(ResultSet resultSet) throws SQLException, ParseException {

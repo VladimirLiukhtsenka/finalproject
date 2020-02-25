@@ -8,13 +8,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertyLoader {
+class PropertyLoader {
     static Logger logger = LogManager.getLogger();
-    private Properties properties;
     private static final String PROPERTY_PATH = "res/message.properties";
 
-    public Properties loadProperties() {
-        properties = new Properties();
+    Properties loadProperties() {
+        Properties properties = new Properties();
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTY_PATH)) {
             properties.load(inputStream);
         } catch (IOException e) {

@@ -2,9 +2,7 @@ package com.liukhtenko.ticket.service.impl;
 
 import com.liukhtenko.ticket.dao.EntityTransaction;
 import com.liukhtenko.ticket.dao.impl.TicketOfficeDao;
-import com.liukhtenko.ticket.dao.impl.UserDao;
 import com.liukhtenko.ticket.entity.TicketOffice;
-import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.TicketOfficeInterface;
@@ -32,6 +30,7 @@ public class TicketOfficeService implements TicketOfficeInterface {
         }
         return ticketOffices;
     }
+
     public void deleteTicketOfficeByPhone(String phone) throws ServiceException {
         TicketOfficeDao ticketOfficeDao = new TicketOfficeDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -45,6 +44,7 @@ public class TicketOfficeService implements TicketOfficeInterface {
             transaction.end();
         }
     }
+
     public boolean createTicketOffice(TicketOffice ticketOffice) throws ServiceException {
         TicketOfficeDao ticketOfficeDao = new TicketOfficeDao();
         EntityTransaction transaction = new EntityTransaction();
