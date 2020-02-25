@@ -1,8 +1,8 @@
 package com.liukhtenko.ticket.validator;
 
-        import com.liukhtenko.ticket.exception.ServiceException;
-        import org.testng.Assert;
-        import org.testng.annotations.Test;
+import com.liukhtenko.ticket.exception.ServiceException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class EncryptionPasswordTest {
 

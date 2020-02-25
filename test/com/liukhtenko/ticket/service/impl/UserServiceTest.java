@@ -9,10 +9,9 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.testng.Assert.*;
-
 public class UserServiceTest {
- private UserService userService;
+    private UserService userService;
+
     @BeforeMethod
     public void setUp() {
         userService = new UserService();
@@ -26,15 +25,15 @@ public class UserServiceTest {
     @Test
     public void testFindAllUsers() throws ServiceException {
         List<User> users = userService.findAllUsers();
-        Assert.assertTrue(users.size()>0);
+        Assert.assertTrue(users.size() > 0);
     }
 
     @Test
     public void testFindUserById() throws ServiceException {
         long adminId = 1;
         User user = userService.findUserById(adminId);
-        String actualName ="Владимир";
-        String expectedName =user.getName();
-        Assert.assertEquals(actualName,expectedName);
+        String actualName = "Владимир";
+        String expectedName = user.getName();
+        Assert.assertEquals(actualName, expectedName);
     }
 }

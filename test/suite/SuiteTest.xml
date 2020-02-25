@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<suite name ="Final project">
+<suite name="Final project">
     <test name="All tests">
         <classes>
             <class name="com.liukhtenko.ticket.validator.FormValidatorTest"/>

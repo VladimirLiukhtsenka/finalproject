@@ -11,6 +11,7 @@ import java.util.List;
 
 public class TicketOfficeServiceTest {
     private TicketOfficeService ticketOfficeService;
+
     @BeforeMethod
     public void setUp() {
         ticketOfficeService = new TicketOfficeService();
@@ -23,9 +24,9 @@ public class TicketOfficeServiceTest {
 
     @Test
     public void testFindAllTicketOffice() throws ServiceException {
-       List <TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
-       int actual = 8;
-       int expected = ticketOffices.size();
-        Assert.assertEquals(expected,actual);
+        List<TicketOffice> ticketOffices = ticketOfficeService.findAllTicketOffice();
+        int actual = 8;
+        int expected = ticketOffices.size();
+        Assert.assertEquals(expected, actual);
     }
 }

@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.service.impl;
 
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
-import com.liukhtenko.ticket.entity.TypeSeat;
 import com.liukhtenko.ticket.exception.ServiceException;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -13,6 +12,7 @@ import java.util.List;
 
 public class EventServiceTest {
     private EventService eventService;
+
     @BeforeMethod
     public void setUp() {
         eventService = new EventService();
@@ -25,13 +25,13 @@ public class EventServiceTest {
 
     @Test
     public void testFindAllEvents() throws ServiceException {
-        List<Event> events =eventService.findAllEvents();
-        Assert.assertTrue(events.size()>0);
+        List<Event> events = eventService.findAllEvents();
+        Assert.assertTrue(events.size() > 0);
     }
 
     @Test
     public void testFindEventByType() throws ServiceException {
-        List<Event> events =eventService.findEventByType(TypeEvent.SPORT.getValue());
-        Assert.assertTrue(events.size()>0);
+        List<Event> events = eventService.findEventByType(TypeEvent.SPORT.getValue());
+        Assert.assertTrue(events.size() > 0);
     }
 }

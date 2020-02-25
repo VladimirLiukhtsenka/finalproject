@@ -7,8 +7,19 @@ import com.liukhtenko.ticket.validator.FormValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
+/**
+ * The class that displays the admin page.
+ *
+ * @version   1.25 02 Feb 2020
+ * @author    Vladimir Liukhtenko
+ */
 public class AdminProfileCommand implements Command {
+    /**
+     * The class that displays the admin page.
+     *
+     * @version   1.25 02 Feb 2020
+     * @author    Vladimir Liukhtenko
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;
