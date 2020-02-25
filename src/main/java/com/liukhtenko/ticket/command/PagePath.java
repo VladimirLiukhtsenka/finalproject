@@ -1,8 +1,6 @@
 package com.liukhtenko.ticket.command;
 
 public class PagePath {
-    private PagePath() {
-    }
 
     public final static String PAGE_LOGIN = "/pages/login.jsp";
     public final static String PAGE_CREATE_EVENT = "/pages/createevent.jsp";
@@ -23,4 +21,7 @@ public class PagePath {
     public final static String PAGE_EDIT_TICKET = "/pages/editeticket.jsp";
     public final static String PAGE_CREATE_TICKET = "/pages/createticket.jsp";
     public final static String PAGE_UPDATE_USER = "/pages/updateuser.jsp";
+
+    private PagePath() {
+    }
 }

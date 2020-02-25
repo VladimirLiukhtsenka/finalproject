@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name ="Final project">
+    <test name="All tests">
+        <classes>
+            <class name="com.liukhtenko.ticket.validator.FormValidatorTest"/>
+            <class name="com.liukhtenko.ticket.validator.EncryptionPasswordTest"/>
+            <class name="com.liukhtenko.ticket.service.impl.TicketOfficeServiceTest"/>
+            <class name="com.liukhtenko.ticket.service.impl.EventServiceTest"/>
+            <class name="com.liukhtenko.ticket.service.impl.TicketServiceTest"/>
+            <class name="com.liukhtenko.ticket.service.impl.UserServiceTest"/>
+        </classes>
+    </test>
+</suite>

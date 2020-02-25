@@ -18,21 +18,23 @@ public class FormValidator {
     }
 
     public static boolean isValidNumber(String value) throws ServiceException {
+        long number;
         try {
-            Long.parseLong(value);
+            number = Long.parseLong(value);
         } catch (NumberFormatException e) {
             throw new ServiceException("Wrong data");
         }
-        return true;
+        return number > 0;
     }
 
     public static boolean isValidPrice(String value) throws ServiceException {
+        double price;
         try {
-            Double.parseDouble(value);
+            price = Double.parseDouble(value);
         } catch (NumberFormatException e) {
             throw new ServiceException("Wrong data");
         }
-        return true;
+        return price > 0;
     }
 
     public static boolean isValidDate(String value) throws ServiceException {
