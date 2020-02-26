@@ -12,7 +12,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-
+/**
+ * The class allows the user to update their personal data.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class UpdateUserCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

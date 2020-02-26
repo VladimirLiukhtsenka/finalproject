@@ -1,5 +1,10 @@
 package com.liukhtenko.ticket.entity;
-
+/**
+ * This is an entity class that describes roles.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class Role extends Entity {
     private long id;
     private String description;

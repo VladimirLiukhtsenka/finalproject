@@ -17,7 +17,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-
+/**
+ * This class allows to make requests to the database
+ * and change the status or view events
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class EventDao extends AbstractDao<Long, Event> {
     private static final String SQL_CREATE_EVENT =
             "INSERT INTO events (name, address, description, type_event, date) values (?,?,?,?,?);";

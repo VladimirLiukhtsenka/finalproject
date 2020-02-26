@@ -11,7 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class allows to make requests to the database
+ * and change the status  or view tickets
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class TicketDao extends AbstractDao<Long, Ticket> {
     private static final String SQL_FIND_TICKETS_BY_EVENT_ID =
             "SELECT id,event_id, type_seat, number_of_tickets, price FROM tickets WHERE event_id = ?;";

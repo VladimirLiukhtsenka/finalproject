@@ -4,7 +4,13 @@ package com.liukhtenko.ticket.service;
         import com.liukhtenko.ticket.exception.ServiceException;
 
         import java.util.List;
-
+/**
+ * Interface for
+ * {@link com.liukhtenko.ticket.service.impl.EventService}
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public interface EventServiceInterface {
     List<Event> findEventByType(String type) throws ServiceException;
 

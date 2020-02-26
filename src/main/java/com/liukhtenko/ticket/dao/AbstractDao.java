@@ -12,7 +12,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
-
+/**
+ * This abstract class which contains common methods for all Dao.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
     static Logger logger = LogManager.getLogger();

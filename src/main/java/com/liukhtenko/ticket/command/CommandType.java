@@ -6,7 +6,12 @@ import com.liukhtenko.ticket.command.supportcommand.ErrorCommand;
 import com.liukhtenko.ticket.command.supportcommand.HomeCommand;
 import com.liukhtenko.ticket.command.usercommand.*;
 import com.liukhtenko.ticket.command.viewcommand.*;
-
+/**
+ * The enum that contains all types of commands.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public enum CommandType {
     LOGIN {
         {

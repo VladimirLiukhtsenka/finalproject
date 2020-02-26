@@ -15,7 +15,12 @@ import java.util.Properties;
 import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
-
+/**
+ * The class that stores and distributes connections.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public enum CustomConnectionPool {
     INSTANCE;
 

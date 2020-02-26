@@ -8,7 +8,13 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+/**
+ * This class gives the Dao connection
+ * and then returns to the pool.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class EntityTransaction {
     private Connection connection;
     static Logger logger = LogManager.getLogger();

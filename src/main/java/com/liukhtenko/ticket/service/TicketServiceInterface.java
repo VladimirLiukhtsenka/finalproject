@@ -4,7 +4,13 @@ import com.liukhtenko.ticket.entity.Ticket;
 import com.liukhtenko.ticket.exception.ServiceException;
 
 import java.util.List;
-
+/**
+ * Interface for
+ * {@link com.liukhtenko.ticket.service.impl.TicketOfficeService}
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public interface TicketServiceInterface {
     int buyTicket(long userId, long ticketId) throws ServiceException;
 

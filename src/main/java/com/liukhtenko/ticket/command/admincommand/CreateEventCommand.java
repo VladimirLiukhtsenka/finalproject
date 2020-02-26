@@ -17,7 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
-
+/**
+ * The class that create event.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class CreateEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

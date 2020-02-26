@@ -8,7 +8,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
-
+/**
+ * The class that testing
+ * @see UserService
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class UserServiceTest {
     private UserService userService;
 

@@ -12,7 +12,12 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
-
+/**
+ * The class that allows a user to pick up a ticket.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class BuyTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

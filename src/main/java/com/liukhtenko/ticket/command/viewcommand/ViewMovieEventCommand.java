@@ -11,7 +11,12 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * The class allows to view movies.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class ViewMovieEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

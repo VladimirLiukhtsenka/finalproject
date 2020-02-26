@@ -5,7 +5,12 @@ import com.liukhtenko.ticket.exception.ServiceException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+/**
+ * The class that encodes password.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class EncryptionPassword {
     public static String encrypt(String value) throws ServiceException {
         String generatedPassword;

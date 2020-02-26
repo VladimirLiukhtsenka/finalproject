@@ -1,7 +1,12 @@
 package com.liukhtenko.ticket.entity;
 
 import java.util.Date;
-
+/**
+ * This is an entity class that describes event.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class Event extends Entity {
     private long id;
     private String name;

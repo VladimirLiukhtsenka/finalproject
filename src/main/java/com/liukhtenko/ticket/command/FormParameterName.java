@@ -1,5 +1,10 @@
 package com.liukhtenko.ticket.command;
-
+/**
+ * The class which contains constants.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class FormParameterName {
     public static final String DEFAULT_VALUE = "\"\"";
     public static final String FORM_PARAM_ADD_EVENT = "addEvent";

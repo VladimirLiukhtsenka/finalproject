@@ -11,7 +11,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class allows to make requests to the database
+ * and change the status or view ticket offices
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
     private static final String SQL_SELECT_ALL_TICKET_OFFICE =
             " SELECT address, operating_mode, phone FROM ticket_offices;";

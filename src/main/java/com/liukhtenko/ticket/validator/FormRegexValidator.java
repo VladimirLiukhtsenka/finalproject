@@ -1,5 +1,11 @@
 package com.liukhtenko.ticket.validator;
-
+/**
+ * The class that contains regular expressions
+ * for form validation.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class FormRegexValidator {
 
     public final static String LOGIN = "[\\wа-яА-ЯёЁ]{3,20}$";

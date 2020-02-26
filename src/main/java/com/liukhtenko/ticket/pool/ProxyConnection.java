@@ -10,7 +10,12 @@ import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
-
+/**
+ * Proxy class to connect
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class ProxyConnection implements Connection {
     static Logger logger = LogManager.getLogger();
     private Connection connection;

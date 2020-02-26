@@ -18,7 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The class allows to view tickets for the selected event.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class ViewTicketCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

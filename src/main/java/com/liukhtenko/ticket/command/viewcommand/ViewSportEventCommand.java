@@ -11,7 +11,12 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
+/**
+ * The class allows to view  sporting  events.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class ViewSportEventCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

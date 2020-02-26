@@ -14,7 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
+/**
+ * The class that controls the operation of the application.
+ * Makes a redirect or forward to the jsp page.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 @WebServlet(name = "FrontController", urlPatterns = {"/do"})
 public class FrontController extends HttpServlet {
     static Logger logger = LogManager.getLogger();

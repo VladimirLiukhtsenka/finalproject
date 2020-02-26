@@ -17,7 +17,12 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * The class allows the guest to sign up.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class SignUpCommand implements Command {
     static Logger logger = LogManager.getLogger();
 

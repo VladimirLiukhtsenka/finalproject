@@ -11,7 +11,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * This class allows to make requests to the database
+ * and change the status or view users
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_SELECT_ALL_USERS =
             " SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users;";

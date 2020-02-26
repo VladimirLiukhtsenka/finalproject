@@ -1,5 +1,10 @@
 package com.liukhtenko.ticket.dao;
-
+/**
+ * This class contains column names.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class ColumnName {
     public static final String ID = "id";
     public static final String NAME = "name";

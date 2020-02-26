@@ -1,5 +1,10 @@
 package com.liukhtenko.ticket.command;
-
+/**
+ * The class that that contains page paths.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class PagePath {
 
     public final static String PAGE_LOGIN = "/pages/login.jsp";

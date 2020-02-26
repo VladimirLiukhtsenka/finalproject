@@ -16,7 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * The class that defines possible commands depending on the role
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 @WebFilter(urlPatterns = {"/*"}, servletNames = {"FrontController"})
 public class FilterRole implements Filter {
     static Logger logger = LogManager.getLogger();

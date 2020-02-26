@@ -1,7 +1,12 @@
 package com.liukhtenko.ticket.pool;
 
 import java.util.concurrent.Callable;
-
+/**
+ * The class that counts the number of available connections.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class Watcher implements Callable<Integer> {
     @Override
     public Integer call() {

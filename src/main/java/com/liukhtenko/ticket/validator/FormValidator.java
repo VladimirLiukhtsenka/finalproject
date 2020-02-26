@@ -10,7 +10,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-
+/**
+ * The class that validates forms.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class FormValidator {
 
     public static boolean isValidString(String value, String pattern) {

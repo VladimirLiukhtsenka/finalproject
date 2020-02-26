@@ -1,7 +1,12 @@
 package com.liukhtenko.ticket.entity;
 
 import java.util.Objects;
-
+/**
+ * This is an entity class that describes ticket office.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class TicketOffice extends Entity {
     private String address;
     private String operatingMode;

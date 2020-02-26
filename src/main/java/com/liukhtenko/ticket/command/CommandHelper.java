@@ -7,7 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * The class for service commands.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class CommandHelper {
     private static final String ATTRIBUTE_USER_KEY = "user";
     private static final double FLOATING_ONE_NUMBER = 1.0;

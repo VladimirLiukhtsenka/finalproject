@@ -1,5 +1,10 @@
 package com.liukhtenko.ticket.entity;
-
+/**
+ * This is enum that that contains type seat.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public enum TypeSeat {
     PARTERRE("Партер"),
     LODGE("Ложа"),

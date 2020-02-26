@@ -11,7 +11,12 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
-
+/**
+ * Class that management events.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class EventService implements EventServiceInterface {
     static Logger logger = LogManager.getLogger();
 

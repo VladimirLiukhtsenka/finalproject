@@ -6,7 +6,12 @@ package com.liukhtenko.ticket.command.supportcommand;
 
         import javax.servlet.http.HttpServletRequest;
         import javax.servlet.http.HttpSession;
-
+/**
+ * The class that changes the locale .
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class ChangeLocaleCommand implements Command {
     private String locale = FormParameterName.LOCALE_EN;
 

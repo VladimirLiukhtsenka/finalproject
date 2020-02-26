@@ -10,7 +10,13 @@ package com.liukhtenko.ticket.filter;
         import javax.servlet.http.HttpSession;
         import java.io.IOException;
 
-
+/**
+ * The class that prevents direct browser access to pages.
+ * But it allows access from a servlet.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 @WebFilter(urlPatterns = {"/pages/*"})
 public class FilterPageRedirectSecurity implements Filter {
 

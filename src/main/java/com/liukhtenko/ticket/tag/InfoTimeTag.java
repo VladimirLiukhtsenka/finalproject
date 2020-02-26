@@ -11,7 +11,12 @@ import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * Custom tag class.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class InfoTimeTag extends TagSupport {
     static Logger logger = LogManager.getLogger();
 
