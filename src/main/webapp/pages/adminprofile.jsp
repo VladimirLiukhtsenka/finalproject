@@ -1,6 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+<style>
+body {
+    background-size: cover;
+    background-image: url("images/adminBcg.jpg");
+}
+</style>
 <%@ include file="include/head.jsp" %>
 <body>
      <nav class="navbar navbar-default">
@@ -27,12 +33,12 @@
         </div>
     </nav>
     <h1 align="center"><fmt:message key="message.adminPage"/></h1>
-    <h3>Hello! ${user.name}</h3>
+    <h3>${user.name}, Hello!</h3>
     <form class="form-horizontal" action = "do?command=admin_profile" method="POST">
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-0 control-label" for="logout"></label>
-            <div class="col-md-0">
+            <label class="col-md-1 control-label" for="logout"></label>
+            <div class="col-md-1">
                 <button id="logout" name="logout" class="btn btn-danger"><fmt:message key="button.logout"/></button>
             </div>
         </div>

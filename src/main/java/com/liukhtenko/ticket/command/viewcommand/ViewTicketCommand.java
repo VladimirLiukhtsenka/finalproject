@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.viewcommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Event;
@@ -18,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * The class allows to view tickets for the selected event.
  *
@@ -54,7 +54,7 @@ public class ViewTicketCommand implements Command {
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {
             session = request.getSession();
-            session.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to see tickets");
+            session.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible to see tickets");
             page = PagePath.PAGE_ERROR;
             logger.log(Level.WARN, "Error in ViewTicketCommand", e);
             return page;

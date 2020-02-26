@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 import java.util.List;
 /**
  * The class that testing
- * @see TicketOfficeService
+ * {@link  com.liukhtenko.ticket.service.impl.TicketOfficeService}
  *
  * @author Vladimir Liukhtenko
  * @version 1.25 02 Feb 2020

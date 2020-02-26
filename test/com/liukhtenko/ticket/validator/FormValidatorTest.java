@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 /**
  * The class that testing
- * @see FormValidator
+ * {@link  com.liukhtenko.ticket.validator.FormValidator}
  *
  * @author Vladimir Liukhtenko
  * @version 1.25 02 Feb 2020

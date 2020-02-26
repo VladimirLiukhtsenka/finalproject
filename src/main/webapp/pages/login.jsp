@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
+<style>
+body {
+    background-size: cover;
+    background-image: url("images/loginBackground.jpg");
+}
+</style>
 <%@ include file="include/head.jsp" %>
 <body>
     <%@ include file="include/menu.jsp" %>
@@ -27,6 +33,10 @@
             </div>
         </div>
     </form>
+    <c:set var = "data" scope = "session" value = "${wrongData}"/>
+    <c:if test = "${data != null}">
+    <h5 align="center"><fmt:message key="message.wrongData"/></h5>
+    </c:if>
     <%@ include file="include/footer.jsp" %>
 </body>
 </html>

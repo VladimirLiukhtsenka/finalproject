@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command.admincommand;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.EventService;
@@ -29,7 +32,7 @@ public class EditEventCommand implements Command {
             List<Event> events = eventService.findAllEvents();
             CommandHelper.viewEvents(request, events);
         } catch (ServiceException e) {
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to edit event");
+            request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unable to edit event");
             logger.log(Level.ERROR, "Error in EditEventCommand", e);
             page = PagePath.PAGE_ERROR;
             return page;

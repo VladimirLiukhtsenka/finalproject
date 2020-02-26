@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command.viewcommand;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.entity.Event;
 import com.liukhtenko.ticket.entity.TypeEvent;
 import com.liukhtenko.ticket.exception.ServiceException;
@@ -11,6 +14,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+
 /**
  * The class allows to view  sporting  events.
  *
@@ -30,7 +34,7 @@ public class ViewSportEventCommand implements Command {
             CommandHelper.viewEvents(request, events);
         } catch (ServiceException e) {
             logger.log(Level.WARN, "Error in ViewMovieEventCommand", e);
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to view sport events.");
+            request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible to view sport events.");
             page = PagePath.PAGE_ERROR;
             return page;
         }

@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.usercommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
@@ -17,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
+
 /**
  * The class allows the guest to sign up.
  *
@@ -67,14 +67,13 @@ public class SignUpCommand implements Command {
                     page = PagePath.PAGE_LOGIN;
                     request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
                 } catch (ServiceException e) {
-                    request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible to signUp.");
+                    request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible to signUp.");
                     logger.log(Level.WARN, "Error in SignUpCommand", e);
                     page = PagePath.PAGE_SIGN_UP;
                     return page;
                 }
             } else {
                 page = PagePath.PAGE_SIGN_UP;
-                request.setAttribute(PageMessage.MESSAGE, "Try signUp again");
             }
         }
         return page;

@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
@@ -12,6 +15,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
 /**
  * The class that allows a user to pick up a ticket.
  *
@@ -41,7 +45,7 @@ public class BuyTicketCommand implements Command {
             request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
         } catch (NumberFormatException | ServiceException e) {
             logger.log(Level.WARN, "Impossible to buy ticket for" + user, e);
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Unfortunately it is impossible to buy a ticket");
+            request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unfortunately it is impossible to buy a ticket");
             page = PagePath.PAGE_ERROR;
         }
         return page;

@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Ticket;
@@ -17,6 +16,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
 /**
  * The class that create ticket.
  *
@@ -60,7 +60,7 @@ public class CreateTicketCommand implements Command {
                 page = PagePath.PAGE_EDIT_TICKET;
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, "Error in CreateTicketCommand", e);
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible create ticket.");
+                request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible create ticket.");
                 return PagePath.PAGE_CREATE_TICKET;
             }
         }

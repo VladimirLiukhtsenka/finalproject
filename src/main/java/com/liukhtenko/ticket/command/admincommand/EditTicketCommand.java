@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.Event;
@@ -46,7 +45,7 @@ public class EditTicketCommand implements Command {
             Event event = eventService.findEventById(id);
             session.setAttribute(FormParameterName.FORM_PARAM_EVENT_NAME, event.getName());
         } catch (ServiceException e) {
-            request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to edit tickets");
+            request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unable to edit tickets");
             logger.log(Level.WARN, "Error in EditTicketCommand", e);
             page = PagePath.PAGE_ERROR;
             return page;

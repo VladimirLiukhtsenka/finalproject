@@ -1,17 +1,21 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-import com.liukhtenko.ticket.command.*;
-import com.liukhtenko.ticket.dao.ColumnName;
-import com.liukhtenko.ticket.entity.User;
-import com.liukhtenko.ticket.exception.ServiceException;
-import com.liukhtenko.ticket.service.impl.UserService;
-import com.liukhtenko.ticket.validator.FormRegexValidator;
-import com.liukhtenko.ticket.validator.FormValidator;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+        import com.liukhtenko.ticket.command.Command;
+        import com.liukhtenko.ticket.command.CommandHelper;
+        import com.liukhtenko.ticket.command.FormParameterName;
+        import com.liukhtenko.ticket.command.PagePath;
+        import com.liukhtenko.ticket.dao.ColumnName;
+        import com.liukhtenko.ticket.entity.User;
+        import com.liukhtenko.ticket.exception.ServiceException;
+        import com.liukhtenko.ticket.service.impl.UserService;
+        import com.liukhtenko.ticket.validator.FormRegexValidator;
+        import com.liukhtenko.ticket.validator.FormValidator;
+        import org.apache.logging.log4j.Level;
+        import org.apache.logging.log4j.LogManager;
+        import org.apache.logging.log4j.Logger;
 
-import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletRequest;
+
 /**
  * The class allows the user to update their personal data.
  *
@@ -56,7 +60,7 @@ public class UpdateUserCommand implements Command {
                 page = PagePath.PAGE_PROFILE;
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "Incorrect data" + e.toString());
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "Incorrect data");
+                request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Incorrect data");
                 page = PagePath.PAGE_UPDATE_USER;
             }
         }

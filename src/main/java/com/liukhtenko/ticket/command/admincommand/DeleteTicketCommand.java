@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.admincommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.exception.ServiceException;
@@ -12,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+
 /**
  * The class that delete ticket.
  *
@@ -36,7 +36,7 @@ public class DeleteTicketCommand implements Command {
                 request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
             } catch (ServiceException e) {
                 page = PagePath.PAGE_ERROR;
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "Unable to delete ticket");
+                request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unable to delete ticket");
                 logger.log(Level.ERROR, "Error in DeleteTicketCommand", e);
                 return page;
             }

@@ -84,4 +84,5 @@ message.ticketOffices=Ticket offices
 message.operatingMode=Operating mode
 message.profile=Profile
 message.youTickets=Your tickets
-message.adminPage=>Admin page
+message.adminPage=Admin page
+message.wrongData=Wrong data

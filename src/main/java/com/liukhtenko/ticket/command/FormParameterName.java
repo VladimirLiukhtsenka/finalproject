@@ -32,8 +32,10 @@ public class FormParameterName {
     public static final String FORM_PARAM_PAGE = "page";
     public static final String FORM_PARAM_COUNT_PAGES = "noOfPages";
     public static final String FORM_PARAM_COMMAND = "command";
+    public static final String FORM_PARAM_MESSAGE_ERROR = "mes_error";
     public static final String FORM_PARAM_CURRENT_PAGE = "currentPage";
     public static final String FORM_PARAM_LOCALE = "locale";
+    public static final String FORM_PARAM_WRONG_INPUT_DATA = "wrongData";
     public static final String LOCALE_RU = "ru_RU";
     public static final String LOCALE_EN = "en_US";
     public static final String LANGUAGE_RU = "ru";

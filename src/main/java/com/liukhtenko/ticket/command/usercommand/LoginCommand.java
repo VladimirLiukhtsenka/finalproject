@@ -2,7 +2,6 @@ package com.liukhtenko.ticket.command.usercommand;
 
 import com.liukhtenko.ticket.command.Command;
 import com.liukhtenko.ticket.command.FormParameterName;
-import com.liukhtenko.ticket.command.PageMessage;
 import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
@@ -19,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+
 /**
  * The class allows the user to log in.
  *
@@ -65,7 +65,7 @@ public class LoginCommand implements Command {
                 }
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "Incorrect data" + e.toString());
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "Incorrect data");
+                request.setAttribute(FormParameterName.FORM_PARAM_WRONG_INPUT_DATA, FormParameterName.FORM_PARAM_WRONG_INPUT_DATA);
                 page = PagePath.PAGE_LOGIN;
             }
         }

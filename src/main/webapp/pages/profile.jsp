@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
+<style>
+body {
+    background-size: cover;
+    background-image: url("images/profileBack.jpg");
+}
+</style>
 <%@ include file="include/head.jsp" %>
 <body>
     <%@ include file="include/menu.jsp" %>
@@ -9,8 +15,8 @@
     <form class="form-horizontal" action = "do?command=profile" method="POST">
         <!-- Button -->
         <div class="form-group">
-            <label class="col-md-0 control-label" for="logout"></label>
-            <div class="col-md-0">
+            <label class="col-md-1 control-label" for="logout"></label>
+            <div class="col-md-1">
                 <button id="logout" name="logout" class="btn btn-danger"><fmt:message key="button.logout"/></button>
             </div>
         </div>

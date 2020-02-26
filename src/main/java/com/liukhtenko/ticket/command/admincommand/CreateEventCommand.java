@@ -1,6 +1,9 @@
 package com.liukhtenko.ticket.command.admincommand;
 
-import com.liukhtenko.ticket.command.*;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
 import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.dao.impl.EventDao;
 import com.liukhtenko.ticket.entity.Event;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+
 /**
  * The class that create event.
  *
@@ -65,7 +69,7 @@ public class CreateEventCommand implements Command {
                 }
             } catch (ServiceException | ParseException e) {
                 logger.log(Level.ERROR, "Error in CreateEventCommand", e);
-                request.setAttribute(PageMessage.MESSAGE_ERROR, "Impossible create event.");
+                request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible create event.");
                 return PagePath.PAGE_CREATE_EVENT;
             }
         }

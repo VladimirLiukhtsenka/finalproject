@@ -1,5 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <html>
+<style>
+body {
+    background-size: cover;
+    background-image: url("images/updateUserBack.jpg");
+}
+</style>
 <%@ include file="include/head.jsp" %>
 <body>
     <%@ include file="include/menu.jsp" %>
