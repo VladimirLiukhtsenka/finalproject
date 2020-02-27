@@ -33,7 +33,7 @@ body {
         </div>
     </nav>
     <h1 align="center"><fmt:message key="message.adminPage"/></h1>
-    <h3>${user.name}, Hello!</h3>
+    <h3 align="center">${user.name}, <fmt:message key="message.hello"/>!</h3>
     <form class="form-horizontal" action = "do?command=admin_profile" method="POST">
         <!-- Button -->
         <div class="form-group">

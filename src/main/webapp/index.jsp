@@ -7,6 +7,7 @@ body {
     background-size: cover;
     background-image: url("images/indexback.jpg");
 }
+b{color: #FFFFFF;}
 </style>
 <%@ include file="/pages/include/head.jsp" %>
 <%@ include file="/pages/include/menu.jsp" %>
@@ -45,11 +46,11 @@ body {
          document.getElementById('time').innerHTML = h + ':' + m + ':' + s;
         }, 1000);
     </script>
-    <b><h2 style="color:#FFFFFF" align="center"><fmt:message key="message.title"/></h2></b>
-    <b><h3 style="color:#FFFFFF" align="center"><fmt:message key="message.subtitleOne" />
+    <b><h2 align="center"><fmt:message key="message.title"/></h2></b>
+    <b><h3  align="center"><fmt:message key="message.subtitleOne" />
     <br><fmt:message key="message.subtitleTwo"/></h3></b>
-    <b><h4 style="color:#FFFFFF" align="center"> <ctg:info-time /></h4></b>
-    <b><h4 style="color:#FFFFFF" align="center"><span id="time">00:00:00</span></h4></b>
+    <b><h4  align="center"> <ctg:info-time /></h4></b>
+    <b><h4  align="center"><span id="time">00:00:00</span></h4></b>
     <%@ include file="/pages/include/footer.jsp" %>
 </body>
 </html>

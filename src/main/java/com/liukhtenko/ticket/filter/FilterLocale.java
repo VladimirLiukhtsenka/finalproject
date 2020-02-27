@@ -14,7 +14,7 @@ import java.io.IOException;
  * @author Vladimir Liukhtenko
  * @version 1.25 02 Feb 2020
  */
-@WebFilter(urlPatterns = {"/index.jsp",})
+@WebFilter(urlPatterns = {"/*",})
 public class FilterLocale implements Filter {
 
     @Override
@@ -23,7 +23,7 @@ public class FilterLocale implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpSession session = req.getSession();
         if (session.getAttribute(FormParameterName.FORM_PARAM_LOCALE) == null) {
-            session.setAttribute(FormParameterName.FORM_PARAM_LOCALE, FormParameterName.LOCALE_EN);
+            session.setAttribute(FormParameterName.FORM_PARAM_LOCALE, FormParameterName.LOCALE_RU);
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }
