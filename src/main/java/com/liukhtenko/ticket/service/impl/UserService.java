@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.InputStream;
 import java.util.List;
 /**
  * Class that management users.
@@ -105,6 +106,20 @@ public class UserService implements UserServiceInterface {
             transaction.begin(userDao);
             userDao.update(user);
             logger.log(Level.DEBUG, "updateUser completed successfully");
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        } finally {
+            transaction.end();
+        }
+    }
+
+    public void updatePhoto(InputStream image, long userId) throws ServiceException {
+        UserDao userDao = new UserDao();
+        EntityTransaction transaction = new EntityTransaction();
+        try {
+            transaction.begin(userDao);
+            userDao.updatePhoto(image,userId);
+            logger.log(Level.DEBUG, "updatePhoto completed successfully");
         } catch (DaoException e) {
             throw new ServiceException(e);
         } finally {

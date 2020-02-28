@@ -24,6 +24,7 @@ public class ColumnName {
     public static final String PASSWORD = "password";
     public static final String MAIL = "mail";
     public static final String ROLE_ID = "role_id";
+    public static final String PHOTO = "photo";
     public static final String TICKET_ID = "ticket_id";
     public static final String SEAT_NUMBER = "seat_number";
     public static final String ROW_COUNT = "rowCount";

@@ -123,6 +123,11 @@ public enum CommandType {
             this.command = new ChangeLocaleCommand();
         }
     },
+    UPDATE_PHOTO {
+        {
+            this.command = new UpdatePhotoCommand();
+        }
+    },
     ERROR {
         {
             this.command = new ErrorCommand();

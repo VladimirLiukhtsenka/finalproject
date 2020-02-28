@@ -5,11 +5,28 @@ body {
     background-size: cover;
     background-image: url("images/updateUserBack.jpg");
 }
+.submitInline{ display: flex; flex-direction: row;}
 </style>
 <%@ include file="include/head.jsp" %>
 <body>
     <%@ include file="include/menu.jsp" %>
-    <form class="form-horizontal"action = "do?command=update_user" method="POST">
+    <div class="form-group" align="center">
+        <c:choose>
+          <c:when test="${user.photo == null}">
+            <img src="/images/photoMissing.jpg" width="240" height="240"/>
+          </c:when>
+          <c:when test="${user.photo != null}">
+            <img src="data:image/jpg;base64,${user.photo}" width="240" height="300"/>
+          </c:when>
+        </c:choose>
+        <form method="post" action="uploadController" enctype="multipart/form-data">
+            <div class="submitInline" align="center">
+                <input type="file" name="photo"/>
+                <input type="submit" value="Save"/>
+            </div>
+        </form>
+    </div>
+  <form class="form-horizontal" action = "do?command=update_user" method="POST">
     <h3 align="center"><fmt:message key="message.updatePersonData"/></h3>
         <!-- Text input-->
         <div class="form-group">
@@ -39,7 +56,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="mail"><fmt:message key="message.mail"/></label>
             <div class="col-md-4">
-                <input id="mail" name="mail" type="text" value="${user.mail}" class="form-control input-md" required="" maxlength=30 pattern="^[\w-\+]+(\.[\w-]+)*@[\w-]+(\.[\w]+)*(\.[a-zA-Z]{2,})$"><h5 style="color:#ff0000">${errormail}</h5>
+                <input id="mail" name="mail" type="text" value="${user.mail}" class="form-control input-md" required="" maxlength=30 pattern="^[\w-\+]+(\.[\w-]+)*@[\w-]+(\.[\w]+)*(\.[a-zA-Z]{2,})$" readonly><h5 style="color:#ff0000">${errormail}</h5>
             </div>
         </div>
 
@@ -53,13 +70,12 @@ body {
             </div>
         </div>
 
-        <!-- Button -->
-        <div class="form-group">
+         <form class="form-horizontal" action = "do?command=update_user" method="POST">
             <label class="col-md-4 control-label" for="submitButton"></label>
-            <div class="col-md-4">
-                <button id="submitButton" name="submitButton" class="btn btn-success"><fmt:message key="button.update"/></button>
-            </div>
-        </div>
+               <div class="col-md-4">
+                   <button id="submitButton" name="submitButton" class="btn btn-success"><fmt:message key="button.update"/></button>
+               </div>
+        </form>
     </form>
     <%@ include file="include/footer.jsp" %>
 </body>

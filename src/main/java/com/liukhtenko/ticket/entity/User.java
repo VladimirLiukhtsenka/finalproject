@@ -1,4 +1,8 @@
 package com.liukhtenko.ticket.entity;
+
+import java.io.InputStream;
+import java.sql.Blob;
+
 /**
  * This is an entity class that describes user.
  *
@@ -15,6 +19,15 @@ public class User extends Entity {
     private String password;
     private String mail;
     private long roleId;
+    private String photo;
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public User() {
     }

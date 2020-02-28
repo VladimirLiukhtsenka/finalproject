@@ -51,6 +51,7 @@ public class FilterRole implements Filter {
         ALLOW_USER.add(CommandType.BUY_TICKET);
         ALLOW_USER.add(CommandType.PROFILE);
         ALLOW_USER.add(CommandType.UPDATE_USER);
+        ALLOW_USER.add(CommandType.UPDATE_PHOTO);
 
         ALLOW_ADMIN.addAll(ALLOW_USER);
         ALLOW_ADMIN.remove(CommandType.BUY_TICKET);

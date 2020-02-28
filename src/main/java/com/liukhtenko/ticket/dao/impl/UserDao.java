@@ -5,12 +5,15 @@ import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.DaoException;
 
+import java.io.InputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
+
 /**
  * This class allows to make requests to the database
  * and change the status or view users
@@ -20,11 +23,11 @@ import java.util.List;
  */
 public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_SELECT_ALL_USERS =
-            " SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users;";
+            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id, photo FROM users;";
     private static final String SQL_SELECT_USER_BY_ID =
-            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id FROM users WHERE id=?;";
+            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id, photo FROM users WHERE id=?;";
     private static final String SQL_SELECT_USER_BY_MAIL_AND_Password =
-            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id from users " +
+            "SELECT id, phone, name, surname, father_name, gender, password, mail, role_id, photo from users " +
                     "WHERE mail=? and password=?;";
     private static final String SQL_DELETE_USER_BY_ID =
             "DELETE FROM users WHERE id=?;";
@@ -33,6 +36,8 @@ public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_UPDATE_USER =
             "UPDATE users SET phone=?, name=?, surname=?, father_name=?, gender=?, password=?, mail=?," +
                     " role_id=? WHERE id=?";
+    private static final String SQL_UPDATE_PHOTO =
+            "UPDATE users SET photo=? WHERE id=?";
 
     @Override
     public List<User> findAll() throws DaoException {
@@ -139,6 +144,19 @@ public class UserDao extends AbstractDao<Long, User> {
         return flag;
     }
 
+    public void updatePhoto(InputStream image, long userId) throws DaoException {
+        PreparedStatement statement = null;
+        try {
+            statement = connection.prepareStatement(SQL_UPDATE_PHOTO);
+            statement.setBlob(1, image);
+            statement.setLong(2, userId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("Unable to update photo", e);
+        } finally {
+            close(statement);
+        }
+    }
 
     @Override
     public boolean update(User user) throws DaoException {
@@ -155,7 +173,7 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setString(7, user.getMail());
             statement.setLong(8, user.getRoleID());
             statement.setLong(9, user.getId());
-            flag = (1 == statement.executeUpdate());
+            flag = (1 == statement.executeUpdate()); // FIXME: 28.02.2020
         } catch (SQLException e) {
             throw new DaoException("Unable to update user", e);
         } finally {
@@ -175,6 +193,11 @@ public class UserDao extends AbstractDao<Long, User> {
         user.setPassword(resultSet.getString(ColumnName.PASSWORD));
         user.setMail(resultSet.getString(ColumnName.MAIL));
         user.setRoleID(resultSet.getLong(ColumnName.ROLE_ID));
+        if (resultSet.getBytes(ColumnName.PHOTO) != null) {
+            byte[] imgData = resultSet.getBytes(ColumnName.PHOTO);
+            String encode = Base64.getEncoder().encodeToString(imgData);
+            user.setPhoto(encode);
+        }
         return user;
     }
 

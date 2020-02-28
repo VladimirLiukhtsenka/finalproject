@@ -14,7 +14,11 @@ package com.liukhtenko.ticket.command.usercommand;
         import org.apache.logging.log4j.LogManager;
         import org.apache.logging.log4j.Logger;
 
+        import javax.servlet.ServletException;
         import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.Part;
+        import java.io.IOException;
+        import java.io.InputStream;
 
 /**
  * The class allows the user to update their personal data.
@@ -57,7 +61,7 @@ public class UpdateUserCommand implements Command {
                 }
                 UserService userService = new UserService();
                 userService.updateUser(user);
-                page = PagePath.PAGE_PROFILE;
+                page = PagePath.PAGE_UPDATE_USER;
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "Incorrect data" + e.toString());
                 request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Incorrect data");
