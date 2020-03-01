@@ -8,13 +8,14 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
 /**
  * The class that checks and sets the required locale
  *
  * @author Vladimir Liukhtenko
  * @version 1.25 02 Feb 2020
  */
-@WebFilter(urlPatterns = {"/*",})
+@WebFilter(urlPatterns = {"/*"})
 public class FilterLocale implements Filter {
 
     @Override

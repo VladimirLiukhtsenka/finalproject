@@ -6,6 +6,7 @@ import com.liukhtenko.ticket.command.supportcommand.ErrorCommand;
 import com.liukhtenko.ticket.command.supportcommand.HomeCommand;
 import com.liukhtenko.ticket.command.usercommand.*;
 import com.liukhtenko.ticket.command.viewcommand.*;
+
 /**
  * The enum that contains all types of commands.
  *

@@ -3,8 +3,6 @@ package com.liukhtenko.ticket.controller;
 import com.liukhtenko.ticket.command.*;
 import com.liukhtenko.ticket.pool.CustomConnectionPool;
 import com.liukhtenko.ticket.pool.StartWatcher;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+
 /**
  * The class that controls the operation of the application.
  * Makes a redirect or forward to the jsp page.
@@ -23,7 +22,6 @@ import java.io.IOException;
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/do"})
 public class FrontController extends HttpServlet {
-    static Logger logger = LogManager.getLogger();
 
     @Override
     public void init() {

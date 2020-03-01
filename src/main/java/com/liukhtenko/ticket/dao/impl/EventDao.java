@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+
 /**
  * This class allows to make requests to the database
  * and change the status or view events

@@ -1,4 +1,5 @@
 package com.liukhtenko.ticket.dao;
+
 /**
  * This class contains column names.
  *

@@ -1,4 +1,5 @@
 package com.liukhtenko.ticket.validator;
+
 /**
  * The class that contains regular expressions
  * for form validation.

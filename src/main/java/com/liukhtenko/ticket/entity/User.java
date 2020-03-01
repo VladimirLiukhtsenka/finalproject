@@ -1,8 +1,5 @@
 package com.liukhtenko.ticket.entity;
 
-import java.io.InputStream;
-import java.sql.Blob;
-
 /**
  * This is an entity class that describes user.
  *

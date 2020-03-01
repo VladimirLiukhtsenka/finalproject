@@ -1,11 +1,12 @@
 package com.liukhtenko.ticket.command.supportcommand;
 
-        import com.liukhtenko.ticket.command.Command;
-        import com.liukhtenko.ticket.command.FormParameterName;
-        import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
 
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 /**
  * The class that changes the locale .
  *

@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
+
 /**
  * This abstract class which contains common methods for all Dao.
  *
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public abstract class AbstractDao<K, T extends Entity> {
     protected Connection connection;
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     public abstract List<T> findAll() throws DaoException;
 

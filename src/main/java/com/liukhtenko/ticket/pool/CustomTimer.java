@@ -9,14 +9,16 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 /**
  * The class that runs
  * {@link com.liukhtenko.ticket.pool.Watcher}
+ *
  * @author Vladimir Liukhtenko
  * @version 1.25 02 Feb 2020
  */
 public class CustomTimer extends TimerTask {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public void run() {

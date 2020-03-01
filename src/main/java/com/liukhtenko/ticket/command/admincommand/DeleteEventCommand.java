@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
  * @version 1.25 02 Feb 2020
  */
 public class DeleteEventCommand implements Command {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {

@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
 import java.util.List;
+
 /**
  * Class that management users.
  *
@@ -19,7 +20,7 @@ import java.util.List;
  * @version 1.25 02 Feb 2020
  */
 public class UserService implements UserServiceInterface {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     public List<User> findAllUsers() throws ServiceException {
         List<User> users;
@@ -118,7 +119,7 @@ public class UserService implements UserServiceInterface {
         EntityTransaction transaction = new EntityTransaction();
         try {
             transaction.begin(userDao);
-            userDao.updatePhoto(image,userId);
+            userDao.updatePhoto(image, userId);
             logger.log(Level.DEBUG, "updatePhoto completed successfully");
         } catch (DaoException e) {
             throw new ServiceException(e);

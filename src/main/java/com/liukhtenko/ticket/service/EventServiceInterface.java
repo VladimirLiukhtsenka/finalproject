@@ -4,6 +4,7 @@ package com.liukhtenko.ticket.service;
         import com.liukhtenko.ticket.exception.ServiceException;
 
         import java.util.List;
+
 /**
  * Interface for
  * {@link com.liukhtenko.ticket.service.impl.EventService}

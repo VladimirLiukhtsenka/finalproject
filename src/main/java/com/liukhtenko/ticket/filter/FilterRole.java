@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+
 /**
  * The class that defines possible commands depending on the role
  *
@@ -24,7 +25,7 @@ import java.util.Set;
  */
 @WebFilter(urlPatterns = {"/*"}, servletNames = {"FrontController"})
 public class FilterRole implements Filter {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
     private final static Set<CommandType> ALLOW_GUEST = new HashSet<>();
     private final static Set<CommandType> ALLOW_USER = new HashSet<>();
     private final static Set<CommandType> ALLOW_ADMIN = new HashSet<>();

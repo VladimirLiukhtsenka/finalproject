@@ -1,24 +1,20 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-        import com.liukhtenko.ticket.command.Command;
-        import com.liukhtenko.ticket.command.CommandHelper;
-        import com.liukhtenko.ticket.command.FormParameterName;
-        import com.liukhtenko.ticket.command.PagePath;
-        import com.liukhtenko.ticket.dao.ColumnName;
-        import com.liukhtenko.ticket.entity.User;
-        import com.liukhtenko.ticket.exception.ServiceException;
-        import com.liukhtenko.ticket.service.impl.UserService;
-        import com.liukhtenko.ticket.validator.FormRegexValidator;
-        import com.liukhtenko.ticket.validator.FormValidator;
-        import org.apache.logging.log4j.Level;
-        import org.apache.logging.log4j.LogManager;
-        import org.apache.logging.log4j.Logger;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.dao.ColumnName;
+import com.liukhtenko.ticket.entity.User;
+import com.liukhtenko.ticket.exception.ServiceException;
+import com.liukhtenko.ticket.service.impl.UserService;
+import com.liukhtenko.ticket.validator.FormRegexValidator;
+import com.liukhtenko.ticket.validator.FormValidator;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        import javax.servlet.ServletException;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.Part;
-        import java.io.IOException;
-        import java.io.InputStream;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * The class allows the user to update their personal data.
@@ -27,7 +23,7 @@ package com.liukhtenko.ticket.command.usercommand;
  * @version 1.25 02 Feb 2020
  */
 public class UpdateUserCommand implements Command {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {

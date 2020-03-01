@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
 /**
  * The class that displays the admin page.
  *
@@ -14,8 +15,8 @@ import java.util.Properties;
  * @version 1.25 02 Feb 2020
  */
 class PropertyLoader {
-    static Logger logger = LogManager.getLogger();
-    private static final String PROPERTY_PATH = "res/message.properties";
+    private static Logger logger = LogManager.getLogger();
+    private static final String PROPERTY_PATH = "database/message.properties";
 
     Properties loadProperties() {
         Properties properties = new Properties();

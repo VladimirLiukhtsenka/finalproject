@@ -13,8 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * The class that upload photography.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 @WebServlet("/uploadController")
-@MultipartConfig(maxFileSize = 16177215) // FIXME: 29.02.2020
+@MultipartConfig(maxFileSize = 16177215)
 public class FileUploadController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

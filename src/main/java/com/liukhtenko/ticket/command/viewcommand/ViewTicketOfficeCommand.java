@@ -1,17 +1,17 @@
 package com.liukhtenko.ticket.command.viewcommand;
 
-        import com.liukhtenko.ticket.command.Command;
-        import com.liukhtenko.ticket.command.FormParameterName;
-        import com.liukhtenko.ticket.command.PagePath;
-        import com.liukhtenko.ticket.entity.TicketOffice;
-        import com.liukhtenko.ticket.exception.ServiceException;
-        import com.liukhtenko.ticket.service.impl.TicketOfficeService;
-        import org.apache.logging.log4j.Level;
-        import org.apache.logging.log4j.LogManager;
-        import org.apache.logging.log4j.Logger;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.entity.TicketOffice;
+import com.liukhtenko.ticket.exception.ServiceException;
+import com.liukhtenko.ticket.service.impl.TicketOfficeService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        import javax.servlet.http.HttpServletRequest;
-        import java.util.List;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * The class that allows to view ticket office.
@@ -20,7 +20,7 @@ package com.liukhtenko.ticket.command.viewcommand;
  * @version 1.25 02 Feb 2020
  */
 public class ViewTicketOfficeCommand implements Command {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {

@@ -25,7 +25,7 @@ import java.util.List;
  * @version 1.25 02 Feb 2020
  */
 public class ViewTicketCommand implements Command {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -45,7 +45,7 @@ public class ViewTicketCommand implements Command {
             Event event = eventService.findEventById(id);
             List<Integer> remainTickets = new ArrayList<>();
             for (Ticket ticket : tickets) {
-                int rem = ticketService.numberTicketsRemaining(ticket.getId());
+                int rem = TicketService.numberTicketsRemaining(ticket.getId());
                 remainTickets.add(rem);
             }
             session.setAttribute(FormParameterName.FORM_PARAM_REMAINING_TICKETS, remainTickets);

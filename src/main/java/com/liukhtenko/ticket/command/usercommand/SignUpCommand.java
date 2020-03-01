@@ -24,7 +24,7 @@ import java.util.Map;
  * @version 1.25 02 Feb 2020
  */
 public class SignUpCommand implements Command {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {

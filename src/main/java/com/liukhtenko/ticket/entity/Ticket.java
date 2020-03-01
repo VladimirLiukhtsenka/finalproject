@@ -1,4 +1,5 @@
 package com.liukhtenko.ticket.entity;
+
 /**
  * This is an entity class that describes ticket.
  *

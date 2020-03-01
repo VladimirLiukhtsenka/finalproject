@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.pool;
 
 import java.util.concurrent.Callable;
+
 /**
  * The class that counts the number of available connections.
  *

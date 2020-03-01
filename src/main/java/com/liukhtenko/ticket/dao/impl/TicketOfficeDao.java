@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * This class allows to make requests to the database
  * and change the status or view ticket offices

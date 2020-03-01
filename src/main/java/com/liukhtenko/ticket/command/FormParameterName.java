@@ -1,4 +1,5 @@
 package com.liukhtenko.ticket.command;
+
 /**
  * The class which contains constants.
  *

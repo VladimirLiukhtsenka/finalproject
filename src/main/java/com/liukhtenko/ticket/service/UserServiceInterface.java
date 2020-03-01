@@ -4,6 +4,7 @@ import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 
 import java.util.List;
+
 /**
  * Interface for
  * {@link com.liukhtenko.ticket.service.impl.UserService}

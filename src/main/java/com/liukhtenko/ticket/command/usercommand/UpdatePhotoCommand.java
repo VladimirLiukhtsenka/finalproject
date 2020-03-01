@@ -1,37 +1,36 @@
 package com.liukhtenko.ticket.command.usercommand;
 
-        import com.liukhtenko.ticket.command.Command;
-        import com.liukhtenko.ticket.command.CommandHelper;
-        import com.liukhtenko.ticket.command.FormParameterName;
-        import com.liukhtenko.ticket.command.PagePath;
-        import com.liukhtenko.ticket.dao.ColumnName;
-        import com.liukhtenko.ticket.entity.User;
-        import com.liukhtenko.ticket.exception.ServiceException;
-        import com.liukhtenko.ticket.service.impl.UserService;
-        import org.apache.logging.log4j.Level;
-        import org.apache.logging.log4j.LogManager;
-        import org.apache.logging.log4j.Logger;
+import com.liukhtenko.ticket.command.Command;
+import com.liukhtenko.ticket.command.CommandHelper;
+import com.liukhtenko.ticket.command.FormParameterName;
+import com.liukhtenko.ticket.command.PagePath;
+import com.liukhtenko.ticket.dao.ColumnName;
+import com.liukhtenko.ticket.entity.User;
+import com.liukhtenko.ticket.exception.ServiceException;
+import com.liukhtenko.ticket.service.impl.UserService;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-        import javax.servlet.ServletException;
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpSession;
-        import javax.servlet.http.Part;
-        import java.io.IOException;
-        import java.io.InputStream;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class UpdatePhotoCommand implements Command {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
-        String page = PagePath.PAGE_UPDATE_USER;;
-        InputStream inputStream = null;
+        String page = PagePath.PAGE_UPDATE_USER;
+        InputStream inputStream;
         try {
-            Part filePart = request.getPart(ColumnName.PHOTO);
-            if (filePart != null) {
-                inputStream = filePart.getInputStream();
-
+            Part photo = request.getPart(ColumnName.PHOTO);
+            if (photo != null && photo.getSize() > 0) {
+                inputStream = photo.getInputStream();
                 UserService userService = new UserService();
                 userService.updatePhoto(inputStream, user.getId());
                 User userUpdate = userService.findUserById(user.getId());

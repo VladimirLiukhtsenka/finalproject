@@ -5,6 +5,7 @@ import com.liukhtenko.ticket.exception.ServiceException;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 /**
  * The class that encodes password.
  *

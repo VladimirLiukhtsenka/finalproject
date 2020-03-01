@@ -86,3 +86,5 @@ message.profile=Профиль
 message.youTickets=Ваши билеты
 message.adminPage=Профиль администратора
 message.wrongData=Неверные данные
+message.save=Сохранить
+message.choseFile=Выбрать файл

@@ -5,6 +5,7 @@ import com.liukhtenko.ticket.command.FormParameterName;
 import com.liukhtenko.ticket.command.PagePath;
 
 import javax.servlet.http.HttpServletRequest;
+
 /**
  * The class that displays error page.
  *
@@ -16,7 +17,6 @@ public class ErrorCommand implements Command {
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
-        String page = PagePath.PAGE_ERROR;
-        return page;
+        return PagePath.PAGE_ERROR;
     }
 }

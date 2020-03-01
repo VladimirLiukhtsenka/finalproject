@@ -15,6 +15,7 @@ import java.util.Properties;
 import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
+
 /**
  * The class that stores and distributes connections.
  *
@@ -57,6 +58,7 @@ public enum CustomConnectionPool {
     public Connection getConnection() {
         ProxyConnection connection = null;
         try {
+            //getting connection or waiting
             connection = freeConnections.take();
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {

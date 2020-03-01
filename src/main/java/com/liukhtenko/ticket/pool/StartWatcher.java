@@ -2,6 +2,7 @@ package com.liukhtenko.ticket.pool;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
 /**
  * The class that runs
  * {@link com.liukhtenko.ticket.pool.CustomTimer}

@@ -5,7 +5,15 @@ body {
     background-size: cover;
     background-image: url("images/updateUserBack.jpg");
 }
-.submitInline{ display: flex; flex-direction: row;}
+.button {
+  font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+    padding:5px;
+    border:2px solid #ccc;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
 </style>
 <%@ include file="include/head.jsp" %>
 <body>
@@ -13,17 +21,16 @@ body {
     <div class="form-group" align="center">
         <c:choose>
           <c:when test="${user.photo == null}">
-            <img src="/images/photoMissing.jpg" width="240" height="240"/>
+            <img src="images/photoMissing.jpg" width="240" height="240"/>
           </c:when>
           <c:when test="${user.photo != null}">
-            <img src="data:image/jpg;base64,${user.photo}" width="240" height="300"/>
+            <img src="data:image/jpg;base64,${user.photo}" width="240" height="240"/>
           </c:when>
         </c:choose>
         <form method="post" action="uploadController" enctype="multipart/form-data">
-            <div class="submitInline" align="center">
-                <input type="file" name="photo"/>
-                <input type="submit" value="Save"/>
-            </div>
+            <input type="file" id = "files" name="photo" class = "hidden"/>
+            <input type="submit" class="button" value=<fmt:message key="message.save"/>>
+            <label for = "files"  class="button" > <fmt:message key="message.choseFile"/> </ label>
         </form>
     </div>
   <form class="form-horizontal" action = "do?command=update_user" method="POST">
@@ -73,7 +80,7 @@ body {
          <form class="form-horizontal" action = "do?command=update_user" method="POST">
             <label class="col-md-4 control-label" for="submitButton"></label>
                <div class="col-md-4">
-                   <button id="submitButton" name="submitButton" class="btn btn-success"><fmt:message key="button.update"/></button>
+                   <button id="submitButton" name="submitButton" class="btn btn-success"><fmt:message key="message.save"/></button>
                </div>
         </form>
     </form>
