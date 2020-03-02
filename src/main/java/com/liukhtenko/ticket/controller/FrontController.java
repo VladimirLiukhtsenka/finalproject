@@ -1,17 +1,17 @@
 package com.liukhtenko.ticket.controller;
 
-import com.liukhtenko.ticket.command.*;
-import com.liukhtenko.ticket.pool.CustomConnectionPool;
-import com.liukhtenko.ticket.pool.StartWatcher;
+        import com.liukhtenko.ticket.command.*;
+        import com.liukhtenko.ticket.pool.CustomConnectionPool;
+        import com.liukhtenko.ticket.pool.StartWatcher;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
+        import javax.servlet.RequestDispatcher;
+        import javax.servlet.ServletException;
+        import javax.servlet.annotation.WebServlet;
+        import javax.servlet.http.HttpServlet;
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpServletResponse;
+        import javax.servlet.http.HttpSession;
+        import java.io.IOException;
 
 /**
  * The class that controls the operation of the application.
@@ -63,6 +63,7 @@ public class FrontController extends HttpServlet {
 
     @Override
     public void destroy() {
+        StartWatcher.stop();
         CustomConnectionPool.INSTANCE.destroyPool();
     }
 }

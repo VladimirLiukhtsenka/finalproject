@@ -28,13 +28,16 @@ body {
                                <div class="col-md-2">${tickets [i].price}</div>
                                <div class="col-md-2">${remTickets [i]}</div>
                                <div class="col-md-2">
-                                   <form class="form-horizontal">
-                                       <input id="ticket_id" name="ticket_id" type="hidden" placeholder="" class="form-control input-md"
-                                               required="" value="${tickets [i].id}">
-                                       <div class="col-md-2">
-                                           <button id="buy ticket" name="buy ticket" class="btn btn-success"><fmt:message key="message.pickUp"/></button>
-                                       </div>
-                                   </form>
+                               <c:set var = "size" scope = "session" value = "${remTickets [i]}"/>
+                                   <c:if test = "${size>0}">
+                                       <form class="form-horizontal">
+                                           <input id="ticket_id" name="ticket_id" type="hidden" placeholder="" class="form-control input-md"
+                                                   required="" value="${tickets [i].id}">
+                                           <div class="col-md-2">
+                                               <button id="buy ticket" name="buy ticket" class="btn btn-success"><fmt:message key="message.pickUp"/></button>
+                                           </div>
+                                       </form>
+                                    </c:if>
                                </div>
                            </div>
                        </form>

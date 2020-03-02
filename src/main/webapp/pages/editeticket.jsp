@@ -11,7 +11,7 @@ body {
 <div class="container">
 <%@ include file="include/menu.jsp" %>
     <h1 align="center"><fmt:message key="message.editTicket"/></h1>
-    <h5 align="center">${eventName}</h5>
+    <h3 align="center">${eventName}</h3>
     <form class="form-horizontal"action = "do?command=Create_Ticket" method="POST">
         <!-- Button -->
         <label class="col-md-1 control-label" for="addTicket"></label>

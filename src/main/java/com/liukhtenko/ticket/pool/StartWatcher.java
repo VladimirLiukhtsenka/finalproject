@@ -13,10 +13,16 @@ import java.util.TimerTask;
 public class StartWatcher {
     private static final int PERIOD = 60000;
     private static final int DELAY = 10;
+    private static Timer timer;
 
     public static void start() {
         TimerTask timerTask = new CustomTimer();
-        Timer timer = new Timer(true);
+        timer = new Timer();
         timer.schedule(timerTask, DELAY, PERIOD);
+    }
+
+    public static void stop() {
+        timer.cancel();
+        timer.purge();
     }
 }
