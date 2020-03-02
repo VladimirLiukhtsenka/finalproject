@@ -26,7 +26,7 @@ public class ViewMovieEventCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
+        String page = PagePath.PAGE_MOVIE_EVENTS;
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         EventService eventService = new EventService();
         try {
@@ -38,7 +38,6 @@ public class ViewMovieEventCommand implements Command {
             page = PagePath.PAGE_ERROR;
             return page;
         }
-
-        return PagePath.PAGE_MOVIE_EVENTS;
+        return page;
     }
 }

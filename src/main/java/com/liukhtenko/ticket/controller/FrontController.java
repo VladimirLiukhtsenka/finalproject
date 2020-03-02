@@ -21,7 +21,7 @@ package com.liukhtenko.ticket.controller;
  * @version 1.25 02 Feb 2020
  */
 @WebServlet(name = "FrontController", urlPatterns = {"/do"})
-public class FrontController extends HttpServlet { // FIXME: 02.03.2020 
+public class FrontController extends HttpServlet {
 
     @Override
     public void init() {

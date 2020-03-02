@@ -26,7 +26,7 @@ public class ViewTheaterEventCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
+        String page = PagePath.PAGE_THEATER_EVENTS;
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         EventService eventService = new EventService();
         try {
@@ -38,6 +38,6 @@ public class ViewTheaterEventCommand implements Command {
             page = PagePath.PAGE_ERROR;
             return page;
         }
-        return PagePath.PAGE_THEATER_EVENTS;
+        return page;
     }
 }

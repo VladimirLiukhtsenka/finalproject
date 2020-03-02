@@ -46,7 +46,7 @@ public class FormValidator {
     public static boolean isValidDate(String value) throws ServiceException {
         try {
             DateFormat dateFormat = new SimpleDateFormat(FormParameterName.DATE_FORMAT);
-            Date moment = dateFormat.parse(value);
+            dateFormat.parse(value);
         } catch (ParseException e) {
             throw new ServiceException("Wrong data");
         }

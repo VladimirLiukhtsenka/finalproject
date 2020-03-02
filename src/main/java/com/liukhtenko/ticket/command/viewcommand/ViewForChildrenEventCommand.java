@@ -26,7 +26,7 @@ public class ViewForChildrenEventCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
+        String page = PagePath.PAGE_FOR_CHILDREN_EVENTS;
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         EventService eventService = new EventService();
         try {
@@ -38,7 +38,6 @@ public class ViewForChildrenEventCommand implements Command {
             page = PagePath.PAGE_ERROR;
             return page;
         }
-
-        return PagePath.PAGE_FOR_CHILDREN_EVENTS;
+        return page;
     }
 }

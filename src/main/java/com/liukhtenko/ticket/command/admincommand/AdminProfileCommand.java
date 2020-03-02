@@ -26,7 +26,6 @@ public class AdminProfileCommand implements Command {
             HttpSession session = request.getSession();
             session.invalidate();
             page = PagePath.PAGE_LOGIN;
-            return page;
         }
         return page;
     }

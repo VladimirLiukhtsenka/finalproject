@@ -88,3 +88,4 @@ message.adminPage=Admin page
 message.wrongData=Wrong data
 message.save=Save
 message.choseFile=Chose file
+message.wrongFormat=Wrong format

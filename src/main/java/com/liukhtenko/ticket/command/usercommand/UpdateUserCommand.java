@@ -29,9 +29,8 @@ public class UpdateUserCommand implements Command {
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
-        String page;
+        String page =  PagePath.PAGE_UPDATE_USER;
         if (!FormValidator.isPost(request)) {
-            page = PagePath.PAGE_UPDATE_USER;
             return page;
         } else {
             try {
@@ -57,11 +56,9 @@ public class UpdateUserCommand implements Command {
                 }
                 UserService userService = new UserService();
                 userService.updateUser(user);
-                page = PagePath.PAGE_UPDATE_USER;
             } catch (ServiceException e) {
                 logger.log(Level.INFO, "Incorrect data" + e.toString());
                 request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Incorrect data");
-                page = PagePath.PAGE_UPDATE_USER;
             }
         }
         return page;

@@ -25,7 +25,6 @@ public class EditEventCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         EventService eventService = new EventService();
         try {
@@ -34,8 +33,7 @@ public class EditEventCommand implements Command {
         } catch (ServiceException e) {
             request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unable to edit event");
             logger.log(Level.ERROR, "Error in EditEventCommand", e);
-            page = PagePath.PAGE_ERROR;
-            return page;
+            return PagePath.PAGE_ERROR;
         }
         return PagePath.PAGE_EDIT_EVENTS;
     }

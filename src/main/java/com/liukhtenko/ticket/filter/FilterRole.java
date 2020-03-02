@@ -63,7 +63,6 @@ public class FilterRole implements Filter {
         ALLOW_ADMIN.add(CommandType.DELETE_TICKET);
         ALLOW_ADMIN.add(CommandType.EDIT_EVENT);
         ALLOW_ADMIN.add(CommandType.EDIT_TICKET);
-
     }
 
     @Override

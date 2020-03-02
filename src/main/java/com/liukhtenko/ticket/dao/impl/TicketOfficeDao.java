@@ -74,7 +74,6 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(SQL_CREATE_TICKET_OFFICE);
-
             statement.setString(1, ticketOffice.getAddress());
             statement.setString(2, ticketOffice.getOperatingMode());
             statement.setString(3, ticketOffice.getPhone());

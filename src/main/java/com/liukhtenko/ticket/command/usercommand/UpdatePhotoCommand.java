@@ -8,6 +8,8 @@ import com.liukhtenko.ticket.dao.ColumnName;
 import com.liukhtenko.ticket.entity.User;
 import com.liukhtenko.ticket.exception.ServiceException;
 import com.liukhtenko.ticket.service.impl.UserService;
+import com.liukhtenko.ticket.validator.FormRegexValidator;
+import com.liukhtenko.ticket.validator.FormValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,13 +31,16 @@ public class UpdatePhotoCommand implements Command {
         InputStream inputStream;
         try {
             Part photo = request.getPart(ColumnName.PHOTO);
-            if (photo != null && photo.getSize() > 0) {
+            String type = photo.getContentType();
+            if (photo.getSize() > 0 && FormValidator.isValidString(type, FormRegexValidator.PHOTO)) {
                 inputStream = photo.getInputStream();
                 UserService userService = new UserService();
                 userService.updatePhoto(inputStream, user.getId());
                 User userUpdate = userService.findUserById(user.getId());
                 HttpSession session = request.getSession();
                 session.setAttribute(FormParameterName.FORM_PARAM_USER, userUpdate);
+            } else {
+                request.setAttribute(FormParameterName.FORM_PARAM_ERROR_PHOTO, "wrong data");
             }
         } catch (ServiceException | IOException | ServletException e) {
             logger.log(Level.INFO, "Incorrect data" + e.toString());

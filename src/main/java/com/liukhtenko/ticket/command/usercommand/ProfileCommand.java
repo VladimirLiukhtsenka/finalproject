@@ -44,13 +44,11 @@ public class ProfileCommand implements Command {
                 request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unfortunately it is impossible to buy a ticket");
                 page = PagePath.PAGE_ERROR;
             }
-            return page;
         }
         if (FormValidator.isPost(request) && request.getParameter(FormParameterName.FORM_PARAM_LOGOUT) != null) {
             session = request.getSession();
             session.invalidate();
             page = PagePath.PAGE_LOGIN;
-            return page;
         }
         return page;
     }

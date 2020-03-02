@@ -29,6 +29,7 @@ public class FormParameterName {
     public static final String FORM_PARAM_ERROR_FATHER_NAME = "errorFatherName";
     public static final String FORM_PARAM_ERROR_PASSWORD = "errorpassword";
     public static final String FORM_PARAM_ERROR_MAIL = "errormail";
+    public static final String FORM_PARAM_ERROR_PHOTO = "errorPhoto";
     public static final String FORM_PARAM_TICKET_SIZE = "TicketsSize";
     public static final String FORM_PARAM_PAGE = "page";
     public static final String FORM_PARAM_COUNT_PAGES = "noOfPages";

@@ -26,7 +26,7 @@ public class ViewFestivalsEventCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
+        String page = PagePath.PAGE_FESTIVALS_EVENTS;
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         EventService eventService = new EventService();
         try {
@@ -36,9 +36,7 @@ public class ViewFestivalsEventCommand implements Command {
             logger.log(Level.WARN, "Error in ViewFestivalsEventCommand", e);
             request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible to view festivals.");
             page = PagePath.PAGE_ERROR;
-            return page;
         }
-
-        return PagePath.PAGE_FESTIVALS_EVENTS;
+        return page;
     }
 }

@@ -33,6 +33,10 @@ body {
             <label for = "files"  class="button" > <fmt:message key="message.choseFile"/> </ label>
         </form>
     </div>
+    <c:set var = "data" scope = "session" value = "${photoError}"/>
+    <c:if test = "${data != null}">
+        <h5 align="center" style="color:#ff0000"><fmt:message key="message.wrongFormat"/></h5>
+    </c:if>
   <form class="form-horizontal" action = "do?command=update_user" method="POST">
     <h3 align="center"><fmt:message key="message.updatePersonData"/></h3>
         <!-- Text input-->

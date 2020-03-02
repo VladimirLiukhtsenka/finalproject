@@ -35,10 +35,9 @@ public class DeleteEventCommand implements Command {
                 eventService.deleteEventById(id);
                 request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
             } catch (ServiceException e) {
-                page = PagePath.PAGE_ERROR;
                 request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unable to delete event");
                 logger.log(Level.ERROR, "Error in DeleteEventCommand", e);
-                return page;
+                return PagePath.PAGE_ERROR;
             }
             page = PagePath.PAGE_EDIT_EVENTS;
         }

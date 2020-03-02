@@ -88,3 +88,4 @@ message.adminPage=Профиль администратора
 message.wrongData=Неверные данные
 message.save=Сохранить
 message.choseFile=Выбрать файл
+message.wrongFormat=Неверный формат

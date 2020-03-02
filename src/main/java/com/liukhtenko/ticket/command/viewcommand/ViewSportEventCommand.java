@@ -36,7 +36,6 @@ public class ViewSportEventCommand implements Command {
             logger.log(Level.WARN, "Error in ViewMovieEventCommand", e);
             request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible to view sport events.");
             page = PagePath.PAGE_ERROR;
-            return page;
         }
         return page;
     }

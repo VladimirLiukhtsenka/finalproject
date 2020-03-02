@@ -36,9 +36,8 @@ public class CreateTicketCommand implements Command {
         } else {
             TicketService ticketService = new TicketService();
             Ticket ticket = new Ticket();
-            long eventId;
             try {
-                eventId = (long) request.getSession().getAttribute(ColumnName.EVENT_ID);
+                long eventId = (long) request.getSession().getAttribute(ColumnName.EVENT_ID);
                 ticket.setEventId(eventId);
                 TypeSeat typeSeat = TypeSeat.findByType(request.getParameter(ColumnName.TYPE_SEAT));
                 ticket.setTypeSeat(typeSeat);

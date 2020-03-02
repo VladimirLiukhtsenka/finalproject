@@ -173,7 +173,7 @@ public class UserDao extends AbstractDao<Long, User> {
             statement.setString(7, user.getMail());
             statement.setLong(8, user.getRoleID());
             statement.setLong(9, user.getId());
-            flag = (1 == statement.executeUpdate()); // FIXME: 28.02.2020
+            flag = (1 == statement.executeUpdate());
         } catch (SQLException e) {
             throw new DaoException("Unable to update user", e);
         } finally {

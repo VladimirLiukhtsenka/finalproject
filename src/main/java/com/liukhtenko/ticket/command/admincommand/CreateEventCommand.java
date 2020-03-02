@@ -65,7 +65,6 @@ public class CreateEventCommand implements Command {
                     CommandHelper.viewEvents(request, events);
                     page = PagePath.PAGE_EDIT_EVENTS;
                     request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.POST);
-                    return page;
                 }
             } catch (ServiceException | ParseException e) {
                 logger.log(Level.ERROR, "Error in CreateEventCommand", e);

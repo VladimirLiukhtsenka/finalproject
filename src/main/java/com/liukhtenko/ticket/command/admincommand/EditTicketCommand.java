@@ -28,7 +28,6 @@ public class EditTicketCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request) {
-        String page;
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);
         TicketService ticketService = new TicketService();
         EventService eventService = new EventService();
@@ -48,8 +47,7 @@ public class EditTicketCommand implements Command {
         } catch (ServiceException e) {
             request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Unable to edit tickets");
             logger.log(Level.WARN, "Error in EditTicketCommand", e);
-            page = PagePath.PAGE_ERROR;
-            return page;
+            return PagePath.PAGE_ERROR;
         }
         return PagePath.PAGE_EDIT_TICKET;
     }
