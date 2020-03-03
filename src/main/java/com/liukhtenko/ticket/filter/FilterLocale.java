@@ -17,7 +17,15 @@ import java.io.IOException;
  */
 @WebFilter(urlPatterns = {"/*"})
 public class FilterLocale implements Filter {
-
+    /**
+     * This method is called every time a filter is accessed
+     *
+     * @param servletRequest  current request
+     * @param servletResponse current response
+     * @param filterChain     list of all filters
+     * @throws IOException      if happen IOException
+     * @throws ServletException if happen ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain
             filterChain) throws IOException, ServletException {

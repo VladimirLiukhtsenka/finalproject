@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Map;
 
 /**
@@ -18,11 +17,24 @@ import java.util.Map;
  * @version 1.25 02 Feb 2020
  */
 public class FormValidator {
-
+    /**
+     * This method checks string data
+     *
+     * @param value   String to check
+     * @param pattern template for checking
+     * @return boolean as a result of the method
+     */
     public static boolean isValidString(String value, String pattern) {
         return value != null && value.matches(pattern);
     }
 
+    /**
+     * This method checks number data
+     *
+     * @param value number to check
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen NumberFormatException
+     */
     public static boolean isValidNumber(String value) throws ServiceException {
         long number;
         try {
@@ -33,6 +45,13 @@ public class FormValidator {
         return number > 0;
     }
 
+    /**
+     * This method checks number price
+     *
+     * @param value price to check
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen NumberFormatException
+     */
     public static boolean isValidPrice(String value) throws ServiceException {
         double price;
         try {
@@ -43,6 +62,13 @@ public class FormValidator {
         return price > 0;
     }
 
+    /**
+     * This method checks date
+     *
+     * @param value date to check
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen ParseException
+     */
     public static boolean isValidDate(String value) throws ServiceException {
         try {
             DateFormat dateFormat = new SimpleDateFormat(FormParameterName.DATE_FORMAT);
@@ -53,11 +79,23 @@ public class FormValidator {
         return true;
     }
 
-
+    /**
+     * This method defines the request method
+     *
+     * @param req request from browser
+     * @return boolean as a result of the method
+     */
     public static boolean isPost(HttpServletRequest req) {
         return req.getMethod().toUpperCase().equals(FormParameterName.POST);
     }
 
+    /**
+     * This method checks sign up form
+     *
+     * @param map     map with user parameters entered
+     * @param request request from browser
+     * @return boolean as a result of the method
+     */
     public static boolean validateSigUpForm(Map<String, String> map, HttpServletRequest request) {
         boolean flag = true;
         String phone = map.get(ColumnName.PHONE);

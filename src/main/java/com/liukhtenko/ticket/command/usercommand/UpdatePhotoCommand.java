@@ -20,10 +20,20 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
-
+/**
+ * The class allows the user to update photo.
+ *
+ * @author Vladimir Liukhtenko
+ * @version 1.25 02 Feb 2020
+ */
 public class UpdatePhotoCommand implements Command {
     private static Logger logger = LogManager.getLogger();
-
+    /**
+     *
+     * @param request from browser
+     * @return String page
+     *
+     */
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);

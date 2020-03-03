@@ -32,6 +32,9 @@ public enum CustomConnectionPool {
     private static final String DRIVER_REGISTRATION = "driverRegistration";
     private final static int DEFAULT_POOL_SIZE = 32;
 
+    /**
+     * Constructor - creates CustomConnectionPool
+     */
     CustomConnectionPool() {
         PropertyLoader propertyLoader = new PropertyLoader();
         Properties property = propertyLoader.loadProperties();
@@ -55,6 +58,11 @@ public enum CustomConnectionPool {
         }
     }
 
+    /**
+     * This method allows to take a connection from the pool
+     *
+     * @return Connection
+     */
     public Connection getConnection() {
         ProxyConnection connection = null;
         try {
@@ -68,6 +76,12 @@ public enum CustomConnectionPool {
         return connection;
     }
 
+    /**
+     * This method returns connections to the pool
+     *
+     * @param connection Connection that connection to be returned
+     * @throws PoolException if connection cannot be returned
+     */
     public void releaseConnection(Connection connection) throws PoolException {
         if (connection.getClass() == ProxyConnection.class) {
             givenAwayConnections.remove(connection);
@@ -77,6 +91,9 @@ public enum CustomConnectionPool {
         }
     }
 
+    /**
+     * This method destroys the pool
+     */
     public void destroyPool() {
         for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
             try {
@@ -88,14 +105,28 @@ public enum CustomConnectionPool {
         deregisterDrivers();
     }
 
+    /**
+     * This method shows number of free connections
+     *
+     * @return number of free connections
+     */
     public int getFreeConnectionsSize() {
         return freeConnections.size();
     }
 
+    /**
+     * This method shows number of busy connections
+     *
+     * @return number of busy connections
+     */
     public int getGivenAwayConnectionsSize() {
         return givenAwayConnections.size();
     }
 
+    /**
+     * This method removes the specified driver from the registered drivers
+     * which contains the DriverManager's list.
+     */
     private void deregisterDrivers() {
         Collections.list(DriverManager.getDrivers()).forEach(driver -> {
             try {

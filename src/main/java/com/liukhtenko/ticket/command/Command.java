@@ -10,5 +10,10 @@ package com.liukhtenko.ticket.command;
  * @version 1.25 02 Feb 2020
  */
 public interface Command {
+    /**
+     *
+     * @param request from browser
+     * @return String page
+     */
     String execute(HttpServletRequest request);
 }

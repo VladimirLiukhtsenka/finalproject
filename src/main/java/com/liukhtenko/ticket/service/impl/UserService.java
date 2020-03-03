@@ -22,6 +22,12 @@ import java.util.List;
 public class UserService implements UserServiceInterface {
     private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method finds all users
+     *
+     * @return List User
+     * @throws ServiceException if happen DaoException
+     */
     public List<User> findAllUsers() throws ServiceException {
         List<User> users;
         UserDao userDao = new UserDao();
@@ -38,6 +44,13 @@ public class UserService implements UserServiceInterface {
         return users;
     }
 
+    /**
+     * This method finds user by user id
+     *
+     * @param id user id
+     * @return User
+     * @throws ServiceException if happen DaoException
+     */
     public User findUserById(long id) throws ServiceException {
         User user;
         UserDao userDao = new UserDao();
@@ -54,6 +67,14 @@ public class UserService implements UserServiceInterface {
         return user;
     }
 
+    /**
+     * This method finds user by mail and password
+     *
+     * @param mail     user mail
+     * @param password user password
+     * @return User
+     * @throws ServiceException if happen DaoException
+     */
     public User findUserByMailAndPassword(String mail, String password) throws ServiceException {
         User user;
         UserDao userDao = new UserDao();
@@ -70,6 +91,12 @@ public class UserService implements UserServiceInterface {
         return user;
     }
 
+    /**
+     * This method removes user by id
+     *
+     * @param id user id
+     * @throws ServiceException if happen DaoException
+     */
     public void deleteUserById(long id) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -84,6 +111,13 @@ public class UserService implements UserServiceInterface {
         }
     }
 
+    /**
+     * This method creates new user
+     *
+     * @param user new user
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen DaoException
+     */
     public boolean createUser(User user) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -100,6 +134,12 @@ public class UserService implements UserServiceInterface {
         return flag;
     }
 
+    /**
+     * This method updates user
+     *
+     * @param user User
+     * @throws ServiceException if happen DaoException
+     */
     public void updateUser(User user) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -114,6 +154,13 @@ public class UserService implements UserServiceInterface {
         }
     }
 
+    /**
+     * This method updates user photo
+     *
+     * @param image  uploaded photo
+     * @param userId user id
+     * @throws ServiceException if happen SQLException
+     */
     public void updatePhoto(InputStream image, long userId) throws ServiceException {
         UserDao userDao = new UserDao();
         EntityTransaction transaction = new EntityTransaction();

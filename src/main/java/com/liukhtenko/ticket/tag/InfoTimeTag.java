@@ -19,8 +19,14 @@ import java.util.Date;
  * @version 1.25 02 Feb 2020
  */
 public class InfoTimeTag extends TagSupport {
-    static Logger logger = LogManager.getLogger();
+    private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method is called if the start element of the tag is detected.
+     *
+     * @return tag body is missing
+     * @throws JspException if happen IOException
+     */
     @Override
     public int doStartTag() throws JspException {
         SimpleDateFormat dateFormat = new SimpleDateFormat(FormParameterName.SIMPLE_DATE_FORMAT);
@@ -34,6 +40,11 @@ public class InfoTimeTag extends TagSupport {
         return SKIP_BODY;
     }
 
+    /**
+     * This method is called when all other methods have been worked out
+     *
+     * @return method allows further page processing
+     */
     @Override
     public int doEndTag() {
         return EVAL_PAGE;

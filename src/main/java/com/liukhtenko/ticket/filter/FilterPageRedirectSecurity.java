@@ -24,7 +24,15 @@ public class FilterPageRedirectSecurity implements Filter {
     public void init(FilterConfig filterConfig) {
 
     }
-
+    /**
+     * This method is called every time a filter is accessed
+     *
+     * @param servletRequest  current request
+     * @param servletResponse current response
+     * @param filterChain     list of all filters
+     * @throws IOException      if happen IOException
+     * @throws ServletException if happen ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;

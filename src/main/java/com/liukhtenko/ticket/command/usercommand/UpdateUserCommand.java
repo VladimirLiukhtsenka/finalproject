@@ -24,7 +24,12 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class UpdateUserCommand implements Command {
     private static Logger logger = LogManager.getLogger();
-
+    /**
+     *
+     * @param request from browser
+     * @return String page
+     *
+     */
     @Override
     public String execute(HttpServletRequest request) {
         User user = CommandHelper.findUserInSession(request);

@@ -31,6 +31,11 @@ public abstract class AbstractDao<K, T extends Entity> {
 
     public abstract boolean update(T entity) throws DaoException;
 
+    /**
+     * This method closes Statement
+     *
+     * @param st Statement
+     */
     public void close(Statement st) {
         try {
             if (st != null) {
@@ -41,6 +46,11 @@ public abstract class AbstractDao<K, T extends Entity> {
         }
     }
 
+    /**
+     * This method closes ResultSet
+     *
+     * @param rs ResultSet
+     */
     public void close(ResultSet rs) {
         try {
             if (rs != null) {
@@ -51,6 +61,11 @@ public abstract class AbstractDao<K, T extends Entity> {
         }
     }
 
+    /**
+     * This method set a connection into Dao
+     *
+     * @param connection Connection
+     */
     void setConnection(Connection connection) {
         this.connection = connection;
     }

@@ -29,6 +29,11 @@ public class CommandHelper {
     private static final String GET_COMMAND_EDIT_TICKET = "do?command=Edit_ticket";
     private static final String GET_COMMAND_ERROR = "do?command=Error";
 
+    /**
+     * Method finds user in session
+     * @param req from browser
+     * @return User
+     */
     public static User findUserInSession(HttpServletRequest req) {
         User user = new User();
         if (req.getSession().getAttribute(ATTRIBUTE_USER_KEY) != null) {
@@ -37,6 +42,11 @@ public class CommandHelper {
         return user;
     }
 
+    /**
+     * Method creates pagination for events
+     * @param request from browser
+     * @param listAllEvents observed events
+     */
     public static void viewEvents(HttpServletRequest request, List<Event> listAllEvents) {
         HttpSession session = request.getSession();
         int page = FormParameterName.FIRST_PAGE;
@@ -56,6 +66,11 @@ public class CommandHelper {
         session.setAttribute(FormParameterName.FORM_PARAM_CURRENT_PAGE, page);
     }
 
+    /**
+     * This method defines the command that will be executed after redirect
+     * @param nameCommand command executed by post method
+     * @return redirectCommand that executed by get method
+     */
     public static String findRedirectCommand(String nameCommand) {
         String redirectCommand;
         switch (nameCommand) {

@@ -20,6 +20,11 @@ public class EntityTransaction {
     private Connection connection;
     private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method is used at the beginning of work with one Dao
+     *
+     * @param dao AbstractDao
+     */
     public void begin(AbstractDao dao) {
         if (connection == null) {
             connection = CustomConnectionPool.INSTANCE.getConnection();
@@ -28,6 +33,11 @@ public class EntityTransaction {
         logger.log(Level.DEBUG, dao + " have a connection: " + connection);
     }
 
+    /**
+     * This method is used at the beginning of work with several Dao
+     *
+     * @param daos AbstractDao
+     */
     public void begin(AbstractDao... daos) {
         try {
             if (connection == null) {
@@ -45,6 +55,9 @@ public class EntityTransaction {
         }
     }
 
+    /**
+     * This method allows you to return the connection to the pool
+     */
     public void end() {
         try {
             if (connection != null) {
@@ -57,6 +70,9 @@ public class EntityTransaction {
         }
     }
 
+    /**
+     * This method allows to commit changes in database
+     */
     public void commit() {
         try {
             connection.commit();
@@ -65,6 +81,9 @@ public class EntityTransaction {
         }
     }
 
+    /**
+     * This method allows you to roll back changes to the database
+     */
     public void rollback() {
         try {
             connection.rollback();

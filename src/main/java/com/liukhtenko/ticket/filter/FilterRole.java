@@ -30,6 +30,11 @@ public class FilterRole implements Filter {
     private final static Set<CommandType> ALLOW_USER = new HashSet<>();
     private final static Set<CommandType> ALLOW_ADMIN = new HashSet<>();
 
+    /**
+     * This method initializes the required data
+     *
+     * @param filterConfig filter configuration object
+     */
     @Override
     public void init(FilterConfig filterConfig) {
         ALLOW_GUEST.add(CommandType.ERROR);
@@ -65,6 +70,15 @@ public class FilterRole implements Filter {
         ALLOW_ADMIN.add(CommandType.EDIT_TICKET);
     }
 
+    /**
+     * This method is called every time a filter is accessed
+     *
+     * @param servletRequest  current request
+     * @param servletResponse current response
+     * @param filterChain     list of all filters
+     * @throws IOException      if happen IOException
+     * @throws ServletException if happen ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
                          FilterChain filterChain) throws IOException, ServletException {

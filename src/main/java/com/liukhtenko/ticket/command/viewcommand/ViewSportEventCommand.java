@@ -23,7 +23,12 @@ import java.util.List;
  */
 public class ViewSportEventCommand implements Command {
     private static Logger logger = LogManager.getLogger();
-
+    /**
+     *
+     * @param request from browser
+     * @return String page
+     *
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = PagePath.PAGE_SPORT_EVENTS;

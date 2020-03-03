@@ -16,11 +16,25 @@ import java.io.IOException;
 public class FilterEncoding implements Filter {
     private String code;
 
+    /**
+     * This method initializes the required data
+     *
+     * @param filterConfig FilterConfig
+     */
     @Override
     public void init(FilterConfig filterConfig) {
         code = filterConfig.getInitParameter("encoding");
     }
 
+    /**
+     * This method is called every time a filter is accessed
+     *
+     * @param servletRequest  current request
+     * @param servletResponse current response
+     * @param filterChain     list of all filters
+     * @throws IOException      if happen IOException
+     * @throws ServletException if happen ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String currentEncoding = servletRequest.getCharacterEncoding();
@@ -34,6 +48,9 @@ public class FilterEncoding implements Filter {
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
+    /**
+     * This method is called when the filter terminates
+     */
     @Override
     public void destroy() {
         code = null;

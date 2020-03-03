@@ -13,6 +13,13 @@ import java.security.NoSuchAlgorithmException;
  * @version 1.25 02 Feb 2020
  */
 public class EncryptionPassword {
+    /**
+     * This method encodes password
+     *
+     * @param value unencrypted password
+     * @return encrypted password
+     * @throws ServiceException if happen NoSuchAlgorithmException
+     */
     public static String encrypt(String value) throws ServiceException {
         String generatedPassword;
         try {

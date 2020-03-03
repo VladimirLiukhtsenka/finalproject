@@ -21,6 +21,12 @@ import java.util.List;
 public class EventService implements EventServiceInterface {
     private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method finds all events
+     *
+     * @return List Event
+     * @throws ServiceException if happen DaoException
+     */
     public List<Event> findAllEvents() throws ServiceException {
         List<Event> events;
         EventDao eventDao = new EventDao();
@@ -37,6 +43,13 @@ public class EventService implements EventServiceInterface {
         return events;
     }
 
+    /**
+     * This method finds all events by event type
+     *
+     * @param type event type
+     * @return List Event
+     * @throws ServiceException if happen DaoException
+     */
     public List<Event> findEventByType(String type) throws ServiceException {
         List<Event> events;
         EventDao eventDao = new EventDao();
@@ -53,6 +66,13 @@ public class EventService implements EventServiceInterface {
         return events;
     }
 
+    /**
+     * This method finds event by event id
+     *
+     * @param id event id
+     * @return Event
+     * @throws ServiceException if happen DaoException
+     */
     public Event findEventById(Long id) throws ServiceException {
         Event event;
         EventDao eventDao = new EventDao();
@@ -69,6 +89,13 @@ public class EventService implements EventServiceInterface {
         return event;
     }
 
+    /**
+     * This method create event
+     *
+     * @param event new event
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen DaoException
+     */
     public boolean createEvent(Event event) throws ServiceException {
         EventDao eventDao = new EventDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -85,6 +112,12 @@ public class EventService implements EventServiceInterface {
         return flag;
     }
 
+    /**
+     * This method delete event by event id
+     *
+     * @param id event id
+     * @throws ServiceException if happen DaoException
+     */
     public void deleteEventById(long id) throws ServiceException {
         EventDao eventDao = new EventDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -99,6 +132,12 @@ public class EventService implements EventServiceInterface {
         }
     }
 
+    /**
+     * This method updates the event
+     *
+     * @param event event to update
+     * @throws ServiceException if happen DaoException
+     */
     public void updateEvent(Event event) throws ServiceException {
         EventDao eventDao = new EventDao();
         EntityTransaction transaction = new EntityTransaction();

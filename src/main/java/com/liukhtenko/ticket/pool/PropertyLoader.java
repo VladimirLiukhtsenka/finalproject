@@ -9,7 +9,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * The class that displays the admin page.
+ * The class that loads necessary properties.
  *
  * @author Vladimir Liukhtenko
  * @version 1.25 02 Feb 2020
@@ -18,6 +18,11 @@ class PropertyLoader {
     private static Logger logger = LogManager.getLogger();
     private static final String PROPERTY_PATH = "database/message.properties";
 
+    /**
+     * This method loads necessary properties
+     *
+     * @return properties
+     */
     Properties loadProperties() {
         Properties properties = new Properties();
         try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTY_PATH)) {

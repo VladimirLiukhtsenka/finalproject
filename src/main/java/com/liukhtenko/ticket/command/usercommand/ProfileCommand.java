@@ -24,7 +24,12 @@ import java.util.List;
  */
 public class ProfileCommand implements Command {
     private static Logger logger = LogManager.getLogger();
-
+    /**
+     *
+     * @param request from browser
+     * @return String page
+     *
+     */
     @Override
     public String execute(HttpServletRequest request) {
         String page = null;

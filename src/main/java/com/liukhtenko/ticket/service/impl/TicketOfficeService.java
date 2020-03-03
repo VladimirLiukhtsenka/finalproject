@@ -21,6 +21,12 @@ import java.util.List;
 public class TicketOfficeService implements TicketOfficeInterface {
     private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method finds all ticket offices
+     *
+     * @return List TicketOffice
+     * @throws ServiceException if happen DaoException
+     */
     public List<TicketOffice> findAllTicketOffice() throws ServiceException {
         List<TicketOffice> ticketOffices;
         TicketOfficeDao ticketOfficeDao = new TicketOfficeDao();
@@ -37,6 +43,12 @@ public class TicketOfficeService implements TicketOfficeInterface {
         return ticketOffices;
     }
 
+    /**
+     * This method delete  ticket office
+     *
+     * @param phone ticket office phone
+     * @throws ServiceException if happen DaoException
+     */
     public void deleteTicketOfficeByPhone(String phone) throws ServiceException {
         TicketOfficeDao ticketOfficeDao = new TicketOfficeDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -51,6 +63,13 @@ public class TicketOfficeService implements TicketOfficeInterface {
         }
     }
 
+    /**
+     * This method create  ticket office
+     *
+     * @param ticketOffice new ticket office
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen DaoException
+     */
     public boolean createTicketOffice(TicketOffice ticketOffice) throws ServiceException {
         TicketOfficeDao ticketOfficeDao = new TicketOfficeDao();
         EntityTransaction transaction = new EntityTransaction();

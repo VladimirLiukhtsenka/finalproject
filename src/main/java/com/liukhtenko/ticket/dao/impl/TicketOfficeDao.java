@@ -27,7 +27,12 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
     private static final String SQL_CREATE_TICKET_OFFICE =
             "insert into ticket_offices (address, operating_mode, phone) values (?,?,?);";
 
-
+    /**
+     * This method finds all ticket offices
+     *
+     * @return List TicketOffice
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public List<TicketOffice> findAll() throws DaoException {
         List<TicketOffice> ticketOffices = new ArrayList<>();
@@ -52,6 +57,13 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
         return ticketOffices;
     }
 
+    /**
+     * This method delete  ticket office
+     *
+     * @param phone ticket office phone
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean delete(String phone) throws DaoException {
         boolean flag;
@@ -68,6 +80,13 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
         return flag;
     }
 
+    /**
+     * This method create  ticket office
+     *
+     * @param ticketOffice new ticket office
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean create(TicketOffice ticketOffice) throws DaoException {
         boolean flag;

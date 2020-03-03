@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletRequest;
  * @version 1.25 02 Feb 2020
  */
 public class ErrorCommand implements Command {
-
+    /**
+     *
+     * @param request from browser
+     * @return String page
+     *
+     */
     @Override
     public String execute(HttpServletRequest request) {
         request.setAttribute(FormParameterName.TYPE_METHOD, FormParameterName.GET);

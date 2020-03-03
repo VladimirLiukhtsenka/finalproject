@@ -21,6 +21,14 @@ import java.util.List;
 public class TicketService implements TicketServiceInterface {
     private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method allows the user to pick up a ticket
+     *
+     * @param userId   user id
+     * @param ticketId ticket id
+     * @return ticket seat number
+     * @throws ServiceException if happen DaoException
+     */
     public int buyTicket(long userId, long ticketId) throws ServiceException {
         int numberTicket;
         TicketDao ticketDao = new TicketDao();
@@ -37,7 +45,13 @@ public class TicketService implements TicketServiceInterface {
         return numberTicket;
     }
 
-
+    /**
+     * This method finds all event tickets
+     *
+     * @param id event id
+     * @return List Ticket
+     * @throws ServiceException if happen DaoException
+     */
     public List<Ticket> findTicketsByEventId(long id) throws ServiceException {
         List<Ticket> tickets;
         TicketDao ticketDao = new TicketDao();
@@ -54,6 +68,14 @@ public class TicketService implements TicketServiceInterface {
         return tickets;
     }
 
+    /**
+     * This method finds all event tickets by event type
+     *
+     * @param id   event id
+     * @param type event type
+     * @return List Ticket
+     * @throws ServiceException if happen DaoException
+     */
     public List<Ticket> findTicketsByEventIdAndTypeSeat(long id, String type) throws ServiceException {
         List<Ticket> tickets;
         TicketDao ticketDao = new TicketDao();
@@ -70,6 +92,13 @@ public class TicketService implements TicketServiceInterface {
         return tickets;
     }
 
+    /**
+     * This method shows all user tickets
+     *
+     * @param UserId user id
+     * @return booked tickets
+     * @throws ServiceException if happen DaoException
+     */
     public List<List<String>> printTickets(long UserId) throws ServiceException {
         List<List<String>> printUserTickets;
         TicketDao ticketDao = new TicketDao();
@@ -86,6 +115,13 @@ public class TicketService implements TicketServiceInterface {
         return printUserTickets;
     }
 
+    /**
+     * This method creates tickets
+     *
+     * @param ticket new tickets
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen DaoException
+     */
     public boolean createTicket(Ticket ticket) throws ServiceException {
         TicketDao ticketDao = new TicketDao();
         EntityTransaction transaction = new EntityTransaction();
@@ -102,6 +138,13 @@ public class TicketService implements TicketServiceInterface {
         return flag;
     }
 
+    /**
+     * This method removes tickets
+     *
+     * @param id tickets id
+     * @return boolean as a result of the method
+     * @throws ServiceException if happen DaoException
+     */
     public boolean deleteTicketById(long id) throws ServiceException {
         boolean flag;
         TicketDao ticketDao = new TicketDao();
@@ -118,6 +161,13 @@ public class TicketService implements TicketServiceInterface {
         return flag;
     }
 
+    /**
+     * This method determines the number of tickets remaining
+     *
+     * @param id tickets id
+     * @return int the number of tickets remaining
+     * @throws ServiceException if happen DaoException
+     */
     public static int numberTicketsRemaining(long id) throws ServiceException {
         int number;
         TicketDao ticketDao = new TicketDao();

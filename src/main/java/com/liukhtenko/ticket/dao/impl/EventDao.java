@@ -41,6 +41,12 @@ public class EventDao extends AbstractDao<Long, Event> {
     private static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
     private static final String TIME_ZONE = "Europe/Minsk";
 
+    /**
+     * This method finds all events
+     *
+     * @return List Event
+     * @throws DaoException if happen SQLException or ParseException
+     */
     @Override
     public List<Event> findAll() throws DaoException {
         List<Event> events = new ArrayList<>();
@@ -62,6 +68,13 @@ public class EventDao extends AbstractDao<Long, Event> {
         return events;
     }
 
+    /**
+     * This method finds all events by event type
+     *
+     * @param typeEvent type event
+     * @return List Event
+     * @throws DaoException if happen SQLException or ParseException
+     */
     public List<Event> findByType(String typeEvent) throws DaoException {
         List<Event> events = new ArrayList<>();
         PreparedStatement statement = null;
@@ -83,6 +96,13 @@ public class EventDao extends AbstractDao<Long, Event> {
         return events;
     }
 
+    /**
+     * This method finds event by event id
+     *
+     * @param id event id
+     * @return Event
+     * @throws DaoException if happen SQLException or ParseException
+     */
     public Event findById(Long id) throws DaoException {
         Event event = null;
         PreparedStatement statement = null;
@@ -103,6 +123,13 @@ public class EventDao extends AbstractDao<Long, Event> {
         return event;
     }
 
+    /**
+     * This method delete event by event id
+     *
+     * @param id event id
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean delete(Long id) throws DaoException {
         boolean flag;
@@ -119,6 +146,13 @@ public class EventDao extends AbstractDao<Long, Event> {
         return flag;
     }
 
+    /**
+     * This method create event
+     *
+     * @param event new event
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean create(Event event) throws DaoException {
         boolean flag;
@@ -140,6 +174,13 @@ public class EventDao extends AbstractDao<Long, Event> {
         return flag;
     }
 
+    /**
+     * This method updates the event
+     *
+     * @param event event to update
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean update(Event event) throws DaoException {
         boolean flag;
@@ -162,6 +203,13 @@ public class EventDao extends AbstractDao<Long, Event> {
         return flag;
     }
 
+    /**
+     * This method converts a date from a String to Date
+     *
+     * @param date date as String
+     * @return date as Date
+     * @throws ParseException if happen ParseException
+     */
     public static Date transformDate(String date) throws ParseException {
         TimeZone tz = TimeZone.getTimeZone(TIME_ZONE);
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
@@ -170,11 +218,25 @@ public class EventDao extends AbstractDao<Long, Event> {
         return dateFormat.parse(date);
     }
 
+    /**
+     * This method converts a date from a Date to String
+     *
+     * @param date date as Date
+     * @return date as String
+     */
     private String transformDate(Date date) {
         DateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
         return dateFormat.format(date);
     }
 
+    /**
+     * This method finds an event from resultSet
+     *
+     * @param resultSet from statement
+     * @return event
+     * @throws SQLException   if happen SQLException
+     * @throws ParseException if happen ParseException
+     */
     private Event findEvent(ResultSet resultSet) throws SQLException, ParseException {
         Event event = new Event();
         event.setId(resultSet.getLong(ColumnName.ID));

@@ -15,14 +15,26 @@ public class StartWatcher {
     private static final int DELAY = 10;
     private static Timer timer;
 
+    /**
+     * This method starts
+     * <p>
+     * {@link CustomTimer}
+     */
     public static void start() {
         TimerTask timerTask = new CustomTimer();
         timer = new Timer();
         timer.schedule(timerTask, DELAY, PERIOD);
     }
 
+    /**
+     * This method stop
+     *
+     * @see Watcher
+     */
     public static void stop() {
+        //terminates this timer,discarding any currently scheduled tasks.
         timer.cancel();
+        //removes all cancelled tasks from this timer's task queue.
         timer.purge();
     }
 }

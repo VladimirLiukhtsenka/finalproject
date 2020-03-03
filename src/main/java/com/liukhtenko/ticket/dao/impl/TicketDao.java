@@ -38,6 +38,14 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
     private static final String SQL_FIND_USER_TICKETS =
             "SELECT events.name, events.address, events.description, events.date,tickets.type_seat, tickets.price, user_tickets.seat_number  FROM tickets JOIN user_tickets ON user_tickets.ticket_id = tickets.id JOIN events ON tickets.event_id = events.id WHERE user_tickets.user_id =?;";
 
+    /**
+     * This method allows the user to pick up a ticket
+     *
+     * @param userId   user id
+     * @param ticketId ticket id
+     * @return ticket seat number
+     * @throws DaoException if happen SQLException
+     */
     public int buyTicket(long userId, long ticketId) throws DaoException {
         if (isTicketsAvailable(ticketId)) {
             int seatNumber;
@@ -61,15 +69,35 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         }
     }
 
+    /**
+     * This method determines if places are available
+     *
+     * @param ticketsId tickets id
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     private boolean isTicketsAvailable(long ticketsId) throws DaoException {
         return findAllTicketsByTicketsId(ticketsId) > countUserTicketByTicketId(ticketsId);
     }
 
+    /**
+     * This method determines the number of tickets remaining
+     *
+     * @param ticketsId tickets id
+     * @return int the number of tickets remaining
+     * @throws DaoException if happen SQLException
+     */
     public int numberTicketsRemaining(long ticketsId) throws DaoException {
         return findAllTicketsByTicketsId(ticketsId) - countUserTicketByTicketId(ticketsId);
     }
 
-
+    /**
+     * This method finds all event tickets
+     *
+     * @param id event id
+     * @return List Ticket
+     * @throws DaoException if happen SQLException
+     */
     public List<Ticket> findTicketsByEventId(long id) throws DaoException {
         List<Ticket> tickets = new ArrayList<>();
         PreparedStatement statement = null;
@@ -91,6 +119,14 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return tickets;
     }
 
+    /**
+     * This method finds all event tickets by event type
+     *
+     * @param id   event id
+     * @param type event type
+     * @return List Ticket
+     * @throws DaoException if happen SQLException
+     */
     public List<Ticket> findTicketsByEventIdAndTypeSeat(long id, String type) throws DaoException {
         List<Ticket> tickets = new ArrayList<>();
         PreparedStatement statement = null;
@@ -118,6 +154,13 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         throw new UnsupportedOperationException("findAll method not implemented");
     }
 
+    /**
+     * This method removes tickets
+     *
+     * @param id tickets id
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean delete(Long id) throws DaoException {
         boolean flag;
@@ -134,6 +177,14 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return flag;
     }
 
+    /**
+     * This method removes tickets
+     *
+     * @param id   event id
+     * @param type type seat
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     public boolean delete(long id, String type) throws DaoException {
         boolean flag;
         PreparedStatement statement = null;
@@ -150,6 +201,13 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return flag;
     }
 
+    /**
+     * This method creates tickets
+     *
+     * @param ticket new tickets
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean create(Ticket ticket) throws DaoException {
         boolean flag;
@@ -174,6 +232,13 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         throw new UnsupportedOperationException("update method not implemented");
     }
 
+    /**
+     * This method shows all user tickets
+     *
+     * @param UserId user id
+     * @return booked tickets
+     * @throws DaoException if happen SQLException
+     */
     public List<List<String>> printTickets(long UserId) throws DaoException {
         List<List<String>> printUserTickets = new ArrayList<>();
         PreparedStatement statement = null;
@@ -204,6 +269,13 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return printUserTickets;
     }
 
+    /**
+     * This method determines the initial number of available tickets of the same type
+     *
+     * @param id ticket id
+     * @return int number of tickets
+     * @throws DaoException if happen SQLException
+     */
     private int findAllTicketsByTicketsId(long id) throws DaoException {
         int count = 0;
         PreparedStatement statement = null;
@@ -224,10 +296,23 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return count;
     }
 
+    /**
+     * This method determines the seat number of the selected ticket
+     *
+     * @param lastSeatNumber number of the last selected place
+     * @return int number of the selected ticket
+     */
     private int defineSeatNumber(int lastSeatNumber) {
         return ++lastSeatNumber;
     }
 
+    /**
+     * This method determines the number of tickets booked for the same type
+     *
+     * @param id ticket id
+     * @return int number of tickets booked for the same type
+     * @throws DaoException if happen SQLException
+     */
     private int countUserTicketByTicketId(long id) throws DaoException {
         int count = 0;
         PreparedStatement statement = null;
@@ -248,6 +333,13 @@ public class TicketDao extends AbstractDao<Long, Ticket> {
         return count;
     }
 
+    /**
+     * This method finds an ticket from resultSet
+     *
+     * @param resultSet from statement
+     * @return ticket
+     * @throws SQLException if happen SQLException
+     */
     private Ticket findTicket(ResultSet resultSet) throws SQLException {
         Ticket ticket = new Ticket();
         ticket.setId(resultSet.getLong(ColumnName.ID));

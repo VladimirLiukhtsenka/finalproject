@@ -20,6 +20,10 @@ import java.util.concurrent.Future;
 public class CustomTimer extends TimerTask {
     private static Logger logger = LogManager.getLogger();
 
+    /**
+     * This method starts
+     * @see Watcher
+     */
     @Override
     public void run() {
         ExecutorService es = Executors.newSingleThreadExecutor();

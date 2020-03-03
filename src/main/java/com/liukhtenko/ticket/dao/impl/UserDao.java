@@ -1,18 +1,18 @@
 package com.liukhtenko.ticket.dao.impl;
 
-import com.liukhtenko.ticket.dao.AbstractDao;
-import com.liukhtenko.ticket.dao.ColumnName;
-import com.liukhtenko.ticket.entity.User;
-import com.liukhtenko.ticket.exception.DaoException;
+        import com.liukhtenko.ticket.dao.AbstractDao;
+        import com.liukhtenko.ticket.dao.ColumnName;
+        import com.liukhtenko.ticket.entity.User;
+        import com.liukhtenko.ticket.exception.DaoException;
 
-import java.io.InputStream;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.List;
+        import java.io.InputStream;
+        import java.sql.PreparedStatement;
+        import java.sql.ResultSet;
+        import java.sql.SQLException;
+        import java.sql.Statement;
+        import java.util.ArrayList;
+        import java.util.Base64;
+        import java.util.List;
 
 /**
  * This class allows to make requests to the database
@@ -39,6 +39,12 @@ public class UserDao extends AbstractDao<Long, User> {
     private static final String SQL_UPDATE_PHOTO =
             "UPDATE users SET photo=? WHERE id=?";
 
+    /**
+     * This method finds all users
+     *
+     * @return List User
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public List<User> findAll() throws DaoException {
         List<User> users = new ArrayList<>();
@@ -60,6 +66,13 @@ public class UserDao extends AbstractDao<Long, User> {
         return users;
     }
 
+    /**
+     * This method finds user by user id
+     *
+     * @param id user id
+     * @return User
+     * @throws DaoException if happen SQLException
+     */
     public User find(Long id) throws DaoException {
         User user;
         PreparedStatement statement = null;
@@ -82,6 +95,14 @@ public class UserDao extends AbstractDao<Long, User> {
         return user;
     }
 
+    /**
+     * This method finds user by mail and password
+     *
+     * @param mail     user mail
+     * @param password user password
+     * @return User
+     * @throws DaoException if happen SQLException
+     */
     public User find(String mail, String password) throws DaoException {
         User user;
         PreparedStatement statement = null;
@@ -105,6 +126,13 @@ public class UserDao extends AbstractDao<Long, User> {
         return user;
     }
 
+    /**
+     * This method removes user by id
+     *
+     * @param id user id
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean delete(Long id) throws DaoException {
         boolean flag;
@@ -121,6 +149,13 @@ public class UserDao extends AbstractDao<Long, User> {
         return flag;
     }
 
+    /**
+     * This method creates new user
+     *
+     * @param user new user
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean create(User user) throws DaoException {
         boolean flag;
@@ -144,6 +179,13 @@ public class UserDao extends AbstractDao<Long, User> {
         return flag;
     }
 
+    /**
+     * This method updates user photo
+     *
+     * @param image  uploaded photo
+     * @param userId user id
+     * @throws DaoException if happen SQLException
+     */
     public void updatePhoto(InputStream image, long userId) throws DaoException {
         PreparedStatement statement = null;
         try {
@@ -158,6 +200,13 @@ public class UserDao extends AbstractDao<Long, User> {
         }
     }
 
+    /**
+     * This method updates user
+     *
+     * @param user User
+     * @return boolean as a result of the method
+     * @throws DaoException if happen SQLException
+     */
     @Override
     public boolean update(User user) throws DaoException {
         boolean flag;
@@ -182,6 +231,13 @@ public class UserDao extends AbstractDao<Long, User> {
         return flag;
     }
 
+    /**
+     * This method finds an user from resultSet
+     *
+     * @param resultSet from statement
+     * @return User
+     * @throws SQLException if happen SQLException
+     */
     private User findUser(ResultSet resultSet) throws SQLException {
         User user = new User();
         user.setId(resultSet.getLong(ColumnName.ID));
