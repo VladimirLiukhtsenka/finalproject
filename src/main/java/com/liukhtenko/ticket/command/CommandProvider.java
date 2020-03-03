@@ -1,10 +1,5 @@
 package com.liukhtenko.ticket.command;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-// FIXME: 03.03.2020 
 /**
  * The class that finds a command on request.
  *
@@ -13,7 +8,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CommandProvider {
     /**
-     *This method defines the command
+     * This method defines the command
+     *
      * @param cmd command name
      * @return real command
      * @see com.liukhtenko.ticket.controller.FrontController
