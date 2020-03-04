@@ -29,11 +29,10 @@ import java.util.List;
  */
 public class CreateEventCommand implements Command {
     private static Logger logger = LogManager.getLogger();
+
     /**
-     *
      * @param request from browser
      * @return String page
-     *
      */
     @Override
     public String execute(HttpServletRequest request) {
@@ -73,7 +72,7 @@ public class CreateEventCommand implements Command {
                 }
             } catch (ServiceException | ParseException e) {
                 logger.log(Level.ERROR, "Error in CreateEventCommand", e);
-                request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible create event.");
+                request.setAttribute(FormParameterName.FORM_PARAM_WRONG_INPUT_DATA, FormParameterName.FORM_PARAM_WRONG_INPUT_DATA);
                 return PagePath.PAGE_CREATE_EVENT;
             }
         }

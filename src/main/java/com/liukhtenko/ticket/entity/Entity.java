@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.entity;
 
 import java.io.Serializable;
+
 /**
  * This abstract class is the parent of all entities
  * used in the application.
@@ -10,3 +11,4 @@ import java.io.Serializable;
  */
 public abstract class Entity implements Serializable, Cloneable {
 }
+

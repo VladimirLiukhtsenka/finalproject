@@ -53,7 +53,7 @@ public class TicketOfficeDao extends AbstractDao<String, TicketOffice> {
         } finally {
             close(resultSet);
             close(statement);
-        }
+            }
         return ticketOffices;
     }
 

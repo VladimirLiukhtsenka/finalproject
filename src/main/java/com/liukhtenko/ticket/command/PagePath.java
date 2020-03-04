@@ -27,6 +27,8 @@ public class PagePath {
     public final static String PAGE_EDIT_TICKET = "/pages/editeticket.jsp";
     public final static String PAGE_CREATE_TICKET = "/pages/createticket.jsp";
     public final static String PAGE_UPDATE_USER = "/pages/updateuser.jsp";
+    public final static String PAGE_EDIT_TICKET_OFFICE = "/pages/editeticketoffice.jsp";
+    public final static String PAGE_CREATE_TICKET_OFFICE = "/pages/createTicketOffice.jsp";
 
     private PagePath() {
     }

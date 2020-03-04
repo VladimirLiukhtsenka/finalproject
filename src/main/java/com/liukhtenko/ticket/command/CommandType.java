@@ -129,6 +129,21 @@ public enum CommandType {
             this.command = new UpdatePhotoCommand();
         }
     },
+    EDIT_TICKET_OFFICE {
+        {
+            this.command = new EditTicketOfficeCommand();
+        }
+    },
+    CREATE_TICKET_OFFICE {
+        {
+            this.command = new CreateTicketOfficeCommand();
+        }
+    },
+    DELETE_TICKET_OFFICE {
+        {
+            this.command = new DeleteTicketOfficeCommand();
+        }
+    },
     ERROR {
         {
             this.command = new ErrorCommand();

@@ -26,6 +26,7 @@ body {
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href=do?command=Edit_event><fmt:message key="navBar.editEvents"/></a></li>
+                    <li><a href=do?command=Edit_ticket_office><fmt:message key="navBar.editTicketOffice"/></a></li>
                 </ul>
                     <ul class="nav navbar-nav navbar-right">
                 </ul>

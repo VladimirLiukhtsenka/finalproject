@@ -9,7 +9,9 @@ package com.liukhtenko.ticket.command;
 public class FormParameterName {
     public static final String DEFAULT_VALUE = "\"\"";
     public static final String FORM_PARAM_ADD_EVENT = "addEvent";
+    public static final String FORM_PARAM_ADD_TICKET_OFFICE = "addTicketOffice";
     public static final String FORM_PARAM_DELETE_EVENT = "delete event";
+    public static final String FORM_PARAM_DELETE_TICKET_OFFICE = "delete ticket office";
     public static final String FORM_PARAM_ADD_TICKET = "addTicket";
     public static final String FORM_PARAM_DELETE_TICKET = "delete ticket";
     public static final String FORM_PARAM_LOGOUT = "logout";

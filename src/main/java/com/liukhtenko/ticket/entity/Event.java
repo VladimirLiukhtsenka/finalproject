@@ -1,6 +1,7 @@
 package com.liukhtenko.ticket.entity;
 
 import java.util.Date;
+
 /**
  * This is an entity class that describes event.
  *

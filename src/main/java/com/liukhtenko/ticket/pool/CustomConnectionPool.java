@@ -68,6 +68,7 @@ public enum CustomConnectionPool {
         try {
             //getting connection or waiting
             connection = freeConnections.take();
+            //add an connection to the end of the givenAwayConnections
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
             logger.log(Level.WARN, connection + " not transferred", e);

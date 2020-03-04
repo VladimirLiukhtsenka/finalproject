@@ -17,7 +17,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="name"><fmt:message key="field.name"/>*</label>
             <div class="col-md-4">
-                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\p{Punct} \wа-яА-ЯёЁ]{3,45}$" >
+                <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\\p \wа-яА-ЯёЁ]{3,45}$" >
             </div>
         </div>
 
@@ -25,7 +25,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="address"><fmt:message key="field.address"/>*</label>
             <div class="col-md-4">
-                <input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\p{Punct} \wа-яА-ЯёЁ]{3,45}$">
+                <input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\\p \wа-яА-ЯёЁ]{3,45}$">
             </div>
         </div>
 
@@ -33,7 +33,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="description"><fmt:message key="field.description"/>*</label>
             <div class="col-md-4">
-                <input id="description" name="description" type="text" placeholder="" class="form-control input-md" required="" maxlength=60 pattern="^[\p{Punct} \wа-яА-ЯёЁ]{3,60}$">
+                <input id="description" name="description" type="text" placeholder="" class="form-control input-md" required="" maxlength=60 pattern="^[\\p \wа-яА-ЯёЁ]{3,60}$">
             </div>
         </div>
 
@@ -86,5 +86,9 @@ body {
         </div>
     </form>
 </div>
+    <c:set var = "data" scope = "session" value = "${wrongData}"/>
+        <c:if test = "${data != null}">
+        <h5 align="center"><fmt:message key="message.wrongData"/></h5>
+    </c:if>
 </body>
 </html>
