@@ -3,4 +3,4 @@
 
 ## Use cases:
 
-![UseCasesUp](https://user-images.githubusercontent.com/54796967/75671429-c3022d80-5c8f-11ea-83d6-a153c62264f2.png)
+![UseCases2](https://user-images.githubusercontent.com/54796967/75886212-f46a2d00-5e38-11ea-9a42-01591d3c689d.png)
