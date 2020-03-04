@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Properties;
 import java.util.Queue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * The class that stores and distributes connections.
@@ -43,9 +43,9 @@ public enum CustomConnectionPool {
         try {
             Class.forName(regDriver);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Unable to register driver", e);
+            throw new PoolException("Unable to register driver", e);
         }
-        freeConnections = new LinkedBlockingDeque<>(DEFAULT_POOL_SIZE);
+        freeConnections = new LinkedBlockingQueue<>(DEFAULT_POOL_SIZE);
         givenAwayConnections = new ArrayDeque<>();
         for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
             try {
@@ -53,7 +53,7 @@ public enum CustomConnectionPool {
                 ProxyConnection proxyConnection = new ProxyConnection(connection);
                 freeConnections.offer(proxyConnection);
             } catch (SQLException e) {
-                throw new RuntimeException("Unable to get connection", e);
+                throw new PoolException("Unable to get connection", e);
             }
         }
     }
@@ -71,7 +71,7 @@ public enum CustomConnectionPool {
             //add an connection to the end of the givenAwayConnections
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
-            logger.log(Level.WARN, connection + " not transferred", e);
+            logger.log(Level.WARN, "connection not transferred", e);
             Thread.currentThread().interrupt();
         }
         return connection;
@@ -83,8 +83,9 @@ public enum CustomConnectionPool {
      * @param connection Connection that connection to be returned
      * @throws PoolException if connection cannot be returned
      */
-    public void releaseConnection(Connection connection) throws PoolException {
+    public void releaseConnection(Connection connection) {
         if (connection.getClass() == ProxyConnection.class) {
+            //returning an connection from the front of the givenAwayConnections
             givenAwayConnections.remove(connection);
             freeConnections.offer((ProxyConnection) connection);
         } else {
