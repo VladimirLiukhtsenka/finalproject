@@ -39,10 +39,13 @@ public class FormValidator {
         long number;
         try {
             number = Long.parseLong(value);
+            if (number <= 0) {
+                throw new ServiceException("Wrong data");
+            }
         } catch (NumberFormatException e) {
             throw new ServiceException("Wrong data");
         }
-        return number > 0;
+        return true;
     }
 
     /**
@@ -56,10 +59,13 @@ public class FormValidator {
         double price;
         try {
             price = Double.parseDouble(value);
+            if (price <= 0) {
+                throw new ServiceException("Wrong data");
+            }
         } catch (NumberFormatException e) {
             throw new ServiceException("Wrong data");
         }
-        return price > 0;
+        return true;
     }
 
     /**

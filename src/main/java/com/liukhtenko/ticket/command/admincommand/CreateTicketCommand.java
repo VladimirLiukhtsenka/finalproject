@@ -64,7 +64,7 @@ public class CreateTicketCommand implements Command {
                 page = PagePath.PAGE_EDIT_TICKET;
             } catch (ServiceException e) {
                 logger.log(Level.ERROR, "Error in CreateTicketCommand", e);
-                request.setAttribute(FormParameterName.FORM_PARAM_MESSAGE_ERROR, "Impossible create ticket.");
+                request.setAttribute(FormParameterName.FORM_PARAM_WRONG_INPUT_DATA, FormParameterName.FORM_PARAM_WRONG_INPUT_DATA);
                 return PagePath.PAGE_CREATE_TICKET;
             }
         }

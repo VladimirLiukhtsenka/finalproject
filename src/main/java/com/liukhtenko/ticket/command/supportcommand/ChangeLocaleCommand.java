@@ -15,11 +15,10 @@ import javax.servlet.http.HttpSession;
  */
 public class ChangeLocaleCommand implements Command {
     private String locale = FormParameterName.LOCALE_EN;
+
     /**
-     *
      * @param request from browser
      * @return String page
-     *
      */
     @Override
     public String execute(HttpServletRequest request) {

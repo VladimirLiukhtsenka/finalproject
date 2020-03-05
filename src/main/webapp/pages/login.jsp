@@ -14,14 +14,15 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="mail"><fmt:message key="message.mail"/>*</label>
             <div class="col-md-4">
-                <input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" maxlength=30 pattern="^[\w-\+]+(\.[\w-]+)*@[\w-]+(\.[\w]+)*(\.[a-zA-Z]{2,})$">
+                <input id="mail" name="mail" type="text" placeholder="" class="form-control input-md" required="" maxlength=30
+                pattern="^[a-zA-Z_0-9-\+]+(\.[a-zA-Z_0-9-]+)*@[a-zA-Z_0-9-]+(\.[a-zA-Z_0-9]+)*(\.[a-zA-Z]{2,})$">
             </div>
         </div>
         <!-- Password input-->
         <div class="form-group">
             <label class="col-md-4 control-label" for="password"><fmt:message key="message.password"/>*</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{8,45}$" >
+                <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{8,45}$" >
                 <span class="help-block">no less than 8 characters</span>
             </div>
         </div>

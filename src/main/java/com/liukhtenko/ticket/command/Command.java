@@ -1,6 +1,6 @@
 package com.liukhtenko.ticket.command;
 
-        import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Interface for processing requests.
@@ -11,7 +11,6 @@ package com.liukhtenko.ticket.command;
  */
 public interface Command {
     /**
-     *
      * @param request from browser
      * @return String page
      */

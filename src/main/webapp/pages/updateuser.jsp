@@ -33,7 +33,7 @@ body {
             <label for = "files"  class="button" > <fmt:message key="message.choseFile"/> </ label>
         </form>
     </div>
-    <c:set var = "data" scope = "session" value = "${photoError}"/>
+    <c:set var = "data" scope = "session" value = "${errorPhoto}"/>
     <c:if test = "${data != null}">
         <h5 align="center" style="color:#ff0000"><fmt:message key="message.wrongFormat"/></h5>
     </c:if>
@@ -43,7 +43,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="name"><fmt:message key="message.namePerson"/></label>
             <div class="col-md-4">
-                <input id="name" name="name" type="text" value="${user.name}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorname}</h5>
+                <input id="name" name="name" type="text" value="${user.name}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorname}</h5>
             </div>
         </div>
 
@@ -51,7 +51,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="surname"><fmt:message key="message.surname"/></label>
             <div class="col-md-4">
-                <input id="surname" name="surname" type="text" value="${user.surName}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorsurname}</h5>
+                <input id="surname" name="surname" type="text" value="${user.surName}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorsurname}</h5>
             </div>
         </div>
 
@@ -59,7 +59,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="father name"><fmt:message key="message.fatherName"/></label>
             <div class="col-md-4">
-                <input id="father_name" name="father_name" type="text" value="${user.fatherName}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorFatherName}</h5>
+                <input id="father_name" name="father_name" type="text" value="${user.fatherName}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$"><h5 style="color:#ff0000">${errorFatherName}</h5>
             </div>
         </div>
 
@@ -67,7 +67,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="mail"><fmt:message key="message.mail"/></label>
             <div class="col-md-4">
-                <input id="mail" name="mail" type="text" value="${user.mail}" class="form-control input-md" required="" maxlength=30 pattern="^[\w-\+]+(\.[\w-]+)*@[\w-]+(\.[\w]+)*(\.[a-zA-Z]{2,})$" readonly><h5 style="color:#ff0000">${errormail}</h5>
+                <input id="mail" name="mail" type="text" value="${user.mail}" class="form-control input-md" required="" readonly><h5 style="color:#ff0000">${errormail}</h5>
             </div>
         </div>
 

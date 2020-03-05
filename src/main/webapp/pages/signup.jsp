@@ -15,7 +15,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="name"><fmt:message key="message.namePerson"/>*</label>
             <div class="col-md-4">
-                <input id="name" name="name" type="text" value="${name}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$">
+                <input id="name" name="name" type="text" value="${name}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$">
                  <c:set var = "data" scope = "session" value = "${errorname}"/>
                     <c:if test = "${data != null}">
                      <h5 style="color:#ff0000"><fmt:message key="message.wrongData"/></h5>
@@ -27,7 +27,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="surname"><fmt:message key="message.surname"/>*</label>
             <div class="col-md-4">
-                <input id="surname" name="surname" type="text" value="${surname}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$">
+                <input id="surname" name="surname" type="text" value="${surname}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$">
                  <c:set var = "data" scope = "session" value = "${errorsurname}"/>
                     <c:if test = "${data != null}">
                      <h5 style="color:#ff0000"><fmt:message key="message.wrongData"/></h5>
@@ -39,7 +39,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="father name"><fmt:message key="message.fatherName"/>*</label>
             <div class="col-md-4">
-                <input id="father_name" name="father_name" type="text" value="${father_name}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{3,45}$">
+                <input id="father_name" name="father_name" type="text" value="${father_name}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$">
                 <c:set var = "data" scope = "session" value = "${errorFatherName}"/>
                     <c:if test = "${data != null}">
                      <h5 style="color:#ff0000"><fmt:message key="message.wrongData"/></h5>
@@ -62,7 +62,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="mail"><fmt:message key="message.mail"/>*</label>
             <div class="col-md-4">
-                <input id="mail" name="mail" type="text" value="${mail}" class="form-control input-md" required="" maxlength=30 pattern="^[\w-\+]+(\.[\w-]+)*@[\w-]+(\.[\w]+)*(\.[a-zA-Z]{2,})$">
+                <input id="mail" name="mail" type="text" value="${mail}" class="form-control input-md" required="" maxlength=30 pattern="^[a-zA-Z_0-9-\+]+(\.[a-zA-Z_0-9-]+)*@[a-zA-Z_0-9-]+(\.[a-zA-Z_0-9]+)*(\.[a-zA-Z]{2,})$">
                 <c:set var = "data" scope = "session" value = "${errormail}"/>
                     <c:if test = "${data != null}">
                      <h5 style="color:#ff0000"><fmt:message key="message.wrongData"/></h5>
@@ -88,7 +88,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="password"><fmt:message key="message.password"/>*</label>
             <div class="col-md-4">
-                <input id="password" name="password" type="password" value="${password}" class="form-control input-md" required="" maxlength=45 pattern="^[\wа-яА-ЯёЁ]{8,45}$">
+                <input id="password" name="password" type="password" value="${password}" class="form-control input-md" required="" maxlength=45 pattern="^[a-zA-Z_0-9а-яА-ЯёЁ]{8,45}$">
                 <c:set var = "data" scope = "session" value = "${errorpassword}"/>
                     <c:if test = "${data != null}">
                      <h5 style="color:#ff0000"><fmt:message key="message.wrongData"/></h5>

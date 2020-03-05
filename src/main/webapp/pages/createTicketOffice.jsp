@@ -17,7 +17,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="address"><fmt:message key="field.address"/>*</label>
             <div class="col-md-4">
-                <input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\\p \wа-яА-ЯёЁ]{3,45}$">
+                <input id="address" name="address" type="text" placeholder="" class="form-control input-md" required="" maxlength=45 pattern="^[\\p a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$">
             </div>
         </div>
 
@@ -25,7 +25,7 @@ body {
         <div class="form-group">
             <label class="col-md-4 control-label" for="description"><fmt:message key="field.operatingMode"/>*</label>
             <div class="col-md-4">
-                <input id="operating_mode" name="operating_mode" type="text" placeholder="" class="form-control input-md" required="" maxlength=30 pattern="^[\\p \wа-яА-ЯёЁ]{3,45}$">
+                <input id="operating_mode" name="operating_mode" type="text" placeholder="" class="form-control input-md" required="" maxlength=30 pattern="^[\\p a-zA-Z_0-9а-яА-ЯёЁ]{3,45}$">
             </div>
         </div>
 

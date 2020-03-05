@@ -54,5 +54,9 @@ body {
         </div>
     </form>
 </div>
+    <c:set var = "data" scope = "session" value = "${wrongData}"/>
+    <c:if test = "${data != null}">
+    <h5 align="center"><fmt:message key="message.wrongData"/></h5>
+    </c:if>
 </body>
 </html>

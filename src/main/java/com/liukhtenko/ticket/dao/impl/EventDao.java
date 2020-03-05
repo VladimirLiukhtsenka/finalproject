@@ -29,11 +29,11 @@ public class EventDao extends AbstractDao<Long, Event> {
     private static final String SQL_CREATE_EVENT =
             "INSERT INTO events (name, address, description, type_event, date) values (?,?,?,?,?);";
     private static final String SQL_FIND_EVENT_BY_TYPE =
-            "SELECT id, name, address, description, type_event, date FROM events WHERE type_event = ?;";
+            "SELECT id, name, address, description, type_event, date FROM events WHERE type_event = ? ORDER BY date;";
     private static final String SQL_FIND__BY_ID =
             "SELECT id, name, address, description, type_event, date FROM events WHERE id = ?;";
     private static final String SQL_FIND_EVENT_ALL =
-            "SELECT id, name, address, description, type_event, date FROM events;";
+            "SELECT id, name, address, description, type_event, date FROM events ORDER BY date;";
     private static final String SQL_DELETE_EVENT_BY_ID =
             "DELETE FROM events WHERE id=?;";
     private static final String SQL_UPDATE_EVENT =
